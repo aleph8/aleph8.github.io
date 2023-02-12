@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Software on Alejandro García Peláez</title>
-        <link>https://aleph8.github.io/en/categories/software/</link>
+        <link>https://alejandrogp.com/en/categories/software/</link>
         <description>Recent content in Software on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 18 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/en/categories/software/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 18 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/en/categories/software/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Stable Diffusion Bot</title>
-        <link>https://aleph8.github.io/en/p/2022/stable-diffusion-bot/</link>
+        <link>https://alejandrogp.com/en/p/2022/stable-diffusion-bot/</link>
         <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2022/stable-diffusion-bot/</guid>
+        <guid>https://alejandrogp.com/en/p/2022/stable-diffusion-bot/</guid>
         <description>&lt;p&gt;Stable Diffusion is a learning model capable of generating digital images from natural language descriptions with the use of a prompt.&lt;/p&gt;
 &lt;p&gt;I wanted to try and experiment with some image generating model and Stable Diffusion has its repository on Github; the problem is that I don&amp;rsquo;t have a powerful graphic to work with graphics and, therefore, as incredible as it may seem, I had to find a way to run it on CPU, since my goal is to run it locally.&lt;/p&gt;
 &lt;p&gt;After searching a little, I found a repository that solved everything, allowing to execute the model using CPU. The only thing left was to create the bot, for which I used the Discord API in Python.&lt;/p&gt;
@@ -21,10 +21,10 @@
         </item>
         <item>
         <title>Echo a Virtual Assistant</title>
-        <link>https://aleph8.github.io/en/p/2022/echo-a-virtual-assistant/</link>
+        <link>https://alejandrogp.com/en/p/2022/echo-a-virtual-assistant/</link>
         <pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2022/echo-a-virtual-assistant/</guid>
+        <guid>https://alejandrogp.com/en/p/2022/echo-a-virtual-assistant/</guid>
         <description>&lt;p&gt;In a little break from Arachne, I decided to program my own Alexa. It&amp;rsquo;s something I&amp;rsquo;ve always wanted to do, because I would like to develop a virtual assistant to my own needs, programming and automating my tasks. This is when &amp;ldquo;Echo&amp;rdquo; came up.&lt;/p&gt;
 &lt;p&gt;In a few lines I had the basic functionalities in less than half an hour &amp;hellip; and it already responded to several of my own commands!  It is not very complicated to do, and can have a multitude of applications such as home automation.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -77,20 +77,20 @@
         </item>
         <item>
         <title>The Labyrinth Problem</title>
-        <link>https://aleph8.github.io/en/p/2022/the-labyrinth-problem/</link>
+        <link>https://alejandrogp.com/en/p/2022/the-labyrinth-problem/</link>
         <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2022/the-labyrinth-problem/</guid>
+        <guid>https://alejandrogp.com/en/p/2022/the-labyrinth-problem/</guid>
         <description>&lt;p&gt;The problem of solving mazes given input and output can be solved easily and inexpensively (for small mazes, of course). The following image shows the output of a small program I made in some spare time, showing the solution path and the paths explored by the algorithm. Given a maze, running the program will show in two windows the unsolved maze and the solved maze.&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;maze1.png&#34; alt=&#34;Image&#34; width=&#34;900&#34;&gt;&lt;/div&gt; 
 </description>
         </item>
         <item>
         <title>Efficient Algorithm for the Calculation of Prime Numbers</title>
-        <link>https://aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</link>
+        <link>https://alejandrogp.com/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</link>
         <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</guid>
+        <guid>https://alejandrogp.com/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</guid>
         <description>&lt;p&gt;The task of calculating very large prime numbers is very expensive. That is why I am making a specification of an algorithm that drastically reduces the time spent in calculating the prime numbers from 2 to the selected number.&lt;/p&gt;
 &lt;p&gt;I have managed to optimize the algorithm using brute force, in which all possible divisors are tested for each number:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;primes1.png&#34; alt=&#34;Image&#34; width=&#34;800&#34;&gt;&lt;/div&gt; 
@@ -100,10 +100,10 @@
         </item>
         <item>
         <title></title>
-        <link>https://aleph8.github.io/en/p/2021/</link>
+        <link>https://alejandrogp.com/en/p/2021/</link>
         <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2021/</guid>
+        <guid>https://alejandrogp.com/en/p/2021/</guid>
         <description>&lt;p&gt;This time I come with a game; the story of Lea and her journey as &amp;ldquo;The Last Unmasked&amp;rdquo;. In this game our protagonist has to go jumping spectres, corrupted by &amp;ldquo;the abyss&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;The game is programmed in Java using Android Studio as IDE. It is being quite a project because of the great world of mobile development that has come my way.&lt;/p&gt;
 &lt;p&gt;For example, when creating the associated world physics you had to take into account different types of programmable bodies; the ground is a &amp;ldquo;static&amp;rdquo; type while the main character is &amp;ldquo;dynamic&amp;rdquo;. This is very relevant when starting the world for the different forces exerted on the different bodies.&lt;/p&gt;

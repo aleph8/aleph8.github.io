@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>3D Printing on Alejandro García Peláez</title>
-        <link>https://aleph8.github.io/en/categories/3d-printing/</link>
+        <link>https://alejandrogp.com/en/categories/3d-printing/</link>
         <description>Recent content in 3D Printing on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 11 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/en/categories/3d-printing/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 11 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/en/categories/3d-printing/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Artillery Genius</title>
-        <link>https://aleph8.github.io/en/p/2022/artillery-genius/</link>
+        <link>https://alejandrogp.com/en/p/2022/artillery-genius/</link>
         <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2022/artillery-genius/</guid>
+        <guid>https://alejandrogp.com/en/p/2022/artillery-genius/</guid>
         <description>&lt;p&gt;After some time with the Ender 3, I decided to go for another printer that had caught my attention on several occasions: the Artillery Genius (Pro).&lt;/p&gt;
 &lt;p&gt;This printer offers as standard better features than its competitors for a slightly higher price, as it incorporates direct extrusion with a volcano fuser and a Titan extruder; both are obviously Chinese replicas, but they perform very well. Not only this, but it also incorporates a double synchronized Z axis, a very solid (and compact) aluminum structure, a sensor that controls the filament and automatic calibration. It has the most updated version of Marlin (at least the one that has come to me) and silent drivers; that has been what I have noticed the difference, and it is incredible how little you hear unlike, for example, the Ender 3.&lt;/p&gt;
 &lt;p&gt;Obviously not all of them are good and there are several things to keep in mind. Firstly, even though the printing platform heats up in no time, it is difficult for the part to adhere, which causes it to peel off on numerous occasions, interrupting the printing process. As a temporary solution we can resort to lacquer or masking tape. In my case I am using masking tape and waiting to order a magnetic strip to solve this problem. On the other hand it does not come with conventional cables but with flat cables; you have to be very careful with this type of cables since due to the movement of the printer they can disconnect, although in the current version of the market (Genius Pro since the normal Genius is discontinued) it comes with a kind of &amp;ldquo;couplers&amp;rdquo; that in theory avoid this problem.&lt;/p&gt;
@@ -21,10 +21,10 @@
         </item>
         <item>
         <title>Ender 3 Pro Direct Extrusion</title>
-        <link>https://aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</link>
+        <link>https://alejandrogp.com/en/p/2022/ender-3-pro-direct-extrusion/</link>
         <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</guid>
+        <guid>https://alejandrogp.com/en/p/2022/ender-3-pro-direct-extrusion/</guid>
         <description>&lt;p&gt;As I have been saying from the beginning, the &amp;ldquo;Bowden&amp;rdquo; type extrusion on this printer was giving me problems.&lt;/p&gt;
 &lt;p&gt;This extrusion system has a main advantage and it is that it has a lower mass in the extruder carriage, since the motor is directly coupled to the chassis. However, it has several problems, which is what has probably been happening to me. For example, it may be that the motor that pushes the filament does not have enough force. Here is the sound that my printer emitted when it did not have enough power.&lt;/p&gt;
 &lt;p&gt;One of the things I could do was to update the printer&amp;rsquo;s firmware, since it was in a rather primitive version. It turns out that the printer came with a board a little complicated to update (V1), especially because you had to make use of an Arduino to &amp;ldquo;burn&amp;rdquo; the bootloader. On the other hand I was quite eager to have direct extrusion and I decided to add it, with direct extrusion I added more weight to the extruder carriage, but I gained in extrusion speed and less risks caused by the motor. It also allowed me to print certain materials with higher temperature requirements, such as TPU.&lt;/p&gt;
@@ -49,19 +49,19 @@
         </item>
         <item>
         <title>Design and Printing of my Funko</title>
-        <link>https://aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</link>
+        <link>https://alejandrogp.com/en/p/2021/design-and-printing-of-my-funko/</link>
         <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</guid>
+        <guid>https://alejandrogp.com/en/p/2021/design-and-printing-of-my-funko/</guid>
         <description>&lt;p&gt;The Funko is modeled with Blender, printed using resin and then painted. The post-processing is simpler than in PLA since it is just painting it; the difference is that the process and treatment of the resin is more complex.&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;funko1.jpg&#34; alt=&#34;Image&#34; width=&#34;450&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src=&#34;funko2.jpg&#34; alt=&#34;Image&#34; width=&#34;450&#34;&gt;&lt;/div&gt;</description>
         </item>
         <item>
         <title>Venom Post PLA Processing</title>
-        <link>https://aleph8.github.io/en/p/2021/venom-post-pla-processing/</link>
+        <link>https://alejandrogp.com/en/p/2021/venom-post-pla-processing/</link>
         <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2021/venom-post-pla-processing/</guid>
+        <guid>https://alejandrogp.com/en/p/2021/venom-post-pla-processing/</guid>
         <description>&lt;p&gt;When a part is 3D printed, it is not that it ends up polished at all. That is why we must submit it to a process known as &amp;ldquo;post-processing&amp;rdquo;.In this case, we will see how to carry out PLA post-processing.&lt;/p&gt;
 &lt;p&gt;To begin with, we need a series of materials:&lt;/p&gt;
 &lt;ul&gt;
@@ -102,10 +102,10 @@
         </item>
         <item>
         <title>Solution to Under Extrusion</title>
-        <link>https://aleph8.github.io/en/p/2021/solution-to-under-extrusion/</link>
+        <link>https://alejandrogp.com/en/p/2021/solution-to-under-extrusion/</link>
         <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2021/solution-to-under-extrusion/</guid>
+        <guid>https://alejandrogp.com/en/p/2021/solution-to-under-extrusion/</guid>
         <description>&lt;p&gt;As soon as I started printing, it seemed that everything was going well with the printer, but the pieces sometimes came out without filament in certain parts or the figures did not come out well (circles for example).&lt;/p&gt;
 &lt;p&gt;I mainly thought it was a problem with the bed calibration. Once calibrated, the same thing kept happening. Later I thought about the tension of the belts that move the axes (specifically the X and Y), but after tightening them nothing changed.&lt;/p&gt;
 &lt;p&gt;The problem had me a little bit worried, so I did a little research on the subject. It turns out that the Ender 3 (and Pro) has an extrusion system like the one shown in the following image:&lt;/p&gt;
@@ -128,10 +128,10 @@
         </item>
         <item>
         <title>My Beginnings in 3D Printing</title>
-        <link>https://aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</link>
+        <link>https://alejandrogp.com/en/p/2021/my-beginnings-in-3d-printing/</link>
         <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</guid>
+        <guid>https://alejandrogp.com/en/p/2021/my-beginnings-in-3d-printing/</guid>
         <description>&lt;p&gt;I recently acquired for the first time a 3D printer. I had experience with this type of technology because in my high school we assembled a Geetech Prusa I3. During the assembly of this printer we had several problems that we were solving thanks to the interest and enthusiasm that we had at that time, that eagerness and desire to learn. The printer did not come ready to print; it had to be assembled from scratch. Being our first printer added an extra complexity to the challenge and thanks to this we learned how a 3D printer of this type works:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;ini1.png&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
 &lt;p&gt;The problem with this printer is that it had several mechanical problems, so we had to replace several electronic components. Another problem is that we had to be calibrating all the axes for every print we made and we ended up desperate. This is also due to the fact that it was a bit more advanced for us, but as I said before, this printer gave us the opportunity to learn a lot and I still remember it fondly.&lt;/p&gt;

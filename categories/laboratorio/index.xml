@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Laboratorio on Alejandro García Peláez</title>
-        <link>https://aleph8.github.io/categories/laboratorio/</link>
+        <link>https://alejandrogp.com/categories/laboratorio/</link>
         <description>Recent content in Laboratorio on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/categories/laboratorio/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/categories/laboratorio/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Arachne</title>
-        <link>https://aleph8.github.io/p/2022/arachne/</link>
+        <link>https://alejandrogp.com/p/2022/arachne/</link>
         <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/arachne/</guid>
+        <guid>https://alejandrogp.com/p/2022/arachne/</guid>
         <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aleph8/Arachne&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Arachne es un proyecto completamente open source&lt;/a&gt;; puedes encontrar todos los archivos de diseño y programación en su repositorio.&lt;/p&gt;
 &lt;h2 id=&#34;inspiración&#34;&gt;Inspiración&lt;/h2&gt;
@@ -34,10 +34,10 @@
         </item>
         <item>
         <title>EOS</title>
-        <link>https://aleph8.github.io/p/2022/eos/</link>
+        <link>https://alejandrogp.com/p/2022/eos/</link>
         <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/eos/</guid>
+        <guid>https://alejandrogp.com/p/2022/eos/</guid>
         <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Aleph8/EOS/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;EOS es un proyecto open source&lt;/a&gt; basado en el &amp;ldquo;Jansen Linkage&amp;rdquo; , un mecanismo creado por Teo Jansen ( imagen izquierda ).&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;eos1.jpg&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt;

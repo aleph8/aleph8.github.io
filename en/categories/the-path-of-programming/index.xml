@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>The path of programming on Alejandro García Peláez</title>
-        <link>https://aleph8.github.io/en/categories/the-path-of-programming/</link>
+        <link>https://alejandrogp.com/en/categories/the-path-of-programming/</link>
         <description>Recent content in The path of programming on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/en/categories/the-path-of-programming/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/en/categories/the-path-of-programming/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>R and Rstudio</title>
-        <link>https://aleph8.github.io/en/p/2023/r-and-rstudio/</link>
+        <link>https://alejandrogp.com/en/p/2023/r-and-rstudio/</link>
         <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2023/r-and-rstudio/</guid>
+        <guid>https://alejandrogp.com/en/p/2023/r-and-rstudio/</guid>
         <description>&lt;h1 id=&#34;fundamental-concepts&#34;&gt;Fundamental Concepts&lt;/h1&gt;
 &lt;h2 id=&#34;variable-assignment&#34;&gt;Variable assignment&lt;/h2&gt;
 &lt;p&gt;Variable assignment is done with the use of &amp;lsquo;&amp;lt;-&amp;rsquo;. This notation comes from the &amp;lsquo;&lt;em&gt;pipelines&lt;/em&gt;&amp;rsquo; or pipelines that we can see present in some operating systems like GNU/Linux (in the case of Linux the use of pipelines is carried out with the notation &amp;lsquo;|&amp;rsquo; that allows to redirect the output of a command or &lt;strong&gt;stdout&lt;/strong&gt; to the input of another or &lt;strong&gt;stdin&lt;/strong&gt;).&lt;/p&gt;

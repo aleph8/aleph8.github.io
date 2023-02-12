@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Software on Alejandro García Peláez</title>
-        <link>https://aleph8.github.io/categories/software/</link>
+        <link>https://alejandrogp.com/categories/software/</link>
         <description>Recent content in Software on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 18 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/categories/software/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 18 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/categories/software/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Stable Diffusion Bot</title>
-        <link>https://aleph8.github.io/p/2022/stable-diffusion-bot/</link>
+        <link>https://alejandrogp.com/p/2022/stable-diffusion-bot/</link>
         <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/stable-diffusion-bot/</guid>
+        <guid>https://alejandrogp.com/p/2022/stable-diffusion-bot/</guid>
         <description>&lt;p&gt;Stable Diffusion es un modelo de aprendizaje capaz de generar imágenes digitales a partir de descripciones en lenguaje natural con el uso de un &amp;ldquo;prompt&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Quería probar y experimentar con algún modelo generador de imágenes y Stable Diffusion cuenta con su repositorio en Github; el problema, es que a día de hoy no cuento con una gráfica potente para trabajar con gráficos y, por tanto, por increíble que pueda parecer, tenía que buscar la manera de ejecutarlo en CPU, ya que mi objetivo es ejecutarlo en local.&lt;/p&gt;
 &lt;p&gt;Tras buscar un poco, encontré el un repositorio que me solucionaba todo, permitiendo ejecutar el modelo usando CPU. Solo quedaba crear el bot, para el cual he empleado la API de Discord en Python.&lt;/p&gt;
@@ -21,10 +21,10 @@
         </item>
         <item>
         <title>Echo un Asistente virtual</title>
-        <link>https://aleph8.github.io/p/2022/echo-un-asistente-virtual/</link>
+        <link>https://alejandrogp.com/p/2022/echo-un-asistente-virtual/</link>
         <pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/echo-un-asistente-virtual/</guid>
+        <guid>https://alejandrogp.com/p/2022/echo-un-asistente-virtual/</guid>
         <description>&lt;p&gt;En un pequeño descanso de Arachne, decidí programar mi propia Alexa. Es algo que siempre he querido hacer, porque me gustaría desarrollar un asistente virtual a mi propiass necesidades, programando y automatizando mis tareas. Aquí es cuando surge &amp;ldquo;Echo&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;En unas pocas líneas tenía las funcionalidades básicas en menos de media hora &amp;hellip; ¡y ya respondía a varios de mis propios comandos!  No es muy complicado de hacer, y puede tener multitud de aplicaciones como la domótica.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -79,20 +79,20 @@
         </item>
         <item>
         <title>El Problema del Laberinto</title>
-        <link>https://aleph8.github.io/p/2022/el-problema-del-laberinto/</link>
+        <link>https://alejandrogp.com/p/2022/el-problema-del-laberinto/</link>
         <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/el-problema-del-laberinto/</guid>
+        <guid>https://alejandrogp.com/p/2022/el-problema-del-laberinto/</guid>
         <description>&lt;p&gt;El problema de resolver laberintos dadas la entrada y salida se puede resolver fácilmente y no muy costosamente (para pequeños laberintos, claro está). La siguiente imagen muestra la salida de un pequeño programa que hice en un rato libre, mostrando el camino de la solución y los caminos explorados por el algoritmo. Dado un laberinto, al ejecutar el programa se mostrarán en dos ventanas el laberinto sin resolver y el laberinto resuelto.&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;maze1.png&#34; alt=&#34;Image&#34; width=&#34;900&#34;&gt;&lt;/div&gt; 
 </description>
         </item>
         <item>
         <title>Algoritmo Eficiente para el Cálculo de Números Primos</title>
-        <link>https://aleph8.github.io/p/2021/algoritmo-eficiente-para-el-c%C3%A1lculo-de-n%C3%BAmeros-primos/</link>
+        <link>https://alejandrogp.com/p/2021/algoritmo-eficiente-para-el-c%C3%A1lculo-de-n%C3%BAmeros-primos/</link>
         <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2021/algoritmo-eficiente-para-el-c%C3%A1lculo-de-n%C3%BAmeros-primos/</guid>
+        <guid>https://alejandrogp.com/p/2021/algoritmo-eficiente-para-el-c%C3%A1lculo-de-n%C3%BAmeros-primos/</guid>
         <description>&lt;p&gt;La tarea de calcular números primos muy grandes es muy costosa. Es por eso que estoy haciendo una especificación de un algoritmo que reduzca drásticamente el tiempo empleado en calcular los números primos del 2 al número seleccionado.&lt;/p&gt;
 &lt;p&gt;He conseguido optimizar el algoritmo empleando fuerza bruta, en el que se prueba por cada número todos los posibles divisores:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;primes1.png&#34; alt=&#34;Image&#34; width=&#34;800&#34;&gt;&lt;/div&gt; 
@@ -102,10 +102,10 @@
         </item>
         <item>
         <title>The Last Unmasked (Android Game)</title>
-        <link>https://aleph8.github.io/p/2021/the-last-unmasked-android-game/</link>
+        <link>https://alejandrogp.com/p/2021/the-last-unmasked-android-game/</link>
         <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2021/the-last-unmasked-android-game/</guid>
+        <guid>https://alejandrogp.com/p/2021/the-last-unmasked-android-game/</guid>
         <description>&lt;p&gt;Esta vez vengo con un juego; la historia de Lea y su travesía como &amp;ldquo;The Last Unmasked&amp;rdquo;. En este juego nuestra protagonista tiene que ir saltando a espectros, corrompidos por &amp;ldquo;el abismo&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;El juego está programado en Java usando Android Studio como IDE. Está siendo todo un proyecto por el gran mundo de desarrollo móvil que se ha hecho paso en mi camino.&lt;/p&gt;
 &lt;p&gt;Por ejemplo, a la hora de crear las físicas del mundo asociadas tenías que tener en cuenta distintos tipos de cuerpos programables; el suelo es de tipo &amp;ldquo;estático&amp;rdquo; mientras que el personaje principal es &amp;ldquo;dinámico&amp;rdquo;. Esto es muy relevante a la hora de iniciar el mundo para las distintas fuerzas que se ejercen sobre los distintos cuerpos.&lt;/p&gt;

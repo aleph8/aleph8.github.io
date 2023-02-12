@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Servers on Alejandro García Peláez</title>
-        <link>https://aleph8.github.io/en/categories/servers/</link>
+        <link>https://alejandrogp.com/en/categories/servers/</link>
         <description>Recent content in Servers on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 30 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/en/categories/servers/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 30 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/en/categories/servers/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>VMware ESXi</title>
-        <link>https://aleph8.github.io/en/p/2022/vmware-esxi/</link>
+        <link>https://alejandrogp.com/en/p/2022/vmware-esxi/</link>
         <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2022/vmware-esxi/</guid>
+        <guid>https://alejandrogp.com/en/p/2022/vmware-esxi/</guid>
         <description>&lt;p&gt;ESXi is a bare-metal hypervisor. This means that the operating system is not an intermediary between the software virtualization and the hardware, since being bare-metal, ESXi is installed directly on the server.&lt;/p&gt;
 &lt;p&gt;To obtain the image with which to boot and install it, we must access the official VMware website. Once registered, we can download the latest version of ESXi to create a bootable device.&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;esxi1.png&#34; alt=&#34;Image&#34; width=&#34;700&#34;&gt;&lt;/div&gt; 
@@ -22,10 +22,10 @@
         </item>
         <item>
         <title>RAID Storage</title>
-        <link>https://aleph8.github.io/en/p/2022/raid-storage/</link>
+        <link>https://alejandrogp.com/en/p/2022/raid-storage/</link>
         <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2022/raid-storage/</guid>
+        <guid>https://alejandrogp.com/en/p/2022/raid-storage/</guid>
         <description>&lt;p&gt;Redundant Array of Independent Disk (RAID) is a type of virtual data storage.&lt;/p&gt;
 &lt;p&gt;With several physical disks we can create a virtual disk for the following purposes: to improve performance or data redundancy. The data is distributed in one way or another depending on the RAID level with which the disk is configured.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;RAID LEVELS (0-1-5)&lt;/strong&gt;&lt;/p&gt;
@@ -45,10 +45,10 @@
         </item>
         <item>
         <title>How to Customize a Linux Distro</title>
-        <link>https://aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/</link>
+        <link>https://alejandrogp.com/en/p/2022/how-to-customize-a-linux-distro/</link>
         <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/</guid>
+        <guid>https://alejandrogp.com/en/p/2022/how-to-customize-a-linux-distro/</guid>
         <description>&lt;p&gt;Since I work with different operating systems, I have decided to &amp;ldquo;create&amp;rdquo; my own GNU/Linux distribution to have all the utilities I usually use at hand, and to have an image (*iso) to install on the server and create different OS versions according to my needs.&lt;/p&gt;
 &lt;p&gt;It is a very simple process for which I have used the &amp;ldquo;systemback&amp;rdquo; tool.&lt;/p&gt;
 &lt;p&gt;First of all you must create a virtual machine where you install the base operating system and leave it as you want. In my case I have used the latest stable image of Lubuntu.&lt;/p&gt;
@@ -59,10 +59,10 @@
         </item>
         <item>
         <title>What is a server?</title>
-        <link>https://aleph8.github.io/en/p/2022/what-is-a-server/</link>
+        <link>https://alejandrogp.com/en/p/2022/what-is-a-server/</link>
         <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/en/p/2022/what-is-a-server/</guid>
+        <guid>https://alejandrogp.com/en/p/2022/what-is-a-server/</guid>
         <description>&lt;p&gt;A server is a computer (or set of computers) that follows the &amp;ldquo;client-server&amp;rdquo; model, handling requests from the client and returning a response accordingly.&lt;/p&gt;
 &lt;p&gt;Anyone can set up a computer as a server, but depending on the service we are going to offer, more or less hardware resources will be needed. For example, we can use an old computer together with a few hard disks to have our own NAS (Network Attached Storage); however, if we want a server that offers virtual machines, we will need more resources.&lt;/p&gt;
 &lt;p&gt;This is why we can distinguish between different server formats:&lt;/p&gt;

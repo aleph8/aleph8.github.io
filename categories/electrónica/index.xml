@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Electrónica on Alejandro García Peláez</title>
-        <link>https://aleph8.github.io/categories/electr%C3%B3nica/</link>
+        <link>https://alejandrogp.com/categories/electr%C3%B3nica/</link>
         <description>Recent content in Electrónica on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/categories/electr%C3%B3nica/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/categories/electr%C3%B3nica/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Tipos de Memorias en Microcontroladores</title>
-        <link>https://aleph8.github.io/p/2022/tipos-de-memorias-en-microcontroladores/</link>
+        <link>https://alejandrogp.com/p/2022/tipos-de-memorias-en-microcontroladores/</link>
         <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/tipos-de-memorias-en-microcontroladores/</guid>
+        <guid>https://alejandrogp.com/p/2022/tipos-de-memorias-en-microcontroladores/</guid>
         <description>&lt;p&gt;Dentro de un microcontrolador, podemos contemplar dos tipos de memorias esenciales: memoria volátil(comúnmente suele ser SRAM), memoria no volátil para el almacenamiento de programas (ROM, EEPROM, PROM &amp;hellip; ).&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;typemem1.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt; 
 &lt;ul&gt;
@@ -27,10 +27,10 @@
         </item>
         <item>
         <title>Robot Centinela</title>
-        <link>https://aleph8.github.io/p/2021/robot-centinela/</link>
+        <link>https://alejandrogp.com/p/2021/robot-centinela/</link>
         <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2021/robot-centinela/</guid>
+        <guid>https://alejandrogp.com/p/2021/robot-centinela/</guid>
         <description>&lt;p&gt;En esta ocasión me he decantado por hacer una especie de “robot centinela” que tras detectar movimiento se acciona un mecanismo de disparo.&lt;/p&gt;
 &lt;p&gt;En primer lugar necesitaba algo que pudiera disparar. Para ello me dieron una Nerf antigua para que yo pudiera cacharrear. Una vez la abrí me dí cuenta, que dada la antigüedad, poco quedaba que se pudiera reutilizar, a excepción del cañón al que se acoplaban dos motores. Cada motor lleva acoplado una especie de cilindro por el que se desliza la bala en cuestión.&lt;/p&gt;
 &lt;p&gt;En segundo lugar nos encontramos con la electrónica. Quería que fuera algo compacto y decidí usar una Arduino Nano la cual me servía de sobra para lo que yo necesitaba. El problema es que la salida es de 5V y aproximadamente unos 40 mA, siendo esto insuficiente para conseguir toda la potencia de los motores. La solución por la que opté fue alimentar los motores externamente con una batería recargable de unos 12V.&lt;/p&gt;

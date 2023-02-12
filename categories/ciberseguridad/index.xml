@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Ciberseguridad on Alejandro García Peláez</title>
-        <link>https://aleph8.github.io/categories/ciberseguridad/</link>
+        <link>https://alejandrogp.com/categories/ciberseguridad/</link>
         <description>Recent content in Ciberseguridad on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 06 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/categories/ciberseguridad/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 06 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/categories/ciberseguridad/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>RCE</title>
-        <link>https://aleph8.github.io/p/2023/rce/</link>
+        <link>https://alejandrogp.com/p/2023/rce/</link>
         <pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2023/rce/</guid>
-        <description>&lt;p&gt;Llamamos RCE o &lt;em&gt;Remote Code Execution&lt;/em&gt; a la ejecución de comandos arbitrarios gracias a la toma de control de un equipo remoto mediante alguna vulnerabilidad del servicio expuesto como &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/p/2023/lfi&#34; &gt;LFI&lt;/a&gt;.&lt;/p&gt;
+        <guid>https://alejandrogp.com/p/2023/rce/</guid>
+        <description>&lt;p&gt;Llamamos RCE o &lt;em&gt;Remote Code Execution&lt;/em&gt; a la ejecución de comandos arbitrarios gracias a la toma de control de un equipo remoto mediante alguna vulnerabilidad del servicio expuesto como &lt;a class=&#34;link&#34; href=&#34;https://alejandrogp.com/p/2023/lfi&#34; &gt;LFI&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Esto puede suceder, por ejemplo, si no está bien controlada la entrada de datos del usuario. Despliego el servicio web preparado para explicar esto y supongamos la siguiente situación:&lt;/p&gt;
 &lt;p&gt;Hay un servicio web que permite a sus usuarios ejecutar código en C++ en el navegador, sin necesidad de ejecutarlo en su dispositivo:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;rce1.png&#34; alt=&#34;Image&#34; width=&#34;900&#34;&gt;&lt;/div&gt; 
@@ -26,10 +26,10 @@
         </item>
         <item>
         <title>LFI</title>
-        <link>https://aleph8.github.io/p/2023/lfi/</link>
+        <link>https://alejandrogp.com/p/2023/lfi/</link>
         <pubDate>Mon, 30 Jan 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2023/lfi/</guid>
+        <guid>https://alejandrogp.com/p/2023/lfi/</guid>
         <description>&lt;p&gt;LFI o &lt;em&gt;Local File Inclusion&lt;/em&gt; es una de las dos vulnerabilidades del estilo File Inclusion que afecta comunmente a las aplicaciones web. En caso de explotarla satisfactoriamente, puede derivar en una RCE o &lt;em&gt;Remote Code Execution&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Gracias a una variable, podemos apuntar directamente a un fichero del sistema de archivos del lado del servidor; una vez apuntado, se ejecutará del lado de servidor, con la rutina web correspondiente. Para explicarlo mejor, vamos a trabajar en un entorno controlado, desplegando nuestro propio servicio web en local, con el siguiente formato:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -56,10 +56,10 @@
         </item>
         <item>
         <title>Creación de Contraseñas Robustas</title>
-        <link>https://aleph8.github.io/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/</link>
+        <link>https://alejandrogp.com/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/</link>
         <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/</guid>
+        <guid>https://alejandrogp.com/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/</guid>
         <description>&lt;p&gt;Cada vez es más frecuente que manejemos diversas contraseñas a la vez. Si queremos que estas sean seguras y estén protegidas a posibles ataques de fuerza bruta, basados en un diccionario personal, debemos asegurar la robustez de estas y cambiarlas periódicamente; algunas buenas prácticas son:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -82,7 +82,7 @@
     &gt;Técnica Diceware&lt;/a&gt;: nos permite obtener una cadena a partir de una serie de palabras que se ordenan aleatoriamente. Con memorizar la cadena, ya que es una serie de palabras en secuencia, tendríamos suficiente.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Solución Hardware: implementación de un dispositivo que almacene y genere las contraseñas. Puedes ver un ejemplo con mi &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/p/2022/digital-key&#34; &gt;Digital Key&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt;Solución Hardware: implementación de un dispositivo que almacene y genere las contraseñas. Puedes ver un ejemplo con mi &lt;a class=&#34;link&#34; href=&#34;https://alejandrogp.com/p/2022/digital-key&#34; &gt;Digital Key&lt;/a&gt; .&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Solución Software: gestores de contraseñas como KeePass.&lt;/p&gt;
@@ -106,12 +106,12 @@
         </item>
         <item>
         <title>Digital Key</title>
-        <link>https://aleph8.github.io/p/2022/digital-key/</link>
+        <link>https://alejandrogp.com/p/2022/digital-key/</link>
         <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/digital-key/</guid>
+        <guid>https://alejandrogp.com/p/2022/digital-key/</guid>
         <description>&lt;p&gt;Cuando tienes muchas contraseñas complejas, a veces es complicado recordarlas todas; los navegadores actuales nos suelen ofrecer contraseñas seguras generadas automáticamente, y se almacenan en el propio navegador, como un &amp;ldquo;llavero virtual&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Como hemos podido ver en &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/p/2022/bad-usb&#34; &gt;la parte del Bad Usb&lt;/a&gt; con un simple dispositivo que se asemeja a un USB, podemos simular un teclado, pero no todo es malo; se me ocurrió usar su funcionamiento y el de dispositivos similares para crear un &amp;ldquo;llavero virtual&amp;rdquo; portable o &amp;ldquo;Digital Key&amp;rdquo; usando las funciones HID de los microprocesadores que encontramos ya integrados en diversas placas de desarrollo.&lt;/p&gt;
+&lt;p&gt;Como hemos podido ver en &lt;a class=&#34;link&#34; href=&#34;https://alejandrogp.com/p/2022/bad-usb&#34; &gt;la parte del Bad Usb&lt;/a&gt; con un simple dispositivo que se asemeja a un USB, podemos simular un teclado, pero no todo es malo; se me ocurrió usar su funcionamiento y el de dispositivos similares para crear un &amp;ldquo;llavero virtual&amp;rdquo; portable o &amp;ldquo;Digital Key&amp;rdquo; usando las funciones HID de los microprocesadores que encontramos ya integrados en diversas placas de desarrollo.&lt;/p&gt;
 &lt;p&gt;La idea consiste, en tener un dispositivo que sea, por un lado, capaz de generar contraseñas seguras y almacenarlas en nuestra memoria EEPROM (tipos de memorias en microcontroladores) y, por otro lado, que sea capaz de volcarlas en tiempo de ejecución, escribiéndolas como si fuese un teclado.&lt;/p&gt;
 &lt;p&gt;Para esto, lo único que ha hecho falta, ha sido emplear la placa de desarrollo &amp;ldquo;Digispark&amp;rdquo; que cuenta con una interfaz USB 2.0 integrada, además de su reducido tamaño y precio. Para añadirle un factor de autenticación, para que en el caso de perder el dispositivo no se escriba directamente la contraseña, he utilizado una codificación del binario similar a la del código morse.&lt;/p&gt;
 &lt;p&gt;El dispositivo final, cuenta, por tanto, con la placa de desarrollo y un botón. Al conectar el dispositivo, este no hace nada, exclusivamente, escribe que está conectado. Una vez se muestre esto, el usuario debe pulsar adecuadamente la combinación en binario; en el caso de éxito, se escribirá la contraseña almacenada o se creará en el caso de que no haya ninguna almacenada. En el caso de error, no sucederá nada. El dispositivo cuenta con dos funcionalidades más, dependiendo el tiempo de pulsación: modo de generación de contraseña pero sin almacenarla y modo de reset para &amp;ldquo;eliminar&amp;rdquo; la contraseña almacenada en EEPROM:&lt;/p&gt;
@@ -299,10 +299,10 @@
         </item>
         <item>
         <title>Bad Usb</title>
-        <link>https://aleph8.github.io/p/2022/bad-usb/</link>
+        <link>https://alejandrogp.com/p/2022/bad-usb/</link>
         <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/bad-usb/</guid>
+        <guid>https://alejandrogp.com/p/2022/bad-usb/</guid>
         <description>&lt;p&gt;Cuando vemos este objeto, podemos pensar de primeras que es una memoria USB, sin nada particular; incluso puede darse la situación de que lo conectes en tu ordenador creyendo que lo es, y que no le va a pasar nada.&lt;/p&gt;
 &lt;p&gt;El problema surge, cuando vemos su interior, con lo que nos daremos cuenta, que no es ni mucho menos algo normal:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;bad1.jpg&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
@@ -340,11 +340,11 @@
         </item>
         <item>
         <title>Cifrado César Universal</title>
-        <link>https://aleph8.github.io/p/2022/cifrado-c%C3%A9sar-universal/</link>
+        <link>https://alejandrogp.com/p/2022/cifrado-c%C3%A9sar-universal/</link>
         <pubDate>Wed, 02 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/cifrado-c%C3%A9sar-universal/</guid>
-        <description>&lt;p&gt;Como ya hemos visto en &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/p/2022/indagando-en-la-criptograf%c3%ada&#34; &gt;Indagando en la Criptografía&lt;/a&gt;, la criptología es un campo muy amplio compuesto por cuatro pilares esenciales.&lt;/p&gt;
+        <guid>https://alejandrogp.com/p/2022/cifrado-c%C3%A9sar-universal/</guid>
+        <description>&lt;p&gt;Como ya hemos visto en &lt;a class=&#34;link&#34; href=&#34;https://alejandrogp.com/p/2022/indagando-en-la-criptograf%c3%ada&#34; &gt;Indagando en la Criptografía&lt;/a&gt;, la criptología es un campo muy amplio compuesto por cuatro pilares esenciales.&lt;/p&gt;
 &lt;p&gt;La criptografía se centra mayoritariamente en los algoritmos que empleamos para proteger la información; en esta ocasión vamos a ver un método de cifrado clásico, concretamente por sustitución monoalfabética (monográmica de alfabeto estándar).&lt;/p&gt;
 &lt;p&gt;Este cifrado se empleaba por el propio Julio César para comunicar sus mensajes importantes de forma segura (concretamente con un desplazamiento de 3 posiciones).&lt;/p&gt;
 &lt;p&gt;Para cifrar una palabra utilizando este método debemos elegir en primer lugar un desplazamiento, que serán las posiciones que nos moveremos hacia la derecha en el abecedario en cuestión. Por ejemplo: si elegimos desplazamiento 1 y queremos cifrar &amp;ldquo;&lt;strong&gt;ABC&lt;/strong&gt;&amp;rdquo; el resultado sería &amp;ldquo;&lt;strong&gt;BCD&lt;/strong&gt;&amp;rdquo;.&lt;/p&gt;
@@ -501,10 +501,10 @@
         </item>
         <item>
         <title>Indagando en la criptografía</title>
-        <link>https://aleph8.github.io/p/2022/indagando-en-la-criptograf%C3%ADa/</link>
+        <link>https://alejandrogp.com/p/2022/indagando-en-la-criptograf%C3%ADa/</link>
         <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2022/indagando-en-la-criptograf%C3%ADa/</guid>
+        <guid>https://alejandrogp.com/p/2022/indagando-en-la-criptograf%C3%ADa/</guid>
         <description>&lt;p&gt;Últimamente, he estado indagando en el campo de la &lt;strong&gt;criptología&lt;/strong&gt;, más concretamente en la criptografía.&lt;/p&gt;
 &lt;p&gt;Solemos pensar que la criptografía engloba todo lo relacionado con &amp;ldquo;el estudio de la escritura oculta&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Sin embargo, esto no es así, ya que es la criptología quien se encarga de esto, siendo la criptografía una de las cuatro ramas que la componen:&lt;/p&gt;
@@ -527,10 +527,10 @@
         </item>
         <item>
         <title>Keylogger en C</title>
-        <link>https://aleph8.github.io/p/2021/keylogger-en-c/</link>
+        <link>https://alejandrogp.com/p/2021/keylogger-en-c/</link>
         <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://aleph8.github.io/p/2021/keylogger-en-c/</guid>
+        <guid>https://alejandrogp.com/p/2021/keylogger-en-c/</guid>
         <description>&lt;p&gt;Un spyware es un tipo de virus informático que tras infectar el ordenador de la víctima busca la manera de conseguir todo tipo de información de esta (desde capturas de pantalla hasta grabar audio o acceder a la cámara).&lt;/p&gt;
 &lt;p&gt;Un keylogger es un tipo de spyware que registra las pulsaciones del teclado de la víctima para obtener datos personales: contraseñas, datos bancarios, acceso a cuentas&amp;hellip;&lt;/p&gt;
 &lt;p&gt;Usando C he programado un keylogger; el funcionamiento de este es sencillo:&lt;/p&gt;
