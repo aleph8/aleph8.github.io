@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>3D Printing on Alejandro García Peláez</title>
+        <link>https:/aleph8.github.io/en/categories/3d-printing/</link>
+        <description>Recent content in 3D Printing on Alejandro García Peláez</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 11 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/en/categories/3d-printing/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Artillery Genius</title>
+        <link>https:/aleph8.github.io/en/p/2022/artillery-genius/</link>
+        <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/en/p/2022/artillery-genius/</guid>
+        <description>&lt;p&gt;After some time with the Ender 3, I decided to go for another printer that had caught my attention on several occasions: the Artillery Genius (Pro).&lt;/p&gt;
+&lt;p&gt;This printer offers as standard better features than its competitors for a slightly higher price, as it incorporates direct extrusion with a volcano fuser and a Titan extruder; both are obviously Chinese replicas, but they perform very well. Not only this, but it also incorporates a double synchronized Z axis, a very solid (and compact) aluminum structure, a sensor that controls the filament and automatic calibration. It has the most updated version of Marlin (at least the one that has come to me) and silent drivers; that has been what I have noticed the difference, and it is incredible how little you hear unlike, for example, the Ender 3.&lt;/p&gt;
+&lt;p&gt;Obviously not all of them are good and there are several things to keep in mind. Firstly, even though the printing platform heats up in no time, it is difficult for the part to adhere, which causes it to peel off on numerous occasions, interrupting the printing process. As a temporary solution we can resort to lacquer or masking tape. In my case I am using masking tape and waiting to order a magnetic strip to solve this problem. On the other hand it does not come with conventional cables but with flat cables; you have to be very careful with this type of cables since due to the movement of the printer they can disconnect, although in the current version of the market (Genius Pro since the normal Genius is discontinued) it comes with a kind of &amp;ldquo;couplers&amp;rdquo; that in theory avoid this problem.&lt;/p&gt;
+&lt;p&gt;As for mounting it, there is no problem since it is basically a matter of screwing four screws (literally) because all the Z axis and its pertinent connections to the X axis are connected, together with the extruder carriage. It is only necessary to connect the motors, the limit switches (which by the way, the traditional mechanical ones are replaced by optical sensors) and the printer would be ready to print.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;artillery1.jpg&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
+</description>
+        </item>
+        <item>
+        <title>Ender 3 Pro Direct Extrusion</title>
+        <link>https:/aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</link>
+        <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</guid>
+        <description>&lt;p&gt;As I have been saying from the beginning, the &amp;ldquo;Bowden&amp;rdquo; type extrusion on this printer was giving me problems.&lt;/p&gt;
+&lt;p&gt;This extrusion system has a main advantage and it is that it has a lower mass in the extruder carriage, since the motor is directly coupled to the chassis. However, it has several problems, which is what has probably been happening to me. For example, it may be that the motor that pushes the filament does not have enough force. Here is the sound that my printer emitted when it did not have enough power.&lt;/p&gt;
+&lt;p&gt;One of the things I could do was to update the printer&amp;rsquo;s firmware, since it was in a rather primitive version. It turns out that the printer came with a board a little complicated to update (V1), especially because you had to make use of an Arduino to &amp;ldquo;burn&amp;rdquo; the bootloader. On the other hand I was quite eager to have direct extrusion and I decided to add it, with direct extrusion I added more weight to the extruder carriage, but I gained in extrusion speed and less risks caused by the motor. It also allowed me to print certain materials with higher temperature requirements, such as TPU.&lt;/p&gt;
+&lt;p&gt;Subsequently, I did the following:&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;ender3directdrive.jpg&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt; 
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;I printed a design I found on Thingiverse and found it to be ideal.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once everything was printed, I proceeded to disassemble the motor that came standard on the chassis (as an extra, I changed the plastic piece that acted as a clamp for an aluminum one, as it was starting to wear out).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I completely disassembled the extruder carriage and attached the printed part to it (while I was at it, I adjusted the eccentric wheels).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I reassembled the carriage and reconnected all the disconnected wires .&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Since I made this improvement, the printer has not given me any more problems; it prints without problems and does not skip steps. In addition to this, as you can see, I also changed the coating fan; the one that came as standard was not very effective, although I will talk about this some other time.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Design and Printing of my Funko</title>
+        <link>https:/aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</link>
+        <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</guid>
+        <description>&lt;p&gt;The Funko is modeled with Blender, printed using resin and then painted. The post-processing is simpler than in PLA since it is just painting it; the difference is that the process and treatment of the resin is more complex.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;funko1.jpg&#34; alt=&#34;Image&#34; width=&#34;450&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src=&#34;funko2.jpg&#34; alt=&#34;Image&#34; width=&#34;450&#34;&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Venom Post PLA Processing</title>
+        <link>https:/aleph8.github.io/en/p/2021/venom-post-pla-processing/</link>
+        <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/en/p/2021/venom-post-pla-processing/</guid>
+        <description>&lt;p&gt;When a part is 3D printed, it is not that it ends up polished at all. That is why we must submit it to a process known as &amp;ldquo;post-processing&amp;rdquo;.In this case, we will see how to carry out PLA post-processing.&lt;/p&gt;
+&lt;p&gt;To begin with, we need a series of materials:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Epoxy Putty: Used for smoothing joints in parts printed in parts. Thanks to its nature (bicomponent) it is easy to apply once mixed, hardening completely after 24 hours. We can file and paint over it&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Primer Spray for plastics: to prevent the paint from &amp;ldquo;falling off&amp;rdquo; once it has been applied to the PLA surface, we will proceed to apply a few coats of primer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Paint: try not to use poor quality paint because it can make the work more difficult.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Multiple utensils: superglue, sandpaper, brushes, mask, protective goggles&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Protection is ESSENTIAL; when PLA is filed it gives off a number of particles that can get into the eyes (sawdust style) or enter the respiratory tract. The space where post-processing is to be performed should also be taken into account; outdoors or in a ventilated place would be best.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;venom1.jpg&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt; 
+&lt;p&gt;Once we know this, the process is simple:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;In the case of piecewise printing we glue the parts together with superglue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apply the epoxy putty to smooth the joints generated by the union of the parts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once we have a single piece we proceed to file until it acquires a uniform and smooth texture.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apply a couple of coats of primer, leaving one/half hour between coats (according to brand and manufacturer&amp;rsquo;s specifications).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finally, paint to your liking.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Solution to Under Extrusion</title>
+        <link>https:/aleph8.github.io/en/p/2021/solution-to-under-extrusion/</link>
+        <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/en/p/2021/solution-to-under-extrusion/</guid>
+        <description>&lt;p&gt;As soon as I started printing, it seemed that everything was going well with the printer, but the pieces sometimes came out without filament in certain parts or the figures did not come out well (circles for example).&lt;/p&gt;
+&lt;p&gt;I mainly thought it was a problem with the bed calibration. Once calibrated, the same thing kept happening. Later I thought about the tension of the belts that move the axes (specifically the X and Y), but after tightening them nothing changed.&lt;/p&gt;
+&lt;p&gt;The problem had me a little bit worried, so I did a little research on the subject. It turns out that the Ender 3 (and Pro) has an extrusion system like the one shown in the following image:&lt;/p&gt;
+&lt;p&gt;This extrusion system has a problem known as &amp;ldquo;Under-Extrusion&amp;rdquo; due to the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;It may be that the spring is not exerting enough force, which is why the screw shown in the picture can be tightened or loosened. I thought I saw that older models do not have this screw, but there are printable parts to solve this problem. If the problem persists, it may be that the opposite is true, i.e. it is too tight. In that case it would be enough to loosen it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There is a sprocket that pushes the filament into the extruder. The problem is that the filament is in contact with the Z axis and this greases the filament so sometimes you can hear a kind of &amp;ldquo;crack-crack&amp;rdquo; of the sprocket as it is not able (because of the grease) to push the filament as it slips.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finally the support that comes with the printer for the filament may not be sufficient for the spool to slide smoothly. This leads to the aforementioned noise being heard again, as the system lacks the necessary force to pull the filament.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once I knew this, the first thing I did was to adjust the screw. It seemed that the printer printed better; there were fewer gaps and imperfections.&lt;/p&gt;
+&lt;p&gt;The problem was that it kept making the same noise, more and more frequently, and even stopped pushing the filament halfway through the print, destroying the whole job. To solve this problem what I did was to print a replacement handle to the one that came from the factory (the design is in thingiverse) to which several bearings were inserted in order to facilitate the movement of the spool.&lt;/p&gt;
+&lt;p&gt;Finally, I placed a piece of Teflon to prevent the filament from rubbing against the Z axis, thus solving the problems mentioned above.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>My Beginnings in 3D Printing</title>
+        <link>https:/aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</link>
+        <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</guid>
+        <description>&lt;p&gt;I recently acquired for the first time a 3D printer. I had experience with this type of technology because in my high school we assembled a Geetech Prusa I3. During the assembly of this printer we had several problems that we were solving thanks to the interest and enthusiasm that we had at that time, that eagerness and desire to learn. The printer did not come ready to print; it had to be assembled from scratch. Being our first printer added an extra complexity to the challenge and thanks to this we learned how a 3D printer of this type works:&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;ini1.png&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
+&lt;p&gt;The problem with this printer is that it had several mechanical problems, so we had to replace several electronic components. Another problem is that we had to be calibrating all the axes for every print we made and we ended up desperate. This is also due to the fact that it was a bit more advanced for us, but as I said before, this printer gave us the opportunity to learn a lot and I still remember it fondly.&lt;/p&gt;
+&lt;p&gt;As a college student I went back to my high school and this time (thanks to a great teacher) there was a new printer (just like the other one, to promote knowledge by using it in technology projects): The Ender 3 Pro.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;ini2.jpg&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
+&lt;p&gt;I was working with this printer for the development of &amp;ldquo;Test I&amp;rdquo; and I saw in it an exorbitant potential; it offered high performance for a very affordable price. It was then that I decided to buy this printer.&lt;/p&gt;
+&lt;p&gt;The assembly was simple, a little more complicated was the Z axis, but in general the process is quite intuitive. It is a printer that has an &amp;ldquo;inefficient&amp;rdquo; extrusion system that makes the filament can be &amp;ldquo;stagnant&amp;rdquo; (I will talk about this another time). Once assembled, the only thing left to do was to connect it and start printing. Unlike the Geetech, this one came partially assembled and only had to put a couple of things. A tip I give you if you are starting in this world, is that before printing, on the hot bed, add some element so that the first layers adhere better and during printing do not peel off. In case you have a glass surface or similar you can cover it with masking tape; in case you have another type of surface like the magnetic carpet of the Ender 3 Pro it is best to use lacquer (the one I recommend the most is the &amp;ldquo;Nelly&amp;rdquo;).&lt;/p&gt;
+&lt;p&gt;Definitely with this purchase I was already into this fascinating world of 3D printing and I was glad that these printers were more and more coupled in the market and at an economical price. In particular I am fascinated with this printer from Creality as it offers a wide range of opportunities at a reduced price.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

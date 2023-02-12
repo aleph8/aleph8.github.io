@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Servidores on Alejandro García Peláez</title>
+        <link>https:/aleph8.github.io/categories/servidores/</link>
+        <description>Recent content in Servidores on Alejandro García Peláez</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 30 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/categories/servidores/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>VMware ESXi</title>
+        <link>https:/aleph8.github.io/p/2022/vmware-esxi/</link>
+        <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2022/vmware-esxi/</guid>
+        <description>&lt;p&gt;ESXi es un hypervisor bare-metal. Esto significa que el sistema operativo no se encuentra como intermediario entre la virtualización software y el hardware, ya que al ser bare-metal, ESXi es instalado directamente en el servidor.&lt;/p&gt;
+&lt;p&gt;Para obtener la imagen con la que bootear e instalarlo, debemos acceder a la página oficial de VMware. Una vez registrados, podemos descargar la última versión de ESXi para crear un dispositivo booteable.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;esxi1.png&#34; alt=&#34;Image&#34; width=&#34;700&#34;&gt;&lt;/div&gt; 
+&lt;p&gt;Una vez hemos hecho esto, booteamos desde el dispositivo. En mi caso he hecho esto cambiado el orden de inicio dentro de las opciones del Integrated Dell Remote Access Controller (iDRAC) en &amp;ldquo;System BIOS&amp;rdquo;; esto también puede hacerse presionando la tecla correspondiente en el arranque del servidor.&lt;/p&gt;
+&lt;p&gt;Posteriormente, solo hay que seguir los pasos que nos indiquen.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;esxi2.png&#34; alt=&#34;Image&#34; width=&#34;700&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src=&#34;esxi3.png&#34; alt=&#34;Image&#34; width=&#34;700&#34;&gt;&lt;/div&gt; 
+</description>
+        </item>
+        <item>
+        <title>Almacenamiento RAID</title>
+        <link>https:/aleph8.github.io/p/2022/almacenamiento-raid/</link>
+        <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2022/almacenamiento-raid/</guid>
+        <description>&lt;p&gt;Redundant Array of Independant Disk (RAID) es un tipo de almacenamiento virtual de datos&lt;/p&gt;
+&lt;p&gt;Con varios discos físicos podemos crear un disco virtual con los siguientes propósitos: mejorar el rendimiento o redundancia de datos. Los datos se distribuyen de una forma u otra dependiendo el nivel RAID con el que el disco es configurado.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RAID LEVELS (0-1-5)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;De momento solo estoy trabajando con los tres niveles elementales; el resto o están en desuso o son una combinación de estos tres niveles.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RAID 0 (striping)&lt;/strong&gt; : la capacidad del volumen en este nivel, es la suma de la capacidad de discos físicos que lo forman. Los datos son &amp;ldquo;segmentados&amp;rdquo; y distribuidos entre los discos. Se mejora el rendimiento, pero si uno de los discos falla se pierde toda la información.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RAID 1 (mirroring)&lt;/strong&gt;: en este nivel, los datos escritos en los discos son iguales; por tanto si uno de los discos falla, los datos pueden ser fácilmente recuperados. El rendimiento se puede ver afectado ya que se debe escribir la misma información en todos los discos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RAID 5 (block-level striping)&lt;/strong&gt;: requiere al menos tres discos. En este caso uno de los discos no se usará, ya que en el caso de fallo o pérdida de datos, podrá calcularse por un simple cálculo de paridad.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Como Personaliza una Distro Linux</title>
+        <link>https:/aleph8.github.io/p/2022/como-personaliza-una-distro-linux/</link>
+        <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2022/como-personaliza-una-distro-linux/</guid>
+        <description>&lt;p&gt;Desde que trabajo con distintos sistemas operativos, he decidido &amp;ldquo;crear&amp;rdquo; mi propio distribución GNU/Linux para tener todas las utilidades que usualmente uso a mano, y tener una imagen (*iso) para instalarla en el server y crear distintas versiones del SO según mis necesidades.&lt;/p&gt;
+&lt;p&gt;Es un proceso muy sencillo para el que he empleado la herramienta &amp;ldquo;systemback&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Antes de nada debes crear una máquina virtual donde instales el sistema operativo base y lo dejes como quieras. En mi caso he utilizado la última imagen estable de Lubuntu.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;personalizar1.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src=&#34;personalizar2.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt; 
+&lt;p&gt;Usando &amp;ldquo;systemback&amp;rdquo; se crea una primera copia del sistema en el formato &amp;ldquo;.sblive&amp;rdquo; y posteriormente lo convertimos a &amp;ldquo;.iso&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Gracias a esto, se puede instalar rápidamente sistemas base, limpios y sin paquetes innecesario, permitiendo reservar diferentes máquinas virtuales según el propósito que se le quiera dar.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>¿Qué es un servidor?</title>
+        <link>https:/aleph8.github.io/p/2022/qu%C3%A9-es-un-servidor/</link>
+        <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2022/qu%C3%A9-es-un-servidor/</guid>
+        <description>&lt;p&gt;Un servidor es un ordenador ( o conjunto de ellos) que sigue el modelo &amp;ldquo;cliente-servidor&amp;rdquo;, manejando peticiones del cliente y devolviendo una respuesta acorde.&lt;/p&gt;
+&lt;p&gt;Cualquier persona puede configurar un ordenador como servidor, pero dependiendo del servicio que vayamos a ofrecer, se necesitarán más o menos recursos hardware. Por ejemplo, podemos utilizar un ordenador antiguo junto con unos cuantos discos duros para tener nuestro propio NAS (Network Attached Storage); sin embargo, si queremos un servidor que ofrezca máquinas virtuales, necesitaremos más recursos.&lt;/p&gt;
+&lt;p&gt;Es por esto, que podemos distinguir entre distintos formatos de servidor:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Servidores en Rack&lt;/strong&gt;: son compactos, tamaño estándar, diseñados para acoplarse en un &amp;ldquo;mueble&amp;rdquo; característico para estos servidores.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;server1.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt; 
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Servidores Blade&lt;/strong&gt;: Definidos como &amp;ldquo;solución de alta densidad&amp;rdquo;; este tipo de servidor está pensado para grandes empresas, ya que en poco espacio almacena varios dispositivos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;server2.png&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tower Server&lt;/strong&gt;: servidores con apariencia de PC convencional. Suele ser usado en caso de no poder adquirir un server en Rack. Pueden tener varios procesadores y bancos de memoria.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;server3.png&#34; alt=&#34;Image&#34; width=&#34;300&#34;&gt;&lt;/div&gt;
+&lt;p&gt;En mi caso estaré usando un &amp;ldquo;Server en Rack&amp;rdquo;.Concretamente, es un Dell Poweredge con dos Intel Xeon processors, 10 bays, RAID controller, hasta 768 GB RAM&amp;hellip;etc. Es increíble la potencia de estos servidores y las posibilidades que ofrecen.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Cuando tienes muchas contraseñas complejas, a veces es complicado recordarlas todas; los navegadores actuales nos suelen ofrecer contraseñas seguras generadas automáticamente, y se almacenan en el propio navegador, como un &amp;ldquo;llavero virtual&amp;rdquo;.
+Como hemos podido ver en la parte del Bad Usb con un simple dispositivo que se asemeja a un USB, podemos simular un teclado, pero no todo es malo; se me ocurrió usar su funcionamiento y el de dispositivos similares para crear un &amp;ldquo;llavero virtual&amp;rdquo; portable o &amp;ldquo;Digital Key&amp;rdquo; usando las funciones HID de los microprocesadores que encontramos ya integrados en diversas placas de desarrollo.'>
+<title>Digital Key</title>
+
+<link rel='canonical' href='https:/aleph8.github.io/p/2022/digital-key/'>
+
+<link rel="stylesheet" href="/aleph8.github.io/scss/style.min.312755efa053227ba5242049bd4c01176fb3e006e6d2314101d9de0311e5e944.css"><meta property='og:title' content='Digital Key'>
+<meta property='og:description' content='Cuando tienes muchas contraseñas complejas, a veces es complicado recordarlas todas; los navegadores actuales nos suelen ofrecer contraseñas seguras generadas automáticamente, y se almacenan en el propio navegador, como un &amp;ldquo;llavero virtual&amp;rdquo;.
+Como hemos podido ver en la parte del Bad Usb con un simple dispositivo que se asemeja a un USB, podemos simular un teclado, pero no todo es malo; se me ocurrió usar su funcionamiento y el de dispositivos similares para crear un &amp;ldquo;llavero virtual&amp;rdquo; portable o &amp;ldquo;Digital Key&amp;rdquo; usando las funciones HID de los microprocesadores que encontramos ya integrados en diversas placas de desarrollo.'>
+<meta property='og:url' content='https:/aleph8.github.io/p/2022/digital-key/'>
+<meta property='og:site_name' content='Alejandro García Peláez'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='hacking-tools' /><meta property='article:published_time' content='2022-11-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-20T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Digital Key">
+<meta name="twitter:description" content="Cuando tienes muchas contraseñas complejas, a veces es complicado recordarlas todas; los navegadores actuales nos suelen ofrecer contraseñas seguras generadas automáticamente, y se almacenan en el propio navegador, como un &amp;ldquo;llavero virtual&amp;rdquo;.
+Como hemos podido ver en la parte del Bad Usb con un simple dispositivo que se asemeja a un USB, podemos simular un teclado, pero no todo es malo; se me ocurrió usar su funcionamiento y el de dispositivos similares para crear un &amp;ldquo;llavero virtual&amp;rdquo; portable o &amp;ldquo;Digital Key&amp;rdquo; usando las funciones HID de los microprocesadores que encontramos ya integrados en diversas placas de desarrollo.">
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/aleph8.github.io/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/aleph8.github.io/img/avatar2_hu5524204ed4da35693fc6565c04114096_25236_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🦅</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/aleph8.github.io">Alejandro García Peláez</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/aleph8'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://es.linkedin.com/in/alegpwk'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><path fill="#0288d1" d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z"/><path fill="#fff" d="M14 19H18V34H14zM15.988 17h-.022C14.772 17 14 16.11 14 14.999 14 13.864 14.796 13 16.011 13c1.217 0 1.966.864 1.989 1.999C18 16.11 17.228 17 15.988 17zM35 24.5c0-3.038-2.462-5.5-5.5-5.5-1.862 0-3.505.928-4.5 2.344V19h-4v15h4v-8c0-1.657 1.343-3 3-3s3 1.343 3 3v8h4C35 34 35 24.921 35 24.5z"/></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/aleph8.github.io/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/aleph8.github.io/lab/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" />
+  <line x1="9" y1="3" x2="15" y2="3" />
+  <line x1="10" y1="9" x2="14" y2="9" />
+  <path d="M10 3v6l-4 11a0.7 .7 0 0 0 .5 1h11a0.7 .7 0 0 0 .5 -1l-4 -11v-6" />
+</svg>
+                
+                <span>Laboratorio</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/aleph8.github.io/sobre-m%C3%AD/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Sobre mí</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/aleph8.github.io/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archivo</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/aleph8.github.io/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Búsqueda</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https:/aleph8.github.io/" selected>Español</option>
+                        
+                            <option value="https:/aleph8.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Modo oscuro</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/aleph8.github.io/categories/ciberseguridad/" >
+                Ciberseguridad
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/aleph8.github.io/p/2022/digital-key/">Digital Key</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 20, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https:/aleph8.github.io/en/p/2022/digital-key/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Cuando tienes muchas contraseñas complejas, a veces es complicado recordarlas todas; los navegadores actuales nos suelen ofrecer contraseñas seguras generadas automáticamente, y se almacenan en el propio navegador, como un &ldquo;llavero virtual&rdquo;.</p>
+<p>Como hemos podido ver en <a class="link" href="/p/2022/bad-usb" >la parte del Bad Usb</a> con un simple dispositivo que se asemeja a un USB, podemos simular un teclado, pero no todo es malo; se me ocurrió usar su funcionamiento y el de dispositivos similares para crear un &ldquo;llavero virtual&rdquo; portable o &ldquo;Digital Key&rdquo; usando las funciones HID de los microprocesadores que encontramos ya integrados en diversas placas de desarrollo.</p>
+<p>La idea consiste, en tener un dispositivo que sea, por un lado, capaz de generar contraseñas seguras y almacenarlas en nuestra memoria EEPROM (tipos de memorias en microcontroladores) y, por otro lado, que sea capaz de volcarlas en tiempo de ejecución, escribiéndolas como si fuese un teclado.</p>
+<p>Para esto, lo único que ha hecho falta, ha sido emplear la placa de desarrollo &ldquo;Digispark&rdquo; que cuenta con una interfaz USB 2.0 integrada, además de su reducido tamaño y precio. Para añadirle un factor de autenticación, para que en el caso de perder el dispositivo no se escriba directamente la contraseña, he utilizado una codificación del binario similar a la del código morse.</p>
+<p>El dispositivo final, cuenta, por tanto, con la placa de desarrollo y un botón. Al conectar el dispositivo, este no hace nada, exclusivamente, escribe que está conectado. Una vez se muestre esto, el usuario debe pulsar adecuadamente la combinación en binario; en el caso de éxito, se escribirá la contraseña almacenada o se creará en el caso de que no haya ninguna almacenada. En el caso de error, no sucederá nada. El dispositivo cuenta con dos funcionalidades más, dependiendo el tiempo de pulsación: modo de generación de contraseña pero sin almacenarla y modo de reset para &ldquo;eliminar&rdquo; la contraseña almacenada en EEPROM:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;DigiKeyboard.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;EEPROM.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* 
+</span></span></span><span class="line"><span class="cl"><span class="cm">   Aleph8 Digital Key
+</span></span></span><span class="line"><span class="cl"><span class="cm">   Code: 5970 Bytes
+</span></span></span><span class="line"><span class="cl"><span class="cm">   EEPROM used: 61 bits
+</span></span></span><span class="line"><span class="cl"><span class="cm">   Binary encode: 1 - long , 0 - short
+</span></span></span><span class="line"><span class="cl"><span class="cm">   
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">PASS_SIZE</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">random1</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">n_components</span> <span class="o">=</span> <span class="mi">36</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">combination</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">initTime</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">components</span><span class="p">[</span><span class="n">n_components</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">KEY_A</span><span class="p">,</span><span class="n">KEY_B</span><span class="p">,</span><span class="n">KEY_C</span><span class="p">,</span><span class="n">KEY_D</span><span class="p">,</span><span class="n">KEY_E</span><span class="p">,</span><span class="n">KEY_F</span><span class="p">,</span><span class="n">KEY_G</span><span class="p">,</span><span class="n">KEY_H</span><span class="p">,</span><span class="n">KEY_I</span><span class="p">,</span><span class="n">KEY_J</span><span class="p">,</span><span class="n">KEY_K</span><span class="p">,</span><span class="n">KEY_L</span><span class="p">,</span><span class="n">KEY_M</span><span class="p">,</span><span class="n">KEY_N</span><span class="p">,</span><span class="n">KEY_O</span><span class="p">,</span><span class="n">KEY_P</span><span class="p">,</span><span class="n">KEY_Q</span><span class="p">,</span><span class="n">KEY_R</span><span class="p">,</span><span class="n">KEY_S</span><span class="p">,</span><span class="n">KEY_T</span><span class="p">,</span><span class="n">KEY_U</span><span class="p">,</span><span class="n">KEY_V</span><span class="p">,</span><span class="n">KEY_W</span><span class="p">,</span><span class="n">KEY_X</span><span class="p">,</span><span class="n">KEY_Y</span><span class="p">,</span><span class="n">KEY_Z</span><span class="p">,</span><span class="n">KEY_1</span><span class="p">,</span><span class="n">KEY_2</span><span class="p">,</span><span class="n">KEY_3</span><span class="p">,</span><span class="n">KEY_4</span><span class="p">,</span><span class="n">KEY_5</span><span class="p">,</span><span class="n">KEY_6</span><span class="p">,</span><span class="n">KEY_7</span><span class="p">,</span><span class="n">KEY_8</span><span class="p">,</span><span class="n">KEY_9</span><span class="p">,</span><span class="n">KEY_0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">first_time</span><span class="p">,</span><span class="n">second_time</span><span class="p">,</span><span class="n">sentinel</span><span class="p">,</span><span class="n">digit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="n">randomOrder</span><span class="p">(</span><span class="n">components</span><span class="p">);}</span><span class="n">pinMode</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">INPUT</span><span class="p">);</span><span class="n">DigiKeyboard</span><span class="p">.</span><span class="n">sendKeyStroke</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="n">DigiKeyboard</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Waiting...&#34;</span><span class="p">);</span><span class="n">sentinel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">EEPROM</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t</span><span class="p">);}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DigiKeyboard</span><span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//DigiKeyboard.println(t);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">first_time</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">second_time</span> <span class="o">=</span> <span class="n">millis</span><span class="p">()</span><span class="o">-</span><span class="n">first_time</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//DigiKeyboard.println(second_time);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">second_time</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">){</span><span class="n">validation</span><span class="p">(</span><span class="mi">0</span><span class="p">);}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">second_time</span> <span class="o">&lt;</span> <span class="mi">4000</span><span class="p">){</span><span class="n">validation</span><span class="p">(</span><span class="mi">1</span><span class="p">);}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">second_time</span> <span class="o">&lt;</span> <span class="mi">9000</span><span class="p">){</span><span class="n">password</span><span class="p">(</span><span class="nb">false</span><span class="p">);}</span><span class="k">else</span><span class="p">{</span><span class="n">DigiKeyboard</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Reset...&#34;</span><span class="p">);</span><span class="n">t</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span><span class="n">EEPROM</span><span class="p">.</span><span class="n">put</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t</span> <span class="p">);}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">validation</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">digit</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span> <span class="n">digit</span> <span class="o">==</span> <span class="n">combination</span><span class="p">[</span><span class="n">sentinel</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sentinel</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">sentinel</span> <span class="o">==</span> <span class="mi">4</span><span class="p">){</span><span class="n">password</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="n">sentinel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="n">sentinel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;}</span>  
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">password</span><span class="p">(</span><span class="kt">bool</span> <span class="n">b</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="n">digitalWrite</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">HIGH</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">DigiKeyboard</span><span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="o">*</span><span class="n">random</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">      <span class="n">DigiKeyboard</span><span class="p">.</span><span class="n">sendKeyStroke</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">PASS_SIZE</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span> <span class="p">(</span><span class="n">t</span> <span class="o">||</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">255</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">genPass</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EEPROM</span><span class="p">.</span><span class="n">put</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EEPROM</span><span class="p">.</span><span class="n">put</span><span class="p">(</span> <span class="mi">9</span><span class="p">,</span> <span class="n">a</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">t</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EEPROM</span><span class="p">.</span><span class="n">get</span><span class="p">(</span> <span class="mi">9</span><span class="p">,</span> <span class="n">a</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">translatePass</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="n">genPass</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="n">translatePass</span><span class="p">(</span><span class="n">a</span><span class="p">);}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">digitalWrite</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">LOW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">randomOrder</span><span class="p">(</span><span class="kt">int</span> <span class="n">pass</span><span class="p">[</span><span class="n">PASS_SIZE</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">tmp</span><span class="p">,</span><span class="n">rdm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">randomSeed</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="n">PB1</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="o">-</span><span class="n">initTime</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">PASS_SIZE</span> <span class="p">;</span> <span class="n">i</span> <span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rdm</span> <span class="o">=</span> <span class="n">random</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_components</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">=</span> <span class="n">pass</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pass</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pass</span><span class="p">[</span><span class="n">rdm</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pass</span><span class="p">[</span><span class="n">rdm</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">translatePass</span><span class="p">(</span><span class="kt">int</span> <span class="n">pass</span><span class="p">[</span><span class="n">PASS_SIZE</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">PASS_SIZE</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DigiKeyboard</span><span class="p">.</span><span class="n">sendKeyStroke</span><span class="p">(</span><span class="n">pass</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DigiKeyboard</span><span class="p">.</span><span class="n">sendKeyStroke</span><span class="p">(</span><span class="n">KEY_ENTER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">genPass</span><span class="p">(</span><span class="kt">int</span> <span class="n">pass</span><span class="p">[</span><span class="n">PASS_SIZE</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">randomSeed</span><span class="p">(</span><span class="n">random</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="n">PB1</span><span class="p">),</span><span class="n">random1</span><span class="p">)</span><span class="o">/</span><span class="n">millis</span><span class="p">()</span><span class="o">-</span><span class="n">initTime</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">PASS_SIZE</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pass</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">components</span><span class="p">[</span><span class="n">random</span><span class="p">(</span><span class="mi">0</span><span class="p">,(</span><span class="n">n_components</span><span class="o">-</span><span class="mi">1</span><span class="p">))];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DigiKeyboard</span><span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Finalmente, <a class="link" href="https://github.com/aleph8/aleph_1/tree/main/digital_key"  target="_blank" rel="noopener"
+    >diseñé e imprimí una pequeña carcasa</a> donde montarlo todo; lo suyo es que vaya soldado, pero para el caso de que no lo puedas soldar, lo he hecho sin soldar pegando la parte de plástico de los pines a la carcasa y asegurándome de que hace contacto.</p>
+<div style="text-align: center;"><img src="digital1.jpg" alt="Image" width="500"></div> 
+<p>(Esta versión del código, tiene una brecha de seguridad. Y es que para ver la contraseña almacenada, lo único que habría que hacer es cargar en la placa de desarrollo un pequeño script para recorrer la EEPROM. Para solucionar esto, hay varias alternativas; una de ellas es quitar el bootloader de Arduino y mandar el script usando un programador con el protocolo correspondiente; también podemos almacenar la contraseña en la memoria flash del dispositivo, de tal forma, que si se sobrescribe el programa actual, se eliminará directamente)</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/aleph8.github.io/tags/hacking-tools/">hacking-tools</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenidos relacionados</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/aleph8.github.io/p/2022/bad-usb/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bad Usb</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/aleph8.github.io/p/2021/keylogger-en-c/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Keylogger en C</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/aleph8.github.io/p/2023/rce/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">RCE</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/aleph8.github.io/p/2023/lfi/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">LFI</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/aleph8.github.io/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Creación de Contraseñas Robustas</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2023 Alejandro García Peláez
+    </section>
+    
+    <section class="powerby">
+        
+            A custom model, made by me ,of Stack theme made by Jimmy Cai. <br/>
+        
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/aleph8.github.io/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

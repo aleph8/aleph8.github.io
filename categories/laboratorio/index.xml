@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Laboratorio on Alejandro García Peláez</title>
+        <link>https:/aleph8.github.io/categories/laboratorio/</link>
+        <description>Recent content in Laboratorio on Alejandro García Peláez</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/categories/laboratorio/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Arachne</title>
+        <link>https:/aleph8.github.io/p/2022/arachne/</link>
+        <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2022/arachne/</guid>
+        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aleph8/Arachne&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Arachne es un proyecto completamente open source&lt;/a&gt;; puedes encontrar todos los archivos de diseño y programación en su repositorio.&lt;/p&gt;
+&lt;h2 id=&#34;inspiración&#34;&gt;Inspiración&lt;/h2&gt;
+&lt;p&gt;Siempre me ha fascinado todo lo relacionado con &amp;ldquo;la creación de la naturaleza&amp;rdquo;. Algo que siempre me ha llamado la atención de esto, son los arácnidos, desde sus asombrosos métodos de supervivencia ( por ejemplo la autotomía, también presentes en lagartos ), así como la manera que tienen de cazar a sus presas hasta su increíble diseño.&lt;/p&gt;
+&lt;p&gt;Influenciado por esto, empecé a pensar en un robot bio-inspirado, que fuera capaz de mantenerse en pie, tras levantarse. He aquí cuando surgió &amp;ldquo;Arachne&amp;rdquo;. El nombre proviene de la mitología Griega.&lt;/p&gt;
+&lt;h2 id=&#34;diseño-de-la-pata&#34;&gt;Diseño de la pata&lt;/h2&gt;
+&lt;p&gt;Principalmente me centré en el diseño; pensé que lo más estético era el diseño con seis patas, pero esto significaba mayores costes en cuanto a electricidad, impresión, tiempo &amp;hellip; etc. Por eso dejé de lado esta idea para un futuro y me centré en la funcionalidad. Era el momento de diseñar las patas.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;arachne1.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt;
+&lt;p&gt;La pata tiene tres grados de libertad para realizar el movimiento. Como podemos apreciar en la imagen, tenemos tres servomotores, uno por sección: extremo, centro, chassis.&lt;/p&gt;
+&lt;h2 id=&#34;diseño-del-chasis&#34;&gt;Diseño del chasis&lt;/h2&gt;
+&lt;p&gt;Una vez diseñadas las patas, era el turno del chasis, donde iría la elctrónica. El chasis se divide en dos niveles.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;arachne2.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt;
+&lt;p&gt;El primer nivel es más robusto, debido a que es la unión de todas las patas y debe aportar la robustez necesaria al diseño final. El segundo nivel va atornillado a los servomotores del chasis; es más ligero que el anterior y donde va la electrónica, mientras en el nivel inferior irá la batería.&lt;/p&gt;
+&lt;h2 id=&#34;electrónica-básica&#34;&gt;Electrónica básica&lt;/h2&gt;
+&lt;p&gt;La electrónica está formada por una Raspberry Pi 3b+ y el integrado PCA9685 (motor driver) que con unas pocas conexiones nos permite conectar hasta 16 servos en nuestra Raspberry.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;arachne3.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt;
+&lt;h2 id=&#34;demostración&#34;&gt;Demostración&lt;/h2&gt;
+&lt;p&gt;¡ Arachne se levanta y mantiene de pie !&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;iframe width=&#34;646&#34; height=&#34;461&#34; src=&#34;https://www.youtube.com/embed/ejJqCW5x-p0&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>EOS</title>
+        <link>https:/aleph8.github.io/p/2022/eos/</link>
+        <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2022/eos/</guid>
+        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Aleph8/EOS/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;EOS es un proyecto open source&lt;/a&gt; basado en el &amp;ldquo;Jansen Linkage&amp;rdquo; , un mecanismo creado por Teo Jansen ( imagen izquierda ).&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;eos1.jpg&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt;
+&lt;p&gt;¡Cualquier persona puede hacer una versión simple del proyecto!&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;eos2.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt;
+&lt;p&gt;El chassi entero está diseñado e impreso ( PLA blanco ). La versión 0 solo tiene uno de los dos &amp;ldquo;trenes&amp;rdquo; que componen EOS&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;iframe width=&#34;646&#34; height=&#34;461&#34; src=&#34;https://www.youtube.com/embed/GFB4ywv_JPY&#34; title=&#34;Electronic Open Strandbeest (EOS)&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;p&gt;El &amp;ldquo;cerebro&amp;rdquo; del proyecto es un arduino nano al que se le añade el driver L293D para controlar la dirección de movimiento.EOS puede moverse en todas la direcciones pivotando en uno de sus dos ejes cuando gira.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;eos3.jpg&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt;
+&lt;p&gt;Todos los diseños están &lt;a class=&#34;link&#34; href=&#34;https://github.com/Aleph8/EOS/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;disponibles en GitHub&lt;/a&gt; para quien quiera aventurarse. Con solo unas pocas conexiones &amp;hellip; ¡ EOS podrá caminar !&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

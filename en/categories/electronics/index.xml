@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Electronics on Alejandro García Peláez</title>
+        <link>https:/aleph8.github.io/en/categories/electronics/</link>
+        <description>Recent content in Electronics on Alejandro García Peláez</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/en/categories/electronics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Types of Memory in Microcontrollers</title>
+        <link>https:/aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/</link>
+        <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/</guid>
+        <description>&lt;p&gt;Within a microcontroller, we can contemplate two types of essential memories: volatile memory (usually SRAM), non-volatile memory for program storage (ROM, EEPROM, PROM &amp;hellip; ).&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;typemem2.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt; 
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Volatile memory: runtime data is stored in this memory, as well as the execution of our script. In the case of Arduino development boards and the microcontrollers they integrate, we are talking about SRAM, used for multiple purposes for program execution, as we have already mentioned.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Non-volatile memory: the program that we write from our programmer to the microcontroller is stored; it is usually flash memory, since it is faster than other more primitive memories such as EEPROM memory, especially because of its writing mode; while in EEPROM we can only act cell by cell, in flash memory we can act on several memory locations at the same time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Many microcontrollers come with both memories: one is used to load the program (flash) and the other (EEPROM) to store data and prevent data loss when the device is turned off. The problem with the latter memory is that it supports limited write operations, so it is not recommended to use it for a device that constantly saves data.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Sentinel Robot</title>
+        <link>https:/aleph8.github.io/en/p/2021/sentinel-robot/</link>
+        <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/en/p/2021/sentinel-robot/</guid>
+        <description>&lt;p&gt;This time I have decided to make a kind of &amp;ldquo;sentry robot&amp;rdquo; that, after detecting movement, triggers a firing mechanism.&lt;/p&gt;
+&lt;p&gt;First of all I needed something I could shoot. For this I was given an old Nerf so I could play with it. Once I opened it I realized that, given its age, there was little left that could be reused, except for the barrel to which two motors were attached. Each motor has a kind of cylinder attached to it through which the bullet slides.&lt;/p&gt;
+&lt;p&gt;Secondly we came up with the electronics. I wanted it to be compact and decided to use an Arduino Nano which was more than enough for what I needed. The problem is that the output is 5V and approximately 40 mA, being this insufficient to get the full power of the motors. The solution I opted for was to power the motors externally with a 12V rechargeable battery.&lt;/p&gt;
+&lt;p&gt;The circuit that feeds the motors in principle would be open and when motion is detected it would be closed. For this I have used a relay, in this case a kind of &amp;ldquo;electronic switch&amp;rdquo;, which has a control signal to open or close the circuit.&lt;/p&gt;
+&lt;p&gt;The robot detects movement by means of a PIR sensor that is divided into two cells that measure infrared radiation and convert it into an electrical signal when it changes.&lt;/p&gt;
+&lt;p&gt;Finally there was the design and my printer was not working so I had to make do with a circular box that I found and I liked; now it only remained to assemble and prepare the whole circuit.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;sentinel1.jpg&#34; alt=&#34;Image&#34; width=&#34;200&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src=&#34;sentinel2.jpg&#34; alt=&#34;Image&#34; width=&#34;200&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src=&#34;sentinel3.jpg&#34; alt=&#34;Image&#34; width=&#34;200&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src=&#34;sentinel4.jpg&#34; alt=&#34;Image&#34; width=&#34;200&#34;&gt;
+&lt;p&gt; Relay &amp;nbsp;-&amp;nbsp; Pinout Relay &amp;nbsp;-&amp;nbsp; PIR Sensor &amp;nbsp;-&amp;nbsp; Sentinel &lt;/p&gt;
+&lt;/div&gt; 
+</description>
+        </item>
+        
+    </channel>
+</rss>

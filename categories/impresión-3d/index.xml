@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Impresión 3D on Alejandro García Peláez</title>
+        <link>https:/aleph8.github.io/categories/impresi%C3%B3n-3d/</link>
+        <description>Recent content in Impresión 3D on Alejandro García Peláez</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 11 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/categories/impresi%C3%B3n-3d/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Artillery Genius</title>
+        <link>https:/aleph8.github.io/p/2022/artillery-genius/</link>
+        <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2022/artillery-genius/</guid>
+        <description>&lt;p&gt;Tras llevar un tiempo con la Ender 3, decidí apostar por otra impresora que me había llamado en varias ocasiones la atención: la Artillery Genius (Pro).&lt;/p&gt;
+&lt;p&gt;Esta impresora ofrece de serie mejores prestaciones que sus competidoras por un precio un poco más elevado, ya que incorpora extrusión directa con un fusor volcano y un extrusor Titán; ambas son obviamente réplicas chinas, pero se desenvuelven muy bien . No solo esto, sino que además incorpora un doble eje Z sincronizado, una estructura de aluminio muy sólida (y compacta) ,un sensor que controla el filamento y calibración automática. Cuenta con la versión de Marlin mas actualizada (por lo menos la que me ha llegado a mí) y drivers silenciosos; eso ha sido en lo que he notado más la diferencia, y es que es increíble lo poco que se escucha a diferencia ,por ejemplo, de la Ender 3.&lt;/p&gt;
+&lt;p&gt;Obviamente no todos es bueno y hay varias cosas que hay que tener en cuenta. En primer lugar a pesar de que la plataforma de impresión se caliente en nada, cuesta que la pieza se adhiera, lo que provoca que se despegue en numerosas ocasiones, interrumpiéndose el proceso de impresión. Como solución temporal podemos recurrir a la laca o cinta de carrocero. En mi caso estoy usando la cinta de carrocero y esperando a pedir un fleje magnético para acabar con este problema. Por otro lado no viene con cables convencionales sino con cables planos; hay que tener mucho cuidado con este tipo de cables ya que debido al movimiento de la impresora se pueden desconectar, aunque en la versión actual del mercado (Genius Pro ya que la Genius normal está descatalogada) viene con una especie de &amp;ldquo;acopladores&amp;rdquo; que en teoría evitan este problema.&lt;/p&gt;
+&lt;p&gt;En cuanto a montarla no hay ningún problema ya que básicamente es atornillar cuatro tornillos (literalmente) porque todo el eje Z y sus pertinentes conexiones al eje X está conectado, junto con el carro del extrusor. Solo hace falta conectar los motores, los finales de carrera (que por cierto, se sustituyen los mecánicos tradicionales por sensores ópticos)  y la impresora ya estaría lista para imprimir.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;artillery1.jpg&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
+</description>
+        </item>
+        <item>
+        <title>Ender 3 Pro Extrusión Directa</title>
+        <link>https:/aleph8.github.io/p/2022/ender-3-pro-extrusi%C3%B3n-directa/</link>
+        <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2022/ender-3-pro-extrusi%C3%B3n-directa/</guid>
+        <description>&lt;p&gt;Como ya venía diciendo desde el principio, la extrusión tipo &amp;ldquo;Bowden&amp;rdquo; en esta Impresora me estaba dando problemas.&lt;/p&gt;
+&lt;p&gt;Este sistema de extrusión tiene una ventaja principal y es que posee una menor masa en lo que es el carro del extrusor, ya que el motor va acoplado directamente al chasis. Sin embargo, cuenta con diversos problemas que es lo que seguramente me haya estado pasando. Por ejemplo, puede ser que el motor que empuja al filamento no tenga suficiente fuerza. He aquí el sonido que mi impresora emitía al no tener la fuerza suficiente.&lt;/p&gt;
+&lt;p&gt;Una de las cosas que podía hacer, era actualizar el firmware de la  impresora ya que éste se encontraba en una versión un poco primitiva . Resulta que la impresora venía con una placa un poco complicada de actualizar (V1) , sobretodo porque había que hacer uso de una Arduino para &amp;ldquo;quemar&amp;rdquo; el bootloader. Por otro lado tenía bastante ganas de tener extrusión directa y me decanté por añadirla.Con la extrusión directa añadía mas peso al carro del extrusor, pero ganaba en velocidad de extrusión y en menos riesgos provocados por el motor. Además me permitía imprimir ciertos materiales con más requisitos de temperatura, como el TPU.&lt;/p&gt;
+&lt;p&gt;Posteriormente hice lo siguiente:&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;ender3directdrive.jpg&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt; 
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Imprimí un diseño que encontré en Thingiverse y me pareció idóneo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Una vez que todo estaba impreso, procedí a desmontar el motor que venía de serie en el chasis (como extra, cambié la pieza de plástico que actuaba de pinza por una de aluminio, ya que estaba empezando a desgastarse).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Desmonté por completo el carro del extrusor y le acoplé la pieza impresa (ya de paso ajusté las ruedas excéntricas).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Volví a montar el carro y a conectar todos los cables desconectados .&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Desde que hice esta mejora, la impresora no me ha vuelto a dar ningún problema; imprime sin problemas y no se salta pasos. Además de esto, como se puede ver, también le cambié el ventilador de capa; el que venía de serie era poco efectivo, aunque de esto hablaré en otro momento.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Diseño e Impresión de mi Funko</title>
+        <link>https:/aleph8.github.io/p/2021/dise%C3%B1o-e-impresi%C3%B3n-de-mi-funko/</link>
+        <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2021/dise%C3%B1o-e-impresi%C3%B3n-de-mi-funko/</guid>
+        <description>&lt;p&gt;El Funko está modelado con Blender, impreso usando resina y posteriormente pintado. El post-procesado  es más sencillo que en el PLA ya que es solo pintarlo; la diferencia es que el proceso y el tratamiento de la resina es más complejo.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;funko1.jpg&#34; alt=&#34;Image&#34; width=&#34;450&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src=&#34;funko2.jpg&#34; alt=&#34;Image&#34; width=&#34;450&#34;&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Venom Post Procesado PLA</title>
+        <link>https:/aleph8.github.io/p/2021/venom-post-procesado-pla/</link>
+        <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2021/venom-post-procesado-pla/</guid>
+        <description>&lt;p&gt;Cuando se imprime una pieza en 3D no es que acabe pulida del todo. Es por eso que debemos someterla a un proceso conocido como &amp;ldquo;post-procesado&amp;rdquo;.En este caso, veremos cómo llevar a cabo el post-procesado del PLA.&lt;/p&gt;
+&lt;p&gt;Para empezar necesitamos una serie de materiales:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Masilla Epoxi: Usada para suavizar juntas en piezas impresas por partes. Gracias a su naturaleza  (bicomponente) es fácil de aplicar una vez mezclada, endureciéndose por completo al pasar unas 24  horas. Podemos limar y pintar sobre ella&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spray de Imprimación para plásticos: para evitar que se &amp;ldquo;caiga&amp;rdquo; la pintura una vez aplicada sobre la superficie del PLA procederemos a darle unas cuantas capas de imprimación.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pintura: intentad que no sea de mala calidad porque puede dificultar el trabajo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Utensilios múltiples: superglue, lijas, pinceles, mascarilla, gafas de protección&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La protección es IMPRESCINDIBLE; al limar el PLA éste desprende una serie de partículas que se pueden meter en los ojos (al estilo del serrín) o entrar por las vías respiratorias. También hay que tener en cuenta el espacio donde se va a realizar el post-procesado; lo mejor sería al aire libre o en un lugar ventilado.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;venom1.jpg&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt; 
+&lt;p&gt;Una vez que sabemos esto el proceso es sencillo:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;En el caso de la impresión por partes pegamos las piezas con superglue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Aplicamos la masilla epoxi para suavizar las juntas generadas por la unión de las partes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Una vez tengamos una única pieza procedemos a limar hasta que adquiera una textura uniforme y lisa.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Aplicamos un par de capas de imprimante, dejando entre capa y capa una/media hora (según marca y especificaciones del fabricante).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Por último, pintamos a nuestro gusto.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Solución al Under Extrusion</title>
+        <link>https:/aleph8.github.io/p/2021/soluci%C3%B3n-al-under-extrusion/</link>
+        <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2021/soluci%C3%B3n-al-under-extrusion/</guid>
+        <description>&lt;p&gt;Nada más empezar a imprimir, parecía que todo iba bien con la impresora, pero las piezas salían a veces sin filamento en ciertas partes o las figuras no salían del todo bien (círculos por ejemplo).&lt;/p&gt;
+&lt;p&gt;Principalmente creía que sería problema de la calibración de la cama. Una vez calibrada seguía sucediendo lo mismo. Posteriormente pensé en la tensión de las correas que mueven los ejes (concretamente el X y el Y), pero tras tensarlas nada cambió.&lt;/p&gt;
+&lt;p&gt;El problema me tenía mosqueado, por lo que investigué un poco sobre el tema. Resulta que la Ender 3 (y la Pro) tiene un sistema de extrusión como el que se muestra en la siguiente imagen:&lt;/p&gt;
+&lt;p&gt;Este sistema de extrusión tiene un problema conocido como &amp;ldquo;Under-Extrusion&amp;rdquo; debido a lo siguiente:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Puede ser que el muelle no ejerza la suficiente fuerza, es por esto que se puede apretar o aflojar el tornillo que se ve en la imagen. Me ha parecido ver, que modelos más antiguos no tienen este tornillo, pero hay piezas imprimibles para solucionar este problema. Si el problema persiste puede ser que sucediese lo contrario, es decir, que estuviera demasiado apretado. En ese caso bastaría con aflojarlo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hay una rueda dentada que es la que empuja el filamento hacia el extrusor. El problema es que el filamento está en contacto con el eje Z y este engrasa el filamento por lo que a veces se puede escuchar una especie de &amp;ldquo;crack-crack&amp;rdquo; de la rueda dentada ya que no es capaz (por la grasa) de empujar al filamento ya que este resbala.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Por último el soporte que viene con la impresora para el filamento puede no ser suficiente para que el carrete se deslice sin problemas. Esto conduce a que se vuelva a escuchar el ruido antes mencionado, ya que el sistema carece de la fuerza necesaria para tirar del filamento.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Una vez que sabía esto, lo primero que hice fue ajustar el tornillo. Parecía que la impresora imprimía mejor; había menos huecos e imperfecciones.&lt;/p&gt;
+&lt;p&gt;El problema era que seguía haciendo el mismo ruido, cada vez con más frecuencia, incluso llegaba a dejar de empujar el filamento a media impresión, destrozando todo el trabajo. Para solucionar este problema lo que hice fue imprimir un mango de repuesto al que venía de fábrica (el diseño está en thingiverse) al que se le insertaban varios rodamientos con el fin de facilitar el movimiento del carrete.&lt;/p&gt;
+&lt;p&gt;Para finalizar, coloqué un trozo de teflón para evitar el roce del filamento con el eje Z solucionando así los problemas mencionados anteriormente.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Mis Inicios en la Impresión 3D</title>
+        <link>https:/aleph8.github.io/p/2021/mis-inicios-en-la-impresi%C3%B3n-3d/</link>
+        <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https:/aleph8.github.io/p/2021/mis-inicios-en-la-impresi%C3%B3n-3d/</guid>
+        <description>&lt;p&gt;Recientemente adquirí por primera vez una impresora 3D. Tenía experiencia con este tipo de tecnología ya que en mi instituto montamos una Geetech Prusa I3. En el transcurso del montaje de esta impresora tuvimos diversos problemas que fuimos resolviendo gracias al interés e ilusión que teníamos en aquel momento, esas ansias y ganas de aprender. La impresora no venía lista para imprimir; había que montarla desde cero. Al ser nuestra primera impresora añadía una complejidad extra al reto y gracias a esto aprendimos cómo funciona una impresora 3D de este tipo:&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;ini1.png&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
+&lt;p&gt;El problema de esta impresora es que contaba con diversos problemas mecánicos, por lo que tuvimos que sustituir varios componentes electrónicos. Otro problema es que teníamos que estar calibrando todos los ejes por cada impresión que hacíamos y acabamos desesperados. Esto también se debe a que igual era algo más avanzado para nosotros pero como he dicho anteriormente esta impresora nos brindó la ocasión de aprender muchísimo y a día de hoy la recuerdo con cariño.&lt;/p&gt;
+&lt;p&gt;Ya como estudiante universitario volví a mi instituto y esta vez (gracias a un gran profesor) había una impresora nueva (al igual que la otra, para fomentar el conocimiento usándose en proyectos de tecnología) : La Ender 3 Pro.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;ini2.jpg&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
+&lt;p&gt;Estuve trabajando con esta impresora para el desarrollo del &amp;ldquo;Ensayo I&amp;rdquo; y vi en ella un potencial desorbitado; ofrecía unas prestaciones elevadas por un precio demasiado asequible. Fue en ese momento cuando decidí comprarme esta impresora.&lt;/p&gt;
+&lt;p&gt;El montaje  fue sencillo, un poco más complicado fue el eje Z, pero en general el proceso es bastante intuitivo. Es una impresora que cuenta con un sistema de extrusión &amp;ldquo;poco eficiente&amp;rdquo; que hace que el filamento pueda verse &amp;ldquo;estancado&amp;rdquo; (de esto hablaré en otra ocasión). Una vez montada, lo único que quedaba hacer era conectarla y ponerla a imprimir. Al contrario que la Geetech, esta venía parcialmente montada y solo había que poner un par de cosas. Un consejo que os doy si estáis comenzando en este mundillo, es que antes de la impresión, sobre la cama caliente, añadáis algún elemento para que las primeras capas se adhieran mejor y durante la impresión no se despeguen. En el caso de que tengáis una superficie de cristal o semejante podéis cubrirla con cinta de carrocero; en el caso de que contéis con otro tipo de superficie del estilo de la alfombra magnética de la Ender 3 Pro lo mejor es usar laca (la que más recomiendo es la &amp;ldquo;Nelly&amp;rdquo;).&lt;/p&gt;
+&lt;p&gt;Definitivamente con esta compra ya estaba adentrado en este fascinante mundo de la impresión 3D y me alegraba que estas impresoras cada vez estuvieran más acopladas en el mercado y a un precio económico. En concreto estoy fascinado con esta impresora de Creality ya que ofrece un amplio abanico de oportunidades a un precio reducido.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
