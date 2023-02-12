@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>criptografía on Alejandro García Peláez</title>
-        <link>https:/aleph8.github.io/tags/criptograf%C3%ADa/</link>
+        <link>https://aleph8.github.io/tags/criptograf%C3%ADa/</link>
         <description>Recent content in criptografía on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/tags/criptograf%C3%ADa/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/tags/criptograf%C3%ADa/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Creación de Contraseñas Robustas</title>
-        <link>https:/aleph8.github.io/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/</link>
+        <link>https://aleph8.github.io/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/</link>
         <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/</guid>
+        <guid>https://aleph8.github.io/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/</guid>
         <description>&lt;p&gt;Cada vez es más frecuente que manejemos diversas contraseñas a la vez. Si queremos que estas sean seguras y estén protegidas a posibles ataques de fuerza bruta, basados en un diccionario personal, debemos asegurar la robustez de estas y cambiarlas periódicamente; algunas buenas prácticas son:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -34,7 +34,7 @@
     &gt;Técnica Diceware&lt;/a&gt;: nos permite obtener una cadena a partir de una serie de palabras que se ordenan aleatoriamente. Con memorizar la cadena, ya que es una serie de palabras en secuencia, tendríamos suficiente.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Solución Hardware: implementación de un dispositivo que almacene y genere las contraseñas. Puedes ver un ejemplo con mi &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/p/2022/digital-key&#34; &gt;Digital Key&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt;Solución Hardware: implementación de un dispositivo que almacene y genere las contraseñas. Puedes ver un ejemplo con mi &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/p/2022/digital-key&#34; &gt;Digital Key&lt;/a&gt; .&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Solución Software: gestores de contraseñas como KeePass.&lt;/p&gt;
@@ -58,11 +58,11 @@
         </item>
         <item>
         <title>Cifrado César Universal</title>
-        <link>https:/aleph8.github.io/p/2022/cifrado-c%C3%A9sar-universal/</link>
+        <link>https://aleph8.github.io/p/2022/cifrado-c%C3%A9sar-universal/</link>
         <pubDate>Wed, 02 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2022/cifrado-c%C3%A9sar-universal/</guid>
-        <description>&lt;p&gt;Como ya hemos visto en &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/p/2022/indagando-en-la-criptograf%c3%ada&#34; &gt;Indagando en la Criptografía&lt;/a&gt;, la criptología es un campo muy amplio compuesto por cuatro pilares esenciales.&lt;/p&gt;
+        <guid>https://aleph8.github.io/p/2022/cifrado-c%C3%A9sar-universal/</guid>
+        <description>&lt;p&gt;Como ya hemos visto en &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/p/2022/indagando-en-la-criptograf%c3%ada&#34; &gt;Indagando en la Criptografía&lt;/a&gt;, la criptología es un campo muy amplio compuesto por cuatro pilares esenciales.&lt;/p&gt;
 &lt;p&gt;La criptografía se centra mayoritariamente en los algoritmos que empleamos para proteger la información; en esta ocasión vamos a ver un método de cifrado clásico, concretamente por sustitución monoalfabética (monográmica de alfabeto estándar).&lt;/p&gt;
 &lt;p&gt;Este cifrado se empleaba por el propio Julio César para comunicar sus mensajes importantes de forma segura (concretamente con un desplazamiento de 3 posiciones).&lt;/p&gt;
 &lt;p&gt;Para cifrar una palabra utilizando este método debemos elegir en primer lugar un desplazamiento, que serán las posiciones que nos moveremos hacia la derecha en el abecedario en cuestión. Por ejemplo: si elegimos desplazamiento 1 y queremos cifrar &amp;ldquo;&lt;strong&gt;ABC&lt;/strong&gt;&amp;rdquo; el resultado sería &amp;ldquo;&lt;strong&gt;BCD&lt;/strong&gt;&amp;rdquo;.&lt;/p&gt;
@@ -219,10 +219,10 @@
         </item>
         <item>
         <title>Indagando en la criptografía</title>
-        <link>https:/aleph8.github.io/p/2022/indagando-en-la-criptograf%C3%ADa/</link>
+        <link>https://aleph8.github.io/p/2022/indagando-en-la-criptograf%C3%ADa/</link>
         <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2022/indagando-en-la-criptograf%C3%ADa/</guid>
+        <guid>https://aleph8.github.io/p/2022/indagando-en-la-criptograf%C3%ADa/</guid>
         <description>&lt;p&gt;Últimamente, he estado indagando en el campo de la &lt;strong&gt;criptología&lt;/strong&gt;, más concretamente en la criptografía.&lt;/p&gt;
 &lt;p&gt;Solemos pensar que la criptografía engloba todo lo relacionado con &amp;ldquo;el estudio de la escritura oculta&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Sin embargo, esto no es así, ya que es la criptología quien se encarga de esto, siendo la criptografía una de las cuatro ramas que la componen:&lt;/p&gt;

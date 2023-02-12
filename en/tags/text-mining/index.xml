@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>text-mining on Alejandro García Peláez</title>
-        <link>https:/aleph8.github.io/en/tags/text-mining/</link>
+        <link>https://aleph8.github.io/en/tags/text-mining/</link>
         <description>Recent content in text-mining on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/en/tags/text-mining/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/en/tags/text-mining/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Text Mining</title>
-        <link>https:/aleph8.github.io/en/p/2023/text-mining/</link>
+        <link>https://aleph8.github.io/en/p/2023/text-mining/</link>
         <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2023/text-mining/</guid>
-        <description>&lt;img src="https:///aleph8.github.io/en/p/2023/text-mining/landing.svg" alt="Featured image of post Text Mining" /&gt;&lt;p&gt;Text mining is the process by which information of value or interest is obtained through the analysis of different textual sources: blogs, books, social networks&amp;hellip;&lt;/p&gt;
+        <guid>https://aleph8.github.io/en/p/2023/text-mining/</guid>
+        <description>&lt;img src="https://aleph8.github.io/en/p/2023/text-mining/landing.svg" alt="Featured image of post Text Mining" /&gt;&lt;p&gt;Text mining is the process by which information of value or interest is obtained through the analysis of different textual sources: blogs, books, social networks&amp;hellip;&lt;/p&gt;
 &lt;p&gt;As you can think this has great potential and allows us to obtain patterns and trends (thanks to various statistical methods) that we can apply to multiple fields.&lt;/p&gt;
-&lt;p&gt;In my case I will work with R (for more information see &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/en/p/2023/r-and-rstudio&#34; &gt;R and RStudio&lt;/a&gt;) and the various packages it offers to work with text mining and data analysis in general; besides this R seems to me very powerful and versatile, with a large background community.&lt;/p&gt;
+&lt;p&gt;In my case I will work with R (for more information see &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/en/p/2023/r-and-rstudio&#34; &gt;R and RStudio&lt;/a&gt;) and the various packages it offers to work with text mining and data analysis in general; besides this R seems to me very powerful and versatile, with a large background community.&lt;/p&gt;
 &lt;p&gt;To explain the process in more detail I will start from an example with the creation of a &amp;lsquo;&lt;strong&gt;wordcloud&lt;/strong&gt;&amp;rsquo; (visual representation of text in &amp;lsquo;cloud form&amp;rsquo;) with the most frequent words in one of &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Friedrich_Nietzsche&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Friedrich Nietzsche&amp;rsquo;s&lt;/a&gt; books.&lt;/p&gt;
 &lt;p&gt;We mainly start from a &lt;strong&gt;disordered data set&lt;/strong&gt;. This is common when we work with data extracted from articles, books or multiple sources, since there is information that is not relevant to our analysis and is not even ordered.&lt;/p&gt;

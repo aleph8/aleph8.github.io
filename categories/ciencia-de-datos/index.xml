@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Ciencia de Datos on Alejandro García Peláez</title>
-        <link>https:/aleph8.github.io/categories/ciencia-de-datos/</link>
+        <link>https://aleph8.github.io/categories/ciencia-de-datos/</link>
         <description>Recent content in Ciencia de Datos on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/categories/ciencia-de-datos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/categories/ciencia-de-datos/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Text Mining</title>
-        <link>https:/aleph8.github.io/p/2023/text-mining/</link>
+        <link>https://aleph8.github.io/p/2023/text-mining/</link>
         <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2023/text-mining/</guid>
-        <description>&lt;img src="https:///aleph8.github.io/p/2023/text-mining/landing.svg" alt="Featured image of post Text Mining" /&gt;&lt;p&gt;El &amp;lsquo;&lt;strong&gt;text mining&lt;/strong&gt;&amp;rsquo; o minería de texto es el proceso mediante el cual se obtiene información de valor o interés a través del análisis de distintas fuentes textuales: blogs, libros, redes sociales &amp;hellip;&lt;/p&gt;
+        <guid>https://aleph8.github.io/p/2023/text-mining/</guid>
+        <description>&lt;img src="https://aleph8.github.io/p/2023/text-mining/landing.svg" alt="Featured image of post Text Mining" /&gt;&lt;p&gt;El &amp;lsquo;&lt;strong&gt;text mining&lt;/strong&gt;&amp;rsquo; o minería de texto es el proceso mediante el cual se obtiene información de valor o interés a través del análisis de distintas fuentes textuales: blogs, libros, redes sociales &amp;hellip;&lt;/p&gt;
 &lt;p&gt;Como podrás pensar esto tiene un gran potencial y permite obtener patrones y tendencias (gracias a diversos métodos estadísticos) que podemos aplicar a múltiples campos.&lt;/p&gt;
-&lt;p&gt;En mi caso trabajaré con R (para más información consulta &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/p/2023/r-y-rstudio&#34; &gt;R y RStudio&lt;/a&gt;) y los diversos paquetes que ofrece para trabajar con la minería de texto y el análisis de datos en general; además de esto R me parece muy potente y versátil, con una gran comunidad de fondo.&lt;/p&gt;
+&lt;p&gt;En mi caso trabajaré con R (para más información consulta &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/p/2023/r-y-rstudio&#34; &gt;R y RStudio&lt;/a&gt;) y los diversos paquetes que ofrece para trabajar con la minería de texto y el análisis de datos en general; además de esto R me parece muy potente y versátil, con una gran comunidad de fondo.&lt;/p&gt;
 &lt;p&gt;Para explicar más detalladamente el proceso partiré de un ejemplo con la creación de una &amp;lsquo;&lt;strong&gt;wordcloud&lt;/strong&gt;&amp;rsquo; (representación visual de texto en &amp;lsquo;forma de nube&amp;rsquo;) con las palabras más frecuentes en uno de los libros de &lt;a class=&#34;link&#34; href=&#34;https://es.wikipedia.org/wiki/Friedrich_Nietzsche&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Friedrich Nietzsche&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Principalmente partimos de un &lt;strong&gt;conjunto de datos desordenados&lt;/strong&gt;. Esto es común cuando trabajamos con datos extraídos de artículos, libros o múltiples fuentes, ya que hay información que no es relevante para nuestro análisis y ni siquiera está ordenada.&lt;/p&gt;

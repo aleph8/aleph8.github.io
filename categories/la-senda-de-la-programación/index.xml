@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>La senda de la programación on Alejandro García Peláez</title>
-        <link>https:/aleph8.github.io/categories/la-senda-de-la-programaci%C3%B3n/</link>
+        <link>https://aleph8.github.io/categories/la-senda-de-la-programaci%C3%B3n/</link>
         <description>Recent content in La senda de la programación on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/categories/la-senda-de-la-programaci%C3%B3n/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/categories/la-senda-de-la-programaci%C3%B3n/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>R y Rstudio</title>
-        <link>https:/aleph8.github.io/p/2023/r-y-rstudio/</link>
+        <link>https://aleph8.github.io/p/2023/r-y-rstudio/</link>
         <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2023/r-y-rstudio/</guid>
+        <guid>https://aleph8.github.io/p/2023/r-y-rstudio/</guid>
         <description>&lt;h1 id=&#34;conceptos-fundamentales&#34;&gt;Conceptos Fundamentales&lt;/h1&gt;
 &lt;h2 id=&#34;asignación-de-variables&#34;&gt;Asignación de variables&lt;/h2&gt;
 &lt;p&gt;La asignación de variables se realiza con el uso de &amp;lsquo;&amp;lt;-&amp;rsquo;. Esta notación surge de las &amp;lsquo;&lt;em&gt;pipelines&lt;/em&gt;&amp;rsquo; o tuberías que podemos ver presentes en algunos sistemas operativos como GNU/Linux (en el caso de Linux el uso de pipelines se lleva a cabo con la notación &amp;lsquo;|&amp;rsquo; que permite redirigir la salida de un comando o &lt;strong&gt;stdout&lt;/strong&gt; a la entrada de otro o &lt;strong&gt;stdin&lt;/strong&gt;).&lt;/p&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Alejandro García Peláez</title>
-        <link>https:/aleph8.github.io/en/</link>
+        <link>https://aleph8.github.io/en/</link>
         <description>Recent content on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/en/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/en/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Text Mining</title>
-        <link>https:/aleph8.github.io/en/p/2023/text-mining/</link>
+        <link>https://aleph8.github.io/en/p/2023/text-mining/</link>
         <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2023/text-mining/</guid>
-        <description>&lt;img src="https:///aleph8.github.io/en/p/2023/text-mining/landing.svg" alt="Featured image of post Text Mining" /&gt;&lt;p&gt;Text mining is the process by which information of value or interest is obtained through the analysis of different textual sources: blogs, books, social networks&amp;hellip;&lt;/p&gt;
+        <guid>https://aleph8.github.io/en/p/2023/text-mining/</guid>
+        <description>&lt;img src="https://aleph8.github.io/en/p/2023/text-mining/landing.svg" alt="Featured image of post Text Mining" /&gt;&lt;p&gt;Text mining is the process by which information of value or interest is obtained through the analysis of different textual sources: blogs, books, social networks&amp;hellip;&lt;/p&gt;
 &lt;p&gt;As you can think this has great potential and allows us to obtain patterns and trends (thanks to various statistical methods) that we can apply to multiple fields.&lt;/p&gt;
-&lt;p&gt;In my case I will work with R (for more information see &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/en/p/2023/r-and-rstudio&#34; &gt;R and RStudio&lt;/a&gt;) and the various packages it offers to work with text mining and data analysis in general; besides this R seems to me very powerful and versatile, with a large background community.&lt;/p&gt;
+&lt;p&gt;In my case I will work with R (for more information see &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/en/p/2023/r-and-rstudio&#34; &gt;R and RStudio&lt;/a&gt;) and the various packages it offers to work with text mining and data analysis in general; besides this R seems to me very powerful and versatile, with a large background community.&lt;/p&gt;
 &lt;p&gt;To explain the process in more detail I will start from an example with the creation of a &amp;lsquo;&lt;strong&gt;wordcloud&lt;/strong&gt;&amp;rsquo; (visual representation of text in &amp;lsquo;cloud form&amp;rsquo;) with the most frequent words in one of &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Friedrich_Nietzsche&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Friedrich Nietzsche&amp;rsquo;s&lt;/a&gt; books.&lt;/p&gt;
 &lt;p&gt;We mainly start from a &lt;strong&gt;disordered data set&lt;/strong&gt;. This is common when we work with data extracted from articles, books or multiple sources, since there is information that is not relevant to our analysis and is not even ordered.&lt;/p&gt;
@@ -81,11 +81,11 @@
         </item>
         <item>
         <title>RCE</title>
-        <link>https:/aleph8.github.io/en/p/2023/rce/</link>
+        <link>https://aleph8.github.io/en/p/2023/rce/</link>
         <pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2023/rce/</guid>
-        <description>&lt;p&gt;We call RCE or &lt;em&gt;Remote Code Execution&lt;/em&gt; the execution of arbitrary commands by taking control of a remote computer through a vulnerability in the exposed service such as &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/en/p/2023/lfi&#34; &gt;LFI&lt;/a&gt;.&lt;/p&gt;
+        <guid>https://aleph8.github.io/en/p/2023/rce/</guid>
+        <description>&lt;p&gt;We call RCE or &lt;em&gt;Remote Code Execution&lt;/em&gt; the execution of arbitrary commands by taking control of a remote computer through a vulnerability in the exposed service such as &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/en/p/2023/lfi&#34; &gt;LFI&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This can happen, for example, if user input is not well controlled. I deploy the prepared web service to explain this and let&amp;rsquo;s assume the following situation:&lt;/p&gt;
 &lt;p&gt;There is a web service that allows its users to run C++ code in the browser, without running it on their device:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;rce1.png&#34; alt=&#34;Image&#34; width=&#34;900&#34;&gt;&lt;/div&gt; 
@@ -99,10 +99,10 @@
         </item>
         <item>
         <title>R and Rstudio</title>
-        <link>https:/aleph8.github.io/en/p/2023/r-and-rstudio/</link>
+        <link>https://aleph8.github.io/en/p/2023/r-and-rstudio/</link>
         <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2023/r-and-rstudio/</guid>
+        <guid>https://aleph8.github.io/en/p/2023/r-and-rstudio/</guid>
         <description>&lt;h1 id=&#34;fundamental-concepts&#34;&gt;Fundamental Concepts&lt;/h1&gt;
 &lt;h2 id=&#34;variable-assignment&#34;&gt;Variable assignment&lt;/h2&gt;
 &lt;p&gt;Variable assignment is done with the use of &amp;lsquo;&amp;lt;-&amp;rsquo;. This notation comes from the &amp;lsquo;&lt;em&gt;pipelines&lt;/em&gt;&amp;rsquo; or pipelines that we can see present in some operating systems like GNU/Linux (in the case of Linux the use of pipelines is carried out with the notation &amp;lsquo;|&amp;rsquo; that allows to redirect the output of a command or &lt;strong&gt;stdout&lt;/strong&gt; to the input of another or &lt;strong&gt;stdin&lt;/strong&gt;).&lt;/p&gt;
@@ -229,10 +229,10 @@
         </item>
         <item>
         <title>LFI</title>
-        <link>https:/aleph8.github.io/en/p/2023/lfi/</link>
+        <link>https://aleph8.github.io/en/p/2023/lfi/</link>
         <pubDate>Mon, 30 Jan 2023 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2023/lfi/</guid>
+        <guid>https://aleph8.github.io/en/p/2023/lfi/</guid>
         <description>&lt;p&gt;LFI or &lt;em&gt;Local File Inclusion&lt;/em&gt; is one of the two File Inclusion style vulnerabilities that commonly affect web applications. If successfully exploited, it can lead to RCE or &lt;em&gt;Remote Code Execution&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Thanks to a variable, we can point directly to a file in the file system on the server side; once pointed, it will be executed on the server side, with the corresponding web routine. To explain it better, let&amp;rsquo;s work in a controlled environment, deploying our own web service locally, with the following format:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -259,10 +259,10 @@
         </item>
         <item>
         <title>Creating Strong Passwords</title>
-        <link>https:/aleph8.github.io/en/p/2022/creating-strong-passwords/</link>
+        <link>https://aleph8.github.io/en/p/2022/creating-strong-passwords/</link>
         <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/creating-strong-passwords/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/creating-strong-passwords/</guid>
         <description>&lt;p&gt;It is increasingly common for us to handle several passwords at the same time. If we want them to be secure and protected against possible brute force attacks, based on a personal dictionary, we must ensure the robustness of these and change them periodically; some good practices are:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -285,7 +285,7 @@
     &gt;Diceware technique&lt;/a&gt;: allows us to obtain a string from a series of words that are randomly ordered. By memorizing the string, since it is a series of words in sequence, we would have enough.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Hardware solution: implementation of a device that stores and generates passwords. You can see an example with my &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/en/p/2022/digital-key&#34; &gt;Digital Key&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt;Hardware solution: implementation of a device that stores and generates passwords. You can see an example with my &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/en/p/2022/digital-key&#34; &gt;Digital Key&lt;/a&gt; .&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Software Solution: password managers such as KeePass.&lt;/p&gt;
@@ -309,12 +309,12 @@
         </item>
         <item>
         <title>Digital Key</title>
-        <link>https:/aleph8.github.io/en/p/2022/digital-key/</link>
+        <link>https://aleph8.github.io/en/p/2022/digital-key/</link>
         <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/digital-key/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/digital-key/</guid>
         <description>&lt;p&gt;When you have many complex passwords, it is sometimes difficult to remember them all; current browsers usually offer secure passwords that are automatically generated and stored in the browser itself, as a &amp;ldquo;virtual keychain&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;As we have seen in &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/en/p/2022/bad-usb&#34; &gt;the Bad Usb part&lt;/a&gt; with a simple device that resembles a USB, we can simulate a keyboard, but not everything is bad; it occurred to me to use its operation and that of similar devices to create a portable &amp;ldquo;virtual keychain&amp;rdquo; or &amp;ldquo;Digital Key&amp;rdquo; using the HID functions of the microprocessors that we find already integrated in various development boards.&lt;/p&gt;
+&lt;p&gt;As we have seen in &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/en/p/2022/bad-usb&#34; &gt;the Bad Usb part&lt;/a&gt; with a simple device that resembles a USB, we can simulate a keyboard, but not everything is bad; it occurred to me to use its operation and that of similar devices to create a portable &amp;ldquo;virtual keychain&amp;rdquo; or &amp;ldquo;Digital Key&amp;rdquo; using the HID functions of the microprocessors that we find already integrated in various development boards.&lt;/p&gt;
 &lt;p&gt;The idea is to have a device that is, on the one hand, able to generate secure passwords and store them in our EEPROM memory (types of memories in microcontrollers) and, on the other hand, that is able to dump them at runtime, writing them as if it were a keyboard.&lt;/p&gt;
 &lt;p&gt;For this, the only thing that was needed was to use the &amp;ldquo;Digispark&amp;rdquo; development board, which has an integrated USB 2.0 interface, in addition to its small size and price. To add an authentication factor, so that in the case of losing the device the password is not written directly, I have used a binary encoding similar to Morse code.&lt;/p&gt;
 &lt;p&gt;The final device, therefore, has the development board and a button. When the device is switched on, it does nothing, it only writes that it is connected. Once this is displayed, the user must properly press the combination in binary; in case of success, the stored password will be written or created in case there is none stored. In case of error, nothing will happen. The device has two more functionalities, depending on the time of pressing: password generation mode but without storing it and reset mode to &amp;ldquo;delete&amp;rdquo; the password stored in EEPROM:&lt;/p&gt;
@@ -502,10 +502,10 @@
         </item>
         <item>
         <title>Types of Memory in Microcontrollers</title>
-        <link>https:/aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/</link>
+        <link>https://aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/</link>
         <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/</guid>
         <description>&lt;p&gt;Within a microcontroller, we can contemplate two types of essential memories: volatile memory (usually SRAM), non-volatile memory for program storage (ROM, EEPROM, PROM &amp;hellip; ).&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;typemem2.png&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt; 
 &lt;ul&gt;
@@ -521,10 +521,10 @@
         </item>
         <item>
         <title>Bad Usb</title>
-        <link>https:/aleph8.github.io/en/p/2022/bad-usb/</link>
+        <link>https://aleph8.github.io/en/p/2022/bad-usb/</link>
         <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/bad-usb/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/bad-usb/</guid>
         <description>&lt;p&gt;When we see this object, we may think at first that it is a USB flash drive, with nothing special; it may even happen that you plug it into your computer thinking that it is, and that nothing will happen to it.&lt;/p&gt;
 &lt;p&gt;The problem arises when we see the inside, which makes us realize that it is far from normal:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;bad1.jpg&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
@@ -562,11 +562,11 @@
         </item>
         <item>
         <title>Universal Caesar Encryption</title>
-        <link>https:/aleph8.github.io/en/p/2022/universal-caesar-encryption/</link>
+        <link>https://aleph8.github.io/en/p/2022/universal-caesar-encryption/</link>
         <pubDate>Wed, 02 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/universal-caesar-encryption/</guid>
-        <description>&lt;p&gt;As we have already seen in &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/en/p/2022/digging-into-cryptography/&#34; &gt;Digging into Cryptography&lt;/a&gt;, cryptology is a very broad field composed of four essential pillars.&lt;/p&gt;
+        <guid>https://aleph8.github.io/en/p/2022/universal-caesar-encryption/</guid>
+        <description>&lt;p&gt;As we have already seen in &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/en/p/2022/digging-into-cryptography/&#34; &gt;Digging into Cryptography&lt;/a&gt;, cryptology is a very broad field composed of four essential pillars.&lt;/p&gt;
 &lt;p&gt;Cryptography is mostly focused on the algorithms we use to protect information; this time we are going to look at a classical encryption method, namely by monoalphabetic substitution (standard alphabet monogramming).&lt;/p&gt;
 &lt;p&gt;This cipher was used by Julius Caesar himself to communicate his important messages securely (specifically with a 3-position shift).&lt;/p&gt;
 &lt;p&gt;To encrypt a word using this method we must first choose an offset, which will be the positions we will move to the right in the alphabet in question. For example: if we choose offset 1 and we want to encrypt &amp;ldquo;&lt;strong&gt;ABC&lt;/strong&gt;&amp;rdquo; the result would be &amp;ldquo;&lt;strong&gt;BCD&lt;/strong&gt;&amp;rdquo;.&lt;/p&gt;
@@ -723,10 +723,10 @@
         </item>
         <item>
         <title>Digging into Cryptography</title>
-        <link>https:/aleph8.github.io/en/p/2022/digging-into-cryptography/</link>
+        <link>https://aleph8.github.io/en/p/2022/digging-into-cryptography/</link>
         <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/digging-into-cryptography/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/digging-into-cryptography/</guid>
         <description>&lt;p&gt;Lately, I have been digging into the field of &lt;strong&gt;criptology&lt;/strong&gt;, more specifically cryptography.&lt;/p&gt;
 &lt;p&gt;We tend to think of cryptography as encompassing everything related to &amp;ldquo;the study of hidden writing&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;However, this is not the case, since it is cryptology that is in charge of this, cryptography being one of the four branches that compose it:&lt;/p&gt;
@@ -749,10 +749,10 @@
         </item>
         <item>
         <title>Stable Diffusion Bot</title>
-        <link>https:/aleph8.github.io/en/p/2022/stable-diffusion-bot/</link>
+        <link>https://aleph8.github.io/en/p/2022/stable-diffusion-bot/</link>
         <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/stable-diffusion-bot/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/stable-diffusion-bot/</guid>
         <description>&lt;p&gt;Stable Diffusion is a learning model capable of generating digital images from natural language descriptions with the use of a prompt.&lt;/p&gt;
 &lt;p&gt;I wanted to try and experiment with some image generating model and Stable Diffusion has its repository on Github; the problem is that I don&amp;rsquo;t have a powerful graphic to work with graphics and, therefore, as incredible as it may seem, I had to find a way to run it on CPU, since my goal is to run it locally.&lt;/p&gt;
 &lt;p&gt;After searching a little, I found a repository that solved everything, allowing to execute the model using CPU. The only thing left was to create the bot, for which I used the Discord API in Python.&lt;/p&gt;
@@ -762,10 +762,10 @@
         </item>
         <item>
         <title>Arachne</title>
-        <link>https:/aleph8.github.io/en/p/2022/arachne/</link>
+        <link>https://aleph8.github.io/en/p/2022/arachne/</link>
         <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/arachne/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/arachne/</guid>
         <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aleph8/Arachne&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Arachne is a completely open source project&lt;/a&gt;; you can find all the design and programming files in its repository.&lt;/p&gt;
 &lt;h2 id=&#34;inspiration&#34;&gt;Inspiration&lt;/h2&gt;
@@ -788,10 +788,10 @@
         </item>
         <item>
         <title>VMware ESXi</title>
-        <link>https:/aleph8.github.io/en/p/2022/vmware-esxi/</link>
+        <link>https://aleph8.github.io/en/p/2022/vmware-esxi/</link>
         <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/vmware-esxi/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/vmware-esxi/</guid>
         <description>&lt;p&gt;ESXi is a bare-metal hypervisor. This means that the operating system is not an intermediary between the software virtualization and the hardware, since being bare-metal, ESXi is installed directly on the server.&lt;/p&gt;
 &lt;p&gt;To obtain the image with which to boot and install it, we must access the official VMware website. Once registered, we can download the latest version of ESXi to create a bootable device.&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;esxi1.png&#34; alt=&#34;Image&#34; width=&#34;700&#34;&gt;&lt;/div&gt; 
@@ -802,10 +802,10 @@
         </item>
         <item>
         <title>RAID Storage</title>
-        <link>https:/aleph8.github.io/en/p/2022/raid-storage/</link>
+        <link>https://aleph8.github.io/en/p/2022/raid-storage/</link>
         <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/raid-storage/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/raid-storage/</guid>
         <description>&lt;p&gt;Redundant Array of Independent Disk (RAID) is a type of virtual data storage.&lt;/p&gt;
 &lt;p&gt;With several physical disks we can create a virtual disk for the following purposes: to improve performance or data redundancy. The data is distributed in one way or another depending on the RAID level with which the disk is configured.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;RAID LEVELS (0-1-5)&lt;/strong&gt;&lt;/p&gt;
@@ -825,10 +825,10 @@
         </item>
         <item>
         <title>Echo a Virtual Assistant</title>
-        <link>https:/aleph8.github.io/en/p/2022/echo-a-virtual-assistant/</link>
+        <link>https://aleph8.github.io/en/p/2022/echo-a-virtual-assistant/</link>
         <pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/echo-a-virtual-assistant/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/echo-a-virtual-assistant/</guid>
         <description>&lt;p&gt;In a little break from Arachne, I decided to program my own Alexa. It&amp;rsquo;s something I&amp;rsquo;ve always wanted to do, because I would like to develop a virtual assistant to my own needs, programming and automating my tasks. This is when &amp;ldquo;Echo&amp;rdquo; came up.&lt;/p&gt;
 &lt;p&gt;In a few lines I had the basic functionalities in less than half an hour &amp;hellip; and it already responded to several of my own commands!  It is not very complicated to do, and can have a multitude of applications such as home automation.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -881,10 +881,10 @@
         </item>
         <item>
         <title>How to Customize a Linux Distro</title>
-        <link>https:/aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/</link>
+        <link>https://aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/</link>
         <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/</guid>
         <description>&lt;p&gt;Since I work with different operating systems, I have decided to &amp;ldquo;create&amp;rdquo; my own GNU/Linux distribution to have all the utilities I usually use at hand, and to have an image (*iso) to install on the server and create different OS versions according to my needs.&lt;/p&gt;
 &lt;p&gt;It is a very simple process for which I have used the &amp;ldquo;systemback&amp;rdquo; tool.&lt;/p&gt;
 &lt;p&gt;First of all you must create a virtual machine where you install the base operating system and leave it as you want. In my case I have used the latest stable image of Lubuntu.&lt;/p&gt;
@@ -895,10 +895,10 @@
         </item>
         <item>
         <title>What is a server?</title>
-        <link>https:/aleph8.github.io/en/p/2022/what-is-a-server/</link>
+        <link>https://aleph8.github.io/en/p/2022/what-is-a-server/</link>
         <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/what-is-a-server/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/what-is-a-server/</guid>
         <description>&lt;p&gt;A server is a computer (or set of computers) that follows the &amp;ldquo;client-server&amp;rdquo; model, handling requests from the client and returning a response accordingly.&lt;/p&gt;
 &lt;p&gt;Anyone can set up a computer as a server, but depending on the service we are going to offer, more or less hardware resources will be needed. For example, we can use an old computer together with a few hard disks to have our own NAS (Network Attached Storage); however, if we want a server that offers virtual machines, we will need more resources.&lt;/p&gt;
 &lt;p&gt;This is why we can distinguish between different server formats:&lt;/p&gt;
@@ -919,10 +919,10 @@
         </item>
         <item>
         <title>EOS</title>
-        <link>https:/aleph8.github.io/en/p/2022/eos/</link>
+        <link>https://aleph8.github.io/en/p/2022/eos/</link>
         <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/eos/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/eos/</guid>
         <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Aleph8/EOS/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;EOS is an open source project&lt;/a&gt; based on the &amp;ldquo;Jansen Linkage&amp;rdquo;, a mechanism created by Teo Jansen ( left image ). a mechanism created by Teo Jansen ( left image ).&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;eos1.jpg&#34; alt=&#34;Image&#34; width=&#34;500&#34;&gt;&lt;/div&gt;
@@ -938,10 +938,10 @@
         </item>
         <item>
         <title>Artillery Genius</title>
-        <link>https:/aleph8.github.io/en/p/2022/artillery-genius/</link>
+        <link>https://aleph8.github.io/en/p/2022/artillery-genius/</link>
         <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/artillery-genius/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/artillery-genius/</guid>
         <description>&lt;p&gt;After some time with the Ender 3, I decided to go for another printer that had caught my attention on several occasions: the Artillery Genius (Pro).&lt;/p&gt;
 &lt;p&gt;This printer offers as standard better features than its competitors for a slightly higher price, as it incorporates direct extrusion with a volcano fuser and a Titan extruder; both are obviously Chinese replicas, but they perform very well. Not only this, but it also incorporates a double synchronized Z axis, a very solid (and compact) aluminum structure, a sensor that controls the filament and automatic calibration. It has the most updated version of Marlin (at least the one that has come to me) and silent drivers; that has been what I have noticed the difference, and it is incredible how little you hear unlike, for example, the Ender 3.&lt;/p&gt;
 &lt;p&gt;Obviously not all of them are good and there are several things to keep in mind. Firstly, even though the printing platform heats up in no time, it is difficult for the part to adhere, which causes it to peel off on numerous occasions, interrupting the printing process. As a temporary solution we can resort to lacquer or masking tape. In my case I am using masking tape and waiting to order a magnetic strip to solve this problem. On the other hand it does not come with conventional cables but with flat cables; you have to be very careful with this type of cables since due to the movement of the printer they can disconnect, although in the current version of the market (Genius Pro since the normal Genius is discontinued) it comes with a kind of &amp;ldquo;couplers&amp;rdquo; that in theory avoid this problem.&lt;/p&gt;
@@ -951,20 +951,20 @@
         </item>
         <item>
         <title>The Labyrinth Problem</title>
-        <link>https:/aleph8.github.io/en/p/2022/the-labyrinth-problem/</link>
+        <link>https://aleph8.github.io/en/p/2022/the-labyrinth-problem/</link>
         <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/the-labyrinth-problem/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/the-labyrinth-problem/</guid>
         <description>&lt;p&gt;The problem of solving mazes given input and output can be solved easily and inexpensively (for small mazes, of course). The following image shows the output of a small program I made in some spare time, showing the solution path and the paths explored by the algorithm. Given a maze, running the program will show in two windows the unsolved maze and the solved maze.&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;maze1.png&#34; alt=&#34;Image&#34; width=&#34;900&#34;&gt;&lt;/div&gt; 
 </description>
         </item>
         <item>
         <title>Ender 3 Pro Direct Extrusion</title>
-        <link>https:/aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</link>
+        <link>https://aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</link>
         <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</guid>
+        <guid>https://aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</guid>
         <description>&lt;p&gt;As I have been saying from the beginning, the &amp;ldquo;Bowden&amp;rdquo; type extrusion on this printer was giving me problems.&lt;/p&gt;
 &lt;p&gt;This extrusion system has a main advantage and it is that it has a lower mass in the extruder carriage, since the motor is directly coupled to the chassis. However, it has several problems, which is what has probably been happening to me. For example, it may be that the motor that pushes the filament does not have enough force. Here is the sound that my printer emitted when it did not have enough power.&lt;/p&gt;
 &lt;p&gt;One of the things I could do was to update the printer&amp;rsquo;s firmware, since it was in a rather primitive version. It turns out that the printer came with a board a little complicated to update (V1), especially because you had to make use of an Arduino to &amp;ldquo;burn&amp;rdquo; the bootloader. On the other hand I was quite eager to have direct extrusion and I decided to add it, with direct extrusion I added more weight to the extruder carriage, but I gained in extrusion speed and less risks caused by the motor. It also allowed me to print certain materials with higher temperature requirements, such as TPU.&lt;/p&gt;
@@ -989,10 +989,10 @@
         </item>
         <item>
         <title>Efficient Algorithm for the Calculation of Prime Numbers</title>
-        <link>https:/aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</link>
+        <link>https://aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</link>
         <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</guid>
+        <guid>https://aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</guid>
         <description>&lt;p&gt;The task of calculating very large prime numbers is very expensive. That is why I am making a specification of an algorithm that drastically reduces the time spent in calculating the prime numbers from 2 to the selected number.&lt;/p&gt;
 &lt;p&gt;I have managed to optimize the algorithm using brute force, in which all possible divisors are tested for each number:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;primes1.png&#34; alt=&#34;Image&#34; width=&#34;800&#34;&gt;&lt;/div&gt; 
@@ -1002,10 +1002,10 @@
         </item>
         <item>
         <title>Keylogger in C</title>
-        <link>https:/aleph8.github.io/en/p/2021/keylogger-in-c/</link>
+        <link>https://aleph8.github.io/en/p/2021/keylogger-in-c/</link>
         <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2021/keylogger-in-c/</guid>
+        <guid>https://aleph8.github.io/en/p/2021/keylogger-in-c/</guid>
         <description>&lt;p&gt;Spyware is a type of computer virus that, after infecting the victim&amp;rsquo;s computer, seeks to obtain all kinds of information from the victim (from screenshots to recording audio or accessing the camera).&lt;/p&gt;
 &lt;p&gt;A keylogger is a type of spyware that records the victim&amp;rsquo;s keystrokes to obtain personal data: passwords, bank details, access to accounts&amp;hellip;&lt;/p&gt;
 &lt;p&gt;Using C I have programmed a keylogger; its operation is simple:&lt;/p&gt;
@@ -1031,10 +1031,10 @@
         </item>
         <item>
         <title></title>
-        <link>https:/aleph8.github.io/en/p/2021/</link>
+        <link>https://aleph8.github.io/en/p/2021/</link>
         <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2021/</guid>
+        <guid>https://aleph8.github.io/en/p/2021/</guid>
         <description>&lt;p&gt;This time I come with a game; the story of Lea and her journey as &amp;ldquo;The Last Unmasked&amp;rdquo;. In this game our protagonist has to go jumping spectres, corrupted by &amp;ldquo;the abyss&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;The game is programmed in Java using Android Studio as IDE. It is being quite a project because of the great world of mobile development that has come my way.&lt;/p&gt;
 &lt;p&gt;For example, when creating the associated world physics you had to take into account different types of programmable bodies; the ground is a &amp;ldquo;static&amp;rdquo; type while the main character is &amp;ldquo;dynamic&amp;rdquo;. This is very relevant when starting the world for the different forces exerted on the different bodies.&lt;/p&gt;
@@ -1045,19 +1045,19 @@
         </item>
         <item>
         <title>Design and Printing of my Funko</title>
-        <link>https:/aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</link>
+        <link>https://aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</link>
         <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</guid>
+        <guid>https://aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</guid>
         <description>&lt;p&gt;The Funko is modeled with Blender, printed using resin and then painted. The post-processing is simpler than in PLA since it is just painting it; the difference is that the process and treatment of the resin is more complex.&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;funko1.jpg&#34; alt=&#34;Image&#34; width=&#34;450&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;img src=&#34;funko2.jpg&#34; alt=&#34;Image&#34; width=&#34;450&#34;&gt;&lt;/div&gt;</description>
         </item>
         <item>
         <title>Sentinel Robot</title>
-        <link>https:/aleph8.github.io/en/p/2021/sentinel-robot/</link>
+        <link>https://aleph8.github.io/en/p/2021/sentinel-robot/</link>
         <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2021/sentinel-robot/</guid>
+        <guid>https://aleph8.github.io/en/p/2021/sentinel-robot/</guid>
         <description>&lt;p&gt;This time I have decided to make a kind of &amp;ldquo;sentry robot&amp;rdquo; that, after detecting movement, triggers a firing mechanism.&lt;/p&gt;
 &lt;p&gt;First of all I needed something I could shoot. For this I was given an old Nerf so I could play with it. Once I opened it I realized that, given its age, there was little left that could be reused, except for the barrel to which two motors were attached. Each motor has a kind of cylinder attached to it through which the bullet slides.&lt;/p&gt;
 &lt;p&gt;Secondly we came up with the electronics. I wanted it to be compact and decided to use an Arduino Nano which was more than enough for what I needed. The problem is that the output is 5V and approximately 40 mA, being this insufficient to get the full power of the motors. The solution I opted for was to power the motors externally with a 12V rechargeable battery.&lt;/p&gt;
@@ -1071,10 +1071,10 @@
         </item>
         <item>
         <title>Venom Post PLA Processing</title>
-        <link>https:/aleph8.github.io/en/p/2021/venom-post-pla-processing/</link>
+        <link>https://aleph8.github.io/en/p/2021/venom-post-pla-processing/</link>
         <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2021/venom-post-pla-processing/</guid>
+        <guid>https://aleph8.github.io/en/p/2021/venom-post-pla-processing/</guid>
         <description>&lt;p&gt;When a part is 3D printed, it is not that it ends up polished at all. That is why we must submit it to a process known as &amp;ldquo;post-processing&amp;rdquo;.In this case, we will see how to carry out PLA post-processing.&lt;/p&gt;
 &lt;p&gt;To begin with, we need a series of materials:&lt;/p&gt;
 &lt;ul&gt;
@@ -1115,10 +1115,10 @@
         </item>
         <item>
         <title>Solution to Under Extrusion</title>
-        <link>https:/aleph8.github.io/en/p/2021/solution-to-under-extrusion/</link>
+        <link>https://aleph8.github.io/en/p/2021/solution-to-under-extrusion/</link>
         <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2021/solution-to-under-extrusion/</guid>
+        <guid>https://aleph8.github.io/en/p/2021/solution-to-under-extrusion/</guid>
         <description>&lt;p&gt;As soon as I started printing, it seemed that everything was going well with the printer, but the pieces sometimes came out without filament in certain parts or the figures did not come out well (circles for example).&lt;/p&gt;
 &lt;p&gt;I mainly thought it was a problem with the bed calibration. Once calibrated, the same thing kept happening. Later I thought about the tension of the belts that move the axes (specifically the X and Y), but after tightening them nothing changed.&lt;/p&gt;
 &lt;p&gt;The problem had me a little bit worried, so I did a little research on the subject. It turns out that the Ender 3 (and Pro) has an extrusion system like the one shown in the following image:&lt;/p&gt;
@@ -1141,10 +1141,10 @@
         </item>
         <item>
         <title>My Beginnings in 3D Printing</title>
-        <link>https:/aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</link>
+        <link>https://aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</link>
         <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</guid>
+        <guid>https://aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</guid>
         <description>&lt;p&gt;I recently acquired for the first time a 3D printer. I had experience with this type of technology because in my high school we assembled a Geetech Prusa I3. During the assembly of this printer we had several problems that we were solving thanks to the interest and enthusiasm that we had at that time, that eagerness and desire to learn. The printer did not come ready to print; it had to be assembled from scratch. Being our first printer added an extra complexity to the challenge and thanks to this we learned how a 3D printer of this type works:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;ini1.png&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
 &lt;p&gt;The problem with this printer is that it had several mechanical problems, so we had to replace several electronic components. Another problem is that we had to be calibrating all the axes for every print we made and we ended up desperate. This is also due to the fact that it was a bit more advanced for us, but as I said before, this printer gave us the opportunity to learn a lot and I still remember it fondly.&lt;/p&gt;
@@ -1157,10 +1157,10 @@
         </item>
         <item>
         <title>About me</title>
-        <link>https:/aleph8.github.io/en/about-me/</link>
+        <link>https://aleph8.github.io/en/about-me/</link>
         <pubDate>Thu, 06 May 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/about-me/</guid>
+        <guid>https://aleph8.github.io/en/about-me/</guid>
         <description>&lt;p&gt;My name is Alejandro and since I was a child hundreds of questions have been flying over my head. Questions that when they seemed to be solved, bifurcated once again giving rise to a new uncertainty.&lt;/p&gt;
 &lt;p&gt;I have always been interested in the &amp;ldquo;mechanism of things&amp;rdquo;, in the innumerable &amp;ldquo;why?&amp;rdquo; that every inquiring mind asks itself at some time in its life.&lt;/p&gt;
 &lt;p&gt;Right now I am a student of engineering while I work in it, and my curiosity and interest have always led me to embark on a series of projects where not only my unknowns are satisfied, but I can get through the compression of things, to the creation of these.&lt;/p&gt;
@@ -1169,35 +1169,35 @@
         </item>
         <item>
         <title>Archives</title>
-        <link>https:/aleph8.github.io/en/archives/</link>
+        <link>https://aleph8.github.io/en/archives/</link>
         <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/archives/</guid>
+        <guid>https://aleph8.github.io/en/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Laboratory</title>
-        <link>https:/aleph8.github.io/en/lab/</link>
+        <link>https://aleph8.github.io/en/lab/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/lab/</guid>
+        <guid>https://aleph8.github.io/en/lab/</guid>
         <description>&lt;h2 id=&#34;climbing-the-mountain&#34;&gt;Climbing the mountain&lt;/h2&gt;
 &lt;p&gt;I&amp;rsquo;ve always thought that we have to climb a &lt;strong&gt;Mountain&lt;/strong&gt;. Not just any mountain.&lt;/p&gt;
 &lt;p&gt;Each one of us must, day by day, climb and build our own mountain, no matter what anyone else thinks.&lt;/p&gt;
 &lt;h2 id=&#34;arachne&#34;&gt;Arachne&lt;/h2&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;lab1.png&#34; alt=&#34;Image&#34; width=&#34;300&#34;&gt;&lt;/div&gt;
-&lt;div style=&#34;text-align: center;&#34;&gt;&lt;a href=&#34;https:/aleph8.github.io/en/p/2022/arachne&#34;&gt; Clic here in order to &#34;Arachne&#34;! &lt;/a&gt;&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;a href=&#34;https://aleph8.github.io/en/p/2022/arachne&#34;&gt; Clic here in order to &#34;Arachne&#34;! &lt;/a&gt;&lt;/div&gt;
 &lt;h2 id=&#34;eos&#34;&gt;EOS&lt;/h2&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;lab2.png&#34; alt=&#34;Image&#34; width=&#34;300&#34;&gt;&lt;/div&gt;
-&lt;div style=&#34;text-align: center;&#34;&gt;&lt;a href=&#34;https:/aleph8.github.io/en/p/2022/eos&#34;&gt; Clic here in order to &#34;EOS&#34;! &lt;/a&gt;&lt;/div&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;&lt;a href=&#34;https://aleph8.github.io/en/p/2022/eos&#34;&gt; Clic here in order to &#34;EOS&#34;! &lt;/a&gt;&lt;/div&gt;
 </description>
         </item>
         <item>
         <title>Search</title>
-        <link>https:/aleph8.github.io/en/search/</link>
+        <link>https://aleph8.github.io/en/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/en/search/</guid>
+        <guid>https://aleph8.github.io/en/search/</guid>
         <description></description>
         </item>
         

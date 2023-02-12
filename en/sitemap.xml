@@ -2,572 +2,572 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https:/aleph8.github.io/en/</loc>
+    <loc>https://aleph8.github.io/en/</loc>
     <lastmod>2023-02-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/"
+                href="https://aleph8.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/"
+                href="https://aleph8.github.io/en/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/categories/</loc>
+    <loc>https://aleph8.github.io/en/categories/</loc>
     <lastmod>2023-02-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/categories/"
+                href="https://aleph8.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/categories/"
+                href="https://aleph8.github.io/en/categories/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/categories/data-science/</loc>
+    <loc>https://aleph8.github.io/en/categories/data-science/</loc>
     <lastmod>2023-02-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https:/aleph8.github.io/en/post/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https:/aleph8.github.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https:/aleph8.github.io/en/post/"
-                />
-  </url><url>
-    <loc>https:/aleph8.github.io/en/tags/</loc>
+    <loc>https://aleph8.github.io/en/post/</loc>
     <lastmod>2023-02-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/tags/"
+                href="https://aleph8.github.io/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/tags/"
+                href="https://aleph8.github.io/en/post/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2023/text-mining/</loc>
+    <loc>https://aleph8.github.io/en/tags/</loc>
     <lastmod>2023-02-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2023/text-mining/"
+                href="https://aleph8.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2023/text-mining/"
+                href="https://aleph8.github.io/en/tags/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/tags/text-mining/</loc>
+    <loc>https://aleph8.github.io/en/p/2023/text-mining/</loc>
     <lastmod>2023-02-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/tags/text-mining/"
+                href="https://aleph8.github.io/p/2023/text-mining/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/tags/text-mining/"
+                href="https://aleph8.github.io/en/p/2023/text-mining/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/categories/cybersecurity/</loc>
+    <loc>https://aleph8.github.io/en/tags/text-mining/</loc>
+    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://aleph8.github.io/tags/text-mining/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://aleph8.github.io/en/tags/text-mining/"
+                />
+  </url><url>
+    <loc>https://aleph8.github.io/en/categories/cybersecurity/</loc>
     <lastmod>2023-02-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https:/aleph8.github.io/en/tags/pentesting-web/</loc>
-    <lastmod>2023-02-06T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https:/aleph8.github.io/tags/pentesting-web/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https:/aleph8.github.io/en/tags/pentesting-web/"
-                />
-  </url><url>
-    <loc>https:/aleph8.github.io/en/p/2023/rce/</loc>
+    <loc>https://aleph8.github.io/en/tags/pentesting-web/</loc>
     <lastmod>2023-02-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2023/rce/"
+                href="https://aleph8.github.io/tags/pentesting-web/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2023/rce/"
+                href="https://aleph8.github.io/en/tags/pentesting-web/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2023/r-and-rstudio/</loc>
+    <loc>https://aleph8.github.io/en/p/2023/rce/</loc>
+    <lastmod>2023-02-06T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://aleph8.github.io/p/2023/rce/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://aleph8.github.io/en/p/2023/rce/"
+                />
+  </url><url>
+    <loc>https://aleph8.github.io/en/p/2023/r-and-rstudio/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2023/r-y-rstudio/"
+                href="https://aleph8.github.io/p/2023/r-y-rstudio/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2023/r-and-rstudio/"
+                href="https://aleph8.github.io/en/p/2023/r-and-rstudio/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/categories/the-path-of-programming/</loc>
+    <loc>https://aleph8.github.io/en/categories/the-path-of-programming/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2023/lfi/</loc>
+    <loc>https://aleph8.github.io/en/p/2023/lfi/</loc>
     <lastmod>2023-01-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2023/lfi/"
+                href="https://aleph8.github.io/p/2023/lfi/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2023/lfi/"
+                href="https://aleph8.github.io/en/p/2023/lfi/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/creating-strong-passwords/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/creating-strong-passwords/</loc>
     <lastmod>2022-12-17T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/"
+                href="https://aleph8.github.io/p/2022/creaci%C3%B3n-de-contrase%C3%B1as-robustas/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/creating-strong-passwords/"
+                href="https://aleph8.github.io/en/p/2022/creating-strong-passwords/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/tags/cryptography/</loc>
+    <loc>https://aleph8.github.io/en/tags/cryptography/</loc>
     <lastmod>2022-12-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/digital-key/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/digital-key/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/digital-key/"
+                href="https://aleph8.github.io/p/2022/digital-key/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/digital-key/"
+                href="https://aleph8.github.io/en/p/2022/digital-key/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/tags/hacking-tools/</loc>
+    <loc>https://aleph8.github.io/en/tags/hacking-tools/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/tags/hacking-tools/"
+                href="https://aleph8.github.io/tags/hacking-tools/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/tags/hacking-tools/"
+                href="https://aleph8.github.io/en/tags/hacking-tools/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/categories/electronics/</loc>
+    <loc>https://aleph8.github.io/en/categories/electronics/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/tipos-de-memorias-en-microcontroladores/"
+                href="https://aleph8.github.io/p/2022/tipos-de-memorias-en-microcontroladores/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/"
+                href="https://aleph8.github.io/en/p/2022/types-of-memory-in-microcontrollers/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/bad-usb/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/bad-usb/</loc>
     <lastmod>2022-11-03T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/bad-usb/"
+                href="https://aleph8.github.io/p/2022/bad-usb/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/bad-usb/"
+                href="https://aleph8.github.io/en/p/2022/bad-usb/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/universal-caesar-encryption/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/universal-caesar-encryption/</loc>
     <lastmod>2022-11-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/cifrado-c%C3%A9sar-universal/"
+                href="https://aleph8.github.io/p/2022/cifrado-c%C3%A9sar-universal/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/universal-caesar-encryption/"
+                href="https://aleph8.github.io/en/p/2022/universal-caesar-encryption/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/digging-into-cryptography/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/digging-into-cryptography/</loc>
     <lastmod>2022-11-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/indagando-en-la-criptograf%C3%ADa/"
+                href="https://aleph8.github.io/p/2022/indagando-en-la-criptograf%C3%ADa/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/digging-into-cryptography/"
+                href="https://aleph8.github.io/en/p/2022/digging-into-cryptography/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/categories/software/</loc>
+    <loc>https://aleph8.github.io/en/categories/software/</loc>
     <lastmod>2022-10-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/categories/software/"
+                href="https://aleph8.github.io/categories/software/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/categories/software/"
+                href="https://aleph8.github.io/en/categories/software/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/stable-diffusion-bot/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/stable-diffusion-bot/</loc>
     <lastmod>2022-10-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/stable-diffusion-bot/"
+                href="https://aleph8.github.io/p/2022/stable-diffusion-bot/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/stable-diffusion-bot/"
+                href="https://aleph8.github.io/en/p/2022/stable-diffusion-bot/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/arachne/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/arachne/</loc>
     <lastmod>2022-07-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/arachne/"
+                href="https://aleph8.github.io/p/2022/arachne/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/arachne/"
+                href="https://aleph8.github.io/en/p/2022/arachne/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/categories/laboratory/</loc>
+    <loc>https://aleph8.github.io/en/categories/laboratory/</loc>
     <lastmod>2022-07-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https:/aleph8.github.io/en/categories/servers/</loc>
+    <loc>https://aleph8.github.io/en/categories/servers/</loc>
     <lastmod>2022-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/vmware-esxi/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/vmware-esxi/</loc>
     <lastmod>2022-05-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/vmware-esxi/"
+                href="https://aleph8.github.io/p/2022/vmware-esxi/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/vmware-esxi/"
+                href="https://aleph8.github.io/en/p/2022/vmware-esxi/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/raid-storage/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/raid-storage/</loc>
     <lastmod>2022-05-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/almacenamiento-raid/"
+                href="https://aleph8.github.io/p/2022/almacenamiento-raid/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/raid-storage/"
+                href="https://aleph8.github.io/en/p/2022/raid-storage/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/echo-a-virtual-assistant/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/echo-a-virtual-assistant/</loc>
     <lastmod>2022-05-17T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/echo-un-asistente-virtual/"
+                href="https://aleph8.github.io/p/2022/echo-un-asistente-virtual/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/echo-a-virtual-assistant/"
+                href="https://aleph8.github.io/en/p/2022/echo-a-virtual-assistant/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/</loc>
     <lastmod>2022-05-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/como-personaliza-una-distro-linux/"
+                href="https://aleph8.github.io/p/2022/como-personaliza-una-distro-linux/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/"
+                href="https://aleph8.github.io/en/p/2022/how-to-customize-a-linux-distro/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/what-is-a-server/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/what-is-a-server/</loc>
     <lastmod>2022-05-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/qu%C3%A9-es-un-servidor/"
+                href="https://aleph8.github.io/p/2022/qu%C3%A9-es-un-servidor/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/what-is-a-server/"
+                href="https://aleph8.github.io/en/p/2022/what-is-a-server/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/eos/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/eos/</loc>
     <lastmod>2022-04-05T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/eos/"
+                href="https://aleph8.github.io/p/2022/eos/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/eos/"
+                href="https://aleph8.github.io/en/p/2022/eos/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/categories/3d-printing/</loc>
+    <loc>https://aleph8.github.io/en/categories/3d-printing/</loc>
     <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/artillery-genius/</loc>
-    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https:/aleph8.github.io/p/2022/artillery-genius/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/artillery-genius/"
-                />
-  </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/the-labyrinth-problem/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/artillery-genius/</loc>
     <lastmod>2022-02-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/el-problema-del-laberinto/"
+                href="https://aleph8.github.io/p/2022/artillery-genius/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/the-labyrinth-problem/"
+                href="https://aleph8.github.io/en/p/2022/artillery-genius/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</loc>
+    <loc>https://aleph8.github.io/en/p/2022/the-labyrinth-problem/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://aleph8.github.io/p/2022/el-problema-del-laberinto/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://aleph8.github.io/en/p/2022/the-labyrinth-problem/"
+                />
+  </url><url>
+    <loc>https://aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/</loc>
     <lastmod>2022-01-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2022/ender-3-pro-extrusi%C3%B3n-directa/"
+                href="https://aleph8.github.io/p/2022/ender-3-pro-extrusi%C3%B3n-directa/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/"
+                href="https://aleph8.github.io/en/p/2022/ender-3-pro-direct-extrusion/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</loc>
+    <loc>https://aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/</loc>
     <lastmod>2021-12-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2021/algoritmo-eficiente-para-el-c%C3%A1lculo-de-n%C3%BAmeros-primos/"
+                href="https://aleph8.github.io/p/2021/algoritmo-eficiente-para-el-c%C3%A1lculo-de-n%C3%BAmeros-primos/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/"
+                href="https://aleph8.github.io/en/p/2021/efficient-algorithm-for-the-calculation-of-prime-numbers/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2021/keylogger-in-c/</loc>
+    <loc>https://aleph8.github.io/en/p/2021/keylogger-in-c/</loc>
     <lastmod>2021-11-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2021/keylogger-en-c/"
+                href="https://aleph8.github.io/p/2021/keylogger-en-c/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2021/keylogger-in-c/"
+                href="https://aleph8.github.io/en/p/2021/keylogger-in-c/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2021/</loc>
+    <loc>https://aleph8.github.io/en/p/2021/</loc>
     <lastmod>2021-09-22T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2021/the-last-unmasked-android-game/"
+                href="https://aleph8.github.io/p/2021/the-last-unmasked-android-game/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2021/"
+                href="https://aleph8.github.io/en/p/2021/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</loc>
+    <loc>https://aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/</loc>
     <lastmod>2021-09-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2021/dise%C3%B1o-e-impresi%C3%B3n-de-mi-funko/"
+                href="https://aleph8.github.io/p/2021/dise%C3%B1o-e-impresi%C3%B3n-de-mi-funko/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/"
+                href="https://aleph8.github.io/en/p/2021/design-and-printing-of-my-funko/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2021/sentinel-robot/</loc>
+    <loc>https://aleph8.github.io/en/p/2021/sentinel-robot/</loc>
     <lastmod>2021-08-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2021/robot-centinela/"
+                href="https://aleph8.github.io/p/2021/robot-centinela/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2021/sentinel-robot/"
+                href="https://aleph8.github.io/en/p/2021/sentinel-robot/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2021/venom-post-pla-processing/</loc>
+    <loc>https://aleph8.github.io/en/p/2021/venom-post-pla-processing/</loc>
     <lastmod>2021-07-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2021/venom-post-procesado-pla/"
+                href="https://aleph8.github.io/p/2021/venom-post-procesado-pla/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2021/venom-post-pla-processing/"
+                href="https://aleph8.github.io/en/p/2021/venom-post-pla-processing/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2021/solution-to-under-extrusion/</loc>
+    <loc>https://aleph8.github.io/en/p/2021/solution-to-under-extrusion/</loc>
     <lastmod>2021-06-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2021/soluci%C3%B3n-al-under-extrusion/"
+                href="https://aleph8.github.io/p/2021/soluci%C3%B3n-al-under-extrusion/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2021/solution-to-under-extrusion/"
+                href="https://aleph8.github.io/en/p/2021/solution-to-under-extrusion/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</loc>
+    <loc>https://aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/</loc>
     <lastmod>2021-06-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/p/2021/mis-inicios-en-la-impresi%C3%B3n-3d/"
+                href="https://aleph8.github.io/p/2021/mis-inicios-en-la-impresi%C3%B3n-3d/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/"
+                href="https://aleph8.github.io/en/p/2021/my-beginnings-in-3d-printing/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/about-me/</loc>
+    <loc>https://aleph8.github.io/en/about-me/</loc>
     <lastmod>2023-02-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/sobre-m%C3%AD/"
+                href="https://aleph8.github.io/sobre-m%C3%AD/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/about-me/"
+                href="https://aleph8.github.io/en/about-me/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/page/</loc>
+    <loc>https://aleph8.github.io/en/page/</loc>
     <lastmod>2023-02-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/page/"
+                href="https://aleph8.github.io/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/page/"
+                href="https://aleph8.github.io/en/page/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/archives/</loc>
+    <loc>https://aleph8.github.io/en/archives/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/archives/"
+                href="https://aleph8.github.io/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/archives/"
+                href="https://aleph8.github.io/en/archives/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/lab/</loc>
+    <loc>https://aleph8.github.io/en/lab/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/lab/"
+                href="https://aleph8.github.io/lab/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/lab/"
+                href="https://aleph8.github.io/en/lab/"
                 />
   </url><url>
-    <loc>https:/aleph8.github.io/en/search/</loc>
+    <loc>https://aleph8.github.io/en/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https:/aleph8.github.io/search/"
+                href="https://aleph8.github.io/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https:/aleph8.github.io/en/search/"
+                href="https://aleph8.github.io/en/search/"
                 />
   </url>
 </urlset>

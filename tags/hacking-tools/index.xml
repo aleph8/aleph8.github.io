@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>hacking-tools on Alejandro García Peláez</title>
-        <link>https:/aleph8.github.io/tags/hacking-tools/</link>
+        <link>https://aleph8.github.io/tags/hacking-tools/</link>
         <description>Recent content in hacking-tools on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 20 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/tags/hacking-tools/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 20 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/tags/hacking-tools/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Digital Key</title>
-        <link>https:/aleph8.github.io/p/2022/digital-key/</link>
+        <link>https://aleph8.github.io/p/2022/digital-key/</link>
         <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2022/digital-key/</guid>
+        <guid>https://aleph8.github.io/p/2022/digital-key/</guid>
         <description>&lt;p&gt;Cuando tienes muchas contraseñas complejas, a veces es complicado recordarlas todas; los navegadores actuales nos suelen ofrecer contraseñas seguras generadas automáticamente, y se almacenan en el propio navegador, como un &amp;ldquo;llavero virtual&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Como hemos podido ver en &lt;a class=&#34;link&#34; href=&#34;https:/aleph8.github.io/p/2022/bad-usb&#34; &gt;la parte del Bad Usb&lt;/a&gt; con un simple dispositivo que se asemeja a un USB, podemos simular un teclado, pero no todo es malo; se me ocurrió usar su funcionamiento y el de dispositivos similares para crear un &amp;ldquo;llavero virtual&amp;rdquo; portable o &amp;ldquo;Digital Key&amp;rdquo; usando las funciones HID de los microprocesadores que encontramos ya integrados en diversas placas de desarrollo.&lt;/p&gt;
+&lt;p&gt;Como hemos podido ver en &lt;a class=&#34;link&#34; href=&#34;https://aleph8.github.io/p/2022/bad-usb&#34; &gt;la parte del Bad Usb&lt;/a&gt; con un simple dispositivo que se asemeja a un USB, podemos simular un teclado, pero no todo es malo; se me ocurrió usar su funcionamiento y el de dispositivos similares para crear un &amp;ldquo;llavero virtual&amp;rdquo; portable o &amp;ldquo;Digital Key&amp;rdquo; usando las funciones HID de los microprocesadores que encontramos ya integrados en diversas placas de desarrollo.&lt;/p&gt;
 &lt;p&gt;La idea consiste, en tener un dispositivo que sea, por un lado, capaz de generar contraseñas seguras y almacenarlas en nuestra memoria EEPROM (tipos de memorias en microcontroladores) y, por otro lado, que sea capaz de volcarlas en tiempo de ejecución, escribiéndolas como si fuese un teclado.&lt;/p&gt;
 &lt;p&gt;Para esto, lo único que ha hecho falta, ha sido emplear la placa de desarrollo &amp;ldquo;Digispark&amp;rdquo; que cuenta con una interfaz USB 2.0 integrada, además de su reducido tamaño y precio. Para añadirle un factor de autenticación, para que en el caso de perder el dispositivo no se escriba directamente la contraseña, he utilizado una codificación del binario similar a la del código morse.&lt;/p&gt;
 &lt;p&gt;El dispositivo final, cuenta, por tanto, con la placa de desarrollo y un botón. Al conectar el dispositivo, este no hace nada, exclusivamente, escribe que está conectado. Una vez se muestre esto, el usuario debe pulsar adecuadamente la combinación en binario; en el caso de éxito, se escribirá la contraseña almacenada o se creará en el caso de que no haya ninguna almacenada. En el caso de error, no sucederá nada. El dispositivo cuenta con dos funcionalidades más, dependiendo el tiempo de pulsación: modo de generación de contraseña pero sin almacenarla y modo de reset para &amp;ldquo;eliminar&amp;rdquo; la contraseña almacenada en EEPROM:&lt;/p&gt;
@@ -201,10 +201,10 @@
         </item>
         <item>
         <title>Bad Usb</title>
-        <link>https:/aleph8.github.io/p/2022/bad-usb/</link>
+        <link>https://aleph8.github.io/p/2022/bad-usb/</link>
         <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2022/bad-usb/</guid>
+        <guid>https://aleph8.github.io/p/2022/bad-usb/</guid>
         <description>&lt;p&gt;Cuando vemos este objeto, podemos pensar de primeras que es una memoria USB, sin nada particular; incluso puede darse la situación de que lo conectes en tu ordenador creyendo que lo es, y que no le va a pasar nada.&lt;/p&gt;
 &lt;p&gt;El problema surge, cuando vemos su interior, con lo que nos daremos cuenta, que no es ni mucho menos algo normal:&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;bad1.jpg&#34; alt=&#34;Image&#34; width=&#34;400&#34;&gt;&lt;/div&gt; 
@@ -242,10 +242,10 @@
         </item>
         <item>
         <title>Keylogger en C</title>
-        <link>https:/aleph8.github.io/p/2021/keylogger-en-c/</link>
+        <link>https://aleph8.github.io/p/2021/keylogger-en-c/</link>
         <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2021/keylogger-en-c/</guid>
+        <guid>https://aleph8.github.io/p/2021/keylogger-en-c/</guid>
         <description>&lt;p&gt;Un spyware es un tipo de virus informático que tras infectar el ordenador de la víctima busca la manera de conseguir todo tipo de información de esta (desde capturas de pantalla hasta grabar audio o acceder a la cámara).&lt;/p&gt;
 &lt;p&gt;Un keylogger es un tipo de spyware que registra las pulsaciones del teclado de la víctima para obtener datos personales: contraseñas, datos bancarios, acceso a cuentas&amp;hellip;&lt;/p&gt;
 &lt;p&gt;Usando C he programado un keylogger; el funcionamiento de este es sencillo:&lt;/p&gt;

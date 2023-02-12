@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Servidores on Alejandro García Peláez</title>
-        <link>https:/aleph8.github.io/categories/servidores/</link>
+        <link>https://aleph8.github.io/categories/servidores/</link>
         <description>Recent content in Servidores on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 30 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https:/aleph8.github.io/categories/servidores/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 30 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aleph8.github.io/categories/servidores/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>VMware ESXi</title>
-        <link>https:/aleph8.github.io/p/2022/vmware-esxi/</link>
+        <link>https://aleph8.github.io/p/2022/vmware-esxi/</link>
         <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2022/vmware-esxi/</guid>
+        <guid>https://aleph8.github.io/p/2022/vmware-esxi/</guid>
         <description>&lt;p&gt;ESXi es un hypervisor bare-metal. Esto significa que el sistema operativo no se encuentra como intermediario entre la virtualización software y el hardware, ya que al ser bare-metal, ESXi es instalado directamente en el servidor.&lt;/p&gt;
 &lt;p&gt;Para obtener la imagen con la que bootear e instalarlo, debemos acceder a la página oficial de VMware. Una vez registrados, podemos descargar la última versión de ESXi para crear un dispositivo booteable.&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;&lt;img src=&#34;esxi1.png&#34; alt=&#34;Image&#34; width=&#34;700&#34;&gt;&lt;/div&gt; 
@@ -22,10 +22,10 @@
         </item>
         <item>
         <title>Almacenamiento RAID</title>
-        <link>https:/aleph8.github.io/p/2022/almacenamiento-raid/</link>
+        <link>https://aleph8.github.io/p/2022/almacenamiento-raid/</link>
         <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2022/almacenamiento-raid/</guid>
+        <guid>https://aleph8.github.io/p/2022/almacenamiento-raid/</guid>
         <description>&lt;p&gt;Redundant Array of Independant Disk (RAID) es un tipo de almacenamiento virtual de datos&lt;/p&gt;
 &lt;p&gt;Con varios discos físicos podemos crear un disco virtual con los siguientes propósitos: mejorar el rendimiento o redundancia de datos. Los datos se distribuyen de una forma u otra dependiendo el nivel RAID con el que el disco es configurado.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;RAID LEVELS (0-1-5)&lt;/strong&gt;&lt;/p&gt;
@@ -45,10 +45,10 @@
         </item>
         <item>
         <title>Como Personaliza una Distro Linux</title>
-        <link>https:/aleph8.github.io/p/2022/como-personaliza-una-distro-linux/</link>
+        <link>https://aleph8.github.io/p/2022/como-personaliza-una-distro-linux/</link>
         <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2022/como-personaliza-una-distro-linux/</guid>
+        <guid>https://aleph8.github.io/p/2022/como-personaliza-una-distro-linux/</guid>
         <description>&lt;p&gt;Desde que trabajo con distintos sistemas operativos, he decidido &amp;ldquo;crear&amp;rdquo; mi propio distribución GNU/Linux para tener todas las utilidades que usualmente uso a mano, y tener una imagen (*iso) para instalarla en el server y crear distintas versiones del SO según mis necesidades.&lt;/p&gt;
 &lt;p&gt;Es un proceso muy sencillo para el que he empleado la herramienta &amp;ldquo;systemback&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Antes de nada debes crear una máquina virtual donde instales el sistema operativo base y lo dejes como quieras. En mi caso he utilizado la última imagen estable de Lubuntu.&lt;/p&gt;
@@ -59,10 +59,10 @@
         </item>
         <item>
         <title>¿Qué es un servidor?</title>
-        <link>https:/aleph8.github.io/p/2022/qu%C3%A9-es-un-servidor/</link>
+        <link>https://aleph8.github.io/p/2022/qu%C3%A9-es-un-servidor/</link>
         <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>https:/aleph8.github.io/p/2022/qu%C3%A9-es-un-servidor/</guid>
+        <guid>https://aleph8.github.io/p/2022/qu%C3%A9-es-un-servidor/</guid>
         <description>&lt;p&gt;Un servidor es un ordenador ( o conjunto de ellos) que sigue el modelo &amp;ldquo;cliente-servidor&amp;rdquo;, manejando peticiones del cliente y devolviendo una respuesta acorde.&lt;/p&gt;
 &lt;p&gt;Cualquier persona puede configurar un ordenador como servidor, pero dependiendo del servicio que vayamos a ofrecer, se necesitarán más o menos recursos hardware. Por ejemplo, podemos utilizar un ordenador antiguo junto con unos cuantos discos duros para tener nuestro propio NAS (Network Attached Storage); sin embargo, si queremos un servidor que ofrezca máquinas virtuales, necesitaremos más recursos.&lt;/p&gt;
 &lt;p&gt;Es por esto, que podemos distinguir entre distintos formatos de servidor:&lt;/p&gt;
