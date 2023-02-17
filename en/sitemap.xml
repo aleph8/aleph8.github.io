@@ -558,6 +558,18 @@
                 href="https://alejandrogp.com/en/lab/"
                 />
   </url><url>
+    <loc>https://alejandrogp.com/en/newsletter/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://alejandrogp.com/newsletter/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://alejandrogp.com/en/newsletter/"
+                />
+  </url><url>
     <loc>https://alejandrogp.com/en/search/</loc>
     <xhtml:link
                 rel="alternate"
