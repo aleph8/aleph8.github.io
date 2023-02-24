@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://alejandrogp.com/en/</loc>
-    <lastmod>2023-02-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://alejandrogp.com/en/categories/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -28,11 +28,24 @@
                 href="https://alejandrogp.com/en/categories/"
                 />
   </url><url>
-    <loc>https://alejandrogp.com/en/categories/data-science/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
+    <loc>https://alejandrogp.com/en/categories/cybersecurity/</loc>
+    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://alejandrogp.com/en/p/2023/packet-sniffing-concept/</loc>
+    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://alejandrogp.com/p/2023/packet-sniffing-concepto/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://alejandrogp.com/en/p/2023/packet-sniffing-concept/"
+                />
   </url><url>
     <loc>https://alejandrogp.com/en/post/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -43,6 +56,9 @@
                 hreflang="en"
                 href="https://alejandrogp.com/en/post/"
                 />
+  </url><url>
+    <loc>https://alejandrogp.com/en/categories/data-science/</loc>
+    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://alejandrogp.com/en/tags/</loc>
     <lastmod>2023-02-08T00:00:00+00:00</lastmod>
@@ -82,9 +98,6 @@
                 hreflang="en"
                 href="https://alejandrogp.com/en/tags/text-mining/"
                 />
-  </url><url>
-    <loc>https://alejandrogp.com/en/categories/cybersecurity/</loc>
-    <lastmod>2023-02-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://alejandrogp.com/en/tags/pentesting-web/</loc>
     <lastmod>2023-02-06T00:00:00+00:00</lastmod>

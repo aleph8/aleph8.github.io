@@ -6,7 +6,30 @@
         <description>Recent content on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 24 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Packet Sniffing (Concepto)</title>
+        <link>https://alejandrogp.com/p/2023/packet-sniffing-concepto/</link>
+        <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://alejandrogp.com/p/2023/packet-sniffing-concepto/</guid>
+        <description>&lt;img src="https://alejandrogp.com/p/2023/packet-sniffing-concepto/landing.png" alt="Featured image of post Packet Sniffing (Concepto)" /&gt;&lt;p&gt;Un ataque &amp;lsquo;sniffing&amp;rsquo; se realiza mediante la captura de paquetes en el tráfico de una red, pudiendo acceder a su contenido y recolectar datos, incluso ver credenciales en texto claro debido a una conexión no segura.&lt;/p&gt;
+&lt;p&gt;Pero ¿cómo puede pasar esto? Realmente esta técnica se usa para el análisis de redes, posibles problemas que  puedan ocasionarse, y están dirigidos a ciertos equipos. Por defecto nuestra tarjeta de red o NIC suele tener  esta función deshabilitada por un modo que se conoce como &amp;ldquo;promiscuous mode&amp;rdquo;; activando este modo, habilitamos la NIC para recibir todo el tráfico, lo que puede ser usado para automatizar el análisis de la red, o para acciones menos éticas.&lt;/p&gt;
+&lt;p&gt;Ya no solo esto, sino que en el caso de que un atacante esté buscando cierta información, este puede filtrar todos los paquetes para encontrarla, pudiendo dejar un proceso continuo que permanentemente esté escaneando la red objetivo.&lt;/p&gt;
+&lt;p&gt;Además del robo de credenciales, puede derivar en una serie de ataques, por ejemplo:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Password Sniffing&lt;/strong&gt;: lo que hemos tratado anteriormente. Suele pasar en redes públicas con una seguridad débil.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DNS poisoning&lt;/strong&gt;: consiste en redirigir el tráfico a sitios falsos (phising).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Session Hijacking&lt;/strong&gt;: el uso de la información registrada puede ser usada para &amp;lsquo;suplantar&amp;rsquo; la identidad en cierta plataforma y poder iniciar sesión sin el uso de credenciales.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Text Mining</title>
         <link>https://alejandrogp.com/p/2023/text-mining/</link>
         <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>

@@ -6,7 +6,30 @@
         <description>Recent content on Alejandro García Peláez</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/en/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 24 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/en/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Packet Sniffing (Concept)</title>
+        <link>https://alejandrogp.com/en/p/2023/packet-sniffing-concept/</link>
+        <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://alejandrogp.com/en/p/2023/packet-sniffing-concept/</guid>
+        <description>&lt;img src="https://alejandrogp.com/en/p/2023/packet-sniffing-concept/landing.png" alt="Featured image of post Packet Sniffing (Concept)" /&gt;&lt;p&gt;A sniffing attack is performed by capturing packets in the traffic of a network, being able to access its content and collect data, including viewing credentials in clear text due to an unsecured connection.&lt;/p&gt;
+&lt;p&gt;But how can this happen? Actually this technique is used for network analysis, possible problems that may occur, and is targeted at certain equipment. By default our network card or NIC usually has this function disabled by a mode known as &amp;ldquo;promiscuous mode&amp;rdquo;; by activating this mode, we enable the NIC to receive all traffic, which can be used to automate network analysis, or for less ethical actions.&lt;/p&gt;
+&lt;p&gt;Not only this, but in case an attacker is looking for certain information, he can filter all the packets to find it, leaving a continuous process that is permanently scanning the target network.&lt;/p&gt;
+&lt;p&gt;In addition to credential theft, it can lead to a number of attacks, for example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Password Sniffing&lt;/strong&gt;: what we have discussed above. It usually happens in public networks with weak security.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DNS poisoning&lt;/strong&gt;: consists of redirecting traffic to fake sites (phishing).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Session Hijacking&lt;/strong&gt;: the use of the recorded information can be used to &amp;lsquo;spoof&amp;rsquo; the identity in  platform and be able to log in without the use of credentials.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Text Mining</title>
         <link>https://alejandrogp.com/en/p/2023/text-mining/</link>
         <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
