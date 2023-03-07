@@ -44,6 +44,19 @@
     <loc>https://alejandrogp.com/categories/ciencia-de-datos/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://alejandrogp.com/p/2023/data-mining-sistema-recomendador-de-m%C3%BAsica-en-r/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://alejandrogp.com/en/p/2023/data-mining-music-recommender-system-in-r/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://alejandrogp.com/p/2023/data-mining-sistema-recomendador-de-m%C3%BAsica-en-r/"
+                />
+  </url><url>
     <loc>https://alejandrogp.com/tags/data-mining/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -68,19 +81,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://alejandrogp.com/post/"
-                />
-  </url><url>
-    <loc>https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r-data-mining/</loc>
-    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://alejandrogp.com/en/p/2023/music-recommender-system-in-r-data-mining/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r-data-mining/"
                 />
   </url><url>
     <loc>https://alejandrogp.com/tags/</loc>
