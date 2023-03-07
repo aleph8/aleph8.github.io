@@ -108,7 +108,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Once we have the rules, we only have to filter the left part or &lt;strong&gt;lhs&lt;/strong&gt; and find the ones that have the artist in question, returning to the user the right part or &lt;strong&gt;rhs&lt;/strong&gt;. To do this I deploy a web platform that I have programmed so that the user can select the artist, receiving the recommendations.&lt;/p&gt;
 &lt;div style=&#34;text-align: center;&#34;&gt;
-  &lt;img src=&#34;sirec1.png&#34; alt=&#34;Image&#34;&gt;
+  &lt;img src=&#34;sirec2.png&#34; alt=&#34;Image&#34;&gt;
 &lt;/div&gt;</description>
         </item>
         
