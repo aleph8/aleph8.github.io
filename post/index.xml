@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Sistema Recomendador de Música en R</title>
-        <link>https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r/</link>
+        <title>Sistema Recomendador de Música en R (data mining)</title>
+        <link>https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r-data-mining/</link>
         <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r/</guid>
-        <description>&lt;img src="https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r/landing.png" alt="Featured image of post Sistema Recomendador de Música en R" /&gt;&lt;p&gt;Es increíble poder extraer conclusiones de cantidades ingentes de datos, y es que debido a estas conclusiones a día de hoy nuestra información vale millones.&lt;/p&gt;
+        <guid>https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r-data-mining/</guid>
+        <description>&lt;img src="https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r-data-mining/landing.png" alt="Featured image of post Sistema Recomendador de Música en R (data mining)" /&gt;&lt;p&gt;Es increíble poder extraer conclusiones de cantidades ingentes de datos. Y es que debido a estas conclusiones, a día de hoy nuestra información vale millones.&lt;/p&gt;
 &lt;p&gt;En esta ocasión voy a trabajar con R para extraer reglas de asociación de un dataset con centenares de miles de transacciones. En este caso las transacciones son filas donde un usuario escucha a un artista determinado un número X de veces. Esta notación es usada en el &lt;strong&gt;market basket análisis&lt;/strong&gt; básicamente un estudio de tendencias y preferencias de mercado que trata de vender productos en base de los que un comprador ha adquirido.&lt;/p&gt;
 &lt;p&gt;Como he comentado antes, vamos a extraer reglas de asociación usando el algoritmo Apriori; con estas reglas podremos crear un sistema de recomendación de música en base a nuestro dataset, extraído de la plataforma &lt;a class=&#34;link&#34; href=&#34;https://www.last.fm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;lastfm&lt;/a&gt;.&lt;/p&gt;

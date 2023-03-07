@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='El &amp;lsquo;text mining&amp;rsquo; o minería de texto es el proceso mediante el cual se obtiene información de valor o interés a través del análisis de distintas fuentes textuales: blogs, libros, redes sociales &amp;hellip;
-Como podrás pensar esto tiene un gran potencial y permite obtener patrones y tendencias (gracias a diversos métodos estadísticos) que podemos aplicar a múltiples campos.
-En mi caso trabajaré con R (para más información consulta R y RStudio) y los diversos paquetes que ofrece para trabajar con la minería de texto y el análisis de datos en general; además de esto R me parece muy potente y versátil, con una gran comunidad de fondo.'>
-<title>Text Mining</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='It is incredible to be able to draw conclusions from huge amounts of data. It is because of these conclusions, that today our information is worth millions.
+This time I am going to work with R to extract association rules from a dataset with hundreds of thousands of transactions. In this case the transactions are rows where a user listens to a given artist X number of times. This notation is used in the **market basket analysis - ** is basically a study of market trends and preferences that tries to sell products based on what a buyer has purchased.'>
+<title>Music Recommender System in R (data mining)</title>
 
-<link rel='canonical' href='https://alejandrogp.com/p/2023/text-mining/'>
+<link rel='canonical' href='https://alejandrogp.com/en/p/2023/music-recommender-system-in-r-data-mining/'>
 
-<link rel="stylesheet" href="/scss/style.min.a9b1cf3c7d87f6a9f853ae9e839c0d380fe17cecfbf5752556dab1b27a3769bd.css"><meta property='og:title' content='Text Mining'>
-<meta property='og:description' content='El &amp;lsquo;text mining&amp;rsquo; o minería de texto es el proceso mediante el cual se obtiene información de valor o interés a través del análisis de distintas fuentes textuales: blogs, libros, redes sociales &amp;hellip;
-Como podrás pensar esto tiene un gran potencial y permite obtener patrones y tendencias (gracias a diversos métodos estadísticos) que podemos aplicar a múltiples campos.
-En mi caso trabajaré con R (para más información consulta R y RStudio) y los diversos paquetes que ofrece para trabajar con la minería de texto y el análisis de datos en general; además de esto R me parece muy potente y versátil, con una gran comunidad de fondo.'>
-<meta property='og:url' content='https://alejandrogp.com/p/2023/text-mining/'>
+<link rel="stylesheet" href="/scss/style.min.a9b1cf3c7d87f6a9f853ae9e839c0d380fe17cecfbf5752556dab1b27a3769bd.css"><meta property='og:title' content='Music Recommender System in R (data mining)'>
+<meta property='og:description' content='It is incredible to be able to draw conclusions from huge amounts of data. It is because of these conclusions, that today our information is worth millions.
+This time I am going to work with R to extract association rules from a dataset with hundreds of thousands of transactions. In this case the transactions are rows where a user listens to a given artist X number of times. This notation is used in the **market basket analysis - ** is basically a study of market trends and preferences that tries to sell products based on what a buyer has purchased.'>
+<meta property='og:url' content='https://alejandrogp.com/en/p/2023/music-recommender-system-in-r-data-mining/'>
 <meta property='og:site_name' content='Alejandro García Peláez'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='text-mining' /><meta property='article:published_time' content='2023-02-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-02-08T00:00:00&#43;00:00'/><meta property='og:image' content='https://alejandrogp.com/p/2023/text-mining/landing.svg' />
-<meta name="twitter:title" content="Text Mining">
-<meta name="twitter:description" content="El &amp;lsquo;text mining&amp;rsquo; o minería de texto es el proceso mediante el cual se obtiene información de valor o interés a través del análisis de distintas fuentes textuales: blogs, libros, redes sociales &amp;hellip;
-Como podrás pensar esto tiene un gran potencial y permite obtener patrones y tendencias (gracias a diversos métodos estadísticos) que podemos aplicar a múltiples campos.
-En mi caso trabajaré con R (para más información consulta R y RStudio) y los diversos paquetes que ofrece para trabajar con la minería de texto y el análisis de datos en general; además de esto R me parece muy potente y versátil, con una gran comunidad de fondo."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://alejandrogp.com/p/2023/text-mining/landing.svg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='data-mining' /><meta property='article:tag' content='association-rules' /><meta property='article:published_time' content='2023-03-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://alejandrogp.com/en/p/2023/music-recommender-system-in-r-data-mining/landing.png' />
+<meta name="twitter:title" content="Music Recommender System in R (data mining)">
+<meta name="twitter:description" content="It is incredible to be able to draw conclusions from huge amounts of data. It is because of these conclusions, that today our information is worth millions.
+This time I am going to work with R to extract association rules from a dataset with hundreds of thousands of transactions. In this case the transactions are rows where a user listens to a given artist X number of times. This notation is used in the **market basket analysis - ** is basically a study of market trends and preferences that tries to sell products based on what a buyer has purchased."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://alejandrogp.com/en/p/2023/music-recommender-system-in-r-data-mining/landing.png' />
     <link rel="shortcut icon" href="img/favicon.ico" />
 
     </head>
@@ -59,7 +56,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
         
             
             <figure class="site-avatar">
-                <a href="/">
+                <a href="/en/">
                 
                     
                     
@@ -78,7 +75,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Alejandro García Peláez</a></h1>
+            <h1 class="site-name"><a href="/en">Alejandro García Peláez</a></h1>
             <h2 class="site-description"></h2>
         </div>
     </header><ol class="social-menu">
@@ -149,7 +146,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
         
         
         <li >
-            <a href='/' >
+            <a href='/en/' >
                 
                 
                 
@@ -169,7 +166,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
         
         
         <li >
-            <a href='/lab/' >
+            <a href='/en/lab/' >
                 
                 
                 
@@ -180,13 +177,13 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
   <path d="M10 3v6l-4 11a0.7 .7 0 0 0 .5 1h11a0.7 .7 0 0 0 .5 -1l-4 -11v-6" />
 </svg>
                 
-                <span>Laboratorio</span>
+                <span>Laboratory</span>
             </a>
         </li>
         
         
         <li >
-            <a href='/sobre-m%C3%AD/' >
+            <a href='/en/about-me/' >
                 
                 
                 
@@ -199,13 +196,13 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
 
 
                 
-                <span>Sobre mí</span>
+                <span>About me</span>
             </a>
         </li>
         
         
         <li >
-            <a href='/newsletter/' >
+            <a href='/en/newsletter/' >
                 
                 
                 
@@ -223,7 +220,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
         
         
         <li >
-            <a href='/archives/' >
+            <a href='/en/archives/' >
                 
                 
                 
@@ -237,13 +234,13 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
 
 
                 
-                <span>Archivo</span>
+                <span>Archives</span>
             </a>
         </li>
         
         
         <li >
-            <a href='/search/' >
+            <a href='/en/search/' >
                 
                 
                 
@@ -256,7 +253,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
 
 
                 
-                <span>Búsqueda</span>
+                <span>Search</span>
             </a>
         </li>
         
@@ -276,9 +273,9 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="https://alejandrogp.com/" selected>Español</option>
+                            <option value="https://alejandrogp.com/" >Español</option>
                         
-                            <option value="https://alejandrogp.com/en/" >English</option>
+                            <option value="https://alejandrogp.com/en/" selected>English</option>
                         
                     </select>
                 </li>
@@ -302,7 +299,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
 
 
 
-                    <span>Modo oscuro</span>
+                    <span>Dark Mode</span>
                 </li>
             
         </div>
@@ -315,9 +312,13 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/2023/text-mining/">
-                
-                    <img src="/p/2023/text-mining/landing.svg" loading="lazy" alt="Featured image of post Text Mining" />
+            <a href="/en/p/2023/music-recommender-system-in-r-data-mining/">
+                <img src="/en/p/2023/music-recommender-system-in-r-data-mining/landing.png"
+                        
+                        width="1920" 
+                        height="1080" 
+                        loading="lazy"
+                        alt="Featured image of post Music Recommender System in R (data mining)" />
                 
             </a>
         </div>
@@ -327,8 +328,8 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
     
     <header class="article-category">
         
-            <a href="/categories/ciencia-de-datos/" >
-                Ciencia de Datos
+            <a href="/en/categories/data-science/" >
+                Data Science
             </a>
         
     </header>
@@ -336,7 +337,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/2023/text-mining/">Text Mining</a>
+            <a href="/en/p/2023/music-recommender-system-in-r-data-mining/">Music Recommender System in R (data mining)</a>
         </h2>
     
         
@@ -358,7 +359,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Feb 08, 2023</time>
+                <time class="article-time--published">Mar 07, 2023</time>
             </div>
         
 
@@ -373,7 +374,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
 
 
                 <time class="article-time--reading">
-                    2 minutos a leer
+                    2 minute read
                 </time>
             </div>
         
@@ -395,7 +396,7 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
 
             <div>
                 
-                    <a href="https://alejandrogp.com/en/p/2023/text-mining/" class="link">English</a>
+                    <a href="https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r-data-mining/" class="link">Español</a>
                 
             </div>
         </footer>
@@ -407,34 +408,74 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
     <section class="article-content">
     
     
-    <p>El &lsquo;<strong>text mining</strong>&rsquo; o minería de texto es el proceso mediante el cual se obtiene información de valor o interés a través del análisis de distintas fuentes textuales: blogs, libros, redes sociales &hellip;</p>
-<p>Como podrás pensar esto tiene un gran potencial y permite obtener patrones y tendencias (gracias a diversos métodos estadísticos) que podemos aplicar a múltiples campos.</p>
-<p>En mi caso trabajaré con R (para más información consulta <a class="link" href="/p/2023/r-y-rstudio" >R y RStudio</a>) y los diversos paquetes que ofrece para trabajar con la minería de texto y el análisis de datos en general; además de esto R me parece muy potente y versátil, con una gran comunidad de fondo.</p>
-<p>Para explicar más detalladamente el proceso partiré de un ejemplo con la creación de una &lsquo;<strong>wordcloud</strong>&rsquo; (representación visual de texto en &lsquo;forma de nube&rsquo;) con las palabras más frecuentes en uno de los libros de <a class="link" href="https://es.wikipedia.org/wiki/Friedrich_Nietzsche"  target="_blank" rel="noopener"
-    >Friedrich Nietzsche</a>.</p>
-<p>Principalmente partimos de un <strong>conjunto de datos desordenados</strong>. Esto es común cuando trabajamos con datos extraídos de artículos, libros o múltiples fuentes, ya que hay información que no es relevante para nuestro análisis y ni siquiera está ordenada.</p>
-<p>Para facilitar la compresión voy a definir los siguientes conceptos claves:</p>
+    <p>It is incredible to be able to draw conclusions from huge amounts of data. It is because of these conclusions, that today our information is worth millions.</p>
+<p>This time I am going to work with R to extract association rules from a dataset with hundreds of thousands of transactions. In this case the transactions are rows where a user listens to a given artist X number of times. This notation is used in the **market basket analysis - ** is basically a study of market trends and preferences that tries to sell products based on what a buyer has purchased.</p>
+<p>As I mentioned before, we are going to extract association rules using the Apriori algorithm; with these rules we will be able to create a music recommendation system based on our dataset, extracted from the <a class="link" href="https://www.last.fm"  target="_blank" rel="noopener"
+    >lastfm</a> platform.</p>
+<p>We start by importing the libraries we are going to work with and the dataset:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">arules</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">music_data</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">read_tsv</span><span class="p">(</span><span class="s">&#34;datasets/lastfm-dataset-360K/usersha1-artmbid-artname-plays.tsv&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As a small note: once the file is read it is a <strong>tibble</strong> (<a class="link" href="/en/p/2023/text-mining" >explained in my text-mining post</a>), as it gave me problems when working with the <strong>arules</strong> package when creating transactions.</p>
+<p>I rename the columns to better manage the data set:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">music_data</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;user&#34;</span><span class="p">,</span><span class="s">&#34;artist-id&#34;</span><span class="p">,</span><span class="s">&#34;artist&#34;</span><span class="p">,</span><span class="s">&#34;plays&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">music_data</span> <span class="o">&lt;-</span> <span class="nf">group_by</span><span class="p">(</span><span class="n">music_data</span><span class="p">,</span><span class="n">user</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">music_data</span> <span class="o">&lt;-</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">music_data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">UserId</span> <span class="o">=</span> <span class="nf">cur_group_id</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">music_data</span> <span class="o">&lt;-</span> <span class="nf">ungroup</span><span class="p">(</span><span class="n">music_data</span><span class="p">,</span><span class="n">user</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I also create a new column that serves as the user id instead of using the sha1 value of the dataset.</p>
+<p>Finally we generate the association rules with Apriori, for this:</p>
 <ul>
 <li>
-<p><strong>Token</strong>: parte fundamental de nuestro análisis. Es una unidad atómica que tiene gran valor de significado para nosotros; comúnmente es una palabra.</p>
+<p>We keep the data of interest, so we split the dataset to keep only the id of the user and the artists he/she listens to.</p>
 </li>
 <li>
-<p><strong>Tokenización</strong>: división del texto en Tokens.</p>
+<p>We filter to obtain the unique values, avoiding repetitions.</p>
 </li>
 <li>
-<p><strong>Tidy Text</strong>: principios generales para obtener mejores resultados del análisis de datos. Consta de una serie de principios fundamentales: cada variable es una columna, cada observación una fila y cada unidad de observación una tabla.</p>
+<p>We transform the data to the type &ldquo;transactions&rdquo;.</p>
 </li>
 <li>
-<p><strong>Tibble</strong>: data frame moderno en R que se adapta a nuestras necesidades al trabajar con el formato Tidy Text y que nos permite visualizar el data frame de forma eficiente.</p>
+<p>We generate the rules with certain values of <strong>confianza</strong> and <strong>support</strong>.</p>
+</li>
+<li>
+<p>We keep the best rules based on the <strong>lift</strong> parameter.</p>
 </li>
 </ul>
-<p>Lo primero que hay que hacer es convertir nuestro conjunto de datos desordenados al formato <strong>Tidy Text</strong>, posteriormente <strong>Tokenizarlo</strong> y eliminar información irrelevante. Una vez hecho esto, podemos agrupar las palabras según la frecuencia de estas en el texto y generar la &lsquo;<strong>wordcloud</strong>&rsquo;.</p>
-<p>Para finalizar muestro el resultado con la versión en inglés de <a class="link" href="https://es.wikipedia.org/wiki/M%C3%A1s_all%C3%A1_del_bien_y_del_mal"  target="_blank" rel="noopener"
-    >&lsquo;Más allá del bien y el mal&rsquo; de Friedrich Nietzsche</a>:</p>
-<div style="text-align: center;">
-  <img src="nwordcloud.png" alt="Image" width="600">
-</div>
-<p><strong>R Code</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -447,34 +488,23 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidytext</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">gutenbergr</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">music_by_user</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">music_data[</span><span class="p">,</span><span class="s">&#34;artist&#34;</span><span class="n">]</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="n">music_data</span><span class="o">$</span><span class="n">UserId</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">### Worldcloud of a Nietzsche book</span>
+</span></span><span class="line"><span class="cl"><span class="n">music_by_user</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">music_by_user</span><span class="p">,</span> <span class="n">unique</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">stwd</span> <span class="o">&lt;-</span> <span class="nf">bind_rows</span><span class="p">(</span><span class="nf">tibble</span><span class="p">(</span><span class="n">word</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;german&#34;</span><span class="p">,</span><span class="s">&#34;hitherto&#34;</span><span class="p">),</span><span class="n">lexicon</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;CUSTOM&#34;</span><span class="p">)),</span><span class="n">stop_words</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">Nbook</span> <span class="o">&lt;-</span> <span class="nf">gutenberg_download</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">4363</span><span class="p">))</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">unnest_tokens</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">anti_join</span><span class="p">(</span><span class="n">stwd</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">count</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="n">sort</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">transaction_music_by_user</span> <span class="o">&lt;-</span> <span class="nf">as</span><span class="p">(</span><span class="n">music_by_user</span><span class="p">,</span><span class="s">&#34;transactions&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">Nbook</span> <span class="o">%&gt;%</span>  
-</span></span><span class="line"><span class="cl">  <span class="nf">with</span><span class="p">(</span><span class="nf">wordcloud</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">max.words</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">.1</span><span class="p">),</span><span class="n">colors</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;red&#34;</span><span class="p">,</span><span class="s">&#34;black&#34;</span><span class="p">,</span><span class="s">&#34;blue&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="n">rules</span> <span class="o">&lt;-</span> <span class="nf">apriori</span><span class="p">(</span><span class="n">transaction_music_by_user</span><span class="p">,</span><span class="nf">list</span><span class="p">(</span><span class="n">support</span><span class="o">=</span><span class="m">.01</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="m">.5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">best_rules</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="nf">subset</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="n">lift</span> <span class="o">&gt;</span> <span class="m">1</span><span class="p">),</span><span class="n">by</span><span class="o">=</span><span class="s">&#34;confidence&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><p>Once we have the rules, we only have to filter the left part or <strong>lhs</strong> and find the ones that have the artist in question, returning to the user the right part or <strong>rhs</strong>. To do this I deploy a web platform that I have programmed so that the user can select the artist, receiving the recommendations.</p>
+<div style="text-align: center;">
+  <img src="sirec1.png" alt="Image">
 </div>
 </section>
 
@@ -483,7 +513,9 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
     
     <section class="article-tags">
         
-            <a href="/tags/text-mining/">text-mining</a>
+            <a href="/en/tags/data-mining/">data-mining</a>
+        
+            <a href="/en/tags/association-rules/">association-rules</a>
         
     </section>
 
@@ -511,29 +543,24 @@ En mi caso trabajaré con R (para más información consulta R y RStudio) y los 
     
 
 <aside class="related-content--wrapper">
-    <h2 class="section-title">Contenidos relacionados</h2>
+    <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
             
                 
 <article class="has-image">
-    <a href="/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r-data-mining/">
+    <a href="/en/p/2023/text-mining/">
         
         
             <div class="article-image">
-                <img src="/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r-data-mining/landing.b70e86072b746db3b10b0f0c7fdf4f28.png" 
-                        width="1920" 
-                        height="1080" 
-                        loading="lazy"
-                        alt="Featured image of post Sistema Recomendador de Música en R (data mining)"
-                        
-                        data-hash="md5-tw6GByt0bbOxCw8Mf99PKA==">
+                
+                    <img src="/en/p/2023/text-mining/landing.svg" loading="lazy" data-key="" data-hash="/en/p/2023/text-mining/landing.svg"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">Sistema Recomendador de Música en R (data mining)</h2>
+            <h2 class="article-title">Text Mining</h2>
         </div>
     </a>
 </article>

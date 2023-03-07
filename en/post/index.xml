@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://alejandrogp.com/en/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Music Recommender System in R</title>
-        <link>https://alejandrogp.com/en/p/2023/music-recommender-system-in-r/</link>
+        <title>Music Recommender System in R (data mining)</title>
+        <link>https://alejandrogp.com/en/p/2023/music-recommender-system-in-r-data-mining/</link>
         <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://alejandrogp.com/en/p/2023/music-recommender-system-in-r/</guid>
-        <description>&lt;img src="https://alejandrogp.com/en/p/2023/music-recommender-system-in-r/landing.png" alt="Featured image of post Music Recommender System in R" /&gt;&lt;p&gt;It is incredible to be able to draw conclusions from huge amounts of data, and it is because of these conclusions that today our information is worth millions.&lt;/p&gt;
+        <guid>https://alejandrogp.com/en/p/2023/music-recommender-system-in-r-data-mining/</guid>
+        <description>&lt;img src="https://alejandrogp.com/en/p/2023/music-recommender-system-in-r-data-mining/landing.png" alt="Featured image of post Music Recommender System in R (data mining)" /&gt;&lt;p&gt;It is incredible to be able to draw conclusions from huge amounts of data. It is because of these conclusions, that today our information is worth millions.&lt;/p&gt;
 &lt;p&gt;This time I am going to work with R to extract association rules from a dataset with hundreds of thousands of transactions. In this case the transactions are rows where a user listens to a given artist X number of times. This notation is used in the **market basket analysis - ** is basically a study of market trends and preferences that tries to sell products based on what a buyer has purchased.&lt;/p&gt;
 &lt;p&gt;As I mentioned before, we are going to extract association rules using the Apriori algorithm; with these rules we will be able to create a music recommendation system based on our dataset, extracted from the &lt;a class=&#34;link&#34; href=&#34;https://www.last.fm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;lastfm&lt;/a&gt; platform.&lt;/p&gt;
@@ -35,7 +35,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;music_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;as.data.frame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;read_tsv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;datasets/lastfm-dataset-360K/usersha1-artmbid-artname-plays.tsv&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;As a small note: once the file is read it is a &lt;strong&gt;tibble&lt;/strong&gt; (&lt;a class=&#34;link&#34; href=&#34;https://alejandrogp.com/p/2023/text-mining&#34; &gt;explained in my text-mining post&lt;/a&gt;), as it gave me problems when working with the &lt;strong&gt;arules&lt;/strong&gt; package when creating transactions.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;As a small note: once the file is read it is a &lt;strong&gt;tibble&lt;/strong&gt; (&lt;a class=&#34;link&#34; href=&#34;https://alejandrogp.com/en/p/2023/text-mining&#34; &gt;explained in my text-mining post&lt;/a&gt;), as it gave me problems when working with the &lt;strong&gt;arules&lt;/strong&gt; package when creating transactions.&lt;/p&gt;
 &lt;p&gt;I rename the columns to better manage the data set:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -61,7 +61,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;music_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;ungroup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;music_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;I also create a new column that serves as the user id instead of using the sha1 of the dataset.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;I also create a new column that serves as the user id instead of using the sha1 value of the dataset.&lt;/p&gt;
 &lt;p&gt;Finally we generate the association rules with Apriori, for this:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
