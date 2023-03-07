@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://alejandrogp.com/</loc>
-    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,8 +15,21 @@
                 href="https://alejandrogp.com/"
                 />
   </url><url>
+    <loc>https://alejandrogp.com/tags/association-rules/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://alejandrogp.com/en/tags/association-rules/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://alejandrogp.com/tags/association-rules/"
+                />
+  </url><url>
     <loc>https://alejandrogp.com/categories/</loc>
-    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -26,6 +39,61 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://alejandrogp.com/categories/"
+                />
+  </url><url>
+    <loc>https://alejandrogp.com/categories/ciencia-de-datos/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://alejandrogp.com/tags/data-mining/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://alejandrogp.com/en/tags/data-mining/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://alejandrogp.com/tags/data-mining/"
+                />
+  </url><url>
+    <loc>https://alejandrogp.com/post/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://alejandrogp.com/en/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://alejandrogp.com/post/"
+                />
+  </url><url>
+    <loc>https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://alejandrogp.com/en/p/2023/music-recommender-system-in-r/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://alejandrogp.com/p/2023/sistema-recomendador-de-m%C3%BAsica-en-r/"
+                />
+  </url><url>
+    <loc>https://alejandrogp.com/tags/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://alejandrogp.com/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://alejandrogp.com/tags/"
                 />
   </url><url>
     <loc>https://alejandrogp.com/categories/ciberseguridad/</loc>
@@ -42,35 +110,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://alejandrogp.com/p/2023/packet-sniffing-concepto/"
-                />
-  </url><url>
-    <loc>https://alejandrogp.com/post/</loc>
-    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://alejandrogp.com/en/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://alejandrogp.com/post/"
-                />
-  </url><url>
-    <loc>https://alejandrogp.com/categories/ciencia-de-datos/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alejandrogp.com/tags/</loc>
-    <lastmod>2023-02-08T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://alejandrogp.com/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://alejandrogp.com/tags/"
                 />
   </url><url>
     <loc>https://alejandrogp.com/p/2023/text-mining/</loc>
