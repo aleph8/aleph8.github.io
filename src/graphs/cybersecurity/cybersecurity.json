@@ -1,0 +1,131 @@
+{
+  "nodes": [
+    {
+      "id": "01022023",
+      "group": "Pentesting",
+      "title": " Precious Machine"
+    },
+    {
+      "id": "01032023",
+      "group": "Pentesting",
+      "title": " Squashed Machine"
+    },
+    {
+      "id": "02022023",
+      "group": "Pentesting",
+      "title": " Stocker Machine"
+    },
+    {
+      "id": "02032023",
+      "group": "Pentesting",
+      "title": " Inject Machine"
+    },
+    {
+      "id": "03022023",
+      "group": "Pentesting",
+      "title": " Soccer Machine"
+    },
+    {
+      "id": "03032023",
+      "group": "HackingTools",
+      "title": " Pentesting-Scripts"
+    },
+    {
+      "id": "06022023",
+      "group": "Concepts",
+      "title": " RCE"
+    },
+    {
+      "id": "10022023",
+      "group": "Pentesting",
+      "title": " MetaTwo Machine"
+    },
+    {
+      "id": "15022023",
+      "group": "Pentesting",
+      "title": " Investigation Machine"
+    },
+    {
+      "id": "16022023",
+      "group": "Pentesting",
+      "title": " Agile Machine"
+    },
+    {
+      "id": "20112022",
+      "group": "HackingTools",
+      "title": " Digital-Key"
+    },
+    {
+      "id": "29112021",
+      "group": "HackingTools",
+      "title": " C-Keylogger"
+    },
+    {
+      "id": "30012023",
+      "group": "Concepts",
+      "title": " LFI"
+    }
+  ],
+  "links": [
+    {
+      "source": "01032023",
+      "target": "15022023",
+      "value": 1
+    },
+    {
+      "source": "02022023",
+      "target": "01022023",
+      "value": 1
+    },
+    {
+      "source": "02032023",
+      "target": "01022023",
+      "value": 1
+    },
+    {
+      "source": "03022023",
+      "target": "01022023",
+      "value": 1
+    },
+    {
+      "source": "03032023",
+      "target": "01032023",
+      "value": 1
+    },
+    {
+      "source": "06022023",
+      "target": "29112021",
+      "value": 1
+    },
+    {
+      "source": "10022023",
+      "target": "01022023",
+      "value": 1
+    },
+    {
+      "source": "15022023",
+      "target": "01022023",
+      "value": 1
+    },
+    {
+      "source": "16022023",
+      "target": "01032023",
+      "value": 1
+    },
+    {
+      "source": "20112022",
+      "target": "01022023",
+      "value": 1
+    },
+    {
+      "source": "29112021",
+      "target": "20112022",
+      "value": 1
+    },
+    {
+      "source": "30012023",
+      "target": "29112021",
+      "value": 1
+    }
+  ]
+}
