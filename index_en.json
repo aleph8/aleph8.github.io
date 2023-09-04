@@ -1,0 +1,275 @@
+[
+  {
+    "title": " Dirac Formalism",
+    "id": "17082023",
+    "specialty": "quantum",
+    "permalink": "/graphs/quantum/17082023.html",
+    "content": " writing in progress... "
+  },
+  {
+    "title": " Functional programming",
+    "id": "16082023",
+    "specialty": "quantum",
+    "permalink": "/graphs/quantum/16082023.html",
+    "content": " writing in progress... "
+  },
+  {
+    "title": " Math basis",
+    "id": "15082023",
+    "specialty": "quantum",
+    "permalink": "/graphs/quantum/15082023.html",
+    "content": " there are still elements to be added  mathematical knowledge for quantum mechanics matrix theory equivalence with operator theory to better understand the various operators we can rely on their matrix representation which is completely equivalent. but how can we arrive at this connection. and how can we obtain the matrix representation of a linear operator? let's suppose a linear operator: pauli matrices fundamental matrices in quantum computing, especially when working with circuits and seeing quantum gate transformations: abstract algebra algebraic systems denota el sistema. ring algebraic system formed by a domain and two operations: 'sum' and 'product'. these operations must meet certain requirements to be considered valid. linear algebra discipline that deals with the more formal study of vector spaces and their linear operations. vector spaces two fundamental operations are defined, the sum and the scalar product. it is an algebraic structure with ten fundamental axioms. zero vector vector spaces also contain a special vector called a 'zero vector' that for every vector space: regarding multiplication by a scalar: vector subspace bases and linear dependence in a vector space a basis is a set of vectors by which all the vectors of the space can be obtained as a linear combination of these. it is usual for a vector space to have more than one basis. linear operators that is linear in its input. that is to say: when we speak of a linear operator defined on a vector space: an important linear operator (example) is the identity operator, which: composition of linear operators suppose 3 vector spaces x, w, and v with two linear operators: internal product is an inner product of a complex space, if it satisfies: 1. it is linear in the second argument hilbert space in a finite dimension in the vector spaces seen in quantum information and computation a hilbert space is the same as a vector space with inner product. (actually this is not quite so, there is one more condition, but this is enough): > discussions of quantum mechanics often refer to hilbert space. in the finite dimensional complex vector spaces that come up in quantum computation and quantum information, a hilbert space is exactly the same thing as an inner product space. from now on we use the two terms interchangeably, preferring the term hilbert space. in infinite dimensions hilbert spaces satisfy additional technical restrictions above and beyond inner product spaces, which we will not need to worry about. — m. a. nielsen and i. chuang. 2002. quantum computation and quantum information. american association of physics teachers. tensors "
+  },
+  {
+    "title": " Data-Mining ",
+    "id": "07032023",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/07032023.html",
+    "content": " it is incredible to be able to draw conclusions from huge amounts of data. it is because of these conclusions, that today our information is worth millions. this time i am going to work with r to extract association rules from a dataset with hundreds of thousands of transactions. in this case the transactions are rows where a user listens to a given artist x number of times. this notation is used in the market basket analysis - is basically a study of market trends and preferences that tries to sell products based on what a buyer has purchased. as i mentioned before, we are going to extract association rules using the apriori algorithm; with these rules we will be able to create a music recommendation system based on our dataset, extracted from the we start by importing the libraries we are going to work with and the dataset: as a small note: once the file is read it is a tibble ( i rename the columns to better manage the data set: i also create a new column that serves as the user id instead of using the sha1 value of the dataset. finally we generate the association rules with apriori, for this: + we keep the data of interest, so we split the dataset to keep only the id of the user and the artists he/she listens to. + we filter to obtain the unique values, avoiding repetitions. + we transform the data to the type transactions. + we generate the rules with certain values of confianza and support. + we keep the best rules based on the lift parameter. once we have the rules, we only have to filter the left part or lhs and find the ones that have the artist in question, returning to the user the right part or rhs. to do this i deploy a web platform that i have programmed so that the user can select the artist, receiving the recommendations. "
+  },
+  {
+    "title": " Pentesting-Scripts",
+    "id": "03032023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/03032023.html",
+    "content": " several utilities that i have been programming for different scenarios. watchproc greports httploginbruteforce kdbx 4 bruteforce "
+  },
+  {
+    "title": " Inject Machine",
+    "id": "02032023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/02032023.html",
+    "content": " recognition we check the availability of the target machine: <br> ttl = 63 so we are dealing with a linux machine by proximity. we checked the services on display: <br> we extract the relevant ports and launch a series of reconnaissance scripts predefined by nmap to gather information about the exposed services: <br> nmap: <br> gaining access to the victim machine directory path traversal taking a look at the web page accessible through port 8080 we arrive at a point where to upload files; despite trying to pass some restrictions, it is not possible to upload a php file, it only accepts images; playing a little with the requests when uploading images: potential way to list directories and browse system files: two potential users: phil and frank. let's see if we can extract some relevant information from the directories of these users: taking a look at the files the website is built with there doesn't seem to be an option to pass the restrictions and upload any php files.the above password does not work for the phil user either, at least for ssh. so we will have to investigate further. cve-2022-22963(rce) the web is programmed on the spring framework; taking a look at the pom.xml of the maven project we can see this and the version of the dependencies.with a brief search we can find the vulnerability that affects spring cloud and which will give us the possibility to execute commands remotely: cve-2022-22963. i automate the exploit so that i only have to enter the relevant command, you can see it in the pentesting-web-scripts publication. already with this we could get a reverse shell, but i prefer to get a console by ssh; i create a new key pair start and simple web server with python: <br> finally: privilege escalation user privileges escalation once inside as the user frank we use the password for phil that we have previously seen: the most relevant thing is that we belong to the 'staff' group. we see the user's flag. privilege escalation to root after some searching i find a directory in opt that the staff group has permissions on; in it is a yaml file called playbook. this appears to be an automatic ansible task. i take a look to see if i can find the automation task: and the script compiles the following: therefore we prepare a file following the yaml syntax to execute a command as root following the scheduled task: with this we give suid permissions to bash and we can get administrator permissions. "
+  },
+  {
+    "title": " Squashed Machine",
+    "id": "01032023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/01032023.html",
+    "content": " recognition we start with nmap to see the open ports of the machine: <br> we extract the obtained ports <br> we now run a set of reconnaissance scripts predefined by nmap to gather information about the services exposed on the target machine. <br> before we dig deeper into the nfs volumes, let's take a look at the website. gaining access to the target machine the web page itself doesn't seem to have much information; it is the typical model page that we usually find. there seems to be a login section but it doesn't take us anywhere. so let's take a look at rpc and in parallel we'll leave gobuster working to find some resources on the web. we list the shared resources at the network level on the target computer. <br> we create a mount point and mount the shared volume: attempt with keepass database file (kdbx) we list the resources of the mounted volume: <br> we are interested in the file with extension kdbx belonging to the keepass password manager software. we bring it to our computer and launch keepass2john: however ... we created a small bash script to use a cli tool to find the password by brute force (available on the scripts page). the speed is very slow, even though it freezes so it makes me think that the file is a dead-end hole, put there to distract. rce web-shell on php since there seems to be nothing of interest in this volume, we mount the other volume, just as before: in principle we can not access the directory. with the command `ls -l` we see that the owner is a user with uid 2017 so we execute: now that we can access the folder in question, let's test by creating a test file to see if we can see it. we can indeed access the file, so let's see if we can do the same with php. and: with this we can now set up a web shell that will get the command we want to execute on the target machine. privilege escalation once we have gained access to the system, we are interested in going back a bit and taking a look at the ross directory, where we see something that may be useful for climbing: we copy the file to our current user, to see if we can take a screenshot. if we run the following command, we will see that we get that there is no screen available: <br> however it does not let us download it. after some research it seems that we do not have enough permissions, so we take advantage of the nfs mount and manage it with a user whose uid is 1001. with the file .xauthority in our current user, we run the previous command again and ... let's not forget that we have to give value to the variable home because if not it will not know where the file is. we make a capture: we passed it on to our team and: "
+  },
+  {
+    "title": " Agile Machine",
+    "id": "16022023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/16022023.html",
+    "content": ""
+  },
+  {
+    "title": " Investigation Machine",
+    "id": "15022023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/15022023.html",
+    "content": " esta máquina es una pasada, me ha encantado, es demasiado bonita. reconocimiento ejecutamos nmap para ver los puertos abiertos: <br> extraemos los puertos relevantes: y lanzamos los scripts de reconocimiento predefinidos de nmap para recopilar más información de los servicios expuestos en la máquina objetivo. <br> obteniendo acceso a la máquina víctima vemos una página web a la que podemos subir imágenes para ver los metadatos. interceptando la petición: añadimos el dominio a nuestro archivo de hosts. echamos un vistazo al análisis que hace la página: una vez sabemos la versión de exiftool buscamos en firefox algún tipo de vulnerabilidad asociada; encontramos cve-2022-23935 que nos permite la ejecución de comandos arbitraria. siguiendo el reporte: obtenemos la petición del equipo objetivo : tenemos conexión directa y ejecutamos comandos en él. escalada de privilegios escalada de privilegios: windows security log events tras una breve búsqueda de ficheros que le pertenezcan al usuario: lo que parece ser un correo enviado con un archivo adjunto. haciendo una serie de conversiones obtenemos el archivo adjunto, que resulta ser un archivo de logs de windows. es la primera vez que manejo este tipo de archivos, por tanto me informé de la estructura y me centré en lo que se conoce como event id una serie de códigos que definen las distintas situaciones que se registran en el archivo. tras un par de horas entre una cosa y otra: ¿qué es lo que ha pasado?¿por qué está la credencial en texto claro? el evento 4625 está asociado al evento an account failed to log on y el usuario cometió el error de ,en lugar de introducir el nombre de usuario, escribió la contraseña por error. esto nos puede pasar si tenemos algún campo que se rellena solo en un formulario de inicio de sesión o si creemos que ya hemos introducido el nombre de usuario; al final toda esa información queda registrada en los logs del equipo. escalada de privilegios vertical a root: reverse engineering with ghidra como usuario smorton comprobamos si hay algún binario que podamos ejecutar sin proporcionar contraseña como root: parece ser un binario que no pertenece al so por defecto. nos lo traemos a nuestro equipo y lo analizamos con ghidra: tras seguir el flujo principal del programa resulta que necesita de dos parámetros: una url de donde se descarga un archivo que posteriormente lo ejecuta con perl, y una cadena de texto predefinida. desde nuestro equipo creamos un pequeño script en perl que nos otorgue privilegios de administrador: y desde el equipo objetivo: "
+  },
+  {
+    "title": " MetaTwo Machine",
+    "id": "10022023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/10022023.html",
+    "content": " recognition we start by checking if the victim machine is available: <br> remember to look at the ttl to see which machine we are on (in this case gnu/linux). scan the ports to see which ones are open: <br> we see that ftp is deployed, but we cannot access it through the 'anonymous' user. we continue with the reconnaissance, that is to say, to launch with nmap a series of predefined scripts to see the version of the different services: <br> we add the domain to our /etc/hosts file and we see the web page. gaining access to the victim machine plugin wp (cve-2022-0739) the first thing that catches the eye is: so you have to look to see if there is a plugin installed and see if it is vulnerable by looking at the source of the page: doing a quick search, we found on wpscan: what you need to do is to create a new entry in the calendar and get a nonce from the post request to the server: once obtained, in my case, i have automated the sqli with the following script: this allows us to get the sqli output by console and easily filter by regular expressions. the 'query' is entered as the first argument when executing the script. executing: john the ripper we see that the vulnerability is successfully exploited and we can start collecting information, first the tables we are interested in, then the columns of those tables and then users and passwords (hash): we save the passwords in a file and run 'john' to get the password: with this we access wp as manager. xxe once inside we can upload files ... although it only allows to upload sound/image files. we can see the exact version of wordpress and from this we can find a series of vulnerabilities. after seeing if any of them were useful i found something i didn't know about until now, called xxe; this vulnerability allows us to get the content of files by xml injection. mainly i try to list the content of '/etc/passwd' to see if it works. we have to create a file with the first bytes that an audio file would have and then the relevant xml. once this is done we point to a web service on our machine that will contain the remaining code to filter files. once this is done, we get (encoded) the content of the file in question: decoding: we see a potential user.we try to list configuration files, in this case let's see the wp one: two credentials; one of them for bbdd and another one for the ftp of the startup. searching for files with ftp after searching for a long time, i found the following file, which seems to manage the sending of email once a new event is created; in it we obtain the credentials of the previous user and access the victim computer. privilege escalation passpie y gpg listing by files that belong to the user, we can find a software called 'passpie', password manager. there are some files that interest us more than others; if we run 'passpie' we see that there are two credentials, our user's and root; if we try to export them it will not let us since we have to have the passphrase. for them we download the '.keys' file that contains the private and public pgp keys; with gpg2john we pass the private key to a format understandable for 'the ripper' to see if we are lucky and we can obtain the key that we lack; after a few seconds we obtain it and we can access to a console with administrator permissions: "
+  },
+  {
+    "title": " Text-Mining ",
+    "id": "08022023",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/08022023.html",
+    "content": " text mining is the process by which information of value or interest is obtained through the analysis of different textual sources: blogs, books, social networks... as you can think this has great potential and allows us to obtain patterns and trends (thanks to various statistical methods) that we can apply to multiple fields. in my case i will work with r and the various packages it offers to work with text mining and data analysis in general; besides this r seems to me very powerful and versatile, with a large background community. to explain the process in more detail i will start from an example with the creation of a 'wordcloud' (visual representation of text in 'cloud form') with the most frequent words in one of we mainly start from a disordered data set. this is common when we work with data extracted from articles, books or multiple sources, since there is information that is not relevant to our analysis and is not even ordered. for ease of understanding i will define the following key concepts: token: fundamental part of our analysis. it is an atomic unit that has great meaning value for us; it is commonly a word. tokenization: division of the text into tokens. tidy text: general principles to obtain better results from data analysis. it consists of a series of fundamental principles: each variable is a column, each observation is a row and each observation unit is a table. tibble: modern data frame in r that adapts to our needs when working with the tidy text format and allows us to visualize the data frame efficiently. the first thing to do is to convert our unordered data set to tidy text format, then tokenize it and remove irrelevant information. once this is done, we can group the words according to their frequency in the text and generate the 'wordcloud'. para finalizar muestro el resultado con la versión en inglés de "
+  },
+  {
+    "title": " RCE",
+    "id": "06022023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/06022023.html",
+    "content": " we call rce or remote code execution the execution of arbitrary commands by taking control of a remote computer through a vulnerability in the exposed service such as this can happen, for example, if user input is not well controlled. i deploy the prepared web service to explain this and let's assume the following situation: there is a web service that allows its users to run c++ code in the browser, without running it on their device: the indicated code block executes a server-side command thanks to the c function 'popen'. subsequently we define an array of characters that will be where we store the stdout of our command, to later display it in the web service. with the use of the function 'fgets' we can easily do the latter by passing the arguments: first where we are going to save what we read, second the maximum length of what we want to read from the output and finally where we are going to get the information (from the execution of the command). in this case we are going to execute on the victim machine a 'ping' (icmp protocol) to localhost (remember that this is a test environment, but in a real scenario we could test with our ip to see if we have a direct connection with the server and be able to establish a remote console): "
+  },
+  {
+    "title": " Soccer Machine",
+    "id": "03022023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/03022023.html",
+    "content": " reconnaissance we start with nmap to see the open ports of the machine: i run the greports utility to get the open ports directly on the clipboard: and we run a series of reconnaissance scripts with nmap to see the available services and their version: we see a domain pointed to by the server on port 80, so we include it in our hosts file. we see that there is also a service on port 9091 related to email xmltec-xmlmail? that nmap is not able to recognize. let's start by taking a look at the web page and then we'll see. gaining access to the victim machine the main page has no relevant content, so let's list available resources or valid subdomains using the gobuster tool: we see a directory tiny/ which we can access and it takes us to a file manager page which we can access with the default administration credentials admin/admin@123.we can also get relevant information such as that php is running in the background. gaining rce once we have accessed the first thing that comes to mind is to upload a file and see if i can access from the browser and the content is executed ... and indeed: i have to say that there is a cron job behind that deletes what we upload after a few minutes.now we are going to upload a simple php file that allows us to get arbitrary command execution (rce) and therefore a reverse shell. privilege escalation half-heartedly privilege escalation is simple; doing a brief search for possible holes in the system, we find the following: yes, the bash binary has suid permissions, so by doing the following, we can get the user and root flags: privilege escalation complete note: it turns out that the machine is not quite like this ... remember the port at the beginning? the 9091. i was very surprised that the machine had the suid in the bash binary like that at first, and indeed it must have been because the other users had already got it.... anyway, to be honest i did the machine again, which helped me to learn how to do web-socket pentesting and to understand how they work ... it's amazing! i attach some screenshots of the way to follow: as i was puzzled with the resolution, i looked at the discussion forum of the platform and saw that they were talking about another subdomain; i looked at the hosts file and ... eureka ... i had not completed the machine at all. accessing that subdomain i logged in and checked that the request was sent to a web socket (the unknown port from before). with websocat i established communication to make sure and indeed it returned the same response when entering any text string. looking at the source of the page there is an id section and i had seen before that mysql was running on the victim machine, which made me think of a sqli. i found on the internet a we can see user and password, which will help us to establish connection through ssh. the privilege escalation is similar to the previous one: we abuse the privileges as root and then enable the suid flag in bash. we do this with a script called doas (it took me forever to find it on the machine). "
+  },
+  {
+    "title": " Stocker Machine",
+    "id": "02022023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/02022023.html",
+    "content": " recognition to begin with, as usual, we check if the machine is available: if we take a look at the ttl value in the answer, we see that the machine we are dealing with has gnu/linux as its operating system. next we see which services are deployed doing a port scan, mainly by tcp protocol: once this is done, we see that ports 22 and 80 are exposed. let's see what services it handles, launching with nmap a series of reconnaissance scripts: gaining access to the victim machine we see ssh running and a web service deployed on port 80. since we don't have credentials for ssh, let's take a look at the web; first from terminal to know what technologies we are dealing with: we add the image subdomain to the hosts file and access it to see an authentication panel to access the platform resources. trying some simple bypass is not effective; intercepting the request from our device with burpsuite we can change the content of the application from url-encoded to json without receiving any internal server error style error; this makes me think that some kind of request to a database is being made from behind. skipping the authentication panel doing several tests i found a way to skip the panel, below you can see a way to take advantage of this by playing with the json values: by testing the user and password in ssh we gain access. privilege escalation once we have gained access we have permissions to execute as root without password the command node accompanied by a certain path using the wildcard asterisk. thanks to this wildcard we can actually execute the file we want because the wildcard can be replaced by zero or more occurrences of any character. we create the following script and get the root flag: "
+  },
+  {
+    "title": " Precious Machine",
+    "id": "01022023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/01022023.html",
+    "content": " recognition as usual, we see if we have connection with the machine: <br> once we know that the machine we are dealing with is available, we can check that it is a linux machine (ttl). we then run the full scan of all ports to see what open ports we find: <br> we then run the greports script to pass the detected ports to nmap and perform a more exhaustive reconnaissance scan on those ports using a series of scripts defined by nmap: <br> gaining access to the victim machine command injection we mainly came across a web page that converts a web page to html; we mainly took a look at the metadata to try to see what tool is taking care of this; and indeed we found it: taking a look for vulnerabilities associated with this tool, we can easily find the following report on github: we can find multiple resources, such as the tool's own commit repository: we test to see if the page takes 5 seconds to output the pdf: to see if everything is running correctly, we create a small web service with python; we click, see the get request on the victim machine side and it takes 5 seconds to generate the pdf. this is useful to start a remote console and gain access to the machine. privilege escalation we access with the user 'ruby' and looking for configuration files we find a file named 'conf' that contains the password of 'henry' the other user: we see that the user can run as a privileged user without providing a password a script that loads a yaml configuration file and checks if it is the same as the existing ruby dependencies. looking for how to somehow inject some kind of command into the yaml file and be able to gain administrator access, we replace the command with bash and obtain administrator permissions. "
+  },
+  {
+    "title": " LFI",
+    "id": "30012023",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/30012023.html",
+    "content": " lfi or local file inclusion is one of the two file inclusion style vulnerabilities that commonly affect web applications. if successfully exploited, it can lead to rce or remote code execution. thanks to a variable, we can point directly to a file in the file system on the server side; once pointed, it will be executed on the server side, with the corresponding web routine. to explain it better, let's work in a controlled environment, deploying our own web service locally, with the following format: this service contains an index.php that takes by get the content of the variable named variable, as follows: lfi as cer suppose we get a potential way to upload files and locate them. in this case we could make an exploit in php and point it to add its content and execution to the web application routine. in this case i have prepared a file called exploit.php that will execute phpinfo: "
+  },
+  {
+    "title": " Digital-Key",
+    "id": "20112022",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/20112022.html",
+    "content": ""
+  },
+  {
+    "title": " Caesar Universal (Cipher)  ",
+    "id": "02112022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/02112022.html",
+    "content": " as we have already seen, cryptology is a very broad field composed of four essential pillars. cryptography is mostly focused on the algorithms we use to protect information; this time we are going to look at a classical encryption method, namely by monoalphabetic substitution (standard alphabet monogramming). this cipher was used by julius caesar himself to communicate his important messages securely (specifically with a 3-position shift). to encrypt a word using this method we must first choose an offset, which will be the positions we will move to the right in the alphabet in question. for example: if we choose offset 1 and we want to encrypt abc the result would be bcd. below, you can see an implementation of this cipher, to encrypt any string (without spaces, consecutive words and only letters, since we are talking about an alphabet) and decrypt any encrypted string, even without knowing the offset. "
+  },
+  {
+    "title": " Cryptology  ",
+    "id": "01112022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/01112022.html",
+    "content": " lately, i have been digging into the field of criptology, more specifically cryptography. we tend to think of cryptography as encompassing everything related to the study of hidden writing. however, this is not the case, since it is cryptology that is in charge of this, cryptography being one of the four branches that compose it: - cryptography: handles the algorithms that are used to protect information security. - cryptanalysis: obtains the cryptographic message without authorization, in order to break the security of the information. - esteganography: is responsible for transmitting private information through an insecure channel, surreptitiously. - stegoanalysis: like cryptanalysis with cryptography, stegoanalysis is responsible for detecting these messages transmitted over insecure channels. "
+  },
+  {
+    "title": " Stable-Bot a Stable Difussion Discord Bot ",
+    "id": "18102022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/18102022.html",
+    "content": " stable diffusion is a learning model capable of generating digital images from natural language descriptions with the use of a prompt. i wanted to try and experiment with some image generating model and stable diffusion has its repository on github; the problem is that i don't have a powerful graphic to work with graphics and, therefore, as incredible as it may seem, i had to find a way to run it on cpu, since my goal is to run it locally. after searching a little, i found a repository that solved everything, allowing to execute the model using cpu. the only thing left was to create the bot, for which i used the discord api in python. the execution times range from 2.4 minutes to 15 minutes depending on the inference steps we pass as arguments. as an extra i have made a linear adjustment to estimate the time depending on the inference steps. here you can see the results: "
+  },
+  {
+    "title": " Arachne",
+    "id": "06072022",
+    "specialty": "robotics",
+    "permalink": "/graphs/robotics/06072022.html",
+    "content": " inspiration i have always been fascinated by everything related to nature's creation. something that has always caught my attention are arachnids, from their amazing survival methods (for example autotomy, also present in lizards), as well as the way they hunt their prey to their incredible design. influenced by this, i started to think about a bio-inspired robot, which would be able to stand up, after standing up. this is when arachne was born. the name comes from greek mythology. leg design i mainly focused on the design; i thought that the most aesthetic was the design with six legs, but this meant higher costs in terms of electricity, printing, time... etc. so i put this idea aside for the future and focused on functionality. it was time to design the legs. the first level is more robust, because it is the union of all the legs and must provide the necessary robustness to the final design. the second level is screwed to the servomotors of the chassis; it is lighter than the previous one and is where the electronics are located, while the lower level is where the battery is located. basic electronics the electronics consists of a raspberry pi 3b+ and the integrated pca9685 (motor driver) that with a few connections allows us to connect up to 16 servos in our raspberry. "
+  },
+  {
+    "title": " ESXi VMware ",
+    "id": "30052022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/30052022.html",
+    "content": " esxi is a bare-metal hypervisor. this means that the operating system is not an intermediary between the software virtualization and the hardware, since being bare-metal, esxi is installed directly on the server. to obtain the image with which to boot and install it, we must access the official vmware website. once registered, we can download the latest version of esxi to create a bootable device. "
+  },
+  {
+    "title": " RAID Storage ",
+    "id": "20052022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/20052022.html",
+    "content": " redundant array of independent disk (raid) is a type of virtual data storage. with several physical disks we can create a virtual disk for the following purposes: to improve performance or data redundancy. the data is distributed in one way or another depending on the raid level with which the disk is configured. raid levels (0-1-5) at the moment i am only working with the three elementary levels; the rest are either in disuse or are a combination of these three levels. raid 0 (striping) : the capacity of the volume at this level is the sum of the capacity of the physical disks that form it. the data is segmented and distributed among the disks. performance is improved, but if one of the disks fails, all data is lost. raid 1 (mirroring): at this level, the data written to the disks are equal; therefore if one of the disks fails, the data can be easily recovered. performance may be affected since the same data must be written to all disks. raid 5 (block-level striping): requires at least three disks. in this case one of the disks will not be used, since in case of failure or data loss, it can be calculated by a simple parity calculation. "
+  },
+  {
+    "title": " Echo ",
+    "id": "17052022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/17052022.html",
+    "content": " in a little break from arachne, i decided to program my own alexa. it's something i've always wanted to do, because i would like to develop a virtual assistant to my own needs, programming and automating my tasks. this is when echo came up. in a few lines i had the basic functionalities in less than half an hour ... and it already responded to several of my own commands! it is not very complicated to do, and can have a multitude of applications such as home automation. in order for the assistant to understand what we are saying, we will use speechrecognition, a python library which we will import as 'sr'. as you can see in the image, the process is repeated endlessly: we call echo, it asks us what we want and we tell it what we want. to make echo respond to us (as alexa does), this time we will use the gtts library. every time we want the assistant to tell us something we will use the text2voice function. the utilities are in the file utils.py below you will find some examples of the use of echo and the link to the github repository where you will find the necessary code of the basic version of echo ... so that anyone can participate and contribute to the growth of their own echo! "
+  },
+  {
+    "title": " Own-distro  ",
+    "id": "10052022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/10052022.html",
+    "content": " since i work with different operating systems, i have decided to create my own gnu/linux distribution to have all the utilities i usually use at hand, and to have an image (iso) to install on the server and create different os versions according to my needs. it is a very simple process for which i have used the systemback tool. first of all you must create a virtual machine where you install the base operating system and leave it as you want. in my case i have used the latest stable image of lubuntu. "
+  },
+  {
+    "title": " Servers Types ",
+    "id": "02052022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/02052022.html",
+    "content": " a server is a computer (or set of computers) that follows the client-server model, handling requests from the client and returning a response accordingly. anyone can set up a computer as a server, but depending on the service we are going to offer, more or less hardware resources will be needed. for example, we can use an old computer together with a few hard disks to have our own nas (network attached storage); however, if we want a server that offers virtual machines, we will need more resources. this is why we can distinguish between different server formats: servers in rack: they are compact, standard size, designed to fit in a cabinet characteristic for these servers. tower server: servers with the appearance of a conventional pc. it is usually used in case of not being able to acquire a server in rack. they can have several processors and memory banks. "
+  },
+  {
+    "title": " EOS (Electronic Open Strandbeest)",
+    "id": "05042022",
+    "specialty": "robotics",
+    "permalink": "/graphs/robotics/05042022.html",
+    "content": " the entire chassis is designed and printed (white pla). version 0 has only one of the two trains that make up eos. the brain of the project is an arduino nano to which the l293d driver is added to control the direction of movement.eos can move in all directions by pivoting on one of its two axes when it rotates. "
+  },
+  {
+    "title": " Maze Problem ",
+    "id": "12022022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/12022022.html",
+    "content": " the problem of solving mazes given input and output can be solved easily and inexpensively (for small mazes, of course). the following image shows the output of a small program i made in some spare time, showing the solution path and the paths explored by the algorithm. given a maze, running the program will show in two windows the unsolved maze and the solved maze. "
+  },
+  {
+    "title": " Artillery Genius ",
+    "id": "11022022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/11022022.html",
+    "content": " after some time with the ender 3, i decided to go for another printer that had caught my attention on several occasions: the artillery genius (pro). this printer offers as standard better features than its competitors for a slightly higher price, as it incorporates direct extrusion with a volcano fuser and a titan extruder; both are obviously chinese replicas, but they perform very well. not only this, but it also incorporates a double synchronized z axis, a very solid (and compact) aluminum structure, a sensor that controls the filament and automatic calibration. it has the most updated version of marlin (at least the one that has come to me) and silent drivers; that has been what i have noticed the difference, and it is incredible how little you hear unlike, for example, the ender 3. obviously not all of them are good and there are several things to keep in mind. firstly, even though the printing platform heats up in no time, it is difficult for the part to adhere, which causes it to peel off on numerous occasions, interrupting the printing process. as a temporary solution we can resort to lacquer or masking tape. in my case i am using masking tape and waiting to order a magnetic strip to solve this problem. on the other hand it does not come with conventional cables but with flat cables; you have to be very careful with this type of cables since due to the movement of the printer they can disconnect, although in the current version of the market (genius pro since the normal genius is discontinued) it comes with a kind of couplers that in theory avoid this problem. as for mounting it, there is no problem since it is basically a matter of screwing four screws (literally) because all the z axis and its pertinent connections to the x axis are connected, together with the extruder carriage. it is only necessary to connect the motors, the limit switches (which by the way, the traditional mechanical ones are replaced by optical sensors) and the printer would be ready to print. "
+  },
+  {
+    "title": " Direct-Drive Ender 3 ",
+    "id": "13012022",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/13012022.html",
+    "content": " as i have been saying from the beginning, the bowden type extrusion on this printer was giving me problems. this extrusion system has a main advantage and it is that it has a lower mass in the extruder carriage, since the motor is directly coupled to the chassis. however, it has several problems, which is what has probably been happening to me. for example, it may be that the motor that pushes the filament does not have enough force. here is the sound that my printer emitted when it did not have enough power. one of the things i could do was to update the printer's firmware, since it was in a rather primitive version. it turns out that the printer came with a board a little complicated to update (v1), especially because you had to make use of an arduino to burn the bootloader. on the other hand i was quite eager to have direct extrusion and i decided to add it, with direct extrusion i added more weight to the extruder carriage, but i gained in extrusion speed and less risks caused by the motor. it also allowed me to print certain materials with higher temperature requirements, such as tpu. subsequently, i did the following: "
+  },
+  {
+    "title": " Primes-Algorithm using Data Structures ",
+    "id": "22122021",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/22122021.html",
+    "content": " the task of calculating very large prime numbers is very expensive. that is why i am making a specification of an algorithm that drastically reduces the time spent in calculating the prime numbers from 2 to the selected number. i have managed to optimize the algorithm by employing brute force, in which all possible divisors are tested for each number, as well as taking advantage of the efficiency of the data structures to avoid operations: "
+  },
+  {
+    "title": " C-Keylogger",
+    "id": "29112021",
+    "specialty": "cybersecurity",
+    "permalink": "/graphs/cybersecurity/29112021.html",
+    "content": ""
+  },
+  {
+    "title": " Last-Unmasked Game ",
+    "id": "22092021",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/22092021.html",
+    "content": " this time i come with a game; the story of lea and her journey as the last unmasked. in this game our protagonist has to go jumping spectres, corrupted by the abyss. the game is programmed in java using android studio as ide. it is being quite a project because of the great world of mobile development that has come my way. for example, when creating the associated world physics you had to take into account different types of programmable bodies; the ground is a static type while the main character is dynamic. this is very relevant when starting the world for the different forces exerted on the different bodies. "
+  },
+  {
+    "title": " Funko Design and 3D Print ",
+    "id": "02092021",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/02092021.html",
+    "content": " the funko is modeled with blender, printed using resin and then painted. the post-processing is simpler than in pla since it is just painting it; the difference is that the process and treatment of the resin is more complex. "
+  },
+  {
+    "title": " Sentinel Robot",
+    "id": "09082021",
+    "specialty": "robotics",
+    "permalink": "/graphs/robotics/09082021.html",
+    "content": " this time i have decided to make a kind of sentry robot that, after detecting movement, triggers a firing mechanism. first of all i needed something i could shoot. for this i was given an old nerf so i could play with it. once i opened it i realized that, given its age, there was little left that could be reused, except for the barrel to which two motors were attached. each motor has a kind of cylinder attached to it through which the bullet slides. secondly we came up with the electronics. i wanted it to be compact and decided to use an arduino nano which was more than enough for what i needed. the problem is that the output is 5v and approximately 40 ma, being this insufficient to get the full power of the motors. the solution i opted for was to power the motors externally with a 12v rechargeable battery. the circuit that feeds the motors in principle would be open and when motion is detected it would be closed. for this i have used a relay, in this case a kind of electronic switch, which has a control signal to open or close the circuit. the robot detects movement by means of a pir sensor that is divided into two cells that measure infrared radiation and convert it into an electrical signal when it changes. finally there was the design and my printer was not working so i had to make do with a circular box that i found and i liked; now it only remained to assemble and prepare the whole circuit. "
+  },
+  {
+    "title": " PLA-Venom ",
+    "id": "28072021",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/28072021.html",
+    "content": " when a part is 3d printed, it is not that it ends up polished at all. that is why we must submit it to a process known as post-processing.in this case, we will see how to carry out pla post-processing. to begin with, we need a series of materials: epoxy putty: used for smoothing joints in parts printed in parts. thanks to its nature (bicomponent) it is easy to apply once mixed, hardening completely after 24 hours. we can file and paint over it primer spray for plastics: to prevent the paint from falling off once it has been applied to the pla surface, we will proceed to apply a few coats of primer. paint: try not to use poor quality paint because it can make the work more difficult. multiple utensils: superglue, sandpaper, brushes, mask, protective goggles... protection is essential; when pla is filed it gives off a number of particles that can get into the eyes (sawdust style) or enter the respiratory tract. the space where post-processing is to be performed should also be taken into account; outdoors or in a ventilated place would be best. "
+  },
+  {
+    "title": " UnderExtrusion ",
+    "id": "09062021",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/09062021.html",
+    "content": " as soon as i started printing, it seemed that everything was going well with the printer, but the pieces sometimes came out without filament in certain parts or the figures did not come out well (circles for example). i mainly thought it was a problem with the bed calibration. once calibrated, the same thing kept happening. later i thought about the tension of the belts that move the axes (specifically the x and y), but after tightening them nothing changed. this extrusion system has a problem known as under-extrusion due to the following: it may be that the spring is not exerting enough force, which is why the screw shown in the picture can be tightened or loosened. i thought i saw that older models do not have this screw, but there are printable parts to solve this problem. if the problem persists, it may be that the opposite is true, i.e. it is too tight. in that case it would be enough to loosen it. there is a sprocket that pushes the filament into the extruder. the problem is that the filament is in contact with the z axis and this greases the filament so sometimes you can hear a kind of crack-crack of the sprocket as it is not able (because of the grease) to push the filament as it slips. finally the support that comes with the printer for the filament may not be sufficient for the spool to slide smoothly. this leads to the aforementioned noise being heard again, as the system lacks the necessary force to pull the filament. once i knew this, the first thing i did was to adjust the screw. it seemed that the printer printed better; there were fewer gaps and imperfections. the problem was that it kept making the same noise, more and more frequently, and even stopped pushing the filament halfway through the print, destroying the whole job. to solve this problem what i did was to print a replacement handle to the one that came from the factory (the design is in thingiverse) to which several bearings were inserted in order to facilitate the movement of the spool. finally, i placed a piece of teflon to prevent the filament from rubbing against the z axis, thus solving the problems mentioned above. "
+  },
+  {
+    "title": " 3D-Print-Beginnings with Creality ",
+    "id": "07062021",
+    "specialty": "pillars",
+    "permalink": "/graphs/pillars/07062021.html",
+    "content": " i recently acquired for the first time a 3d printer. i had experience with this type of technology because in my high school we assembled a geetech prusa i3. during the assembly of this printer we had several problems that we were solving thanks to the interest and enthusiasm that we had at that time, that eagerness and desire to learn. the printer did not come ready to print; it had to be assembled from scratch. being our first printer added an extra complexity to the challenge and thanks to this we learned how a 3d printer of this type works: i was working with this printer for the development of test i and i saw in it an exorbitant potential; it offered high performance for a very affordable price. it was then that i decided to buy this printer. the assembly was simple, a little more complicated was the z axis, but in general the process is quite intuitive. it is a printer that has an inefficient extrusion system that makes the filament can be stagnant (i will talk about this another time). once assembled, the only thing left to do was to connect it and start printing. unlike the geetech, this one came partially assembled and only had to put a couple of things. a tip i give you if you are starting in this world, is that before printing, on the hot bed, add some element so that the first layers adhere better and during printing do not peel off. in case you have a glass surface or similar you can cover it with masking tape; in case you have another type of surface like the magnetic carpet of the ender 3 pro it is best to use lacquer (the one i recommend the most is the nelly). definitely with this purchase i was already into this fascinating world of 3d printing and i was glad that these printers were more and more coupled in the market and at an economical price. in particular i am fascinated with this printer from creality as it offers a wide range of opportunities at a reduced price. "
+  },
+  {
+    "title": " What are you doing here? ",
+    "id": "01012021",
+    "specialty": "",
+    "permalink": "/graphs//01012021.html",
+    "content": ""
+  }
+]

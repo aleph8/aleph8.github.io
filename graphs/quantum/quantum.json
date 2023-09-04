@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "15082023",
+      "group": "Mathematics",
+      "title": " Math basis"
+    },
+    {
+      "id": "16082023",
+      "group": "Programming",
+      "title": " Functional programming"
+    },
+    {
+      "id": "17082023",
+      "group": "Mathematics",
+      "title": " Dirac Formalism"
+    }
+  ],
+  "links": [
+    {
+      "source": "16082023",
+      "target": "15082023",
+      "value": 1
+    },
+    {
+      "source": "17082023",
+      "target": "15082023",
+      "value": 1
+    }
+  ]
+}

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <title>RCE</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">RCE</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">06-02-2023</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<div class="spanish">
+<p>Llamamos RCE o <em>Remote Code Execution</em> a la ejecución de
+comandos arbitrarios gracias a la toma de control de un equipo remoto
+mediante alguna vulnerabilidad del servicio expuesto como <a
+href="/graphs/cybersecurity/30012023.html">LFI</a>.</p>
+<p>Esto puede suceder, por ejemplo, si no está bien controlada la
+entrada de datos del usuario. Despliego el servicio web preparado para
+explicar esto y supongamos la siguiente situación:</p>
+<p>Hay un servicio web que permite a sus usuarios ejecutar código en C++
+en el navegador, sin necesidad de ejecutarlo en su dispositivo:</p>
+<div style="text-align: center;">
+<img src="images/rce1.png" alt="Image" width="900">
+</div>
+<p>Como podemos ver en la salida, parece ser que internamente, el código
+que escribimos se pasa directamente a un archivo php que a nivel de
+sistema compila y muestra la salida en el servicio web.</p>
+<p>Un atacante podría aprovechar esto para hacer lo siguiente:</p>
+<div style="text-align: center;">
+<img src="images/rce2.png" alt="Image" width="900">
+</div>
+<p>El bloque de código señalado ejecuta un comando de lado del servidor
+gracias a la función de C ‘<strong>popen</strong>’. Posteriormente
+definimos un array de caracteres que será donde guardemos el stdout de
+nuestro comando, para posteriormente mostrarlo en el servicio web. Con
+el uso de la función ‘<strong>fgets</strong>’ podemos hacer fácilmente
+esto último al pasar los argumentos: primero donde vamos a guardar
+aquello que leamos, segundo la longitud máxima de lo que queremos leer
+de la salida y por último de donde vamos a sacar la información ( de la
+ejecución del comando).</p>
+<p>En este caso vamos a ejecutar en la máquina víctima un ‘ping’
+(protocolo ICMP) a localhost (recordad que es un entorno de prueba, pero
+en un escenario real se podría probar con nuestra ip para ver si tenemos
+conexión directa con el servidor y poder entablar una consola
+remota):</p>
+<div style="text-align: center;">
+<img src="images/rce3.png" alt="Image" width="900">
+</div>
+</div>
+<div class="english">
+<p>We call RCE or <em>Remote Code Execution</em> the execution of
+arbitrary commands by taking control of a remote computer through a
+vulnerability in the exposed service such as <a
+href="/graphs/cybersecurity/30012023.html">LFI</a>.</p>
+<p>This can happen, for example, if user input is not well controlled. I
+deploy the prepared web service to explain this and let’s assume the
+following situation:</p>
+<p>There is a web service that allows its users to run C++ code in the
+browser, without running it on their device:</p>
+<div style="text-align: center;">
+<img src="images/rce1.png" alt="Image" width="900">
+</div>
+<p>As we can see in the output, it appears that internally, the code we
+write is passed directly to a php file that at the system level compiles
+and displays the output in the web service.</p>
+<p>An attacker could exploit this to do the following:</p>
+<div style="text-align: center;">
+<img src="images/rce2.png" alt="Image" width="900">
+</div>
+<p>The indicated code block executes a server-side command thanks to the
+C function ‘<strong>popen</strong>’. Subsequently we define an array of
+characters that will be where we store the stdout of our command, to
+later display it in the web service. With the use of the function
+‘<strong>fgets</strong>’ we can easily do the latter by passing the
+arguments: first where we are going to save what we read, second the
+maximum length of what we want to read from the output and finally where
+we are going to get the information (from the execution of the
+command).</p>
+<p>In this case we are going to execute on the victim machine a ‘ping’
+(ICMP protocol) to localhost (remember that this is a test environment,
+but in a real scenario we could test with our ip to see if we have a
+direct connection with the server and be able to establish a remote
+console):</p>
+<div style="text-align: center;">
+<img src="images/rce3.png" alt="Image" width="900">
+</div>
+</div>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>

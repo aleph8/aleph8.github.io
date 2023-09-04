@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <title>Artillery Genius</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Artillery Genius</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">11-02-2022</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<div class="spanish">
+<p>Tras llevar un tiempo con la Ender 3, decidí apostar por otra
+impresora que me había llamado en varias ocasiones la atención: la
+Artillery Genius (Pro).</p>
+<p>Esta impresora ofrece de serie mejores prestaciones que sus
+competidoras por un precio un poco más elevado, ya que incorpora
+extrusión directa con un fusor volcano y un extrusor Titán; ambas son
+obviamente réplicas chinas, pero se desenvuelven muy bien . No solo
+esto, sino que además incorpora un doble eje Z sincronizado, una
+estructura de aluminio muy sólida (y compacta) ,un sensor que controla
+el filamento y calibración automática. Cuenta con la versión de Marlin
+mas actualizada (por lo menos la que me ha llegado a mí) y drivers
+silenciosos; eso ha sido en lo que he notado más la diferencia, y es que
+es increíble lo poco que se escucha a diferencia ,por ejemplo, de la
+Ender 3.</p>
+<p>Obviamente no todos es bueno y hay varias cosas que hay que tener en
+cuenta. En primer lugar a pesar de que la plataforma de impresión se
+caliente en nada, cuesta que la pieza se adhiera, lo que provoca que se
+despegue en numerosas ocasiones, interrumpiéndose el proceso de
+impresión. Como solución temporal podemos recurrir a la laca o cinta de
+carrocero. En mi caso estoy usando la cinta de carrocero y esperando a
+pedir un fleje magnético para acabar con este problema. Por otro lado no
+viene con cables convencionales sino con cables planos; hay que tener
+mucho cuidado con este tipo de cables ya que debido al movimiento de la
+impresora se pueden desconectar, aunque en la versión actual del mercado
+(Genius Pro ya que la Genius normal está descatalogada) viene con una
+especie de “acopladores” que en teoría evitan este problema.</p>
+<p>En cuanto a montarla no hay ningún problema ya que básicamente es
+atornillar cuatro tornillos (literalmente) porque todo el eje Z y sus
+pertinentes conexiones al eje X está conectado, junto con el carro del
+extrusor. Solo hace falta conectar los motores, los finales de carrera
+(que por cierto, se sustituyen los mecánicos tradicionales por sensores
+ópticos) y la impresora ya estaría lista para imprimir.</p>
+<div style="text-align: center;">
+<img src="images/artillery1.jpg" alt="Image" width="400">
+</div>
+</div>
+<div class="english">
+<p>After some time with the Ender 3, I decided to go for another printer
+that had caught my attention on several occasions: the Artillery Genius
+(Pro).</p>
+<p>This printer offers as standard better features than its competitors
+for a slightly higher price, as it incorporates direct extrusion with a
+volcano fuser and a Titan extruder; both are obviously Chinese replicas,
+but they perform very well. Not only this, but it also incorporates a
+double synchronized Z axis, a very solid (and compact) aluminum
+structure, a sensor that controls the filament and automatic
+calibration. It has the most updated version of Marlin (at least the one
+that has come to me) and silent drivers; that has been what I have
+noticed the difference, and it is incredible how little you hear unlike,
+for example, the Ender 3.</p>
+<p>Obviously not all of them are good and there are several things to
+keep in mind. Firstly, even though the printing platform heats up in no
+time, it is difficult for the part to adhere, which causes it to peel
+off on numerous occasions, interrupting the printing process. As a
+temporary solution we can resort to lacquer or masking tape. In my case
+I am using masking tape and waiting to order a magnetic strip to solve
+this problem. On the other hand it does not come with conventional
+cables but with flat cables; you have to be very careful with this type
+of cables since due to the movement of the printer they can disconnect,
+although in the current version of the market (Genius Pro since the
+normal Genius is discontinued) it comes with a kind of “couplers” that
+in theory avoid this problem.</p>
+<p>As for mounting it, there is no problem since it is basically a
+matter of screwing four screws (literally) because all the Z axis and
+its pertinent connections to the X axis are connected, together with the
+extruder carriage. It is only necessary to connect the motors, the limit
+switches (which by the way, the traditional mechanical ones are replaced
+by optical sensors) and the printer would be ready to print.</p>
+<div style="text-align: center;">
+<img src="images/artillery1.jpg" alt="Image" width="400">
+</div>
+</div>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>

@@ -1,0 +1,191 @@
+{
+  "nodes": [
+    {
+      "id": "01112022",
+      "group": "Programming",
+      "title": " Cryptology  "
+    },
+    {
+      "id": "02052022",
+      "group": "Server",
+      "title": " Servers Types "
+    },
+    {
+      "id": "02092021",
+      "group": "3dprint",
+      "title": " Funko Design and 3D Print "
+    },
+    {
+      "id": "02112022",
+      "group": "Programming",
+      "title": " Caesar Universal (Cipher)  "
+    },
+    {
+      "id": "07032023",
+      "group": "Programming",
+      "title": " Data-Mining "
+    },
+    {
+      "id": "07062021",
+      "group": "3dprint",
+      "title": " 3D-Print-Beginnings with Creality "
+    },
+    {
+      "id": "08022023",
+      "group": "Programming",
+      "title": " Text-Mining "
+    },
+    {
+      "id": "09062021",
+      "group": "3dprint",
+      "title": " UnderExtrusion "
+    },
+    {
+      "id": "10052022",
+      "group": "Server",
+      "title": " Own-distro  "
+    },
+    {
+      "id": "11022022",
+      "group": "3dprint",
+      "title": " Artillery Genius "
+    },
+    {
+      "id": "12022022",
+      "group": "Programming",
+      "title": " Maze Problem "
+    },
+    {
+      "id": "13012022",
+      "group": "3dprint",
+      "title": " Direct-Drive Ender 3 "
+    },
+    {
+      "id": "17052022",
+      "group": "Programming",
+      "title": " Echo "
+    },
+    {
+      "id": "18102022",
+      "group": "Programming",
+      "title": " Stable-Bot a Stable Difussion Discord Bot "
+    },
+    {
+      "id": "20052022",
+      "group": "Server",
+      "title": " RAID Storage "
+    },
+    {
+      "id": "22092021",
+      "group": "Programming",
+      "title": " Last-Unmasked Game "
+    },
+    {
+      "id": "22122021",
+      "group": "Programming",
+      "title": " Primes-Algorithm using Data Structures "
+    },
+    {
+      "id": "28072021",
+      "group": "3dprint",
+      "title": " PLA-Venom "
+    },
+    {
+      "id": "30052022",
+      "group": "Server",
+      "title": " ESXi VMware "
+    }
+  ],
+  "links": [
+    {
+      "source": "01112022",
+      "target": "22122021",
+      "value": 1
+    },
+    {
+      "source": "02052022",
+      "target": "07062021",
+      "value": 1
+    },
+    {
+      "source": "02092021",
+      "target": "28072021",
+      "value": 1
+    },
+    {
+      "source": "02112022",
+      "target": "01112022",
+      "value": 1
+    },
+    {
+      "source": "07032023",
+      "target": "08022023",
+      "value": 1
+    },
+    {
+      "source": "08022023",
+      "target": "07062021",
+      "value": 1
+    },
+    {
+      "source": "09062021",
+      "target": "07062021",
+      "value": 1
+    },
+    {
+      "source": "10052022",
+      "target": "02052022",
+      "value": 1
+    },
+    {
+      "source": "11022022",
+      "target": "07062021",
+      "value": 1
+    },
+    {
+      "source": "12022022",
+      "target": "22122021",
+      "value": 1
+    },
+    {
+      "source": "13012022",
+      "target": "28072021",
+      "value": 1
+    },
+    {
+      "source": "17052022",
+      "target": "12022022",
+      "value": 1
+    },
+    {
+      "source": "18102022",
+      "target": "02052022",
+      "value": 1
+    },
+    {
+      "source": "20052022",
+      "target": "02052022",
+      "value": 1
+    },
+    {
+      "source": "22092021",
+      "target": "09062021",
+      "value": 1
+    },
+    {
+      "source": "22122021",
+      "target": "09062021",
+      "value": 1
+    },
+    {
+      "source": "28072021",
+      "target": "09062021",
+      "value": 1
+    },
+    {
+      "source": "30052022",
+      "target": "02052022",
+      "value": 1
+    }
+  ]
+}

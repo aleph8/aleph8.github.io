@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <title>Caesar Universal (Cipher)</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Caesar Universal (Cipher)</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">02-11-2022</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<div class="spanish">
+<p>Como ya hemos visto, la criptología es un campo muy amplio compuesto
+por cuatro pilares esenciales.</p>
+<p>La criptografía se centra mayoritariamente en los algoritmos que
+empleamos para proteger la información; en esta ocasión vamos a ver un
+método de cifrado clásico, concretamente por sustitución monoalfabética
+(monográmica de alfabeto estándar).</p>
+<p>Este cifrado se empleaba por el propio Julio César para comunicar sus
+mensajes importantes de forma segura (concretamente con un
+desplazamiento de 3 posiciones).</p>
+<p>Para cifrar una palabra utilizando este método debemos elegir en
+primer lugar un desplazamiento, que serán las posiciones que nos
+moveremos hacia la derecha en el abecedario en cuestión. Por ejemplo: si
+elegimos desplazamiento 1 y queremos cifrar “<strong>ABC</strong>” el
+resultado sería “<strong>BCD</strong>”.</p>
+<p>A continuación, podéis ver una implementación de este cifrado, para
+cifrar cualquier cadena (sin espacios, palabras seguidas y solo letras,
+ya que estamos hablando de un abecedario) y descifrar cualquier cadena
+cifrada, incluso sin saber el desplazamiento.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">########################################################</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># aleph8                                               #</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#------------------------------------------------------#</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># Cifrado César Universal                              #</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#------------------------------------------------------#</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#                                                      #</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">########################################################</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="kw">def</span> cipher():</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a>  text<span class="op">=</span><span class="bu">input</span>(<span class="st">&quot;Insert the text: &quot;</span>)</span>
+<span id="cb1-14"><a href="#cb1-14"></a>  cipher<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;Insert the displacement: &quot;</span>))</span>
+<span id="cb1-15"><a href="#cb1-15"></a>  result<span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>  <span class="co"># ord(&quot;A&quot;) = 65, ord(&quot;Z&quot;) = 90, ord(&quot;a&quot;) = 97, ord(&quot;z&quot;) = 122</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>  <span class="co"># ord(i) =&gt; &quot;Given a string representing one Unicode character, return an integer representing the Unicode code&quot;</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>  <span class="co"># chr(i) =&gt; &quot;Return the string representing a character whose Unicode code point is the integer i&quot;</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a>  <span class="cf">for</span> i <span class="kw">in</span> text:</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    tmp<span class="op">=</span><span class="bu">ord</span>(i)</span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="cf">if</span> ( tmp <span class="op">&gt;=</span> <span class="dv">65</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">90</span> ) <span class="kw">or</span> ( tmp <span class="op">&gt;=</span> <span class="dv">97</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">122</span> ):</span>
+<span id="cb1-23"><a href="#cb1-23"></a>      <span class="cf">if</span> ( tmp <span class="op">&gt;=</span> <span class="dv">65</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">90</span> ):</span>
+<span id="cb1-24"><a href="#cb1-24"></a>        result<span class="op">+=</span><span class="bu">chr</span>((tmp<span class="op">-</span><span class="dv">65</span><span class="op">+</span>cipher)<span class="op">%</span><span class="dv">26</span><span class="op">+</span><span class="dv">65</span>)</span>
+<span id="cb1-25"><a href="#cb1-25"></a>      <span class="cf">else</span>:</span>
+<span id="cb1-26"><a href="#cb1-26"></a>        result<span class="op">+=</span><span class="bu">chr</span>((tmp<span class="op">-</span><span class="dv">97</span><span class="op">+</span>cipher)<span class="op">%</span><span class="dv">26</span><span class="op">+</span><span class="dv">97</span>)</span>
+<span id="cb1-27"><a href="#cb1-27"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-28"><a href="#cb1-28"></a>      <span class="bu">print</span>(<span class="st">&quot;ERROR: INVALID CHARACTER&quot;</span>)</span>
+<span id="cb1-29"><a href="#cb1-29"></a></span>
+<span id="cb1-30"><a href="#cb1-30"></a>  <span class="bu">print</span>(result)</span>
+<span id="cb1-31"><a href="#cb1-31"></a></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="kw">def</span> decipher(n,text):</span>
+<span id="cb1-33"><a href="#cb1-33"></a></span>
+<span id="cb1-34"><a href="#cb1-34"></a>  result<span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a></span>
+<span id="cb1-36"><a href="#cb1-36"></a>  <span class="cf">for</span> i <span class="kw">in</span> text:</span>
+<span id="cb1-37"><a href="#cb1-37"></a>    tmp<span class="op">=</span><span class="bu">ord</span>(i)</span>
+<span id="cb1-38"><a href="#cb1-38"></a>    <span class="cf">if</span> ( tmp <span class="op">&gt;=</span> <span class="dv">65</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">90</span> ) <span class="kw">or</span> ( tmp <span class="op">&gt;=</span> <span class="dv">97</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">122</span> ):</span>
+<span id="cb1-39"><a href="#cb1-39"></a>      <span class="cf">if</span> ( tmp <span class="op">&gt;=</span> <span class="dv">65</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">90</span> ):</span>
+<span id="cb1-40"><a href="#cb1-40"></a>        result<span class="op">+=</span><span class="bu">chr</span>((tmp<span class="op">-</span><span class="dv">65</span><span class="op">-</span>n)<span class="op">%</span><span class="dv">26</span><span class="op">+</span><span class="dv">65</span>)</span>
+<span id="cb1-41"><a href="#cb1-41"></a>      <span class="cf">else</span>:</span>
+<span id="cb1-42"><a href="#cb1-42"></a>        result<span class="op">+=</span><span class="bu">chr</span>((tmp<span class="op">-</span><span class="dv">97</span><span class="op">-</span>n)<span class="op">%</span><span class="dv">26</span><span class="op">+</span><span class="dv">97</span>)</span>
+<span id="cb1-43"><a href="#cb1-43"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-44"><a href="#cb1-44"></a>      <span class="bu">print</span>(<span class="st">&quot;ERROR: INVALID CHARACTER&quot;</span>)</span>
+<span id="cb1-45"><a href="#cb1-45"></a></span>
+<span id="cb1-46"><a href="#cb1-46"></a>  <span class="bu">print</span>(<span class="st">&quot;Caesar(</span><span class="sc">%d</span><span class="st">):</span><span class="sc">%s</span><span class="ch">\n</span><span class="st">&quot;</span> <span class="op">%</span> (n,result))</span>
+<span id="cb1-47"><a href="#cb1-47"></a></span>
+<span id="cb1-48"><a href="#cb1-48"></a>mode<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;&quot;&quot;OPTIONS</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="ch">\t</span><span class="st">0)Cipher</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="ch">\t</span><span class="st">1)Decipher</span></span>
+<span id="cb1-52"><a href="#cb1-52"></a></span>
+<span id="cb1-53"><a href="#cb1-53"></a><span class="st">Choose one of them (0 or 1): &quot;&quot;&quot;</span>))</span>
+<span id="cb1-54"><a href="#cb1-54"></a></span>
+<span id="cb1-55"><a href="#cb1-55"></a><span class="cf">if</span> mode <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-56"><a href="#cb1-56"></a>  cipher()</span>
+<span id="cb1-57"><a href="#cb1-57"></a><span class="cf">elif</span> mode <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-58"><a href="#cb1-58"></a>  text<span class="op">=</span><span class="bu">input</span>(<span class="st">&quot;Insert the text: &quot;</span>)</span>
+<span id="cb1-59"><a href="#cb1-59"></a>  yn<span class="op">=</span><span class="bu">input</span>(<span class="st">&quot;Do you know the displacement?(y/n): &quot;</span>)</span>
+<span id="cb1-60"><a href="#cb1-60"></a>  <span class="cf">if</span> yn <span class="op">==</span> <span class="st">&quot;y&quot;</span>:</span>
+<span id="cb1-61"><a href="#cb1-61"></a>    ciphern<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;Insert the displacement: &quot;</span>))</span>
+<span id="cb1-62"><a href="#cb1-62"></a>    decipher(ciphern,text)</span>
+<span id="cb1-63"><a href="#cb1-63"></a>  <span class="cf">elif</span> yn <span class="op">==</span> <span class="st">&quot;n&quot;</span>:</span>
+<span id="cb1-64"><a href="#cb1-64"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">27</span>):</span>
+<span id="cb1-65"><a href="#cb1-65"></a>      decipher(i,text)</span>
+<span id="cb1-66"><a href="#cb1-66"></a>  <span class="cf">else</span>:</span>
+<span id="cb1-67"><a href="#cb1-67"></a>    <span class="bu">print</span>(<span class="st">&quot;[x]Invalid option!&quot;</span>)</span>
+<span id="cb1-68"><a href="#cb1-68"></a>    exit(<span class="dv">255</span>)</span>
+<span id="cb1-69"><a href="#cb1-69"></a><span class="cf">else</span>:</span>
+<span id="cb1-70"><a href="#cb1-70"></a>  <span class="bu">print</span>(<span class="st">&quot;[x]Invalid option!&quot;</span>)</span>
+<span id="cb1-71"><a href="#cb1-71"></a>  exit(<span class="dv">255</span>)</span></code></pre></div>
+</div>
+<div class="english">
+<p>As we have already seen, cryptology is a very broad field composed of
+four essential pillars.</p>
+<p>Cryptography is mostly focused on the algorithms we use to protect
+information; this time we are going to look at a classical encryption
+method, namely by monoalphabetic substitution (standard alphabet
+monogramming).</p>
+<p>This cipher was used by Julius Caesar himself to communicate his
+important messages securely (specifically with a 3-position shift).</p>
+<p>To encrypt a word using this method we must first choose an offset,
+which will be the positions we will move to the right in the alphabet in
+question. For example: if we choose offset 1 and we want to encrypt
+“<strong>ABC</strong>” the result would be “<strong>BCD</strong>”.</p>
+<p>Below, you can see an implementation of this cipher, to encrypt any
+string (without spaces, consecutive words and only letters, since we are
+talking about an alphabet) and decrypt any encrypted string, even
+without knowing the offset.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">########################################################</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># aleph8                                               #</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#------------------------------------------------------#</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># Universal Caesar Cipher and Decipher                 #</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#------------------------------------------------------#</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#                                                      #</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">########################################################</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="kw">def</span> cipher():</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>  text<span class="op">=</span><span class="bu">input</span>(<span class="st">&quot;Insert the text: &quot;</span>)</span>
+<span id="cb2-14"><a href="#cb2-14"></a>  cipher<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;Insert the displacement: &quot;</span>))</span>
+<span id="cb2-15"><a href="#cb2-15"></a>  result<span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>  <span class="co"># ord(&quot;A&quot;) = 65, ord(&quot;Z&quot;) = 90, ord(&quot;a&quot;) = 97, ord(&quot;z&quot;) = 122</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>  <span class="co"># ord(i) =&gt; &quot;Given a string representing one Unicode character, return an integer representing the Unicode code&quot;</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>  <span class="co"># chr(i) =&gt; &quot;Return the string representing a character whose Unicode code point is the integer i&quot;</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a>  <span class="cf">for</span> i <span class="kw">in</span> text:</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    tmp<span class="op">=</span><span class="bu">ord</span>(i)</span>
+<span id="cb2-22"><a href="#cb2-22"></a>    <span class="cf">if</span> ( tmp <span class="op">&gt;=</span> <span class="dv">65</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">90</span> ) <span class="kw">or</span> ( tmp <span class="op">&gt;=</span> <span class="dv">97</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">122</span> ):</span>
+<span id="cb2-23"><a href="#cb2-23"></a>      <span class="cf">if</span> ( tmp <span class="op">&gt;=</span> <span class="dv">65</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">90</span> ):</span>
+<span id="cb2-24"><a href="#cb2-24"></a>        result<span class="op">+=</span><span class="bu">chr</span>((tmp<span class="op">-</span><span class="dv">65</span><span class="op">+</span>cipher)<span class="op">%</span><span class="dv">26</span><span class="op">+</span><span class="dv">65</span>)</span>
+<span id="cb2-25"><a href="#cb2-25"></a>      <span class="cf">else</span>:</span>
+<span id="cb2-26"><a href="#cb2-26"></a>        result<span class="op">+=</span><span class="bu">chr</span>((tmp<span class="op">-</span><span class="dv">97</span><span class="op">+</span>cipher)<span class="op">%</span><span class="dv">26</span><span class="op">+</span><span class="dv">97</span>)</span>
+<span id="cb2-27"><a href="#cb2-27"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-28"><a href="#cb2-28"></a>      <span class="bu">print</span>(<span class="st">&quot;ERROR: INVALID CHARACTER&quot;</span>)</span>
+<span id="cb2-29"><a href="#cb2-29"></a></span>
+<span id="cb2-30"><a href="#cb2-30"></a>  <span class="bu">print</span>(result)</span>
+<span id="cb2-31"><a href="#cb2-31"></a></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="kw">def</span> decipher(n,text):</span>
+<span id="cb2-33"><a href="#cb2-33"></a></span>
+<span id="cb2-34"><a href="#cb2-34"></a>  result<span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a></span>
+<span id="cb2-36"><a href="#cb2-36"></a>  <span class="cf">for</span> i <span class="kw">in</span> text:</span>
+<span id="cb2-37"><a href="#cb2-37"></a>    tmp<span class="op">=</span><span class="bu">ord</span>(i)</span>
+<span id="cb2-38"><a href="#cb2-38"></a>    <span class="cf">if</span> ( tmp <span class="op">&gt;=</span> <span class="dv">65</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">90</span> ) <span class="kw">or</span> ( tmp <span class="op">&gt;=</span> <span class="dv">97</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">122</span> ):</span>
+<span id="cb2-39"><a href="#cb2-39"></a>      <span class="cf">if</span> ( tmp <span class="op">&gt;=</span> <span class="dv">65</span> <span class="kw">and</span> tmp <span class="op">&lt;=</span> <span class="dv">90</span> ):</span>
+<span id="cb2-40"><a href="#cb2-40"></a>        result<span class="op">+=</span><span class="bu">chr</span>((tmp<span class="op">-</span><span class="dv">65</span><span class="op">-</span>n)<span class="op">%</span><span class="dv">26</span><span class="op">+</span><span class="dv">65</span>)</span>
+<span id="cb2-41"><a href="#cb2-41"></a>      <span class="cf">else</span>:</span>
+<span id="cb2-42"><a href="#cb2-42"></a>        result<span class="op">+=</span><span class="bu">chr</span>((tmp<span class="op">-</span><span class="dv">97</span><span class="op">-</span>n)<span class="op">%</span><span class="dv">26</span><span class="op">+</span><span class="dv">97</span>)</span>
+<span id="cb2-43"><a href="#cb2-43"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-44"><a href="#cb2-44"></a>      <span class="bu">print</span>(<span class="st">&quot;ERROR: INVALID CHARACTER&quot;</span>)</span>
+<span id="cb2-45"><a href="#cb2-45"></a></span>
+<span id="cb2-46"><a href="#cb2-46"></a>  <span class="bu">print</span>(<span class="st">&quot;Caesar(</span><span class="sc">%d</span><span class="st">):</span><span class="sc">%s</span><span class="ch">\n</span><span class="st">&quot;</span> <span class="op">%</span> (n,result))</span>
+<span id="cb2-47"><a href="#cb2-47"></a></span>
+<span id="cb2-48"><a href="#cb2-48"></a>mode<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;&quot;&quot;OPTIONS</span></span>
+<span id="cb2-49"><a href="#cb2-49"></a></span>
+<span id="cb2-50"><a href="#cb2-50"></a><span class="ch">\t</span><span class="st">0)Cipher</span></span>
+<span id="cb2-51"><a href="#cb2-51"></a><span class="ch">\t</span><span class="st">1)Decipher</span></span>
+<span id="cb2-52"><a href="#cb2-52"></a></span>
+<span id="cb2-53"><a href="#cb2-53"></a><span class="st">Choose one of them (0 or 1): &quot;&quot;&quot;</span>))</span>
+<span id="cb2-54"><a href="#cb2-54"></a></span>
+<span id="cb2-55"><a href="#cb2-55"></a><span class="cf">if</span> mode <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-56"><a href="#cb2-56"></a>  cipher()</span>
+<span id="cb2-57"><a href="#cb2-57"></a><span class="cf">elif</span> mode <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb2-58"><a href="#cb2-58"></a>  text<span class="op">=</span><span class="bu">input</span>(<span class="st">&quot;Insert the text: &quot;</span>)</span>
+<span id="cb2-59"><a href="#cb2-59"></a>  yn<span class="op">=</span><span class="bu">input</span>(<span class="st">&quot;Do you know the displacement?(y/n): &quot;</span>)</span>
+<span id="cb2-60"><a href="#cb2-60"></a>  <span class="cf">if</span> yn <span class="op">==</span> <span class="st">&quot;y&quot;</span>:</span>
+<span id="cb2-61"><a href="#cb2-61"></a>    ciphern<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;Insert the displacement: &quot;</span>))</span>
+<span id="cb2-62"><a href="#cb2-62"></a>    decipher(ciphern,text)</span>
+<span id="cb2-63"><a href="#cb2-63"></a>  <span class="cf">elif</span> yn <span class="op">==</span> <span class="st">&quot;n&quot;</span>:</span>
+<span id="cb2-64"><a href="#cb2-64"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">27</span>):</span>
+<span id="cb2-65"><a href="#cb2-65"></a>      decipher(i,text)</span>
+<span id="cb2-66"><a href="#cb2-66"></a>  <span class="cf">else</span>:</span>
+<span id="cb2-67"><a href="#cb2-67"></a>    <span class="bu">print</span>(<span class="st">&quot;[x]Invalid option!&quot;</span>)</span>
+<span id="cb2-68"><a href="#cb2-68"></a>    exit(<span class="dv">255</span>)</span>
+<span id="cb2-69"><a href="#cb2-69"></a><span class="cf">else</span>:</span>
+<span id="cb2-70"><a href="#cb2-70"></a>  <span class="bu">print</span>(<span class="st">&quot;[x]Invalid option!&quot;</span>)</span>
+<span id="cb2-71"><a href="#cb2-71"></a>  exit(<span class="dv">255</span>)</span></code></pre></div>
+</div>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>

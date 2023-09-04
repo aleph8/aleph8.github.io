@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <title>Math basis</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Math basis</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">15-08-2023</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<div class="spanish">
+<p><strong>Aún quedan elementos por añadir</strong></p>
+<ul>
+<li><a href="#matemática-fundamental-en-mecnica-cuántica">Matemática
+fundamental en mecánica cuántica</a><br>
+<ul>
+<li><a href="#teoría-de-matrices">Teoría de Matrices</a><br>
+<ul>
+<li><a href="#equivalencia-con-teoría-de-operadores">Equivalencia con
+Teoría de Operadores</a><br></li>
+<li><a href="#matrices-de-pauli">Matrices de Pauli</a><br></li>
+</ul></li>
+<li><a href="#álgebra-abstracta">Álgebra abstracta</a><br>
+<ul>
+<li><a href="#sistemas-algebraicos">Sistemas algebraicos</a><br></li>
+<li><a href="#anillo">Anillo</a><br></li>
+</ul></li>
+<li><a href="#álgebra-linear">Álgebra Linear</a><br>
+<ul>
+<li><a href="#espacios-vectoriales">Espacios vectoriales</a><br></li>
+<li><a href="#zero-vector">Zero Vector</a><br></li>
+<li><a href="#subespacio-vectorial">Subespacio Vectorial</a><br></li>
+<li><a href="#bases-y-dependencia-lineal">Bases y dependencia
+lineal</a><br></li>
+<li><a href="#operadores-lineales">Operadores Lineales</a><br>
+<ul>
+<li><a href="#composición-de-operadores-lineales">Composición de
+operadores lineales</a><br></li>
+</ul></li>
+<li><a href="#producto-interno">Producto Interno</a><br></li>
+<li><a href="#espacio-hilbert">Espacio Hilbert</a><br></li>
+<li><a href="#tensores">Tensores</a><br></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div class="english">
+<p><strong>There are still elements to be added</strong></p>
+<ul>
+<li><a href="#mathematical-knowledge-for-quantum-mechanics">Mathematical
+knowledge for quantum mechanics</a><br>
+<ul>
+<li><a href="#matrix-theory">Matrix Theory</a><br>
+<ul>
+<li><a href="#equivalence-with-operator-theory">Equivalence with
+Operator Theory</a><br></li>
+<li><a href="#pauli-matrices">Pauli matrices</a><br></li>
+</ul></li>
+<li><a href="#abstract-algebra">Abstract algebra</a><br>
+<ul>
+<li><a href="#algebraic-systems">Algebraic systems</a><br></li>
+<li><a href="#ring">Ring</a><br></li>
+</ul></li>
+<li><a href="#linear-algebra">Linear Algebra</a><br>
+<ul>
+<li><a href="#vector-spaces">Vector spaces</a><br></li>
+<li><a href="#zero-vector">Zero Vector</a><br></li>
+<li><a href="#vector-subspace">Vector Subspace</a><br></li>
+<li><a href="#bases-and-linear-dependence">Bases and linear
+dependence</a><br></li>
+<li><a href="#linear-operators">Linear Operators</a><br>
+<ul>
+<li><a href="#composition-of-linear-operators">Composition of linear
+operators</a><br></li>
+</ul></li>
+<li><a href="#internal-product">Internal Product</a><br></li>
+<li><a href="#hilbert-space">Hilbert Space</a><br></li>
+<li><a href="#tensors">Tensors</a><br></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<!-- publication with maths -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- publication with maths -->
+<section id="matemática-fundamental-en-mecánica-cuántica"
+class="spanish">
+<h1>Matemática fundamental en mecánica cuántica</h1>
+<h2 id="teoría-de-matrices">Teoría de Matrices</h2>
+<h3 id="equivalencia-con-teoría-de-operadores">Equivalencia con Teoría
+de Operadores</h3>
+<p>Para entender mejor los distintos operadores podemos basarnos en su
+<em>representación matricial</em> que es completamente equivalente. Pero
+¿cómo podemos llegar a esta conexión?.</p>
+<p>Supongamos una matriz <span class="math inline"><em>A</em></span> de
+dimensión <span class="math inline"><em>m</em> × <em>n</em></span> ,
+podemos ver un operador lineal que “coge” un vector del espacio
+vectorial <span
+class="math inline"><em>C</em><sup><em>n</em></sup></span> y “devuelve”
+un vector de dimensión <span
+class="math inline"><em>C</em><sup><em>m</em></sup></span> bajo la
+multiplicación de la matriz <span class="math inline"><em>A</em></span>
+por un vector en <span
+class="math inline"><em>C</em><sup><em>n</em></sup></span>.</p>
+<p>Es decir, si cogemos la definición de operador lineal (función que es
+lineal en la entrada), esta es cierta siempre y cuando, la operación sea
+una multiplicación de <span class="math inline"><em>A</em></span>
+(matriz) por un vector columna:</p>
+<p><span class="math display">$$A \left( \sum_{i}^{}  a_i|\psi_i\rangle
+\right) = \sum_{i}^{} a_i A(|\psi_i\rangle)$$</span></p>
+<p>¿Y como podemos obtener la representación matricial de un operador
+lineal? Supongamos un operador lineal:</p>
+<p><span
+class="math display"><em>A</em> : <em>V</em> → <em>W</em></span></p>
+<p>Además <span
+class="math inline">|<em>v</em><sub>1</sub>⟩,⋯,|<em>v</em><sub><em>m</em></sub>⟩</span>
+es base de <span class="math inline"><em>V</em></span> y <span
+class="math inline">|<em>w</em><sub>1</sub>⟩,⋯,|<em>w</em><sub><em>m</em></sub>⟩</span>
+es base de <span class="math inline"><em>W</em></span>. Por cada <span
+class="math inline"><em>j</em></span> en el rango <span
+class="math inline">1, ⋯, <em>m</em></span> existen números complejos
+<span class="math inline"><em>A</em><sub>1<em>j</em></sub></span> a
+través de <span
+class="math inline"><em>A</em><sub><em>n</em><em>j</em></sub></span> tal
+que:</p>
+<p><span class="math display">$$A|v_j\rangle = \sum_{i}^{}
+A_{ij}|w_i\rangle,$$</span></p>
+<p>la matriz cuyos valores son <span
+class="math inline"><em>A</em><sub><em>i</em><em>j</em></sub></span> es
+la <em>representación matricial del operador A</em> . ¡Esta
+representación de <span class="math inline"><em>A</em></span> es
+completamente equivalente a su operador <span
+class="math inline"><em>A</em></span>!</p>
+<h3 id="matrices-de-pauli">Matrices de Pauli</h3>
+<p>Matrices fundamentales en computación cuántica, sobretodo a la hora
+de trabajar con circuitos y ver las transformaciones de las puertas
+cuánticas:</p>
+<p><span class="math display">$$\sigma_{0}\equiv I \equiv
+\begin{bmatrix}1 &amp; 0 \\ 0 &amp; 1\end{bmatrix}$$</span></p>
+<p><span class="math display">$$\sigma_{x}\equiv X \equiv
+\begin{bmatrix}0 &amp; 1 \\ 1 &amp; 0\end{bmatrix}$$</span></p>
+<p><span class="math display">$$\sigma_{y}\equiv Y \equiv
+\begin{bmatrix}0 &amp; -i \\ i &amp; 0\end{bmatrix}$$</span></p>
+<p><span class="math display">$$\sigma_{z}\equiv Z \equiv
+\begin{bmatrix}1 &amp; 0 \\ 0 &amp; -1\end{bmatrix}$$</span></p>
+<p>La matriz <span class="math inline"><em>I</em></span> suele ser
+omitida al ser la matriz identidad <span
+class="math inline">2 × 2</span>.</p>
+<h2 id="álgebra-abstracta">Álgebra abstracta</h2>
+<h3 id="sistemas-algebraicos">Sistemas algebraicos</h3>
+<p>Sistema matemático que consiste en un n-tupla formado por un conjunto
+llamado dominio, junto con una o más operaciones. Para un conjunto <span
+class="math inline"><em>C</em></span> y un conjunto de operaciones <span
+class="math inline"><em>o</em><sub>1</sub>...<em>o</em><sub><em>n</em></sub></span>:</p>
+<p><span
+class="math display">[<em>C</em>,<em>o</em><sub>1</sub>,...,<em>o</em><sub><em>n</em></sub>]</span></p>
+<p>denota el sistema.</p>
+<h3 id="anillo">Anillo</h3>
+<p>Sistema algebraico formado por un dominio y dos operaciones: ‘suma’ y
+‘producto’. Estas operaciones deben cumplir unos requisitos para ser
+consideradas válidas.</p>
+<p>Por ejemplo dada la terna <span
+class="math inline">(<em>C</em>,+,⋅)</span> es un anillo donde <span
+class="math inline"><em>C</em></span> es un conjunto y <span
+class="math inline">+</span> con <span class="math inline">⋅</span> son
+operaciones cerradas en <span class="math inline"><em>C</em></span>.</p>
+<h2 id="álgebra-linear">Álgebra Linear</h2>
+<p>Disciplina que se encarga de estudiar con más formalidad los espacios
+vectoriales y sus operaciones lineales.</p>
+<h3 id="espacios-vectoriales">Espacios vectoriales</h3>
+<p>En resumidas cuentas, un espacio vectorial es un conjunto no vacío
+<span class="math inline"><em>V</em></span> de objetos llamados
+vectores.</p>
+<p>Se definen dos operaciones fundamentales, la suma y el producto
+escalar. Es una estructura algebraica con diez axiomas
+fundamentales.</p>
+<p>En cuántica los espacios vectoriales que más nos interesan son <span
+class="math inline">ℂ</span> y sus productos vectoriales <span
+class="math inline">ℂ<sup><em>n</em></sup></span>. En este caso la
+operación adición es la suma básica de números complejos y lo mismo
+sucede con la multiplicación de un escalar.</p>
+<h3 id="zero-vector">Zero Vector</h3>
+<p>Los espacios vectoriales también contienen un vector especial llamado
+‘zero vector’ que para todo espacio vectorial:</p>
+<p><span class="math display">|<em>ψ</em>⟩+0=|<em>ψ</em>⟩</span></p>
+<p>Respecto a la multiplicación por un escalar:</p>
+<p><span class="math display">0<em>z</em> = 0</span></p>
+<h3 id="subespacio-vectorial">Subespacio Vectorial</h3>
+<p>Un subespacio vectorial <span class="math inline"><em>W</em></span>
+es un subconjunto (no vacío) de un espacio vectorial <span
+class="math inline"><em>V</em></span> que es también un espacio
+vectorial y por tanto las operaciones de adición y multiplicación
+escalar deben ser cerradas.</p>
+<h3 id="bases-y-dependencia-lineal">Bases y dependencia lineal</h3>
+<p>En un espacio vectorial una base es un conjunto de vectores mediante
+los cuales todos los vectores del espacio se pueden obtener como
+combinación lineal de estos. Es usual que un espacio vectorial tenga más
+de una base.</p>
+<p>Un conjunto de vectores ( sin incluir el vector cero ) es linealmente
+dependiente si exsite una combinación lineal ebtre ellos que los iguale
+a cero. Siendo <span
+class="math inline"><em>a</em><sub><em>n</em></sub></span> un número
+complejo:</p>
+<p><span
+class="math display"><em>a</em><sub>1</sub>|<em>ψ</em><sub>1</sub>⟩+<em>a</em><sub>2</sub>|<em>ψ</em><sub>2</sub>⟩ + ... + <em>a</em><sub><em>n</em></sub>|<em>ψ</em><sub><em>n</em></sub>⟩ = 0</span></p>
+<h3 id="operadores-lineales">Operadores Lineales</h3>
+<p>Un operador lineas entre dos espacios vectoriales <span
+class="math inline"><em>V</em></span> y <span
+class="math inline"><em>W</em></span> es cualquier función</p>
+<p><span
+class="math display"><em>A</em> : <em>V</em> → <em>W</em></span></p>
+<p>que sea lineal en su entrada. Es decir:</p>
+<p><span class="math display">$$A \left( \sum_{i}^{}  a_i|\psi_i\rangle
+\right) = \sum_{i}^{} a_i A(|\psi_i\rangle)$$</span></p>
+<p>Cuando hablamos de un operador lineal definido en un espacio
+vectorial :</p>
+<p><span
+class="math display"><em>A</em> : <em>V</em> → <em>V</em></span></p>
+<p>Un operador lineal importante (ejemplo) es el operador identidad, el
+cual:</p>
+<p><span
+class="math display"><em>I</em><sub><em>V</em></sub>|<em>ψ</em><sub><em>i</em></sub>⟩=|<em>ψ</em><sub><em>i</em></sub>⟩,</span></p>
+<p><span
+class="math display">∀|<em>ψ</em><sub><em>i</em></sub>⟩ ∈ <em>V</em></span></p>
+<h4 id="composición-de-operadores-lineales">Composición de operadores
+lineales</h4>
+<p>Supongamos 3 espacios vectoriales X, W, y V con dos operadores
+lineales:</p>
+<p><span
+class="math display"><em>A</em> : <em>V</em> → <em>W</em></span></p>
+<p><span
+class="math display"><em>B</em> : <em>W</em> → <em>X</em></span></p>
+<p>La composición viene dada por la notación <span
+class="math inline"><em>B</em><em>A</em>|<em>ψ</em>⟩</span></p>
+<h3 id="producto-interno">Producto Interno</h3>
+<p>Una función <span class="math inline">(⋅,⋅)</span> tal que:</p>
+<p><span class="math display"><em>V</em> × <em>V</em> → ℂ</span></p>
+<p>es producto interno de un espacio complejo, si satisface:</p>
+<ol type="1">
+<li>Es lineal en el segundo argumento</li>
+</ol>
+<p><span class="math display">$$\left( |v\rangle, \sum_{i}^{}
+\lambda_i|w_i\rangle \right) = \sum_{i}^{} \lambda_i ( |v\rangle,
+|w_i\rangle  )$$</span></p>
+<ol start="2" type="1">
+<li><p><span
+class="math inline">(|<em>v</em>⟩,|<em>w</em>⟩) = (|<em>w</em>⟩,|<em>v</em>⟩)*</span></p></li>
+<li><p><span class="math inline">(|<em>v</em>⟩,|<em>v</em>⟩) ≥ 0</span>
+con igualdad sí y solo sí <span
+class="math inline">|<em>v</em>⟩ = 0</span></p></li>
+</ol>
+<p>Por ejemplo, <span class="math inline">ℂ<sup><em>n</em></sup></span>
+tiene un producto interno definido como:</p>
+<p><span class="math display">$$((y_1, ... , y_n),(z_1, ... , z_n))
+\equiv \sum_{i}^{} y_{i}^{*} z_{i} = [ y_{1}^{*} ... y_{n}^{*} ]
+\begin{bmatrix}z_{1} \\ ... \\ z_{n}\end{bmatrix}$$</span></p>
+<h3 id="espacio-hilbert">Espacio Hilbert</h3>
+<p>En una dimensión finita en los espacios vectoriales que se ven en
+<em>información y computación cuántica</em> un Espacio de Hilbert es lo
+mismo que un espacio vectorial con producto interno. (Realmente esto no
+es del todo así, hay una condición más, pero esto es suficiente):</p>
+<blockquote>
+<p>Discussions of quantum mechanics often refer to Hilbert space. In the
+finite dimensional complex vector spaces that come up in quantum
+computation and quantum information, a Hilbert space is exactly the same
+thing as an inner product space. From now on we use the two terms
+interchangeably, preferring the term Hilbert space. In infinite
+dimensions Hilbert spaces satisfy additional technical restrictions
+above and beyond inner product spaces, which we will not need to worry
+about. — M. A. Nielsen and I. Chuang. 2002. Quantum computation and
+quantum information. American Association of Physics Teachers.</p>
+</blockquote>
+<h3 id="tensores">Tensores</h3>
+<p>Un tensor nos permite juntar espacios vectoriales para generar otros
+aún más grandes. Sea <span class="math inline"><em>V</em></span> y <span
+class="math inline"><em>W</em></span> dos espacios vectoriales,
+definimos el tensor <span
+class="math inline"><em>V</em> ⊗ <em>W</em></span> como el conjunto de
+combinaciones lineales de los productos tensoriales <span
+class="math inline">|<em>v</em>⟩⊗|<em>w</em>⟩</span> de los elementos
+<span class="math inline">|<em>v</em>⟩ ∈ <em>V</em></span> y <span
+class="math inline">|<em>w</em>⟩ ∈ <em>W</em></span>.</p>
+</section>
+<section id="mathematical-knowledge-for-quantum-mechanics"
+class="english">
+<h1>Mathematical knowledge for quantum mechanics</h1>
+<h2 id="matrix-theory">Matrix Theory</h2>
+<h3 id="equivalence-with-operator-theory">Equivalence with Operator
+Theory</h3>
+<p>To better understand the various operators we can rely on their
+<em>matrix representation</em> which is completely equivalent. But how
+can we arrive at this connection.</p>
+<p>Suppose a matrix <span class="math inline"><em>A</em></span> of
+dimension <span class="math inline"><em>m</em> × <em>n</em></span> , we
+can see a linear operator that “takes” a vector from vector space <span
+class="math inline"><em>C</em><sup><em>n</em></sup></span> and “returns”
+a vector of dimension <span
+class="math inline"><em>C</em><sup><em>m</em></sup></span> under the
+multiplication of matrix <span class="math inline"><em>A</em></span> by
+a vector in <span
+class="math inline"><em>C</em><sup><em>n</em></sup></span>.</p>
+<p>That is, if we take the definition of linear operator (function that
+is linear in the input), this is true as long as the operation is a
+multiplication of <span class="math inline"><em>A</em></span> (matrix)
+by a column vector:</p>
+<p><span class="math display">$$A \left( \sum_{i}^{}  a_i|\psi_i\rangle
+\right) = \sum_{i}^{} a_i A(|\psi_i\rangle)$$</span></p>
+<p>And how can we obtain the matrix representation of a linear operator?
+Let’s suppose a linear operator:</p>
+<p><span
+class="math display"><em>A</em> : <em>V</em> → <em>W</em></span></p>
+<p>Moreover <span
+class="math inline">|<em>v</em><sub>1</sub>⟩,⋯,|<em>v</em><sub><em>m</em></sub>⟩</span>
+is basis of <span class="math inline"><em>V</em></span> and <span
+class="math inline">|<em>w</em><sub>1</sub>⟩,⋯,|<em>w</em><sub><em>m</em></sub>⟩</span>
+is basis of <span class="math inline"><em>W</em></span>. For every <span
+class="math inline"><em>j</em></span> in rank <span
+class="math inline">1, ⋯, <em>m</em></span> there exist complex numbers
+<span class="math inline"><em>A</em><sub>1<em>j</em></sub></span>
+through <span
+class="math inline"><em>A</em><sub><em>n</em><em>j</em></sub></span>
+such that:</p>
+<p><span class="math display">$$A|v_j\rangle = \sum_{i}^{}
+A_{ij}|w_i\rangle,$$</span></p>
+<p>the matrix whose values are <span
+class="math inline"><em>A</em><sub><em>i</em><em>j</em></sub></span> is
+the <em>matrix representation of the operator A</em> . This
+representation of <span class="math inline"><em>A</em></span> is
+completely equivalent to its operator <span
+class="math inline"><em>A</em></span>!</p>
+<h3 id="pauli-matrices">Pauli matrices</h3>
+<p>Fundamental matrices in quantum computing, especially when working
+with circuits and seeing quantum gate transformations:</p>
+<p><span class="math display">$$\sigma_{0}\equiv I \equiv
+\begin{bmatrix}1 &amp; 0 \\ 0 &amp; 1\end{bmatrix}$$</span></p>
+<p><span class="math display">$$\sigma_{x}\equiv X \equiv
+\begin{bmatrix}0 &amp; 1 \\ 1 &amp; 0\end{bmatrix}$$</span></p>
+<p><span class="math display">$$\sigma_{y}\equiv Y \equiv
+\begin{bmatrix}0 &amp; -i \\ i &amp; 0\end{bmatrix}$$</span></p>
+<p><span class="math display">$$\sigma_{z}\equiv Z \equiv
+\begin{bmatrix}1 &amp; 0 \\ 0 &amp; -1\end{bmatrix}$$</span></p>
+<p>The <span class="math inline"><em>I</em></span> matrix is usually
+omitted as the <span class="math inline">2 × 2</span> identity
+matrix.</p>
+<h2 id="abstract-algebra">Abstract algebra</h2>
+<h3 id="algebraic-systems">Algebraic systems</h3>
+<p>A mathematical system consisting of an n-tuple formed by a set called
+a domain, together with one or more operations. For a set <span
+class="math inline"><em>C</em></span> and a set of operations <span
+class="math inline"><em>o</em><sub>1</sub>...<em>o</em><sub><em>n</em></sub></span>:</p>
+<p><span
+class="math display">[<em>C</em>,<em>o</em><sub>1</sub>,...,<em>o</em><sub><em>n</em></sub>]</span></p>
+<p>denota el sistema.</p>
+<h3 id="ring">Ring</h3>
+<p>Algebraic system formed by a domain and two operations: ‘sum’ and
+‘product’. These operations must meet certain requirements to be
+considered valid.</p>
+<p>For example given the tern <span
+class="math inline">(<em>C</em>,+,⋅)</span> is a ring where <span
+class="math inline"><em>C</em></span> is a set and <span
+class="math inline">+</span> with <span class="math inline">⋅</span> are
+closed operations on <span class="math inline"><em>C</em></span>.</p>
+<h2 id="linear-algebra">Linear Algebra</h2>
+<p>Discipline that deals with the more formal study of vector spaces and
+their linear operations.</p>
+<h3 id="vector-spaces">Vector spaces</h3>
+<p>Briefly, a vector space is a nonempty set <span
+class="math inline"><em>V</em></span> of objects called vectors.</p>
+<p>Two fundamental operations are defined, the sum and the scalar
+product. It is an algebraic structure with ten fundamental axioms.</p>
+<p>In quantum the vector spaces we are most interested in are <span
+class="math inline">ℂ</span> and their vector products <span
+class="math inline">ℂ<sup><em>n</em></sup></span>. In this case the
+addition operation is the basic addition of complex numbers and so is
+the multiplication of a scalar.</p>
+<h3 id="zero-vector-1">Zero Vector</h3>
+<p>Vector spaces also contain a special vector called a ‘zero vector’
+that for every vector space:</p>
+<p><span class="math display">|<em>ψ</em>⟩+0=|<em>ψ</em>⟩</span></p>
+<p>Regarding multiplication by a scalar:</p>
+<p><span class="math display">0<em>z</em> = 0</span></p>
+<h3 id="vector-subspace">Vector Subspace</h3>
+<p>A vector subspace <span class="math inline"><em>W</em></span> is a
+(non-empty) subset of a vector space <span
+class="math inline"><em>V</em></span> which is also a vector space and
+therefore addition and scalar multiplication operations must be
+closed.</p>
+<h3 id="bases-and-linear-dependence">Bases and linear dependence</h3>
+<p>In a vector space a basis is a set of vectors by which all the
+vectors of the space can be obtained as a linear combination of these.
+It is usual for a vector space to have more than one basis.</p>
+<p>A set of vectors (not including the zero vector) is linearly
+dependent if there exists a linear combination between them that equals
+zero. Being <span
+class="math inline"><em>a</em><sub><em>n</em></sub></span> a complex
+number:</p>
+<p><span
+class="math display"><em>a</em><sub>1</sub>|<em>ψ</em><sub>1</sub>⟩+<em>a</em><sub>2</sub>|<em>ψ</em><sub>2</sub>⟩ + ... + <em>a</em><sub><em>n</em></sub>|<em>ψ</em><sub><em>n</em></sub>⟩ = 0</span></p>
+<h3 id="linear-operators">Linear Operators</h3>
+<p>A linear operator between two vector spaces <span
+class="math inline"><em>V</em></span> and <span
+class="math inline"><em>W</em></span> is any function</p>
+<p><span
+class="math display"><em>A</em> : <em>V</em> → <em>W</em></span></p>
+<p>that is linear in its input. That is to say:</p>
+<p><span class="math display">$$A \left( \sum_{i}^{}  a_i|\psi_i\rangle
+\right) = \sum_{i}^{} a_i A(|\psi_i\rangle)$$</span></p>
+<p>When we speak of a linear operator defined on a vector space:</p>
+<p><span
+class="math display"><em>A</em> : <em>V</em> → <em>V</em></span></p>
+<p>An important linear operator (example) is the identity operator,
+which:</p>
+<p><span
+class="math display"><em>I</em><sub><em>V</em></sub>|<em>ψ</em><sub><em>i</em></sub>⟩=|<em>ψ</em><sub><em>i</em></sub>⟩,</span></p>
+<p><span
+class="math display">∀|<em>ψ</em><sub><em>i</em></sub>⟩ ∈ <em>V</em></span></p>
+<h4 id="composition-of-linear-operators">Composition of linear
+operators</h4>
+<p>Suppose 3 vector spaces X, W, and V with two linear operators:</p>
+<p><span
+class="math display"><em>A</em> : <em>V</em> → <em>W</em></span></p>
+<p><span
+class="math display"><em>B</em> : <em>W</em> → <em>X</em></span></p>
+<p>The composition is given by the notation <span
+class="math inline"><em>B</em><em>A</em>|<em>ψ</em>⟩</span></p>
+<h3 id="internal-product">Internal Product</h3>
+<p>A function <span class="math inline">(⋅,⋅)</span> such that:</p>
+<p><span class="math display"><em>V</em> × <em>V</em> → ℂ</span></p>
+<p>is an inner product of a complex space, if it satisfies:</p>
+<ol type="1">
+<li>It is linear in the second argument</li>
+</ol>
+<p><span class="math display">$$\left( |v\rangle, \sum_{i}^{}
+\lambda_i|w_i\rangle \right) = \sum_{i}^{} \lambda_i ( |v\rangle,
+|w_i\rangle  )$$</span></p>
+<ol start="2" type="1">
+<li><p><span
+class="math inline">(|<em>v</em>⟩,|<em>w</em>⟩) = (|<em>w</em>⟩,|<em>v</em>⟩)*</span></p></li>
+<li><p><span class="math inline">(|<em>v</em>⟩,|<em>v</em>⟩) ≥ 0</span>
+with equality if and only if <span
+class="math inline">|<em>v</em>⟩ = 0</span></p></li>
+</ol>
+<p>For example, <span class="math inline">ℂ<sup><em>n</em></sup></span>
+has an inner product defined as:</p>
+<p><span class="math display">$$((y_1, ... , y_n),(z_1, ... , z_n))
+\equiv \sum_{i}^{} y_{i}^{*} z_{i} = [ y_{1}^{*} ... y_{n}^{*} ]
+\begin{bmatrix}z_{1} \\ ... \\ z_{n}\end{bmatrix}$$</span></p>
+<h3 id="hilbert-space">Hilbert Space</h3>
+<p>In a finite dimension in the vector spaces seen in <em>quantum
+information and computation</em> a Hilbert Space is the same as a vector
+space with inner product. (Actually this is not quite so, there is one
+more condition, but this is enough):</p>
+<blockquote>
+<p>Discussions of quantum mechanics often refer to Hilbert space. In the
+finite dimensional complex vector spaces that come up in quantum
+computation and quantum information, a Hilbert space is exactly the same
+thing as an inner product space. From now on we use the two terms
+interchangeably, preferring the term Hilbert space. In infinite
+dimensions Hilbert spaces satisfy additional technical restrictions
+above and beyond inner product spaces, which we will not need to worry
+about. — M. A. Nielsen and I. Chuang. 2002. Quantum computation and
+quantum information. American Association of Physics Teachers.</p>
+</blockquote>
+<h3 id="tensors">Tensors</h3>
+<p>A tensor allows us to put together vector spaces to generate even
+larger ones. Let <span class="math inline"><em>V</em></span> and <span
+class="math inline"><em>W</em></span> be two vector spaces, we define
+the tensor <span
+class="math inline"><em>V</em><em>Ò</em><em>t</em><em>i</em><em>m</em><em>e</em><em>s</em><em>W</em></span>
+as the set of linear combinations of the tensor products. <span
+class="math inline">|<em>v</em>⟩⊗|<em>w</em>⟩</span> de los elementos
+<span class="math inline">|<em>v</em>⟩ ∈ <em>V</em></span> y <span
+class="math inline">|<em>w</em>⟩ ∈ <em>W</em></span>.</p>
+</section>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>

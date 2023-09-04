@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <title>3D-Print-Beginnings with Creality</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">3D-Print-Beginnings with Creality</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">07-06-2021</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<div class="spanish">
+<p>Recientemente adquirí por primera vez una impresora 3D. Tenía
+experiencia con este tipo de tecnología ya que en mi instituto montamos
+una Geetech Prusa I3. En el transcurso del montaje de esta impresora
+tuvimos diversos problemas que fuimos resolviendo gracias al interés e
+ilusión que teníamos en aquel momento, esas ansias y ganas de aprender.
+La impresora no venía lista para imprimir; había que montarla desde
+cero. Al ser nuestra primera impresora añadía una complejidad extra al
+reto y gracias a esto aprendimos cómo funciona una impresora 3D de este
+tipo:</p>
+<div style="text-align: center;">
+<img src="images/ini1.png" alt="Image" width="400">
+</div>
+<p>El problema de esta impresora es que contaba con diversos problemas
+mecánicos, por lo que tuvimos que sustituir varios componentes
+electrónicos. Otro problema es que teníamos que estar calibrando todos
+los ejes por cada impresión que hacíamos y acabamos desesperados. Esto
+también se debe a que igual era algo más avanzado para nosotros pero
+como he dicho anteriormente esta impresora nos brindó la ocasión de
+aprender muchísimo y a día de hoy la recuerdo con cariño.</p>
+<p>Ya como estudiante universitario volví a mi instituto y esta vez
+(gracias a un gran profesor) había una impresora nueva (al igual que la
+otra, para fomentar el conocimiento usándose en proyectos de tecnología)
+: La Ender 3 Pro.</p>
+<div style="text-align: center;">
+<img src="images/ini2.jpg" alt="Image" width="400">
+</div>
+<p>Estuve trabajando con esta impresora para el desarrollo del “Ensayo
+I” y vi en ella un potencial desorbitado; ofrecía unas prestaciones
+elevadas por un precio demasiado asequible. Fue en ese momento cuando
+decidí comprarme esta impresora.</p>
+<p>El montaje fue sencillo, un poco más complicado fue el eje Z, pero en
+general el proceso es bastante intuitivo. Es una impresora que cuenta
+con un sistema de extrusión “poco eficiente” que hace que el filamento
+pueda verse “estancado” (de esto hablaré en otra ocasión). Una vez
+montada, lo único que quedaba hacer era conectarla y ponerla a imprimir.
+Al contrario que la Geetech, esta venía parcialmente montada y solo
+había que poner un par de cosas. Un consejo que os doy si estáis
+comenzando en este mundillo, es que antes de la impresión, sobre la cama
+caliente, añadáis algún elemento para que las primeras capas se adhieran
+mejor y durante la impresión no se despeguen. En el caso de que tengáis
+una superficie de cristal o semejante podéis cubrirla con cinta de
+carrocero; en el caso de que contéis con otro tipo de superficie del
+estilo de la alfombra magnética de la Ender 3 Pro lo mejor es usar laca
+(la que más recomiendo es la “Nelly”).</p>
+<p>Definitivamente con esta compra ya estaba adentrado en este
+fascinante mundo de la impresión 3D y me alegraba que estas impresoras
+cada vez estuvieran más acopladas en el mercado y a un precio económico.
+En concreto estoy fascinado con esta impresora de Creality ya que ofrece
+un amplio abanico de oportunidades a un precio reducido.</p>
+</div>
+<div class="english">
+<p>I recently acquired for the first time a 3D printer. I had experience
+with this type of technology because in my high school we assembled a
+Geetech Prusa I3. During the assembly of this printer we had several
+problems that we were solving thanks to the interest and enthusiasm that
+we had at that time, that eagerness and desire to learn. The printer did
+not come ready to print; it had to be assembled from scratch. Being our
+first printer added an extra complexity to the challenge and thanks to
+this we learned how a 3D printer of this type works:</p>
+<div style="text-align: center;">
+<img src="images/ini1.png" alt="Image" width="400">
+</div>
+<p>The problem with this printer is that it had several mechanical
+problems, so we had to replace several electronic components. Another
+problem is that we had to be calibrating all the axes for every print we
+made and we ended up desperate. This is also due to the fact that it was
+a bit more advanced for us, but as I said before, this printer gave us
+the opportunity to learn a lot and I still remember it fondly.</p>
+<p>As a college student I went back to my high school and this time
+(thanks to a great teacher) there was a new printer (just like the other
+one, to promote knowledge by using it in technology projects): The Ender
+3 Pro.</p>
+<div style="text-align: center;">
+<img src="images/ini2.jpg" alt="Image" width="400">
+</div>
+<p>I was working with this printer for the development of “Test I” and I
+saw in it an exorbitant potential; it offered high performance for a
+very affordable price. It was then that I decided to buy this
+printer.</p>
+<p>The assembly was simple, a little more complicated was the Z axis,
+but in general the process is quite intuitive. It is a printer that has
+an “inefficient” extrusion system that makes the filament can be
+“stagnant” (I will talk about this another time). Once assembled, the
+only thing left to do was to connect it and start printing. Unlike the
+Geetech, this one came partially assembled and only had to put a couple
+of things. A tip I give you if you are starting in this world, is that
+before printing, on the hot bed, add some element so that the first
+layers adhere better and during printing do not peel off. In case you
+have a glass surface or similar you can cover it with masking tape; in
+case you have another type of surface like the magnetic carpet of the
+Ender 3 Pro it is best to use lacquer (the one I recommend the most is
+the “Nelly”).</p>
+<p>Definitely with this purchase I was already into this fascinating
+world of 3D printing and I was glad that these printers were more and
+more coupled in the market and at an economical price. In particular I
+am fascinated with this printer from Creality as it offers a wide range
+of opportunities at a reduced price.</p>
+</div>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>

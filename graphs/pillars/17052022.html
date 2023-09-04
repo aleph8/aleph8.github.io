@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <title>Echo</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Echo</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">22-09-2021</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<div class="spanish">
+<p>En un pequeño descanso de Arachne, decidí programar mi propia Alexa.
+Es algo que siempre he querido hacer, porque me gustaría desarrollar un
+asistente virtual a mi propiass necesidades, programando y automatizando
+mis tareas. Aquí es cuando surge “Echo”.</p>
+<p>En unas pocas líneas tenía las funcionalidades básicas en menos de
+media hora … ¡y ya respondía a varios de mis propios comandos! No es muy
+complicado de hacer, y puede tener multitud de aplicaciones como la
+domótica.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> speech_recognition <span class="im">as</span> sr</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> utils</span>
+<span id="cb1-3"><a href="#cb1-3"></a>recognizer <span class="op">=</span> sr.Recognizer() <span class="co">#Init the audio recognizer</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>record_file <span class="op">=</span> sr.AudioFile(<span class="st">&#39;../core_records/record.wav&#39;</span>) <span class="co">#Select the file</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    utils.echo_call(recognizer,record_file)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    utils.tex2voice(<span class="st">&quot;Hello! What do you need?&quot;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    utils.order_call(recognizer,record_file)</span></code></pre></div>
+<p>Para que el asistente entienda qué es lo que le estamos diciendo,
+vamos a usar SpeechRecognition, una librería de Python la cual
+importaremos como ‘sr’.</p>
+<p>Como puedes ver en la imagen, el proceso se repite infinitamente:
+llamamos a Echo, nos pregunta que es lo que queremos y nosotros se lo
+decimos.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> tex2voice(text):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    language <span class="op">=</span> <span class="st">&#39;en&#39;</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    myobj <span class="op">=</span> gTTS(text<span class="op">=</span>text, lang<span class="op">=</span>language, slow<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    myobj.save(<span class="st">&quot;../core_records/echo.mp3&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    os.system(<span class="st">&quot;mpg321 ../core_records/echo.mp3&quot;</span>)</span></code></pre></div>
+<p>Para que Echo nos responda (tal y como hace Alexa), usaremos esta vez
+la librería GTTS. Cada vez que queramos que el asistente nos diga algo
+usaremos la función “text2voice”.</p>
+<p>Las utilidades están en el archivo utils.py</p>
+<p>Más abajo encontrarás algunos ejemplos del uso de Echo y el enlace al
+repositorio de Github donde encontrarás el código necesario de la
+versión básica de Echo … ¡ para que cualquiera pueda participar y
+contribuir al crecimiento de su propio Echo!</p>
+<div style="text-align: center;">
+<img src="images/echo1.png" alt="Image" width="800">
+</div>
+</div>
+<div class="english">
+<p>In a little break from Arachne, I decided to program my own Alexa.
+It’s something I’ve always wanted to do, because I would like to develop
+a virtual assistant to my own needs, programming and automating my
+tasks. This is when “Echo” came up.</p>
+<p>In a few lines I had the basic functionalities in less than half an
+hour … and it already responded to several of my own commands! It is not
+very complicated to do, and can have a multitude of applications such as
+home automation.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> speech_recognition <span class="im">as</span> sr</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> utils</span>
+<span id="cb3-3"><a href="#cb3-3"></a>recognizer <span class="op">=</span> sr.Recognizer() <span class="co">#Init the audio recognizer</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>record_file <span class="op">=</span> sr.AudioFile(<span class="st">&#39;../core_records/record.wav&#39;</span>) <span class="co">#Select the file</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb3-7"><a href="#cb3-7"></a>    utils.echo_call(recognizer,record_file)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    utils.tex2voice(<span class="st">&quot;Hello! What do you need?&quot;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a>    utils.order_call(recognizer,record_file)</span></code></pre></div>
+<p>In order for the assistant to understand what we are saying, we will
+use SpeechRecognition, a Python library which we will import as
+‘sr’.</p>
+<p>As you can see in the image, the process is repeated endlessly: we
+call Echo, it asks us what we want and we tell it what we want.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> tex2voice(text):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    language <span class="op">=</span> <span class="st">&#39;en&#39;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    myobj <span class="op">=</span> gTTS(text<span class="op">=</span>text, lang<span class="op">=</span>language, slow<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    myobj.save(<span class="st">&quot;../core_records/echo.mp3&quot;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    os.system(<span class="st">&quot;mpg321 ../core_records/echo.mp3&quot;</span>)</span></code></pre></div>
+<p>To make Echo respond to us (as Alexa does), this time we will use the
+GTTS library. Every time we want the assistant to tell us something we
+will use the “text2voice” function.</p>
+<p>The utilities are in the file utils.py</p>
+<p>Below you will find some examples of the use of Echo and the link to
+the Github repository where you will find the necessary code of the
+basic version of Echo … so that anyone can participate and contribute to
+the growth of their own Echo!</p>
+<div style="text-align: center;">
+<img src="images/echo2.png" alt="Image" width="800">
+</div>
+</div>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>

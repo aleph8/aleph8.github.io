@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "05042022",
+      "group": "Robotic",
+      "title": " EOS (Electronic Open Strandbeest)"
+    },
+    {
+      "id": "06072022",
+      "group": "Robotic",
+      "title": " Arachne"
+    },
+    {
+      "id": "09082021",
+      "group": "Robotic",
+      "title": " Sentinel Robot"
+    }
+  ],
+  "links": [
+    {
+      "source": "05042022",
+      "target": "09082021",
+      "value": 1
+    },
+    {
+      "source": "06072022",
+      "target": "05042022",
+      "value": 1
+    }
+  ]
+}

