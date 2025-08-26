@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaBookOpen } from "react-icons/fa";
 import styles from "./index.module.css";
 
 export default function Home() {
@@ -46,14 +46,9 @@ export default function Home() {
               <a href="https://x.com/alegpmbt" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 <FaTwitter size={20} />
               </a>
-              { /*
-                          <Link to="/blog" className={styles.socialLink}>
-                          <BookOpen size={20} />
-                        </Link>
-                        <a href="mailto:contact@aleph.dev" className={styles.socialLink}>
-                          <Mail size={20} />
-                        </a>
-             */ }
+              <Link to="/blog" className={styles.socialLink}>
+                <FaBookOpen size={20} />
+              </Link>
             </div>
           </div>
         </main>

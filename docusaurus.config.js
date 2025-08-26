@@ -11,7 +11,7 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://alejandrogp.com",
   baseUrl: "/",
 
   organizationName: "aleph8",
@@ -37,8 +37,7 @@ const config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          editUrl:
-            "https://github.com/aleph8/aleph8.github.io/tree/main/",
+          editUrl: "https://github.com/aleph8/aleph8.github.io/tree/main/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
@@ -58,8 +57,7 @@ const config = {
         path: "docs/panoruma",
         routeBasePath: "panoruma",
         sidebarPath: "./sidebars_panoruma.js",
-        editUrl:
-          "https://github.com/aleph8/aleph8.github.io/tree/main/",
+        editUrl: "https://github.com/aleph8/aleph8.github.io/tree/main/",
       },
     ],
     [
@@ -69,8 +67,7 @@ const config = {
         path: "docs/vt4ai",
         routeBasePath: "vt4ai",
         sidebarPath: "./sidebars_vt4ai.js",
-        editUrl:
-          "https://github.com/aleph8/aleph8.github.io/tree/main/",
+        editUrl: "https://github.com/aleph8/aleph8.github.io/tree/main/",
       },
     ],
   ],
@@ -95,10 +92,11 @@ const config = {
             label: "Home",
             position: "right",
           },
+          { to: "/blog", label: "Blog", position: "right" },
           {
-            type: 'dropdown',
-            label: 'Docs',
-            position: 'right',
+            type: "dropdown",
+            label: "Docs",
+            position: "right",
             items: [
               {
                 to: "/vt4ai/intro",
@@ -115,7 +113,6 @@ const config = {
             label: "About me",
             position: "right",
           },
-          // { to: "/blog", label: "Blog", position: "left" },
         ],
       },
       footer: {

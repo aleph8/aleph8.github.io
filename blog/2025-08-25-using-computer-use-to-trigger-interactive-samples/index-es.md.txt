@@ -1,0 +1,54 @@
+---
+slug: using-computer-use-to-trigger-interactive-samples
+title: Using computer use to trigger interactive samples
+authors: [alejandro]
+tags: [ai, cybersecurity, malware]
+---
+
+Las sandboxes (entornos aislados) tradicionales enfrentan limitaciones significativas cuando se trata de analizar muestras que requieren interacción humana para activarse completamente. La detonación de muestras en entornos aislados a veces se complica por la necesidad de interactuar con elementos gráficos, para que esta pueda desplegarse sin problemas y mostrar todo su potencial.
+
+Algunos productos ofrecen soluciones para poder controlar la máquina remota, donde se está ejecutando la muestra; otros se basan en la existencia de ciertos elementos en la pantalla, incluso en la automatización de la pulsación de ciertas teclas (como presionar "Enter" repetidamente con la esperanza de que funcione)
+
+<!-- truncate -->
+
+## _Computer Use_
+
+_Computer Use_ es una nueva capacidad de los LLM (_Large Language Models_) que les permite interactuar directamente con interfaces de usuario como lo haría un humano. En el contexto de los LLM, [_Computer Use_](https://www.anthropic.com/news/3-5-models-and-computer-use) se refiere a la capacidad de un sistema basado en un modelo como "cerebro", para interactuar con ordenadores; es decir, poder "ver" la pantalla, e interactuar con el entorno haciendo clics, escribiendo, ejecutando aplicaciones...
+
+## Casos prácticos reales
+
+Vamos a ver ejemplos de aplicación montando un pequeño sistema para que un LLM pueda hacerse con el control de una sandbox (a partir de ahora nombrado como **Pandora**).
+
+### 1. Instaladores de aplicaciones
+
+Al instalar una aplicación, solemos ver una interfaz gráfica con un proceso guiado de instalación y configuración; a continuación se puede observar el proceso de interacción de **Pandora** en un entorno aislado con una muestra benigna: un instalador msi de Firefox en Windows 10:
+
+<iframe src="/blog/using-computer-user-to-trigger-interactive-samples/pandora-analysis-firefox-setup.html" width="100%" height="500px"></iframe>
+
+En este caso el sistema sigue las instrucciones básicas para instalar la aplicación, pero podría ser una configuración propia o específica. Con esto en cuestión de segundos tendríamos instalada la aplicación en nuestra sandbox para recopilar información.
+
+### 2. Ingeniería social
+
+Ciertos documentos engañosos requieren hacer clic en ciertas partes concretas para lanzarse (como en el caso de las macros) o engañarte para descargar otro fichero de fuentes de dudosa procedencia. Este caso es de una imagen que emula a una entidad judicial de Colombia, instando al usuario a que se descargue otro fichero que probablemente sea el malicioso:
+
+<iframe src="/blog/using-computer-user-to-trigger-interactive-samples/pandora-analysis-phishing-svg.html" width="100%" height="500px"></iframe>
+
+Por desgracia el link ya no está disponible. En un caso como este simulado en las pruebas, el agente era capaz de descargarse el documento e introducir la contraseña.
+
+### 3. Evasión de sistemas automatizados
+
+En este caso vamos a ver dos PDFs destinados a evitar la descarga de ficheros por procesos automatizados:
+
+#### 3.1 Falso Captcha
+
+<iframe src="/blog/using-computer-user-to-trigger-interactive-samples/pandora-analysis-captcha.html" width="100%" height="500px"></iframe>
+
+#### 3.2 Soy un humano
+
+<iframe src="/blog/using-computer-user-to-trigger-interactive-samples/pandora-analysis-custom-image.html" width="100%" height="500px"></iframe>
+
+## Mirando hacia el futuro
+
+Realmente estos casos son solo un subconjunto pequeño de todas las muestras que reciben a diario plataformas como [VirusTotal](https://www.virustotal.com/gui/home/upload); sin embargo **Pandora** nos muestra una aplicación de la Inteligencia Artificial para suplir una deficiencia de la mayoría de sandbox actuales.
+
+Aunque esta tecnología presenta un gran potencial, también plantea nuevos desafíos como el costo computacional de ejecutar LLMs en tiempo real, y la posible evolución del malware para evadir incluso estas técnicas avanzadas de análisis automatizado.
