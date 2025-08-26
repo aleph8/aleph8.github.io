@@ -1,0 +1,227 @@
+/* About Page Styles */
+.aboutPage {
+    min-height: calc(100vh - 70px);
+    background: var(--ifm-background-color);
+    color: var(--ifm-font-color-base);
+    position: relative;
+}
+
+/* Grid Background */
+.aboutPage::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Grid for light theme */
+html:not([data-theme='dark']) .aboutPage::before {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+}
+
+/* Grid for dark theme */
+html[data-theme='dark'] .aboutPage::before {
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    color: var(--ifm-font-color-base);
+}
+
+.highlight {
+    font-weight: 500;
+    color: var(--ifm-color-primary);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--ifm-font-color-secondary);
+    font-weight: 300;
+    font-style: italic;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.section {
+    background: var(--ifm-background-surface-color);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--ifm-color-emphasis-200);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .section:hover {
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: var(--ifm-color-primary);
+    letter-spacing: 0.05em;
+}
+
+.text {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    color: var(--ifm-font-color-base);
+}
+
+.text:last-child {
+    margin-bottom: 0;
+}
+
+.list {
+    margin: 1.5rem 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.list li {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--ifm-color-emphasis-100);
+    border-radius: 8px;
+    border-left: 4px solid var(--ifm-color-primary);
+    transition: all 0.3s ease;
+}
+
+.list li:hover {
+    background: var(--ifm-color-emphasis-200);
+    transform: translateX(5px);
+}
+
+.list li strong {
+    color: var(--ifm-color-primary);
+}
+
+.quote {
+    font-size: 1.3rem;
+    font-style: italic;
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--ifm-color-primary-lightest);
+    border-radius: 8px;
+    border-left: 4px solid var(--ifm-color-primary);
+    color: var(--ifm-color-primary-darkest);
+    position: relative;
+}
+
+[data-theme='dark'] .quote {
+    background: var(--ifm-color-primary-darkest);
+    color: var(--ifm-color-primary-lightest);
+}
+
+.quote::before {
+    content: '"';
+    font-size: 3rem;
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    color: var(--ifm-color-primary);
+    font-family: serif;
+}
+
+.quote::after {
+    content: '"';
+    font-size: 3rem;
+    position: absolute;
+    bottom: -1.5rem;
+    right: 1rem;
+    color: var(--ifm-color-primary);
+    font-family: serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem 1.5rem;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .section {
+        padding: 1.5rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.3rem;
+    }
+
+    .quote {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+        letter-spacing: 0.05em;
+    }
+
+    .content {
+        gap: 2rem;
+    }
+
+    .section {
+        padding: 1.2rem;
+    }
+
+    .list li {
+        padding: 0.6rem 1rem;
+    }
+
+    .quote {
+        font-size: 1rem;
+    }
+}

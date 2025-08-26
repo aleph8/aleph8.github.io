@@ -1,0 +1,39 @@
+ai:
+  label: Artificial Intelligence
+  permalink: /ai
+  description: Posts about AI, machine learning, and intelligent systems
+
+cybersecurity:
+  label: Cybersecurity
+  permalink: /cybersecurity
+  description: Cybersecurity research, threat intelligence, and malware analysis
+
+malware:
+  label: Malware Research
+  permalink: /malware
+  description: Deep dives into malware analysis and reverse engineering
+
+vt4ai:
+  label: VT4AI
+  permalink: /vt4ai
+  description: Posts about the VT4AI project and VirusTotal API integration
+
+panoruma:
+  label: Panoruma
+  permalink: /panoruma
+  description: Digital preservation and historical archive exploration
+
+tech:
+  label: Technology
+  permalink: /tech
+  description: General technology topics and innovations
+
+research:
+  label: Research
+  permalink: /research
+  description: Research projects and academic work
+
+open-source:
+  label: Open Source
+  permalink: /open-source
+  description: Open source projects and contributions

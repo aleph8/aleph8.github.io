@@ -1,0 +1,677 @@
+/**
+ * Global styles for Docusaurus with our custom minimalist theme
+ */
+
+/* Custom Variables */
+:root {
+  --ifm-color-primary: #667eea;
+  --ifm-color-primary-dark: #5a6fd8;
+  --ifm-color-primary-darker: #4c63d2;
+  --ifm-color-primary-darkest: #3b4ecf;
+  --ifm-color-primary-light: #7b8df0;
+  --ifm-color-primary-lighter: #8a9af2;
+  --ifm-color-primary-lightest: #a8b4f5;
+  --ifm-code-font-size: 95%;
+  --ifm-navbar-height: 70px;
+
+  /* Light theme colors */
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #ffffff;
+  --ifm-font-color-base: #1a1a1a;
+  --ifm-font-color-secondary: #666666;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme */
+[data-theme='dark'] {
+  --ifm-color-primary: #8a9af2;
+  --ifm-color-primary-dark: #7b8df0;
+  --ifm-color-primary-darker: #6c7eee;
+  --ifm-color-primary-darkest: #4c63d2;
+  --ifm-color-primary-light: #99a7f4;
+  --ifm-color-primary-lighter: #a8b4f5;
+  --ifm-color-primary-lightest: #c6cff9;
+
+  /* Dark theme colors - pure black with white text */
+  --ifm-background-color: #000000;
+  --ifm-background-surface-color: #000000;
+  --ifm-font-color-base: #ffffff;
+  --ifm-font-color-secondary: #ffffff;
+  --ifm-color-content-secondary: #ffffff;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Grid Background for all pages */
+html {
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+html::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grid for light theme */
+html:not([data-theme='dark'])::before {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+}
+
+/* Grid for dark theme */
+html[data-theme='dark']::before {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+}
+
+/* Global typography improvements */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+
+/* Prevent layout shift from scrollbar - desktop only */
+@media (min-width: 997px) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
+/* Remove footer completely */
+.footer {
+  display: none !important;
+}
+
+/* Navbar customization - Matching index.js design */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--navbar-border-color);
+  box-shadow: none;
+  height: 70px;
+  transition: all 0.3s ease;
+}
+
+/* Prevent scrollbar shift - desktop only */
+@media (min-width: 997px) {
+  .navbar {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    width: 100vw;
+  }
+}
+
+/* Navbar desktop styling - backdrop-filter removed to avoid visual glitches */
+
+/* Mobile navigation fixes */
+@media (max-width: 996px) {
+  .navbar {
+    z-index: 9999;
+  }
+
+  /* Move logo to the far right on mobile */
+  .navbar__brand {
+    position: absolute !important;
+    right: 1rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure navbar has relative position for absolute positioning */
+  .navbar__inner {
+    position: relative !important;
+    padding: 0.75rem 1rem !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Adjust hamburger menu margin to match logo */
+  .navbar__toggle {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Hide navbar items in mobile except hamburger and logo */
+  .navbar__items--right {
+    display: none !important;
+  }
+
+  .navbar__item.dropdown {
+    display: none !important;
+  }
+
+  /* Hide logo in mobile sidebar to avoid duplication */
+  .navbar-sidebar .navbar__brand {
+    display: none !important;
+  }
+
+  /* Mobile sidebar/dropdown menu */
+  .navbar-sidebar {
+    z-index: 9998 !important;
+    background: var(--ifm-background-color) !important;
+  }
+
+  /* Mobile sidebar backdrop */
+  .navbar-sidebar__backdrop {
+    z-index: 9997 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Mobile sidebar items */
+  .navbar-sidebar__items {
+    background: var(--ifm-background-color) !important;
+    z-index: 9998 !important;
+  }
+
+  /* Ensure mobile menu items are properly styled */
+  .navbar-sidebar .navbar__item {
+    display: block !important;
+  }
+
+  /* Mobile dropdown styling */
+  .navbar-sidebar .navbar__link {
+    padding: 1rem 1.5rem !important;
+    border-bottom: 1px solid var(--ifm-color-emphasis-200) !important;
+    display: block !important;
+  }
+
+  /* Fix dropdown menu in mobile sidebar */
+  .navbar-sidebar .dropdown {
+    display: block !important;
+  }
+
+  .navbar-sidebar .dropdown__menu {
+    position: static !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .navbar-sidebar .dropdown__link {
+    padding: 0.75rem 2rem !important;
+    border-bottom: 1px solid var(--ifm-color-emphasis-100) !important;
+    background: var(--ifm-color-emphasis-50) !important;
+  }
+
+  /* Mobile hamburger menu styling */
+  .navbar__toggle {
+    z-index: 10000 !important;
+  }
+}
+
+[data-theme='dark'] .navbar {
+  background: rgba(0, 0, 0, 0.95);
+  --navbar-border-color: rgba(255, 255, 255, 0.1);
+}
+
+html:not([data-theme='dark']) .navbar {
+  background: rgba(255, 255, 255, 0.95);
+  --navbar-border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar container */
+.navbar__inner {
+  max-width: none;
+  margin: 0 auto;
+  padding: 0.75rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 80%;
+}
+
+/* Logo styling */
+.navbar__brand {
+  margin-right: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo {
+  margin-right: 0;
+}
+
+/* Logo theme responsiveness */
+[data-theme='dark'] .navbar__logo img {
+  filter: invert(1);
+}
+
+html:not([data-theme='dark']) .navbar__logo img {
+  filter: none;
+}
+
+/* Hide site title from navbar */
+.navbar__title {
+  display: none !important;
+}
+
+/* Navbar items container */
+.navbar__items {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  height: 100%;
+}
+
+/* Ensure dropdown alignment */
+.navbar__item.dropdown {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar__item.dropdown .navbar__link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+}
+
+/* Improve navbar links */
+.navbar__link {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .navbar__link {
+  color: #ffffff;
+}
+
+html:not([data-theme='dark']) .navbar__link {
+  color: #666666;
+}
+
+.navbar__link:hover {
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+}
+
+/* Theme toggle button styling */
+button[title="Switch between dark and light mode"] {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+[data-theme='dark'] button[title="Switch between dark and light mode"] {
+  color: #ffffff;
+}
+
+html:not([data-theme='dark']) button[title="Switch between dark and light mode"] {
+  color: #666666;
+}
+
+button[title="Switch between dark and light mode"]:hover {
+  background: var(--theme-toggle-hover-bg);
+  color: var(--theme-toggle-hover-color);
+}
+
+[data-theme='dark'] button[title="Switch between dark and light mode"]:hover {
+  --theme-toggle-hover-bg: rgba(255, 255, 255, 0.1);
+  --theme-toggle-hover-color: #ffffff;
+}
+
+html:not([data-theme='dark']) button[title="Switch between dark and light mode"]:hover {
+  --theme-toggle-hover-bg: rgba(0, 0, 0, 0.1);
+  --theme-toggle-hover-color: #1a1a1a;
+}
+
+/* Adjust main content to account for fixed navbar */
+.main-wrapper {
+  position: relative;
+  z-index: 1;
+  padding-top: 70px;
+}
+
+/* Ensure main content doesn't interfere with mobile nav */
+@media (max-width: 996px) {
+  .main-wrapper {
+    z-index: 1 !important;
+  }
+
+  /* Hide main content when mobile nav is open */
+  body.navigation-with-keyboard-open .main-wrapper,
+  html[data-navbar-sidebar='true'] .main-wrapper {
+    filter: blur(2px);
+    pointer-events: none;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .navbar__inner {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar__items {
+    gap: 1.5rem;
+  }
+
+  .navbar__link {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__inner {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar__items {
+    gap: 1rem;
+  }
+
+  .navbar__link {
+    font-size: 0.8rem;
+  }
+}
+
+/* Content area adjustments */
+.theme-doc-content-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Main content area styling */
+[data-theme='dark'] .theme-doc-content {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html:not([data-theme='dark']) .theme-doc-content {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Improve content typography */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.markdown h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+.markdown h2 {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown p {
+  font-weight: 400;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+/* Breadcrumbs styling */
+.breadcrumbs {
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumbs__item {
+  font-weight: 300;
+}
+
+[data-theme='dark'] .breadcrumbs__link {
+  color: #ffffff;
+}
+
+html:not([data-theme='dark']) .breadcrumbs__link {
+  color: #666666;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* Edit page link */
+.theme-edit-this-page {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(103, 126, 234, 0.2);
+}
+
+.theme-edit-this-page a {
+  font-weight: 300;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Code blocks styling */
+.prism-code {
+  font-weight: 400;
+  border-radius: 12px;
+  border: 1px solid rgba(103, 126, 234, 0.2);
+}
+
+[data-theme='dark'] .prism-code {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html:not([data-theme='dark']) .prism-code {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Inline code styling */
+code {
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+  font-weight: 500;
+}
+
+[data-theme='dark'] code {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+html:not([data-theme='dark']) code {
+  background: rgba(103, 126, 234, 0.1);
+  color: var(--ifm-color-primary);
+}
+
+/* Admonitions (alerts) */
+.alert {
+  border-radius: 12px;
+  border: none;
+  margin: 1.5rem 0;
+}
+
+[data-theme='dark'] .alert {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 4px solid var(--ifm-color-primary);
+}
+
+html:not([data-theme='dark']) .alert {
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 4px solid var(--ifm-color-primary);
+}
+
+/* Tables */
+.table-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+
+[data-theme='dark'] table {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+html:not([data-theme='dark']) table {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Pagination */
+.pagination-nav {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(103, 126, 234, 0.2);
+}
+
+.pagination-nav__link {
+  border-radius: 12px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .pagination-nav__link {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html:not([data-theme='dark']) .pagination-nav__link {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.pagination-nav__link:hover {
+  transform: translateY(-2px);
+}
+
+/* Sidebar improvements */
+.theme-doc-sidebar-container {
+  background: transparent;
+  border-right: none;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container {
+  background: rgba(0, 0, 0, 0.6);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html:not([data-theme='dark']) .theme-doc-sidebar-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+  padding: 1rem;
+}
+
+.menu__link {
+  font-weight: 300;
+  border-radius: 8px;
+  margin: 2px 0;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .menu__link {
+  color: #ffffff;
+}
+
+html:not([data-theme='dark']) .menu__link {
+  color: #666666;
+}
+
+.menu__link:hover {
+  background: rgba(103, 126, 234, 0.1);
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .menu__link--active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+html:not([data-theme='dark']) .menu__link--active {
+  background: rgba(103, 126, 234, 0.1);
+  color: var(--ifm-color-primary);
+}
+
+/* Table of contents */
+.table-of-contents {
+  border-left: none;
+  padding-left: 1rem;
+}
+
+[data-theme='dark'] .table-of-contents {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html:not([data-theme='dark']) .table-of-contents {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-of-contents__link {
+  font-weight: 300;
+  padding: 0.25rem 0;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .table-of-contents__link {
+  color: #ffffff;
+}
+
+html:not([data-theme='dark']) .table-of-contents__link {
+  color: #666666;
+}
+
+.table-of-contents__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* Better button styling */
+.button {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
