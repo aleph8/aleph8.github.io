@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://your-docusaurus-site.example.com/blog</id>
+    <id>https://alejandrogp.com/blog</id>
     <title>Alejandro García Peláez Blog</title>
-    <updated>2021-08-26T00:00:00.000Z</updated>
+    <updated>2025-08-25T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://your-docusaurus-site.example.com/blog"/>
+    <link rel="alternate" href="https://alejandrogp.com/blog"/>
     <subtitle>Alejandro García Peláez Blog</subtitle>
-    <icon>https://your-docusaurus-site.example.com/img/favicon.ico</icon>
+    <icon>https://alejandrogp.com/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Lorem Ipsum Dolor]]></title>
-        <id>https://your-docusaurus-site.example.com/blog/welcome</id>
-        <link href="https://your-docusaurus-site.example.com/blog/welcome"/>
-        <updated>2021-08-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.]]></summary>
-        <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-<p>Nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="sed-ut-perspiciatis-unde">Sed ut perspiciatis unde<a href="https://your-docusaurus-site.example.com/blog/welcome#sed-ut-perspiciatis-unde" class="hash-link" aria-label="Direct link to Sed ut perspiciatis unde" title="Direct link to Sed ut perspiciatis unde">​</a></h2>
-<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="nemo-enim-ipsam-voluptatem">Nemo enim ipsam voluptatem<a href="https://your-docusaurus-site.example.com/blog/welcome#nemo-enim-ipsam-voluptatem" class="hash-link" aria-label="Direct link to Nemo enim ipsam voluptatem" title="Direct link to Nemo enim ipsam voluptatem">​</a></h3>
-<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
-<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="et-harum-quidem-rerum">Et harum quidem rerum<a href="https://your-docusaurus-site.example.com/blog/welcome#et-harum-quidem-rerum" class="hash-link" aria-label="Direct link to Et harum quidem rerum" title="Direct link to Et harum quidem rerum">​</a></h2>
-<p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est.</p>
-<div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Lorem ipsum code example</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loremIpsum</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> dolor </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"sit amet consectetur"</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword control-flow" style="color:#00009f">return</span><span class="token plain"> </span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token template-string string" style="color:#e3116c">Lorem ipsum </span><span class="token template-string interpolation interpolation-punctuation punctuation" style="color:#393A34">${</span><span class="token template-string interpolation">dolor</span><span class="token template-string interpolation interpolation-punctuation punctuation" style="color:#393A34">}</span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
-<p><strong>Temporibus autem quibusdam</strong>: et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>]]></content>
+        <title type="html"><![CDATA[Using computer use to trigger interactive samples]]></title>
+        <id>https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples</id>
+        <link href="https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples"/>
+        <updated>2025-08-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Traditional sandboxes face significant limitations when analyzing samples that require human interaction to fully activate. Sample detonation in isolated environments sometimes becomes complicated due to the need to interact with graphical elements for proper deployment and to show their full potential.]]></summary>
+        <content type="html"><![CDATA[<p>Traditional sandboxes face significant limitations when analyzing samples that require human interaction to fully activate. Sample detonation in isolated environments sometimes becomes complicated due to the need to interact with graphical elements for proper deployment and to show their full potential.</p>
+<p>Some products offer solutions to control the remote machine where the sample is running; others rely on the existence of certain screen elements, including automating key presses (like repeatedly pressing "Enter" hoping it will work).</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="computer-use"><em>Computer Use</em><a href="https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples#computer-use" class="hash-link" aria-label="Direct link to computer-use" title="Direct link to computer-use">​</a></h2>
+<p><em>Computer Use</em> is a new capability of LLMs (<em>Large Language Models</em>) that allows them to interact directly with user interfaces as a human would. In the context of LLMs, <a href="https://www.anthropic.com/news/3-5-models-and-computer-use" target="_blank" rel="noopener noreferrer"><em>Computer Use</em></a> refers to the ability of a system based on a model as a "brain" to interact with computers; that is, being able to "see" the screen and interact with the environment by clicking, typing, running applications...</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="real-world-practical-cases">Real-world practical cases<a href="https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples#real-world-practical-cases" class="hash-link" aria-label="Direct link to Real-world practical cases" title="Direct link to Real-world practical cases">​</a></h2>
+<p>Let's look at application examples by setting up a small system that allows an LLM to take control of a sandbox (hereafter referred to as <strong>Pandora</strong>).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-application-installers">1. Application installers<a href="https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples#1-application-installers" class="hash-link" aria-label="Direct link to 1. Application installers" title="Direct link to 1. Application installers">​</a></h3>
+<p>When installing an application, we usually see a graphical interface with a guided installation and configuration process; below you can observe <strong>Pandora</strong>'s interaction process in an isolated environment with a benign sample: a Firefox MSI installer on Windows 10:</p>
+<iframe src="/blog/using-computer-user-to-trigger-interactive-samples/pandora-analysis-firefox-setup.html" width="100%" height="500px"></iframe>
+<p>In this case, the system follows basic instructions to install the application, but it could be a custom or specific configuration. With this, in a matter of seconds we would have the application installed in our sandbox to collect information.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-social-engineering">2. Social engineering<a href="https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples#2-social-engineering" class="hash-link" aria-label="Direct link to 2. Social engineering" title="Direct link to 2. Social engineering">​</a></h3>
+<p>Certain deceptive documents require clicking on specific parts to launch (as in the case of macros) or trick you into downloading another file from dubious sources. This case involves an image that emulates a Colombian judicial entity, urging the user to download another file that is probably malicious:</p>
+<iframe src="/blog/using-computer-user-to-trigger-interactive-samples/pandora-analysis-phishing-svg.html" width="100%" height="500px"></iframe>
+<p>Unfortunately, the link is no longer available. In a case like this simulated in testing, the agent was able to download the document and enter the password.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-automated-system-evasion">3. Automated system evasion<a href="https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples#3-automated-system-evasion" class="hash-link" aria-label="Direct link to 3. Automated system evasion" title="Direct link to 3. Automated system evasion">​</a></h3>
+<p>In this case, we will see two PDFs designed to prevent file downloads by automated processes:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="31-fake-captcha">3.1 Fake Captcha<a href="https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples#31-fake-captcha" class="hash-link" aria-label="Direct link to 3.1 Fake Captcha" title="Direct link to 3.1 Fake Captcha">​</a></h4>
+<iframe src="/blog/using-computer-user-to-trigger-interactive-samples/pandora-analysis-captcha.html" width="100%" height="500px"></iframe>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="32-i-am-human">3.2 I am human<a href="https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples#32-i-am-human" class="hash-link" aria-label="Direct link to 3.2 I am human" title="Direct link to 3.2 I am human">​</a></h4>
+<iframe src="/blog/using-computer-user-to-trigger-interactive-samples/pandora-analysis-custom-image.html" width="100%" height="500px"></iframe>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="looking-towards-the-future">Looking towards the future<a href="https://alejandrogp.com/blog/using-computer-use-to-trigger-interactive-samples#looking-towards-the-future" class="hash-link" aria-label="Direct link to Looking towards the future" title="Direct link to Looking towards the future">​</a></h2>
+<p>These cases are really just a small subset of all the samples that platforms like <a href="https://www.virustotal.com/gui/home/upload" target="_blank" rel="noopener noreferrer">VirusTotal</a> receive daily; however, <strong>Pandora</strong> shows us an application of Artificial Intelligence to address a deficiency in most current sandboxes.</p>
+<p>Although this technology presents great potential, it also poses new challenges such as the computational cost of running LLMs in real-time, and the possible evolution of malware to evade even these advanced automated analysis techniques.</p>]]></content>
         <author>
             <name>Alejandro García Peláez</name>
             <uri>https://linkedin.com/in/alegpwk</uri>
         </author>
+        <category label="Artificial Intelligence" term="Artificial Intelligence"/>
+        <category label="Cybersecurity" term="Cybersecurity"/>
+        <category label="Malware Research" term="Malware Research"/>
     </entry>
 </feed>
