@@ -88,8 +88,8 @@ VT4AI is built with a modular architecture that separates concerns and maximizes
 
 ## 📚 What's Next?
 
-- [Installation Guide](./installation) - Get VT4AI up and running
-- [CLI Usage](./cli/overview) - Learn the command-line interface
-- [MCP Integration](./mcp/overview) - Connect with LLM agents
-- [REST API](./api/overview) - HTTP endpoints reference
-- [Templates System](./templates/overview) - Customize data filtering
+- [Installation Guide](/vt4ai/installation) - Get VT4AI up and running
+- [CLI Usage](/vt4ai/cli/overview) - Learn the command-line interface
+- [MCP Integration](/vt4ai/mcp/overview) - Connect with LLM agents
+- [REST API](/vt4ai/api/overview) - HTTP endpoints reference
+- [Templates System](/vt4ai/templates/overview) - Customize data filtering

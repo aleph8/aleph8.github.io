@@ -106,7 +106,7 @@ If you encounter issues:
 
 Now that VT4AI is installed, you can:
 
-- [Try the CLI interface](./cli/overview)
-- [Set up the MCP server for AI agents](./mcp/overview)
-- [Start the REST API server](./api/overview)
-- [Learn about templates](./templates/overview)
+- [Try the CLI interface](/vt4ai/cli/overview)
+- [Set up the MCP server for AI agents](/vt4ai/mcp/overview)
+- [Start the REST API server](/vt4ai/api/overview)
+- [Learn about templates](/vt4ai/templates/overview)
