@@ -207,7 +207,7 @@ You can verify your VT4AI MCP integration by asking Claude Desktop to:
 
 ## Next Steps
 
-- [Understand templates](../templates/overview)
-- [Explore the REST API](../api/overview)
-- [Learn CLI commands](../cli/overview)
-- [Read troubleshooting guide](../troubleshooting)
+- [Try the CLI interface](/vt4ai/cli/overview)
+- [Start the REST API server](/vt4ai/api/overview)
+- [Learn about templates](/vt4ai/templates/overview)
+- [Read troubleshooting guide](/vt4ai/troubleshooting)
