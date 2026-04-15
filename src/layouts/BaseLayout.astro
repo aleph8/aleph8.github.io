@@ -30,8 +30,8 @@ const optimizedOgImage = await getImage({
   src: ogImage || defaultOgImageSrc,
   width: 1200,
   height: 630,
-  format: 'jpg', // JPG is most compatible for social previews
-  quality: 70,   // Lower quality to ensure size is well under 300KB for WhatsApp
+  format: 'jpg',
+  quality: 90,   // Increased quality for better clarity
 });
 
 const resolvedOgImage = new URL(optimizedOgImage.src, Astro.site).toString();
