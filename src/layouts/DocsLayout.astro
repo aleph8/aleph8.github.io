@@ -1,0 +1,181 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { useTranslations } from '../i18n/utils';
+
+const { frontmatter, lang = 'en' } = Astro.props;
+const allDocs = await getCollection('projects');
+const localizedDocs = allDocs.filter(d => d.id.startsWith(`${lang}/`));
+
+// Group by project (second path segment)
+const grouped: Record<string, typeof localizedDocs> = {};
+for (const doc of localizedDocs) {
+  const parts = doc.id.split('/'); // [lang, project, ...rest]
+  const project = parts.length > 2 ? parts[1] : '_root';
+  if (!grouped[project]) grouped[project] = [];
+  grouped[project].push(doc);
+}
+for (const key of Object.keys(grouped)) {
+  grouped[key].sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+}
+
+const currentPath = Astro.url.pathname;
+const t = useTranslations(lang as any);
+const docsPath = lang === 'en' ? '/projects' : `/${lang}/projects`;
+
+// Extract project name from current URL for breadcrumb
+const cleanPath = currentPath.replace(docsPath, '').replace(/^\//, '');
+const projectFromPath = cleanPath.split('/')[0] || '';
+const isIntroPage = cleanPath.split('/').pop() === 'intro';
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description} ogImage={frontmatter.image} lang={lang} wide={true} contentPage={true}>
+
+  <div class="pt-4 md:pt-10 pb-16">
+    <div class="grid md:grid-cols-[180px_1fr] gap-6 md:gap-14">
+
+      <!-- Sidebar: only shows pages for the current project -->
+      <aside class="hidden md:block">
+        <nav aria-label="Sidebar" class="sticky top-10">
+
+          {/* Back to all projects */}
+          <a href={docsPath} class="inline-flex items-center gap-1.5 text-xs text-neutral-500 hover:text-black transition-colors duration-150 mb-8">
+            ← {t('projects.back')}
+          </a>
+
+          {(() => {
+            const docs = grouped[projectFromPath] ?? [];
+            const isIntroDoc = (d: typeof docs[0]) =>
+              d.id.split('/').pop()?.replace(/\.mdx?$/, '') === 'intro';
+            const intro = docs.find(isIntroDoc);
+            const rest = docs.filter(d => !isIntroDoc(d));
+            const introUrl = intro
+              ? `${docsPath}/${intro.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '')}`
+              : null;
+
+            return (
+              <div>
+                {/* Project name - proper heading, not a tiny mono label */}
+                <p class="text-xs font-semibold tracking-wide text-neutral-800 uppercase mb-3">
+                  {intro?.data.title || projectFromPath}
+                </p>
+
+                <div class="border-l border-neutral-100">
+                  {/* Intro / Overview */}
+                  {intro && (() => {
+                    const isActive = currentPath === introUrl || currentPath === `${introUrl}/`;
+                    return (
+                      <a
+                        href={introUrl}
+                        class:list={[
+                          'block text-sm py-1.5 pl-4 -ml-px border-l transition-all duration-150',
+                          isActive
+                            ? 'border-accent text-black font-medium'
+                            : 'border-transparent text-neutral-500 hover:text-black hover:border-neutral-300'
+                        ]}
+                      >
+                        Overview
+                      </a>
+                    );
+                  })()}
+
+                  {/* Docs divider */}
+                  {rest.length > 0 && (
+                    <p class="text-[9px] font-mono uppercase tracking-widest text-neutral-500 pl-4 pt-4 pb-1.5">
+                      Docs
+                    </p>
+                  )}
+
+                  {/* Doc pages */}
+                  {rest.map(doc => {
+                    const cleanId = doc.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '');
+                    const docUrl = `${docsPath}/${cleanId}`;
+                    const isActive = currentPath === docUrl || currentPath === `${docUrl}/`;
+                    return (
+                      <a
+                        href={docUrl}
+                        class:list={[
+                          'block text-sm py-1.5 pl-4 -ml-px border-l transition-all duration-150',
+                          isActive
+                            ? 'border-accent text-black font-medium'
+                            : 'border-transparent text-neutral-500 hover:text-black hover:border-neutral-300'
+                        ]}
+                      >
+                        {doc.data.sidebar_label || doc.data.title}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })()}
+        </nav>
+      </aside>
+
+      <!-- Content -->
+      <article class="min-w-0 pt-2">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs font-mono text-neutral-500 mb-5 md:mb-8">
+          <a href={docsPath} class="hover:text-black transition-colors duration-150">{t('nav.projects')}</a>
+          {projectFromPath && (
+            <>
+              <span aria-hidden="true">/</span>
+              {isIntroPage ? (
+                <span class="text-black capitalize">{projectFromPath}</span>
+              ) : (
+                <a
+                  href={`${docsPath}/${projectFromPath}/intro`}
+                  class="capitalize hover:text-black transition-colors duration-150"
+                >
+                  {projectFromPath}
+                </a>
+              )}
+            </>
+          )}
+          {!isIntroPage && (
+            <>
+              <span aria-hidden="true">/</span>
+              <span class="text-black" aria-current="page">{frontmatter.title}</span>
+            </>
+          )}
+        </nav>
+
+        <h1 class="text-2xl md:text-3xl font-semibold tracking-tight leading-snug mb-5 md:mb-8">
+          {frontmatter.title}
+        </h1>
+
+        {frontmatter.description && (
+          <p class="text-neutral-500 text-base leading-relaxed mb-10 pb-10 border-b border-neutral-100">
+            {frontmatter.description}
+          </p>
+        )}
+
+        <div class="prose prose-neutral max-w-none
+          prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-black
+          prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4
+          prose-h3:text-base prose-h3:mt-8 prose-h3:mb-3
+          prose-p:text-neutral-700 prose-p:leading-relaxed
+          prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-a:font-normal
+          prose-strong:text-black prose-strong:font-semibold
+          prose-li:text-neutral-700 prose-li:leading-relaxed
+          prose-ul:my-4 prose-ol:my-4
+          prose-code:font-mono prose-code:text-sm prose-code:bg-neutral-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-black prose-code:before:content-none prose-code:after:content-none prose-code:border prose-code:border-neutral-200
+          prose-pre:bg-[#0a0a0a] prose-pre:text-neutral-100 prose-pre:rounded-none prose-pre:border-l-2 prose-pre:border-accent prose-pre:my-6 prose-pre:text-sm
+          prose-blockquote:border-l-2 prose-blockquote:border-accent prose-blockquote:text-neutral-500 prose-blockquote:not-italic prose-blockquote:font-normal
+          prose-hr:border-neutral-100 prose-hr:my-8
+          prose-img:rounded-sm prose-img:border prose-img:border-neutral-100">
+          <slot />
+        </div>
+
+        <div class="mt-10 md:mt-16 pt-6 md:pt-8 border-t border-neutral-100">
+          <a href={docsPath} class="text-sm text-neutral-500 hover:text-black transition-colors duration-150">
+            ← {t('projects.back')}
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+</BaseLayout>

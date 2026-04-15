@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+import DocsLayout from '../../layouts/DocsLayout.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('projects');
+  const enDocs = docs.filter(d => d.id.startsWith('en/'));
+  return enDocs.map(doc => {
+    const slug = doc.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '');
+    return {
+      params: { slug },
+      props: { doc },
+    };
+  });
+}
+
+const { doc } = Astro.props;
+const { Content } = await render(doc);
+---
+
+<DocsLayout frontmatter={doc.data} lang="en">
+  <Content />
+</DocsLayout>

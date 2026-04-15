@@ -1,47 +1,56 @@
-# Alephsaurus 📚
+# aleph8.github.io
 
-Welcome to **Alephsaurus** - my technical documentation hub and project portfolio. This site showcases innovative projects with comprehensive documentation, built with Docusaurus.
+Personal website, blog, and project showcase - built with **Astro**, **Tailwind CSS v4**, and **Content Collections**.
 
-## 🚀 Featured Projects
+## Stack
 
-### [VT4AI](https://github.com/aleph8/vt4ai)
-**VirusTotal for AI Applications**
+- **Astro 5+** - Static site framework with content collections
+- **Tailwind CSS v4** - Utility-first CSS with native Vite plugin
+- **@tailwindcss/typography** - Prose/markdown styles
+- **Mermaid.js** (CDN) - Diagram rendering in posts
+- **Docker + Docker Compose** - Isolated development environment
+- **GitHub Actions** - CI/CD to GitHub Pages
 
-A powerful Python wrapper around the VirusTotal API, specifically designed to enhance AI and LLM applications with cybersecurity intelligence. VT4AI transforms VirusTotal's responses into AI-friendly formats through intelligent filtering and templating.
+## Features
 
-**Key Features:**
-- 🧠 AI-optimized responses with smart filtering
-- 🔧 Multiple interfaces: CLI, MCP server, and REST API
-- 🎨 Flexible output formats: JSON, Markdown, XML, Raw
-- 🤖 Native LLM agent integration via MCP protocol
+- **Blog** (`/blog`, `/es/blog`) - Posts with cover images, author metadata, tags, and RSS feed
+- **Projects** (`/projects`, `/es/projects`) - Project pages with sidebar navigation (intro + docs)
+- **About** (`/about`, `/es/about`) - Author bio and context
+- **Knowledge Graph** (`/graph`) - Interactive force-directed graph of all content nodes, with an embedded space-invaders-style game
+- **i18n** - Full English / Spanish support with automatic alternate routes
+- **Grid background** - Subtle graph-paper grid on all pages; content pages float as white "paper" over it
+- **No dark mode** - Pure white always
 
-**Technologies:** Python, FastAPI, MCP, VirusTotal API, Async/Await
+## Development
 
-### [Panoruma](https://panoruma.es)
-*Coming Soon*
+Runs entirely in Docker - no local Node.js required.
 
-## 🏗️ Architecture
+```bash
+# Start dev server (http://localhost:4321)
+docker compose up -d
 
-This documentation site is built with:
+# Install a new package
+docker compose run --rm astro npm install <package>
 
-- **[Docusaurus](https://docusaurus.io/)** - Modern static site generator
-- **Multi-instance docs** - Separate documentation for each project
-- **Responsive design** - Works on all devices
-- **Search functionality** - Easy content discovery
+# Production build
+docker compose run --rm astro npm run build
 
-## 🌐 Live Site
+# View logs
+docker compose logs -f astro
+```
 
-Visit the live documentation at: **[https://alejandrogp.com](https://alejandrogp.com)**
+## Content
 
-## 📖 What You'll Find
+| Directory | Purpose |
+|---|---|
+| `src/content/posts/` | Blog posts in Markdown/MDX (`en/` and `es/`) |
+| `src/content/projects/` | Project pages organized by project name |
+| `src/content/authors/` | Author JSON metadata |
+| `src/content/tags/` | Tag JSON metadata |
+| `public/blog/` | Static assets for posts (cover images, iframes) |
+| `public/authors/` | Author avatars (served locally) |
 
-Each project includes comprehensive documentation covering:
+See `AGENT.md` for full content schema and conventions.
 
-- **Getting Started** - Installation and setup guides
-- **API Reference** - Complete interface documentation  
-- **Integration Guides** - How to integrate with your systems
-- **Best Practices** - Recommended usage patterns
-- **Troubleshooting** - Common issues and solutions
-
-
-*Built with ❤️ and Docusaurus*
+## License
+Copyright © 2026 Alejandro García Peláez.

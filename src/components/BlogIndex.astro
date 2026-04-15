@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, getEntries } from 'astro:content';
+import { defaultLocale, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+
+const { lang = defaultLocale } = Astro.props;
+const t = useTranslations(lang as any);
+
+const posts = (await getCollection('posts'))
+  .filter(post => !post.data.draft && post.id.startsWith(`${lang}/`))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Resolve tags for all posts at once
+const allTags = await Promise.all(posts.map(p => getEntries(p.data.tags)));
+
+const years = [...new Set(posts.map(p => p.data.pubDate.getFullYear()))].sort((a, b) => b - a);
+const blogPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
+---
+
+<BaseLayout title={t('blog.title')} description={t('blog.description')} lang={lang} contentPage={true}>
+
+  <div class="pt-6 md:pt-12 pb-16">
+    <h1 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">{t('blog.title')}</h1>
+    <p class="text-neutral-500 text-base mb-8 md:mb-12">
+      {t('blog.description')}
+    </p>
+
+    {years.map(year => (
+      <div class="mb-8 md:mb-10">
+        <p class="text-xs font-mono tracking-widest uppercase text-accent mb-4 md:mb-6">{year}</p>
+        <div class="space-y-0">
+          {posts
+            .filter(p => p.data.pubDate.getFullYear() === year)
+            .map((post, idx) => {
+              const href = `${blogPath}/${post.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '')}`;
+              const postTags = allTags[posts.indexOf(post)];
+              
+              return (
+                <article class="group border-b border-neutral-100">
+                  <a href={href} class="flex items-stretch justify-between gap-5 py-5">
+
+                    {/* Left: text */}
+                    <div class="flex flex-col justify-between flex-1 min-w-0">
+                      <div>
+                        <h2 class="text-base sm:text-lg font-semibold tracking-tight leading-snug mb-2 group-hover:text-accent transition-colors duration-150">
+                          {post.data.title}
+                        </h2>
+                        {post.data.description && (
+                          <p class="text-sm text-neutral-500 leading-relaxed line-clamp-2 hidden sm:block">
+                            {post.data.description}
+                          </p>
+                        )}
+                      </div>
+                      <div>
+                        <div class="flex flex-wrap gap-2 text-[10px] font-mono text-neutral-500 uppercase tracking-widest mt-4 mb-2">
+                          {postTags.map(tag => (
+                            <span>{tag.data.name}</span>
+                          ))}
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-neutral-500">
+                          <time datetime={post.data.pubDate.toISOString()}>
+                            {post.data.pubDate.toLocaleDateString(lang, { year: 'numeric', month: 'long' })}
+                          </time>
+                          <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-150" aria-hidden="true">
+                            Read →
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right: image */}
+                    {post.data.image && (
+                      <div class="shrink-0">
+                        <Image
+                          src={post.data.image}
+                          alt={post.data.title}
+                          width={128}
+                          class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-sm"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+
+                  </a>
+                </article>
+              );
+            })}
+        </div>
+      </div>
+    ))}
+
+    {posts.length === 0 && (
+      <p class="text-neutral-500 text-sm">{t('blog.no_posts')}</p>
+    )}
+  </div>
+
+</BaseLayout>

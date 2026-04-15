@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, getEntries } from 'astro:content';
+import { defaultLocale, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+
+const { lang = defaultLocale } = Astro.props;
+const t = useTranslations(lang as any);
+
+const posts = (await getCollection('posts'))
+  .filter(p => !p.data.draft && p.id.startsWith(`${lang}/`))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 6);
+
+const blogPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
+const docsPath = lang === 'en' ? '/projects' : `/${lang}/projects`;
+
+const allProjectsDocs = await getCollection('projects');
+const localizedProjects = allProjectsDocs
+  .filter(d => d.id.startsWith(`${lang}/`) && d.id.split('/').pop()?.replace(/\.mdx?$/, '') === 'intro')
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+  .slice(0, 2);
+---
+
+<BaseLayout title={t('hero.title')} description={t('hero.description')} lang={lang}>
+
+  <!-- Hero -->
+  <section aria-labelledby="hero-headline" class="pt-16 pb-6 md:pt-24 md:pb-8">
+    <p class="text-sm font-mono text-neutral-500 tracking-wide mb-3">
+      {t('hero.title')}
+    </p>
+    <h1 id="hero-headline" class="text-3xl md:text-4xl font-semibold tracking-tight leading-snug mb-4">
+      {lang === 'es' ? (
+        <><span class="text-accent">Seguridad</span>, IA y construcción de cosas.</>
+      ) : (
+        <><span class="text-accent">Security</span>, AI, and building things.</>
+      )}
+    </h1>
+
+    <script define:vars={{ lang }}>
+      const phrases = {
+        en: [
+          'Breaking things to <span class="text-accent">understand</span> them.',
+          'Technology in <span class="text-accent">service</span> of memory.',
+          'Probably working on something <span class="text-accent">new</span>.',
+        ],
+        es: [
+          'Rompiendo cosas para <span class="text-accent">entenderlas</span>.',
+          'Tecnología al <span class="text-accent">servicio</span> de la memoria.',
+          'Probablemente estoy trabajando en algo <span class="text-accent">nuevo</span>.',
+        ],
+      };
+
+      const list = phrases[lang] || phrases.en;
+      const el = document.getElementById('hero-headline');
+      if (el) el.innerHTML = list[Math.floor(Math.random() * list.length)];
+    </script>
+    <!-- Context badge - below name, accent style -->
+    <span class="inline-flex items-center gap-2 text-xs font-mono text-accent mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
+      {t('hero.badge')}
+    </span>
+
+    <p class="text-neutral-500 text-lg leading-relaxed max-w-md mb-6">
+      {t('hero.description')}
+    </p>
+    <a
+      href={lang === 'en' ? '/about' : '/es/about'}
+      class="inline-flex items-center gap-1.5 text-sm font-mono text-neutral-500 hover:text-accent transition-colors duration-150"
+    >
+      {t('hero.about_link')} <span aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <!-- Recent posts + Projects: white "paper" block floating on grid -->
+  <div class="content-page rounded-sm px-1 py-1">
+
+  <!-- Recent posts -->
+  <section aria-labelledby="recent-writing-heading" class="pt-8 pb-10">
+    <div class="flex items-center justify-between mb-6">
+      <h2 id="recent-writing-heading" class="text-xs font-mono tracking-widest uppercase text-accent">{t('section.recent_writing')}</h2>
+      <a href={blogPath} class="text-[10px] font-mono text-neutral-500 hover:text-accent uppercase tracking-widest transition-colors duration-150">
+        View All <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    
+    <div class="relative group/slider">
+      <div class="flex gap-4 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar" id="recent-posts-slider">
+        {posts.map((post, idx) => {
+          const href = `${blogPath}/${post.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '')}`;
+          
+          return (
+            <article class="flex-none w-64 sm:w-72 snap-start">
+              <a href={href} class="group/card block h-full">
+                <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-neutral-50 mb-3 border border-neutral-100 group-hover/card:border-accent/30 transition-colors duration-300">
+                  {post.data.image ? (
+                    <Image
+                      src={post.data.image}
+                      alt={post.data.title}
+                      width={400}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="w-full h-full flex items-center justify-center text-neutral-200">
+                      <span class="font-mono text-4xl">/</span>
+                    </div>
+                  )}
+                  <div class="absolute inset-0 bg-black/0 group-hover/card:bg-black/5 transition-colors duration-300"></div>
+                </div>
+                <h3 class="text-sm font-semibold tracking-tight leading-snug group-hover/card:text-accent transition-colors duration-150 line-clamp-2 min-h-[2.5rem]">
+                  {post.data.title}
+                </h3>
+                <div class="flex items-center gap-3 mt-1 text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString(lang, { year: 'numeric', month: 'short', day: 'numeric' })}
+                  </time>
+                </div>
+              </a>
+            </article>
+          );
+        })}
+      </div>
+      
+      {/* Visual indicators or fade effect could go here, but keeping it minimalist */}
+      <div class="absolute top-1/2 -left-4 -translate-y-1/2 pointer-events-none w-8 h-full bg-gradient-to-r from-white to-transparent opacity-0 group-hover/slider:opacity-100 transition-opacity duration-300 hidden md:block"></div>
+      <div class="absolute top-1/2 -right-4 -translate-y-1/2 pointer-events-none w-8 h-full bg-gradient-to-l from-white to-transparent opacity-0 group-hover/slider:opacity-100 transition-opacity duration-300 hidden md:block"></div>
+    </div>
+  </section>
+
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+
+  <!-- Projects -->
+  <section aria-labelledby="projects-heading" class="pt-8 pb-8">
+    <h2 id="projects-heading" class="text-xs font-mono tracking-widest uppercase text-accent mb-8">{t('section.projects')}</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
+      {localizedProjects.map((project, index) => {
+        const cleanId = project.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '');
+        const projectUrl = `${docsPath}/${cleanId}`;
+        
+        return (
+          <article class="group relative flex flex-col items-start border-t-2 border-black pt-5 pb-2">
+            <div class="w-full flex justify-between items-start mb-4">
+              <span class="text-sm font-mono font-medium text-accent">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              {project.data.tech && (
+                <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                  {project.data.tech}
+                </span>
+              )}
+            </div>
+            {project.data.image && (
+              <Image 
+                src={project.data.image} 
+                alt={project.data.title} 
+                width={800}
+                class="w-full h-48 object-cover mb-4 rounded-sm"
+                loading="lazy"
+              />
+            )}
+            <h3 class="text-xl font-semibold tracking-tight mb-2 group-hover:text-accent transition-colors duration-150">
+              <a href={projectUrl} class="before:absolute before:inset-0">
+                {project.data.title}
+              </a>
+            </h3>
+            {project.data.description && (
+              <p class="text-neutral-500 text-sm leading-relaxed">
+                {project.data.description}
+              </p>
+            )}
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  </div> <!-- end content-page wrapper -->
+
+</BaseLayout>
