@@ -75,9 +75,9 @@ const blogPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
                         <Image
                           src={post.data.image}
                           alt={post.data.title}
-                          width={128}
+                          width={400}
+                          height={400}
                           format="webp"
-                          densities={[1, 1.5, 2]}
                           class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-sm"
                           loading="lazy"
                         />
