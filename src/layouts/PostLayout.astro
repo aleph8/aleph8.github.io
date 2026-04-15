@@ -58,6 +58,8 @@ const blogPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
               src={author.avatar}
               alt={author.name}
               width={28}
+              format="webp"
+              densities={[1, 2, 3]}
               class="w-7 h-7 rounded-full"
               loading="lazy"
             />
@@ -74,6 +76,8 @@ const blogPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
           src={frontmatter.image}
           alt={frontmatter.title}
           width={800}
+          format="webp"
+          densities={[1, 1.5, 2]}
           class="w-full h-48 md:h-80 object-cover rounded-sm"
           loading="eager"
         />
