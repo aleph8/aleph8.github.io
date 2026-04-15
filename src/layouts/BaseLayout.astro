@@ -59,9 +59,6 @@ const alternatePath = lang === 'es'
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={`${title} - AGP`} />
-    <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="AGP" />
     {resolvedOgImage && (
       <>
         <meta property="og:image" content={resolvedOgImage} />
@@ -69,9 +66,12 @@ const alternatePath = lang === 'es'
         <meta property="og:image:type" content="image/jpeg" />
         {ogWidth && <meta property="og:image:width" content={ogWidth} />}
         {ogHeight && <meta property="og:image:height" content={ogHeight} />}
-        <meta itemprop="image" content={resolvedOgImage} />
       </>
     )}
+    <meta property="og:title" content={`${title} - AGP`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="AGP" />
+    {resolvedOgImage && <meta itemprop="image" content={resolvedOgImage} />}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
