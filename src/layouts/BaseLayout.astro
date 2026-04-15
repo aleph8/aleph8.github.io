@@ -1,0 +1,186 @@
+---
+import '../styles/global.css';
+import { defaultLocale, useTranslations } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string | any;
+  lang?: string;
+  wide?: boolean;
+  contentPage?: boolean;
+}
+
+const {
+  title,
+  description = "Alejandro García Peláez - AI, cybersecurity, software.",
+  ogImage,
+  lang = defaultLocale,
+  wide = false,
+  contentPage = false,
+} = Astro.props;
+
+const t = useTranslations(lang as any);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Resolve OG Image URL
+let resolvedOgImage = '';
+if (ogImage) {
+  if (typeof ogImage === 'string') {
+    resolvedOgImage = new URL(ogImage, Astro.site).toString();
+  } else if (typeof ogImage === 'object' && ogImage.src) {
+    resolvedOgImage = new URL(ogImage.src, Astro.site).toString();
+  }
+}
+
+const alternateLang = lang === 'es' ? 'en' : 'es';
+const alternatePath = lang === 'es' 
+  ? Astro.url.pathname.replace(/^\/es/, '') || '/' 
+  : `/es${Astro.url.pathname}`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} - AGP</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="AGP Blog" href="/rss.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} - AGP`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="AGP" />
+    {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${title} - AGP`} />
+    <meta property="twitter:description" content={description} />
+    {resolvedOgImage && <meta property="twitter:image" content={resolvedOgImage} />}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+
+  <body class="min-h-screen flex flex-col" style="color-scheme: light; color: black;">
+
+    <!-- Nav -->
+    <header id="site-header" class="py-6 px-6 md:px-12 fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-transform duration-300">
+      <nav aria-label="Main" class="max-w-3xl mx-auto flex items-center justify-between">
+        <a href={lang === 'en' ? '/' : '/es/'} class="hover:opacity-80 transition-opacity duration-150">
+          <img src="/img/logo.svg" alt="AGP" class="h-5 w-auto" />
+        </a>
+        <ul class="flex items-center gap-6 text-sm text-neutral-500">
+          <li><a href={lang === 'en' ? '/blog' : '/es/blog'} class="hover:text-black transition-colors duration-150">{t('nav.writing')}</a></li>
+          <li><a href={lang === 'en' ? '/projects' : '/es/projects'} class="hover:text-black transition-colors duration-150">{t('nav.projects')}</a></li>
+          <li class="hidden sm:block"><a href={lang === 'en' ? '/about' : '/es/about'} class="hover:text-black transition-colors duration-150">{t('nav.about')}</a></li>
+          <li class="inline-flex items-center gap-1 text-xs font-mono tracking-widest">
+            {lang === 'en' ? (
+              <span class="text-black" aria-current="true">EN</span>
+            ) : (
+              <a href={alternatePath} lang="en" hreflang="en" class="text-neutral-500 hover:text-black transition-colors duration-150">EN</a>
+            )}
+            <span class="text-neutral-300 select-none" aria-hidden="true">/</span>
+            {lang === 'es' ? (
+              <span class="text-black" aria-current="true">ES</span>
+            ) : (
+              <a href={alternatePath} lang="es" hreflang="es" class="text-neutral-500 hover:text-black transition-colors duration-150">ES</a>
+            )}
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main class:list={[
+      "flex-grow w-full mx-auto px-6 md:px-12 pb-16 pt-24",
+      wide ? "max-w-5xl" : "max-w-3xl",
+      contentPage ? "content-page" : "",
+    ]}>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 md:px-12">
+      <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <p class="text-xs text-neutral-500">
+          &copy; {new Date().getFullYear()} {t('footer.rights')}
+        </p>
+        <div class="flex flex-wrap items-center gap-6 text-xs text-neutral-500">
+          <a href="/graph" class="hover:text-black transition-colors duration-150">Graph</a>
+          <a href="/rss.xml" class="hover:text-black transition-colors duration-150">RSS</a>
+          <a href="https://github.com/aleph8" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors duration-150">GitHub</a>
+          <a href="https://x.com/alegpmbt" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors duration-150">X</a>
+          <a href="https://es.linkedin.com/in/alegpwk" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors duration-150">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mermaid: render code blocks with class language-mermaid -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'neutral',
+        fontFamily: 'Inter, system-ui, sans-serif',
+        themeVariables: {
+          primaryColor: '#f5f5f5',
+          primaryBorderColor: '#e5e5e5',
+          primaryTextColor: '#000000',
+          lineColor: '#a3a3a3',
+          edgeLabelBackground: '#ffffff',
+        },
+      });
+
+      document.querySelectorAll('pre code.language-mermaid').forEach(async (code) => {
+        const pre = code.parentElement;
+        const container = document.createElement('div');
+        container.className = 'mermaid-diagram my-8';
+        const id = 'mermaid-' + Math.random().toString(36).slice(2);
+        const { svg } = await mermaid.render(id, code.textContent.trim());
+        container.innerHTML = svg;
+        pre.replaceWith(container);
+      });
+    </script>
+
+    <script is:inline>
+      (function () {
+        const header = document.getElementById('site-header');
+        let lastY = window.scrollY;
+        let ticking = false;
+
+        window.addEventListener('scroll', function () {
+          if (!ticking) {
+            window.requestAnimationFrame(function () {
+              const currentY = window.scrollY;
+              if (currentY <= 0) {
+                header.style.transform = 'translateY(0)';
+              } else if (currentY > lastY) {
+                // scrolling down - hide
+                header.style.transform = 'translateY(-100%)';
+              } else {
+                // scrolling up - show
+                header.style.transform = 'translateY(0)';
+              }
+              lastY = currentY;
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      })();
+    </script>
+
+  </body>
+</html>

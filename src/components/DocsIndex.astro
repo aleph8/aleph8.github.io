@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { defaultLocale, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+
+const { lang = defaultLocale } = Astro.props;
+const t = useTranslations(lang as any);
+
+const allDocs = await getCollection('projects');
+const localizedDocs = allDocs.filter(d => d.id.startsWith(`${lang}/`));
+
+// Group by project
+const grouped: Record<string, typeof localizedDocs> = {};
+for (const doc of localizedDocs) {
+  const parts = doc.id.split('/');
+  const project = parts.length > 2 ? parts[1] : 'general';
+  if (!grouped[project]) grouped[project] = [];
+  grouped[project].push(doc);
+}
+for (const key of Object.keys(grouped)) {
+  grouped[key].sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+}
+
+const docsPath = lang === 'en' ? '/projects' : `/${lang}/projects`;
+
+const isIntro = (doc: typeof localizedDocs[0]) =>
+  doc.id.split('/').pop()?.replace(/\.mdx?$/, '') === 'intro';
+---
+
+<BaseLayout title={t('projects.title')} description={t('projects.description')} lang={lang} contentPage={true}>
+
+  <div class="pt-6 md:pt-12 pb-16">
+    <h1 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">{t('projects.title')}</h1>
+    <p class="text-neutral-500 text-base mb-8 md:mb-12">{t('projects.description')}</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+      {Object.entries(grouped).map(([projectKey, docs], index) => {
+        const intro = docs.find(isIntro);
+        const rest = docs.filter(d => !isIntro(d));
+        const introUrl = intro
+          ? `${docsPath}/${intro.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '')}`
+          : null;
+
+        return (
+          <article class="group relative flex flex-col items-start border-t-2 border-black pt-5 pb-6">
+            {/* Index number / Gallery plaque */}
+            <div class="w-full flex justify-between items-start mb-6">
+              <span class="text-sm font-mono font-medium text-accent">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              {intro?.data.tech && (
+                <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                  {intro.data.tech}
+                </span>
+              )}
+            </div>
+
+            {/* Title */}
+            {intro?.data.image && (
+              <Image 
+                src={intro.data.image} 
+                alt={intro?.data.title || projectKey} 
+                width={800}
+                class="w-full h-48 object-cover mb-4 rounded-sm"
+                loading="lazy"
+              />
+            )}
+            <h2 class="text-3xl font-semibold tracking-tight mb-4 group-hover:text-accent transition-colors duration-150">
+              {introUrl ? (
+                <a href={introUrl} class="before:absolute before:inset-0">
+                  {intro?.data.title || projectKey}
+                </a>
+              ) : (
+                projectKey
+              )}
+            </h2>
+
+            {/* Description */}
+            {intro?.data.description && (
+              <p class="text-neutral-500 text-sm leading-relaxed flex-grow">
+                {intro.data.description}
+              </p>
+            )}
+          </article>
+        );
+      })}
+    </div>
+  </div>
+
+</BaseLayout>

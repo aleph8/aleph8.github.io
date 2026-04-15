@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useTranslations } from '../i18n/utils';
+
+// Since this is the top-level 404, we use default locale or try to detect from URL in client
+const lang = 'en'; 
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('404.title')} lang={lang}>
+  <div class="flex flex-col items-center justify-center min-h-[60vh] text-center">
+    <p class="text-xs font-mono text-accent uppercase tracking-[0.2em] mb-4">Error 404</p>
+    <h1 class="text-4xl md:text-6xl font-semibold tracking-tight mb-8">
+      {t('404.title')}
+    </h1>
+    
+    <a 
+      href="/" 
+      class="inline-flex items-center gap-2 text-sm font-mono text-neutral-500 hover:text-accent transition-colors duration-150"
+    >
+      <span aria-hidden="true">←</span> {t('404.back')}
+    </a>
+  </div>
+</BaseLayout>
