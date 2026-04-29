@@ -1,10 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { getEntry } from 'astro:content';
-import { useTranslations } from '../i18n/utils';
+import { useTranslations, defaultLocale } from '../i18n/utils';
 import { Image } from 'astro:assets';
 
-const { frontmatter, lang = 'en' } = Astro.props;
+const { frontmatter, lang = defaultLocale } = Astro.props;
 
 const authorEntry = await getEntry(frontmatter.author);
 const author = authorEntry?.data;
@@ -18,7 +18,7 @@ const formattedDate = frontmatter.pubDate.toLocaleDateString(lang, {
 });
 
 const t = useTranslations(lang as any);
-const blogPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
+const blogPath = lang === 'es' ? '/blog' : `/${lang}/blog`;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description} ogImage={frontmatter.image} lang={lang} contentPage={true}>
@@ -72,15 +72,17 @@ const blogPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
     <!-- Cover image -->
     {frontmatter.image && (
       <div class="mb-8 max-w-2xl">
-        <Image
-          src={frontmatter.image}
-          alt={frontmatter.title}
-          width={1200}
-          height={600}
-          format="webp"
-          class="w-full h-48 md:h-80 object-cover rounded-sm"
-          loading="eager"
-        />
+        <a href={typeof frontmatter.image === 'string' ? frontmatter.image : frontmatter.image.src} target="_blank" class="block group/img">
+          <Image
+            src={frontmatter.image}
+            alt={frontmatter.title}
+            width={1200}
+            height={600}
+            format="webp"
+            class="w-full h-48 md:h-80 object-cover rounded-sm border border-neutral-100 group-hover/img:border-accent/30 transition-all duration-300"
+            loading="eager"
+          />
+        </a>
       </div>
     )}
 

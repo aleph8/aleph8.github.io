@@ -2,7 +2,7 @@ import en from './locales/en.json';
 import es from './locales/es.json';
 
 export const locales = ['en', 'es'] as const;
-export const defaultLocale = 'en';
+export const defaultLocale = 'es';
 
 export const translations = {
   en,

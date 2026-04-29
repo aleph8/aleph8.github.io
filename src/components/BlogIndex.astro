@@ -15,7 +15,7 @@ const posts = (await getCollection('posts'))
 const allTags = await Promise.all(posts.map(p => getEntries(p.data.tags)));
 
 const years = [...new Set(posts.map(p => p.data.pubDate.getFullYear()))].sort((a, b) => b - a);
-const blogPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
+const blogPath = lang === 'es' ? '/blog' : `/${lang}/blog`;
 ---
 
 <BaseLayout title={t('blog.title')} description={t('blog.description')} lang={lang} contentPage={true}>

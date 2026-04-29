@@ -22,7 +22,7 @@ for (const key of Object.keys(grouped)) {
   grouped[key].sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 }
 
-const docsPath = lang === 'en' ? '/projects' : `/${lang}/projects`;
+const docsPath = lang === 'es' ? '/projects' : `/${lang}/projects`;
 
 const isIntro = (doc: typeof localizedDocs[0]) =>
   doc.id.split('/').pop()?.replace(/\.mdx?$/, '') === 'intro';

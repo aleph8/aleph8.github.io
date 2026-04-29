@@ -3,7 +3,7 @@ order: 3
 title: "VT4AI"
 description: "Wrapper Python para la API de VirusTotal, optimizado para flujos de trabajo con LLMs."
 tech: "Ciberseguridad"
-image: "../../../../assets/projects/vt4ai.webp"
+image: "../../../../assets/projects/vt4ai.jpg"
 ---
 
 VT4AI is a powerful Python wrapper around the VirusTotal API, specifically designed to enhance AI and LLM applications with comprehensive cybersecurity intelligence. It transforms VirusTotal's responses into AI-friendly formats through templating and multiple integration options.

@@ -1,9 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { useTranslations } from '../i18n/utils';
+import { useTranslations, defaultLocale } from '../i18n/utils';
+import { Image } from 'astro:assets';
 
-const { frontmatter, lang = 'en' } = Astro.props;
+const { frontmatter, lang = defaultLocale } = Astro.props;
 const allDocs = await getCollection('projects');
 const localizedDocs = allDocs.filter(d => d.id.startsWith(`${lang}/`));
 
@@ -21,7 +22,7 @@ for (const key of Object.keys(grouped)) {
 
 const currentPath = Astro.url.pathname;
 const t = useTranslations(lang as any);
-const docsPath = lang === 'en' ? '/projects' : `/${lang}/projects`;
+const docsPath = lang === 'es' ? '/projects' : `/${lang}/projects`;
 
 // Extract project name from current URL for breadcrumb
 const cleanPath = currentPath.replace(docsPath, '').replace(/^\//, '');
@@ -149,6 +150,20 @@ const isIntroPage = cleanPath.split('/').pop() === 'intro';
           <p class="text-neutral-500 text-base leading-relaxed mb-10 pb-10 border-b border-neutral-100">
             {frontmatter.description}
           </p>
+        )}
+
+        {frontmatter.image && (
+          <a href={typeof frontmatter.image === 'string' ? frontmatter.image : frontmatter.image.src} target="_blank" class="block mb-10 group/img">
+            <Image 
+              src={frontmatter.image} 
+              alt={frontmatter.title} 
+              width={1200}
+              height={600}
+              format="webp"
+              class="w-full h-48 md:h-80 object-cover rounded-sm border border-neutral-100 group-hover/img:border-accent/30 transition-all duration-300"
+              loading="eager"
+            />
+          </a>
         )}
 
         <div class="prose prose-neutral max-w-none

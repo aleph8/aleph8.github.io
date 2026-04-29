@@ -4,8 +4,8 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 
 export async function getStaticPaths() {
   const docs = await getCollection('projects');
-  const enDocs = docs.filter(d => d.id.startsWith('en/'));
-  return enDocs.map(doc => {
+  const esDocs = docs.filter(d => d.id.startsWith('es/'));
+  return esDocs.map(doc => {
     const slug = doc.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '');
     return {
       params: { slug },
@@ -18,6 +18,6 @@ const { doc } = Astro.props;
 const { Content } = await render(doc);
 ---
 
-<DocsLayout frontmatter={doc.data} lang="en">
+<DocsLayout frontmatter={doc.data} lang="es">
   <Content />
 </DocsLayout>

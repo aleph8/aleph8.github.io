@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import '../styles/global.css';
 
-const posts   = await getCollection('posts', p => !p.data.draft && p.id.startsWith('en/'));
-const docs    = await getCollection('projects',  d => d.id.startsWith('en/'));
+const posts   = await getCollection('posts', p => !p.data.draft && p.id.startsWith('es/'));
+const docs    = await getCollection('projects',  d => d.id.startsWith('es/'));
 const tags    = await getCollection('tags');
 
 // Build graph data passed to the client
@@ -16,7 +16,7 @@ for (const tag of tags) {
 
 const projects = [...new Set(docs.map(d => d.id.split('/')[1]))];
 for (const project of projects) {
-  const intro = docs.find(d => d.id.startsWith(`en/${project}/intro`));
+  const intro = docs.find(d => d.id.startsWith(`es/${project}/intro`));
   gNodes.push({ id: `project:${project}`, label: project.toUpperCase(), type: 'project', url: `/projects/${project}/intro`, description: intro?.data.description ?? '' });
 }
 
@@ -39,7 +39,7 @@ const graphData = JSON.stringify({ nodes: gNodes, links: gLinks });
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -474,7 +474,7 @@ const graphData = JSON.stringify({ nodes: gNodes, links: gLinks });
   </div>
 
   <div class="hud hud-top-right">
-    <a href="/es/" class="hud-link">ES</a>
+    <a href="/en/" class="hud-link">EN</a>
     <a href="/"    class="hud-link">← Back</a>
   </div>
 
