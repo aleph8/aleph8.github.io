@@ -24,4 +24,9 @@ But none of this would have been possible without:
 
 + The Google Gemini LLM tokens and the support of **Bernardo Quintero** (founder of VirusTotal and director of the Google Safety Center in Málaga).
 
-There is still much work to be done; this is only the beginning. There are still physical photographs that haven't been digitized, which will be lost over the years; there are collections of photographs that are not so accessible and others scattered in different places. As well as all the collective knowledge that resides in people's minds, narrating the era from different perspectives, with unique experiences... _Alejandro, April 29, 2026_
+There is still much work to be done; this is only the beginning. There are still physical photographs that haven't been digitized, which will be lost over the years; there are collections of photographs that are not so accessible and others scattered in different places. As well as all the collective knowledge that resides in people's minds, narrating the era from different perspectives, with unique experiences...
+
+To navigate our history <a href="https://panoruma.es/" target="_blank" rel="noopener noreferrer"> access Panoruma </a>
+
+>>> _Alejandro, April 29, 2026_
+
