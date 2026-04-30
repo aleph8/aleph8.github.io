@@ -12,7 +12,7 @@ La historia de un pueblo, es la nuestra. Generaciones que nos han visto crecer y
 
 Mentiría si escribiera aquí que no me preocupa como unificar, conservar y poder distribuir todo lo que ha quedado reflejado, por distintos medios como la fotografía, de toda nuestra historia. Y es por esto que surge Panoruma.
 
-Miles y miles de imágenes accesibles de forma pública, vía URLs ... pero que necesitaban una presentación más actual y una manera de poder filtrar para que cualquier persona pudiera buscar con facilidad. ¿Y como cualquier persona puede buscar con esta facilidad? Usando palabras, etiquetas con las que dar nombre aquellas cosas que observamos.
+Miles y miles de imágenes accesibles de forma pública, vía URLs ... pero que necesitaban una presentación más actual y una manera de poder filtrar para que cualquier persona pudiera buscar con facilidad. ¿Cómo cualquier persona puede buscar con esta facilidad? Usando palabras, etiquetas con las que dar nombre aquellas cosas que observamos.
 
 Me urgía la necesidad de actuar y pensé en la interfaz y motor de clasificación y búsqueda que podría hacer posible esta idea. Encontré la respuesta en una tecnología que ha empezado a coger tracción con los años: los modelos de lenguaje (ChatGPT por ejemplo es un modelo de lenguaje). La idea era generar una descripción objetiva que permita a cualquier persona filtrar entre miles y miles de imágenes usando el lenguaje. En una noche ya tenía clasificadas con una pequeña prueba unas 3000 imágenes.
 
