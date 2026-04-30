@@ -26,6 +26,6 @@ Pero todo esto no habría sido posible sin:
 
 Aún queda mucho trabajo por hacer, esto es solo el inicio. Todavía hay fotografías físicas que no han sido digitalizadas, las cuales se van a ir perdiendo con el paso de los años; hay colecciones de fotografías que no son tan accesibles y otras que están repartidas por distintos sitios. Así como todo el conocimiento colectivo que reside en la mente de las personas, que narran la época desde distintas perspectivas, con vivencias únicas ... 
 
-Para navegar en nuestra historia <a href="https://panoruma.es/" target="_blank" rel="noopener noreferrer"> accede a Panoruma </a> 
+Para navegar en nuestra historia <a href="https://panoruma.es/" target="_blank" rel="noopener noreferrer"> accede a Panoruma </a> .
 
->>> _Alejandro a 29 de Abril de 2026_ 
+> _Alejandro a 29 de Abril de 2026_ 
