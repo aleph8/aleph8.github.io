@@ -12,12 +12,12 @@ This document describes how to work with this project in future sessions.
 
 | Technology | Version | Purpose |
 |---|---|---|
-| [Astro](https://astro.build/) | 5+ | Static site framework |
+| [Astro](https://astro.build/) | 7+ | Static site framework |
 | [Tailwind CSS v4](https://tailwindcss.com/) | 4+ | Styling (via `@tailwindcss/vite` Vite plugin) |
 | [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) | 0.5+ | Prose/markdown styles |
-| [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) | 4+ | MDX support in content collections |
+| [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) | 8+ | MDX support in content collections |
 | [@astrojs/rss](https://docs.astro.build/en/guides/rss/) | 4+ | RSS feed at `/rss.xml` |
-| [Mermaid.js](https://mermaid.js.org/) | 11 (CDN) | Diagram rendering (client-side, no install) |
+| [Mermaid.js](https://mermaid.js.org/) | 11 | Self-hosted diagram rendering |
 | Docker + Docker Compose | - | Isolated development environment |
 | GitHub Actions | - | CI/CD → GitHub Pages |
 
@@ -51,7 +51,7 @@ docker compose logs -f astro   # live
 /
 ├── src/
 │   ├── content/               # Astro Content Collections
-│   │   ├── config.ts          # Zod schemas for all collections
+│   ├── content.config.ts       # Content loaders and Zod schemas
 │   │   ├── posts/
 │   │   │   ├── en/            # English blog posts (.md / .mdx)
 │   │   │   └── es/            # Spanish blog posts (.md / .mdx)
@@ -66,7 +66,7 @@ docker compose logs -f astro   # live
 │   │   │   └── es.json        # Spanish UI strings
 │   │   └── utils.ts           # useTranslations(lang) hook
 │   ├── layouts/
-│   │   ├── BaseLayout.astro   # Main layout (nav, footer, scroll-hide, Mermaid CDN)
+│   │   ├── BaseLayout.astro   # Main layout (nav, footer, scroll-hide, local Mermaid)
 │   │   ├── PostLayout.astro   # Blog post layout (cover image, author, tags)
 │   │   └── DocsLayout.astro   # Project layout (sidebar with intro/docs split + breadcrumb)
 │   ├── components/
@@ -74,31 +74,26 @@ docker compose logs -f astro   # live
 │   │   ├── BlogIndex.astro    # Blog listing component (reused for EN/ES)
 │   │   └── DocsIndex.astro    # Projects listing component (reused for EN/ES)
 │   ├── pages/
-│   │   ├── index.astro        # EN landing (/)
-│   │   ├── about.astro        # EN about page (/about)
-│   │   ├── graph.astro        # Knowledge graph + game (/graph)
+│   │   ├── index.astro        # ES landing (/)
+│   │   ├── about.astro        # ES about page (/about)
+│   │   ├── graph.astro        # Knowledge tree and timeline (/graph)
+│   │   ├── microensayos/      # Spanish reflection index and reader routes
+│   │   ├── preguntas/         # Spanish question index and routes
 │   │   ├── blog/
-│   │   │   ├── index.astro    # EN blog listing (/blog)
-│   │   │   └── [...slug].astro # EN post routes (/blog/slug)
+│   │   │   ├── index.astro    # ES blog listing (/blog)
+│   │   │   └── [...slug].astro # ES post routes (/blog/slug)
 │   │   ├── projects/
-│   │   │   ├── index.astro    # EN projects listing (/projects)
-│   │   │   └── [...slug].astro # EN project routes (/projects/name/slug)
-│   │   ├── es/                # Spanish locale prefix
-│   │   │   ├── index.astro    # ES landing (/es)
-│   │   │   ├── about.astro    # ES about page (/es/about)
-│   │   │   ├── blog/          # ES blog (/es/blog)
-│   │   │   └── projects/      # ES projects (/es/projects)
+│   │   │   ├── index.astro    # ES projects listing (/projects)
+│   │   │   └── [...slug].astro # ES project routes (/projects/name/slug)
+│   │   ├── en/                # English locale prefix
+│   │   │   ├── index.astro    # EN landing (/en)
+│   │   │   ├── about.astro    # EN about page (/en/about)
+│   │   │   ├── blog/          # EN blog (/en/blog)
+│   │   │   └── projects/      # EN projects (/en/projects)
 │   │   └── rss.xml.js         # RSS feed
-│   ├── invaders/              # Knowledge graph + game JS modules
-│   │   ├── main.js            # Entry point: graph init, HUD, event listeners
-│   │   ├── graph-renderer.js  # Force-directed graph rendering (explore mode)
-│   │   ├── game.js            # Core game loop and state machine
-│   │   ├── player.js          # Player ship: movement, weapons, relics
-│   │   ├── enemy.js           # Enemy types: standard, boss, splitter, shielded, hacker
-│   │   ├── bullet.js          # Bullet pool: movement, modifiers (homing, piercing, explosive, wave)
-│   │   ├── shop.js            # Shop: item availability, purchasing, relic logic
-│   │   ├── waves.js           # Wave progression and shop trigger
-│   │   └── constants.js       # Game constants and SHOP_ITEMS catalog
+│   ├── scripts/
+│   │   ├── reader.ts          # Ebook preferences, pagination, and stable progress
+│   │   └── knowledge-tree.ts  # Interactive graph and time filtering
 │   └── styles/
 │       └── global.css         # Global CSS (Tailwind v4, grid background, content-page effect)
 ├── public/
@@ -106,7 +101,7 @@ docker compose logs -f astro   # live
 │   └── blog/                  # Static assets for blog posts (iframes, cover images)
 ├── .github/workflows/
 │   └── deploy.yml             # CI/CD: build + deploy to GitHub Pages on push to main
-├── Dockerfile                 # Node 20 Alpine + python3/make/g++
+├── Dockerfile                 # Node 22 Alpine + python3/make/g++
 ├── docker-compose.yaml        # Named volume for node_modules
 ├── astro.config.mjs           # Astro config (static, i18n, MDX, Tailwind, excludeLangs)
 └── AGENT.md                   # This file
@@ -116,26 +111,33 @@ docker compose logs -f astro   # live
 
 ## Content Collections
 
-### Schemas (`src/content/config.ts`)
+### Schemas (`src/content.config.ts`)
 
 | Collection | Type | Required fields | Optional fields |
 |---|---|---|---|
-| `posts` | `content` (md/mdx) | `title`, `description`, `pubDate`, `author` (ref), `tags` (ref[]) | `image`, `draft` |
-| `projects` | `content` (md/mdx) | `title` | `description`, `order`, `sidebar_label`, `tech` |
+| `posts` | `content` (md/mdx) | `title`, `pubDate` | `type`, `description`, `author`, `tags`, `image`, `project`, `translationKey`, `relations`, `draft` |
+| `projects` | `content` (md/mdx) | `title` | `description`, `order`, `sidebar_label`, `tech`, `translationKey` |
 | `authors` | `data` (json) | `name` | `bio`, `avatar`, `socials` |
 | `tags` | `data` (json) | `name` | `description` |
 
-### Adding a new post
+### Adding a new writing
+
+Use `npm run article -- "Title"`, `npm run microessay -- "Title"`, or
+`npm run question -- "Question?"`. Each command creates a minimal Spanish
+draft. All three types share the `posts` collection; `type` controls their
+public route and presentation.
 
 Create `src/content/posts/<lang>/my-post.md`:
 
 ```md
 ---
 title: "Post title"
+type: article # article | microessay | question
 description: "Short description."
 pubDate: 2026-03-30
 author: aleph
 tags: ["ai", "cybersecurity"]
+translationKey: my-post
 image: ../../../assets/blog/my-post-cover.jpg   # optional - place image in src/assets/blog/
 ---
 
@@ -144,7 +146,14 @@ Content in Markdown or MDX...
 
 - The author (`aleph`) must exist as `src/content/authors/aleph.json`.
 - Each tag must exist as `src/content/tags/<tag>.json`.
+- Use the same `translationKey` in linked Spanish and English posts.
 - `image` is optional but recommended - it shows as a thumbnail in the listing, a cover inside the post, and populates `og:image` for social sharing.
+- Reflection covers use a portrait 2:3 ratio. Article covers use 2:1.
+- Author relations only in Spanish with `{ type, target, date? }`. Supported
+  types are `includes`, `partOf`, `expands`, `synthesizes`, `reconsiders`,
+  `responds`, `investigates`, `tension`, and `related`.
+- `investigates` must target a `question`. The build validates missing targets,
+  duplicates, self-links, and hierarchy cycles.
 
 ### Adding a new tag
 
@@ -187,7 +196,7 @@ The hero also includes:
 - **Author name** (`hero.title` i18n key) - small mono label above the headline
 - **Context badge** - accent-colored pill with a dot: `hero.badge` key (e.g. "Málaga · AI & Security · VirusTotal")
 - **Description** - `hero.description` key, one short sentence with personality
-- **About me link** - links to `/about` or `/es/about`, text from `hero.about_link` key
+- **About me link** - links to `/about` or `/en/about`, text from `hero.about_link` key
 
 The "Recent Writing" and "Related Projects" sections below the hero are wrapped in a `<div>` with horizontal-only white shadow (`box-shadow: 100px 0 50px 60px white, -100px 0 50px 60px white`) to create a floating "paper" effect over the grid without bleeding into the hero.
 
@@ -195,7 +204,7 @@ The "Recent Writing" and "Related Projects" sections below the hero are wrapped 
 
 ## Mermaid Diagrams
 
-Diagrams are rendered **client-side** via Mermaid.js loaded from CDN. No build-time dependencies.
+Diagrams are rendered **client-side** with the locally installed Mermaid.js package. Runtime rendering does not contact a CDN.
 
 - Write diagrams as ` ```mermaid ` code blocks in any markdown/MDX file.
 - `astro.config.mjs` excludes `mermaid` from Shiki syntax highlighting.
@@ -206,12 +215,12 @@ Diagrams are rendered **client-side** via Mermaid.js loaded from CDN. No build-t
 
 ## i18n
 
-The site supports English (default, no prefix) and Spanish (under `/es/`).
+The site supports Spanish (default, no prefix) and English (under `/en/`).
 
 - **Config**: `astro.config.mjs` → `i18n` block.
 - **Dictionaries**: `src/i18n/locales/*.json`.
 - **Utilities**: `src/i18n/utils.ts` → `useTranslations(lang)`.
-- **Routes**: `/` and `/es/`, `/blog` and `/es/blog`, `/projects` and `/es/projects`, `/about` and `/es/about`.
+- **Routes**: `/` and `/en/`, `/blog` and `/en/blog`, `/projects` and `/en/projects`, `/about` and `/en/about`.
 - **Language switcher**: Always shows `EN / ES` in fixed order in the navbar. Active language is black, inactive is `text-neutral-500`.
 
 ### Key i18n keys
@@ -286,7 +295,7 @@ All `RECENT WRITING` / `RELATED PROJECTS` style labels use `text-accent` (accent
 
 ### About page
 
-`/about` and `/es/about` are standalone Astro pages (not components) that use `BaseLayout` directly with `contentPage={true}`. They contain structured bio sections ("Current Role", "What Drives Me") with accent-colored section labels and `border-accent/15` separators.
+`/about` and `/en/about` are standalone Astro pages (not components) that use `BaseLayout` directly with `contentPage={true}`. They contain structured bio sections ("Current Role", "What Drives Me") with accent-colored section labels and `border-accent/15` separators.
 
 ### Author avatar
 Stored locally at `public/authors/aleph.png`. Do not load from external services (GitHub CDN, Gravatar, etc.).

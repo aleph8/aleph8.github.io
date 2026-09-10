@@ -140,7 +140,7 @@ python3 -m vt4ai.cli --hash abc123 --template-name my_custom_template --format j
 
 ## Next Steps
 
-- [Try the CLI interface](/docs(/vt4ai/cli/overview)
-- [Set up the MCP server for AI agents](/docs(/vt4ai/mcp/overview)
-- [Start the REST API server](/docs(/vt4ai/api/overview)
-- [Read troubleshooting guide](/docs(/vt4ai/troubleshooting)
+- [Try the CLI interface](/en/projects/vt4ai/cli/overview)
+- [Set up the MCP server for AI agents](/en/projects/vt4ai/mcp/overview)
+- [Start the REST API server](/en/projects/vt4ai/api/overview)
+- [Read the troubleshooting guide](/en/projects/vt4ai/troubleshooting)

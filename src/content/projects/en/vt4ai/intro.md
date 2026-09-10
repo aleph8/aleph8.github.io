@@ -65,9 +65,9 @@ flowchart TD
     MCP[MCP Server]
     API[REST API]
     SVC[VTService]
-    CLIENT[VT4AI Client\nCore Library]
-    TPL[Template System\nFiltering & Formatting]
-    VT[VirusTotal API\nvt-py]
+    CLIENT["VT4AI Client<br/>Core Library"]
+    TPL["Template System<br/>Filtering & Formatting"]
+    VT["VirusTotal API<br/>vt-py"]
 
     CLI --> SVC
     MCP --> SVC
@@ -79,8 +79,8 @@ flowchart TD
 
 ## What's Next?
 
-- [Installation Guide](/docs(/vt4ai/installation) - Get VT4AI up and running
-- [CLI Usage](/docs(/vt4ai/cli/overview) - Learn the command-line interface
-- [MCP Integration](/docs(/vt4ai/mcp/overview) - Connect with LLM agents
-- [REST API](/docs(/vt4ai/api/overview) - HTTP endpoints reference
-- [Templates System](/docs(/vt4ai/templates/overview) - Customize data filtering
+- [Installation Guide](/en/projects/vt4ai/installation) - Get VT4AI up and running
+- [CLI Usage](/en/projects/vt4ai/cli/overview) - Learn the command-line interface
+- [MCP Integration](/en/projects/vt4ai/mcp/overview) - Connect with LLM agents
+- [REST API](/en/projects/vt4ai/api/overview) - HTTP endpoints reference
+- [Templates System](/en/projects/vt4ai/templates/overview) - Customize data filtering

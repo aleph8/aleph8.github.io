@@ -1,10 +1,17 @@
 ---
 title: "La amistad banal y las relaciones de supervivencia"
+type: microessay
 description: "Si tuvieras que mantener contacto con alguien a quien ves a diario en el trabajo o la universidad, prescindiendo de este vínculo ¿lo harías? Y la otra persona ¿lo haría también?"
 pubDate: 2026-05-14
 author: aleph
 tags: ["psychology", "philosophy", "sociology"]
-image: "../../../assets/blog/amistad-banal.jpg"
+translationKey: banal-friendship
+branch: amistad
+image: "../../../assets/blog/amistad-banal-cover.png"
+relations:
+  - type: investigates
+    target: en-que-se-basa-la-amistad
+    date: 2026-09-10
 ---
 
 

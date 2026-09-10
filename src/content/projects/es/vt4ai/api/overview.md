@@ -341,7 +341,7 @@ CMD ["uvicorn", "vt4ai.api.server:app", "--host", "0.0.0.0", "--port", "8000"]
 
 ## Next Steps
 
-- [Try the CLI interface](/docs(/vt4ai/cli/overview)
-- [Set up the MCP server for AI agents](/docs(/vt4ai/mcp/overview)
-- [Learn about templates](/docs(/vt4ai/templates/overview)
-- [Read troubleshooting guide](/docs(/vt4ai/troubleshooting)
+- [Probar la interfaz de línea de comandos](/projects/vt4ai/cli/overview)
+- [Configurar el servidor MCP para agentes de IA](/projects/vt4ai/mcp/overview)
+- [Conocer el sistema de plantillas](/projects/vt4ai/templates/overview)
+- [Consultar la guía de resolución de problemas](/projects/vt4ai/troubleshooting)

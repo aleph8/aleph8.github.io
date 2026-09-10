@@ -4,6 +4,8 @@ description: "Cómo los LLM están cambiando la forma en que interactuamos con l
 pubDate: 2025-08-25
 author: aleph
 tags: ["ai", "cybersecurity", "malware"]
+translationKey: computer-use
+branch: analisis-de-malware
 image: "../../../assets/blog/computer-use-final.jpg"
 ---
 

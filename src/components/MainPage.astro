@@ -1,19 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection, getEntries } from 'astro:content';
+import { getCollection } from 'astro:content';
 import { defaultLocale, useTranslations } from '../i18n/utils';
 import { Image } from 'astro:assets';
+import { excerptFor, localizedWritings, readingMinutes, writingUrl, type Locale } from '../lib/writings';
 
 const { lang = defaultLocale } = Astro.props;
 const t = useTranslations(lang as any);
+const showDrafts = import.meta.env.ALEPH_PREVIEW_DRAFTS === '1';
 
 const posts = (await getCollection('posts'))
-  .filter(p => !p.data.draft && p.id.startsWith(`${lang}/`))
+  .filter(p => (showDrafts || !p.data.draft) && p.id.startsWith(`${lang}/`) && p.data.type === 'article')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 6);
 
 const blogPath = lang === 'es' ? '/blog' : `/${lang}/blog`;
+const reflectionsPath = lang === 'es' ? '/microensayos' : `/${lang}/microessays`;
 const docsPath = lang === 'es' ? '/projects' : `/${lang}/projects`;
+const reflections = (await localizedWritings(lang as Locale, 'microessay', showDrafts)).slice(0, 2);
 
 const allProjectsDocs = await getCollection('projects');
 const localizedProjects = allProjectsDocs
@@ -82,7 +86,7 @@ const localizedProjects = allProjectsDocs
     <div class="flex items-center justify-between mb-6">
       <h2 id="recent-writing-heading" class="text-xs font-mono tracking-widest uppercase text-accent">{t('section.recent_writing')}</h2>
       <a href={blogPath} class="text-[10px] font-mono text-neutral-500 hover:text-accent uppercase tracking-widest transition-colors duration-150">
-        View All <span aria-hidden="true">→</span>
+        {t('section.view_all')} <span aria-hidden="true">→</span>
       </a>
     </div>
     
@@ -141,6 +145,43 @@ const localizedProjects = allProjectsDocs
       scrollbar-width: none;
     }
   </style>
+
+  <!-- Latest reflections -->
+  {reflections.length > 0 && (
+    <section aria-labelledby="latest-reflections-heading" class="pt-8 pb-12">
+      <div class="flex items-center justify-between mb-6">
+        <h2 id="latest-reflections-heading" class="text-xs font-mono tracking-widest uppercase text-accent">{t('section.latest_reflections')}</h2>
+        <a href={reflectionsPath} class="text-[10px] font-mono text-neutral-500 hover:text-accent uppercase tracking-widest transition-colors duration-150">
+          {t('section.view_all')} <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="border-b border-neutral-200">
+        {reflections.map(writing => (
+          <article class="border-t border-neutral-200">
+            <a href={writingUrl(writing)} class="group/reflection grid grid-cols-[82px_minmax(0,1fr)] sm:grid-cols-[116px_minmax(0,1fr)] items-center gap-[1.15rem] sm:gap-[1.6rem] py-5 sm:py-6 no-underline text-inherit">
+              <div class="w-[82px] sm:w-[116px] aspect-[2/3] overflow-hidden rounded-sm border border-neutral-200 bg-neutral-900 shadow-[5px_7px_18px_rgb(0_0_0/0.08)] transition-all duration-300 group-hover/reflection:-translate-y-0.5 group-hover/reflection:shadow-[7px_10px_24px_rgb(0_0_0/0.13)]">
+                {writing.data.image ? (
+                  <Image src={writing.data.image} alt="" width={320} height={480} format="webp" loading="lazy" class="block h-full w-full object-cover" />
+                ) : (
+                  <div class="grid h-full place-items-center text-3xl text-white font-serif" aria-hidden="true">A</div>
+                )}
+              </div>
+              <div class="min-w-0">
+                <div class="flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-mono tracking-widest uppercase text-neutral-500">
+                  <span>{t('section.reflection')}</span>
+                  <span>{readingMinutes(writing)} {t('section.minutes')}</span>
+                  <time datetime={writing.data.pubDate.toISOString()}>{writing.data.pubDate.toLocaleDateString(lang, { year: 'numeric', month: 'short', day: 'numeric' })}</time>
+                </div>
+                <h3 class="my-2 text-base sm:text-lg font-semibold leading-snug transition-colors duration-150 group-hover/reflection:text-accent">{writing.data.title}</h3>
+                <p class="m-0 text-xs sm:text-sm leading-relaxed text-neutral-500 line-clamp-2 sm:line-clamp-3">{excerptFor(writing)}</p>
+                <span class="inline-block mt-2 text-[10px] font-mono tracking-wider uppercase text-accent">{t('section.read_reflection')} <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
 
   <!-- Projects -->
   <section aria-labelledby="projects-heading" class="pt-8 pb-8">

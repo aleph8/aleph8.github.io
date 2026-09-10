@@ -154,8 +154,8 @@ python3 -m vt4ai.cli --hash 275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c453
 
 ## Next Steps
 
-- [Learn about specific CLI commands](/docs(/vt4ai/cli/commands)
-- [Set up the MCP server for AI agents](/docs(/vt4ai/mcp/overview)
-- [Start the REST API server](/docs(/vt4ai/api/overview)
-- [Learn about templates](/docs(/vt4ai/templates/overview)
-- [Read troubleshooting guide](/docs(/vt4ai/troubleshooting)
+- [Learn about specific CLI commands](/en/projects/vt4ai/cli/commands)
+- [Set up the MCP server for AI agents](/en/projects/vt4ai/mcp/overview)
+- [Start the REST API server](/en/projects/vt4ai/api/overview)
+- [Learn about templates](/en/projects/vt4ai/templates/overview)
+- [Read the troubleshooting guide](/en/projects/vt4ai/troubleshooting)

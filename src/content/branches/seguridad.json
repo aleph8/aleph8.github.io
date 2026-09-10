@@ -1,0 +1,10 @@
+{
+  "title": "Seguridad",
+  "description": "Seguridad informática, análisis y defensa.",
+  "translations": {
+    "en": {
+      "title": "Security",
+      "description": "Cybersecurity, analysis, and defense."
+    }
+  }
+}

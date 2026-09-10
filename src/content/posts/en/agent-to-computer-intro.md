@@ -4,6 +4,8 @@ description: "Introduction to A2C as a protocol for connecting remote agents to 
 pubDate: 2026-04-30
 author: aleph
 tags: ["ai"]
+translationKey: agent-to-computer-intro
+branch: agentes
 image: "../../../assets/blog/agent-to-computer.jpg"
 ---
 
@@ -61,5 +63,3 @@ To make it more concrete, imagine these everyday situations:
 There is still a long way to go, but the short-term goals are clear:
 *   **Stabilize v1.0**: Refine the current specification with community feedback and finalize the message schema.
 *   **Specialized Bodies**: Develop minimal clients (minimal bodies) for Android and IoT environments (Raspberry Pi), allowing any device to become an extension of the agent.
-
-

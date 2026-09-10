@@ -62,13 +62,13 @@ EXODUS está construido sobre una arquitectura abstracta y modular que permite p
 ```mermaid
 flowchart TD
     Engine[Motor de Agente]
-    LLM[Proveedor LLM\nLiteLLM, OpenAI, custom]
-    Memory[Gestor de Memoria\nJSON, Redis, custom]
+    LLM["Proveedor LLM<br/>LiteLLM, OpenAI, custom"]
+    Memory["Gestor de Memoria<br/>JSON, Redis, custom"]
     Executor[Ejecutor de Herramientas]
-    Registry[Registro de Herramientas\ndescubrimiento de plugins]
-    Driver[Driver de Ejecución\nDocker/Local/custom]
-    Config[Definición del Agente\nconfig TOML]
-    Handoffs[Delegaciones\ndelegación dinámica]
+    Registry["Registro de Herramientas<br/>descubrimiento de plugins"]
+    Driver["Driver de Ejecución<br/>Docker/Local/custom"]
+    Config["Definición del Agente<br/>config TOML"]
+    Handoffs["Delegaciones<br/>delegación dinámica"]
 
     Engine --> LLM
     Engine --> Memory

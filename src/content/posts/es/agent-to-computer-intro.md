@@ -4,6 +4,8 @@ description: "Introducción a A2C como protocolo de conexión de un agente remot
 pubDate: 2026-04-30
 author: aleph
 tags: ["ai"]
+translationKey: agent-to-computer-intro
+branch: agentes
 image: "../../../assets/blog/agent-to-computer.jpg"
 ---
 
@@ -65,5 +67,3 @@ Actualmente el protocolo está en fase de borrador (v0.2.0) y estoy trabajando e
 Todavía queda mucho camino por recorrer, pero los objetivos a corto plazo son claros:
 *   **Estabilizar la v1.0**: Pulir la especificación actual con el feedback de la comunidad y cerrar el esquema definitivo de mensajes.
 *   **Cuerpos especializados**: Desarrollar clientes mínimos (minimal bodies) para Android y entornos IoT (Raspberry Pi), permitiendo que cualquier dispositivo sea una extensión del agente.
-
-

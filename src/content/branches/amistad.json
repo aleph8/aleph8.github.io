@@ -1,0 +1,11 @@
+{
+  "title": "Amistad",
+  "description": "Preguntas y reflexiones sobre la amistad.",
+  "parentBranch": "relaciones-humanas",
+  "translations": {
+    "en": {
+      "title": "Friendship",
+      "description": "Questions and reflections on friendship."
+    }
+  }
+}

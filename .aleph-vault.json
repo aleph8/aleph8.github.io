@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "site": "astro",
+  "defaultLocale": "es",
+  "locales": ["es", "en"],
+  "content": {
+    "posts": "src/content/posts",
+    "projects": "src/content/projects",
+    "authors": "src/content/authors",
+    "tags": "src/content/tags",
+    "branches": "src/content/branches"
+  },
+  "assets": "src/assets",
+  "git": {
+    "branch": "main",
+    "remote": "origin"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Inteligencia artificial",
+  "description": "Sistemas capaces de percibir, razonar y actuar.",
+  "translations": {
+    "en": {
+      "title": "Artificial intelligence",
+      "description": "Systems capable of perceiving, reasoning, and acting."
+    }
+  }
+}

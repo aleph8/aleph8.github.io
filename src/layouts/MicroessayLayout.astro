@@ -1,0 +1,13 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ReaderShell from '../components/reader/ReaderShell.astro';
+import type { ResolvedRelation, Writing } from '../lib/writings';
+
+interface Props { writing: Writing; relations: ResolvedRelation[]; lang: 'es' | 'en'; alternatePath?: string | null }
+const { writing, relations, lang, alternatePath } = Astro.props;
+---
+
+<BaseLayout title={writing.data.title} description={writing.data.description} ogImage={writing.data.image} lang={lang} alternatePath={alternatePath} contentPage={true}>
+  {writing.data.draft && <p class="mx-auto max-w-2xl border border-accent/30 bg-accent/5 px-3 py-2 text-xs font-mono uppercase tracking-widest text-accent">Local draft preview</p>}
+  <ReaderShell writing={writing} relations={relations} lang={lang}><slot /></ReaderShell>
+</BaseLayout>

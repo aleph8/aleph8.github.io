@@ -6,9 +6,10 @@ import { Image } from 'astro:assets';
 
 const { lang = defaultLocale } = Astro.props;
 const t = useTranslations(lang as any);
+const showDrafts = import.meta.env.ALEPH_PREVIEW_DRAFTS === '1';
 
 const posts = (await getCollection('posts'))
-  .filter(post => !post.data.draft && post.id.startsWith(`${lang}/`))
+  .filter(post => (showDrafts || !post.data.draft) && post.id.startsWith(`${lang}/`) && post.data.type === 'article')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // Resolve tags for all posts at once
@@ -46,6 +47,7 @@ const blogPath = lang === 'es' ? '/blog' : `/${lang}/blog`;
                         <h2 class="text-base sm:text-lg font-semibold tracking-tight leading-snug mb-2 group-hover:text-accent transition-colors duration-150">
                           {post.data.title}
                         </h2>
+                        {post.data.draft && <span class="text-[10px] font-mono uppercase tracking-widest text-accent">Draft preview</span>}
                         {post.data.description && (
                           <p class="text-sm text-neutral-500 leading-relaxed line-clamp-2 hidden sm:block">
                             {post.data.description}

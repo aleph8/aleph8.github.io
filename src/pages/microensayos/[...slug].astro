@@ -1,0 +1,15 @@
+---
+import { render } from 'astro:content';
+import MicroessayLayout from '../../layouts/MicroessayLayout.astro';
+import { conceptKey, loadWritingGraph, localizedWritings, relationsFor, writingUrl } from '../../lib/writings';
+
+export async function getStaticPaths() {
+  const showDrafts = import.meta.env.ALEPH_PREVIEW_DRAFTS === '1';
+  return (await localizedWritings('es', 'microessay', showDrafts)).map(writing => ({ params: { slug: writing.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '') }, props: { writing } }));
+}
+const { writing } = Astro.props;
+const graph = await loadWritingGraph(import.meta.env.ALEPH_PREVIEW_DRAFTS === '1');
+const alternate = graph.concepts.get(conceptKey(writing))?.en;
+const { Content } = await render(writing);
+---
+<MicroessayLayout writing={writing} relations={relationsFor(writing, graph)} lang="es" alternatePath={alternate ? writingUrl(alternate) : null}><Content /></MicroessayLayout>

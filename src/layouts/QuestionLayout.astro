@@ -1,0 +1,36 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import RelationList from '../components/RelationList.astro';
+import { conceptKey, excerptFor, questionStatus, type ResolvedRelation, type Writing, type WritingGraph } from '../lib/writings';
+
+interface Props { writing: Writing; relations: ResolvedRelation[]; graph: WritingGraph; lang: 'es' | 'en'; alternatePath?: string | null }
+const { writing, relations, graph, lang, alternatePath } = Astro.props;
+const status = questionStatus(conceptKey(writing), graph);
+const copy = lang === 'es'
+  ? { label: 'Pregunta', open: 'Abierta', 'in-progress': 'En investigación', answered: 'Respondida', back: 'Todas las preguntas' }
+  : { label: 'Question', open: 'Open', 'in-progress': 'Under investigation', answered: 'Answered', back: 'All questions' };
+---
+
+<BaseLayout title={writing.data.title} description={excerptFor(writing)} lang={lang} alternatePath={alternatePath} contentPage={true}>
+  <article class="question-page">
+    <header>
+      <div class="question-meta"><span>{copy.label}</span><span class={`status ${status}`}>{copy[status]}</span><time datetime={writing.data.pubDate.toISOString()}>{writing.data.pubDate.toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' })}</time></div>
+      <h1>{writing.data.title}</h1>
+      {writing.data.description && <p>{writing.data.description}</p>}
+    </header>
+    <div class="question-body prose prose-neutral"><slot /></div>
+    <RelationList writing={writing} relations={relations} />
+    <a class="question-back" href={lang === 'es' ? '/preguntas' : '/en/questions'}>← {copy.back}</a>
+  </article>
+</BaseLayout>
+
+<style>
+  .question-page { max-width: 42rem; padding: 3rem 0 5rem; }
+  .question-meta { display: flex; flex-wrap: wrap; gap: .8rem; color: #737373; font: .68rem 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; }
+  .question-meta > span:first-child { color: var(--color-accent); }
+  .status.in-progress { color: #b7791f; } .status.answered { color: #24855f; }
+  h1 { margin: 1.5rem 0 1rem; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.08; }
+  header > p { color: #737373; font-size: 1.05rem; }
+  .question-body { margin-top: 3rem; }
+  .question-back { display: block; margin-top: 3rem; color: #737373; font-size: .85rem; text-decoration: none; }
+</style>

@@ -1,0 +1,78 @@
+---
+import {
+  localeOf,
+  relationLabel,
+  writingUrl,
+  type ResolvedRelation,
+  type Writing,
+} from '../lib/writings';
+
+interface Props {
+  writing: Writing;
+  relations: ResolvedRelation[];
+}
+
+const { writing, relations } = Astro.props;
+const locale = localeOf(writing);
+const copy = locale === 'es' ? {
+  wider: 'Ideas más amplias',
+  included: 'Ideas incluidas',
+  questions: 'Preguntas que aborda',
+  other: 'Otras conexiones',
+} : {
+  wider: 'Broader ideas',
+  included: 'Included ideas',
+  questions: 'Questions addressed',
+  other: 'Other connections',
+};
+
+const wider = relations.filter(relation =>
+  (relation.type === 'partOf' && relation.direction === 'outgoing') ||
+  (relation.type === 'includes' && relation.direction === 'incoming'));
+const included = relations.filter(relation =>
+  (relation.type === 'includes' && relation.direction === 'outgoing') ||
+  (relation.type === 'partOf' && relation.direction === 'incoming'));
+const questions = relations.filter(relation =>
+  relation.writing.data.type === 'question' && ['responds', 'investigates'].includes(relation.type));
+const claimed = new Set([...wider, ...included, ...questions]);
+const other = relations.filter(relation => !claimed.has(relation));
+const groups = [
+  [copy.wider, wider],
+  [copy.included, included],
+  [copy.questions, questions],
+  [copy.other, other],
+] as const;
+---
+
+{relations.length > 0 && (
+  <aside class="relation-map" aria-label={locale === 'es' ? 'Relaciones conceptuales' : 'Conceptual relations'}>
+    {groups.map(([title, items]) => items.length > 0 && (
+      <section>
+        <h2>{title}</h2>
+        <ul>
+          {items.map(relation => (
+            <li>
+              <span>{relationLabel(relation.type, relation.direction, locale)}</span>
+              <a href={writingUrl(relation.writing)}>
+                {relation.writing.data.title}
+                {relation.fallbackLocale && <small>ES</small>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </aside>
+)}
+
+<style>
+  .relation-map { display: grid; gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e5e5e5; }
+  .relation-map h2 { margin-bottom: .7rem; color: var(--color-accent); font-family: 'JetBrains Mono', monospace; font-size: .68rem; font-weight: 400; letter-spacing: .16em; text-transform: uppercase; }
+  .relation-map ul { display: grid; gap: .55rem; }
+  .relation-map li { display: grid; grid-template-columns: minmax(8rem, auto) 1fr; gap: 1rem; align-items: baseline; }
+  .relation-map li > span { color: #737373; font-family: 'JetBrains Mono', monospace; font-size: .72rem; }
+  .relation-map a { color: #111; font-size: .92rem; text-decoration: none; }
+  .relation-map a:hover { color: var(--color-accent); }
+  .relation-map small { margin-left: .5rem; color: var(--color-accent); font-family: monospace; font-size: .6rem; }
+  @media (min-width: 720px) { .relation-map { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

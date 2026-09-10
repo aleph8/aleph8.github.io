@@ -1,0 +1,212 @@
+---
+import { Image } from 'astro:assets';
+import RelationList from '../RelationList.astro';
+import { readingMinutes, type ResolvedRelation, type Writing } from '../../lib/writings';
+
+interface Props {
+  writing: Writing;
+  relations: ResolvedRelation[];
+  lang: 'es' | 'en';
+}
+
+const { writing, relations, lang } = Astro.props;
+const copy = lang === 'es' ? {
+  home: 'Inicio', reflections: 'Reflexiones', previous: 'Página anterior', next: 'Página siguiente', page: 'Página', of: 'de',
+  continuous: 'Continuo', paged: 'Paginado', settings: 'Ajustes de lectura', exit: 'Salir del lector', reader: 'Abrir lector',
+  contents: 'Índice', appearance: 'Apariencia', mode: 'Lectura', font: 'Tipografía', serif: 'Serif', sans: 'Sans serif', size: 'Tamaño',
+  lineHeight: 'Interlineado', width: 'Anchura', theme: 'Tema', light: 'Claro', sepia: 'Sepia', dark: 'Oscuro',
+  align: 'Alineación', left: 'Izquierda', justify: 'Justificado', motion: 'Reducir movimiento', reset: 'Restablecer',
+  minutes: 'min de lectura', published: 'Publicado', updated: 'Revisado', close: 'Cerrar',
+} : {
+  home: 'Home', reflections: 'Reflections', previous: 'Previous page', next: 'Next page', page: 'Page', of: 'of',
+  continuous: 'Continuous', paged: 'Paged', settings: 'Reading settings', exit: 'Exit reader', reader: 'Open reader',
+  contents: 'Contents', appearance: 'Appearance', mode: 'Reading', font: 'Typeface', serif: 'Serif', sans: 'Sans serif', size: 'Size',
+  lineHeight: 'Line height', width: 'Width', theme: 'Theme', light: 'Light', sepia: 'Sepia', dark: 'Dark',
+  align: 'Alignment', left: 'Left', justify: 'Justified', motion: 'Reduce motion', reset: 'Reset',
+  minutes: 'min read', published: 'Published', updated: 'Revised', close: 'Close',
+};
+const slug = writing.data.translationKey || writing.id;
+const homePath = lang === 'es' ? '/' : '/en/';
+const reflectionsPath = lang === 'es' ? '/microensayos' : '/en/microessays';
+---
+
+<section class="reader-shell immersive" data-reader-shell data-reader-slug={slug} data-reader-lang={lang}>
+  <header class="reader-toolbar">
+    <nav class="reader-location" aria-label={lang === 'es' ? 'Ubicación' : 'Location'}>
+      <a class="reader-home" href={homePath} aria-label={copy.home}>AGP</a>
+      <span aria-hidden="true">/</span>
+      <a href={reflectionsPath}>{copy.reflections}</a>
+      <span class="reader-title-separator" aria-hidden="true">/</span>
+      <span class="reader-book-title">{writing.data.title}</span>
+    </nav>
+    <div class="reader-actions">
+      <label class="reader-index-label">
+        <span>{copy.contents}</span>
+        <select data-reader-index aria-label={copy.contents}><option value="">{copy.contents}</option></select>
+      </label>
+      <button class="reader-settings-button" type="button" data-reader-settings aria-expanded="false" aria-label={copy.settings}><b>Aa</b><span>{copy.settings}</span></button>
+      <button class="reader-exit" type="button" data-reader-web>{copy.exit}</button>
+    </div>
+  </header>
+
+  <aside class="reader-settings" data-reader-settings-panel hidden>
+    <header><div><small>Aa</small><strong>{copy.appearance}</strong></div><button type="button" data-reader-settings-close aria-label={copy.close}>×</button></header>
+    <fieldset><legend>{copy.mode}</legend><div class="reader-mode"><button type="button" data-reader-mode="paged">{copy.paged}</button><button type="button" data-reader-mode="continuous">{copy.continuous}</button></div></fieldset>
+    <label>{copy.font}<select data-pref="font"><option value="serif">{copy.serif}</option><option value="sans">{copy.sans}</option></select></label>
+    <label>{copy.size}<input data-pref="fontSize" type="range" min="16" max="24" step="1" /></label>
+    <label>{copy.lineHeight}<input data-pref="lineHeight" type="range" min="1.45" max="1.9" step="0.05" /></label>
+    <label>{copy.width}<input data-pref="width" type="range" min="32" max="52" step="2" /></label>
+    <label>{copy.theme}<select data-pref="theme"><option value="light">{copy.light}</option><option value="sepia">{copy.sepia}</option><option value="dark">{copy.dark}</option></select></label>
+    <label>{copy.align}<select data-pref="align"><option value="left">{copy.left}</option><option value="justify">{copy.justify}</option></select></label>
+    <label class="reader-check"><input data-pref="reducedMotion" type="checkbox" /> {copy.motion}</label>
+    <button class="reader-reset" type="button" data-reader-reset>{copy.reset}</button>
+  </aside>
+
+  <div class="reader-viewport" data-reader-viewport tabindex="0">
+    <article class="reader-pages" data-reader-pages>
+      <section class="reader-cover" data-reader-cover>
+        {writing.data.image ? (
+          <Image src={writing.data.image} alt="" width={800} height={1200} format="webp" loading="eager" />
+        ) : (
+          <div class="reader-cover-placeholder" aria-hidden="true">A</div>
+        )}
+        <div class="reader-cover-copy">
+          <p>{lang === 'es' ? 'Reflexión' : 'Reflection'} · {readingMinutes(writing)} {copy.minutes}</p>
+          <h1>{writing.data.title}</h1>
+          {writing.data.description && <p class="reader-cover-description">{writing.data.description}</p>}
+        </div>
+      </section>
+
+      <div class="reader-prose" data-reader-content><slot /></div>
+
+      <footer class="reader-colophon" data-reader-block>
+        <dl>
+          <div><dt>{copy.published}</dt><dd><time datetime={writing.data.pubDate.toISOString()}>{writing.data.pubDate.toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' })}</time></dd></div>
+          {writing.data.updatedDate && <div><dt>{copy.updated}</dt><dd><time datetime={writing.data.updatedDate.toISOString()}>{writing.data.updatedDate.toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' })}</time></dd></div>}
+        </dl>
+        <RelationList writing={writing} relations={relations} />
+      </footer>
+    </article>
+  </div>
+
+  <button class="reader-turn reader-turn-previous" type="button" data-reader-previous aria-label={copy.previous}>‹</button>
+  <button class="reader-turn reader-turn-next" type="button" data-reader-next aria-label={copy.next}>›</button>
+
+  <footer class="reader-footer">
+    <span data-reader-section>{writing.data.title}</span>
+    <label class="reader-scrubber"><span class="sr-only">{lang === 'es' ? 'Progreso de lectura' : 'Reading progress'}</span><input type="range" min="0" max="0" value="0" step="1" data-reader-scrubber /></label>
+    <output data-reader-page>{copy.page} 1 {copy.of} 1</output>
+  </footer>
+  <button class="reader-reopen" type="button" data-reader-reopen hidden>{copy.reader}</button>
+</section>
+
+<script>
+  import '../../scripts/reader';
+</script>
+
+<style>
+  .reader-shell { --reader-bg: #fff; --reader-canvas: #f5f5f5; --reader-fg: #1e1d1a; --reader-muted: #77736b; --reader-line: rgb(30 29 26 / .13); --reader-page-width: 720px; position: relative; color: var(--reader-fg); background: var(--reader-bg); }
+  .reader-shell.immersive { position: fixed; inset: 0; z-index: 100; display: grid; grid-template-rows: 56px minmax(0, 1fr) 46px; }
+  .reader-shell[data-theme='sepia'] { --reader-bg: #f5eddc; --reader-canvas: #e9dfca; --reader-fg: #342c22; --reader-muted: #786c5b; --reader-line: rgb(52 44 34 / .16); }
+  .reader-shell[data-theme='dark'] { --reader-bg: #191918; --reader-canvas: #111110; --reader-fg: #eae7df; --reader-muted: #aaa59c; --reader-line: rgb(234 231 223 / .14); }
+  .reader-toolbar { z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-width: 0; padding: 0 clamp(.75rem, 2.5vw, 2rem); border-bottom: 1px solid var(--reader-line); background: color-mix(in srgb, var(--reader-bg) 94%, transparent); backdrop-filter: blur(14px); font: .66rem 'JetBrains Mono', monospace; }
+  .reader-location, .reader-actions { display: flex; align-items: center; gap: .65rem; min-width: 0; }
+  .reader-location a { color: var(--reader-muted); text-decoration: none; }
+  .reader-location a:hover, .reader-exit:hover { color: var(--color-accent); }
+  .reader-location > span { color: color-mix(in srgb, var(--reader-muted) 55%, transparent); }
+  .reader-home { color: var(--reader-fg) !important; font-weight: 700; letter-spacing: .08em; }
+  .reader-book-title { overflow: hidden; color: var(--reader-fg) !important; text-overflow: ellipsis; white-space: nowrap; }
+  .reader-actions { flex: 0 0 auto; }
+  .reader-toolbar button { border: 0; color: var(--reader-muted); background: transparent; cursor: pointer; font: inherit; }
+  .reader-settings-button { display: flex; align-items: baseline; gap: .35rem; padding: .45rem .55rem !important; }
+  .reader-settings-button b { color: var(--reader-fg); font-family: Georgia, serif; font-size: 1rem; }
+  .reader-exit { padding: .45rem .65rem !important; border: 1px solid var(--reader-line) !important; border-radius: 999px; }
+  .reader-index-label span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .reader-index-label select { max-width: 9rem; border: 0; outline: 0; color: var(--reader-muted); background: transparent; font: inherit; }
+  .reader-viewport { min-height: 0; overflow: hidden; outline: none; background: var(--reader-canvas); scroll-behavior: smooth; }
+  .reader-pages { height: 100%; color: var(--reader-fg); background: var(--reader-bg); column-width: var(--reader-page-width); column-gap: 0; column-fill: auto; font-family: Georgia, 'Times New Roman', serif; font-size: var(--reader-font-size, 19px); line-height: var(--reader-line-height, 1.7); text-align: var(--reader-align, left); }
+  .reader-shell[data-font='sans'] .reader-pages { font-family: Inter, system-ui, sans-serif; }
+  .reader-cover { display: grid; grid-template-columns: minmax(180px, 42%) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: center; width: var(--reader-page-width); height: 100%; padding: clamp(2rem, 6vw, 5rem); break-after: column; background: var(--reader-bg); }
+  .reader-cover img, .reader-cover-placeholder { display: block; justify-self: center; width: min(100%, 360px); aspect-ratio: 2 / 3; object-fit: cover; box-shadow: 10px 18px 45px rgb(0 0 0 / .2); }
+  .reader-cover-placeholder { display: grid; place-items: center; color: #fff; background: #202020; font-size: 5rem; }
+  .reader-cover-copy > p:first-child { color: var(--color-accent); font: .64rem 'JetBrains Mono', monospace; letter-spacing: .16em; text-transform: uppercase; }
+  .reader-cover h1 { margin: 1rem 0 0; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.08; letter-spacing: -.025em; }
+  .reader-cover-description { max-width: 32rem; margin-top: 1.25rem; color: var(--reader-muted); font-size: .82em; line-height: 1.55; }
+  .reader-prose { display: contents; }
+  .reader-prose :global(p), .reader-prose :global(h2), .reader-prose :global(h3), .reader-prose :global(ul), .reader-prose :global(ol), .reader-prose :global(blockquote), .reader-prose :global(pre), .reader-prose :global(figure), .reader-prose :global(table), .reader-colophon { max-width: min(var(--reader-content-width, 42rem), calc(var(--reader-page-width) - 6rem)); margin-left: auto; margin-right: auto; }
+  .reader-prose :global(:first-child) { margin-top: 3rem; }
+  .reader-prose :global(p) { margin-bottom: 1em; }
+  .reader-prose :global(h2) { margin-top: 1.65em; margin-bottom: .65em; font-size: 1.5em; line-height: 1.25; break-after: avoid; }
+  .reader-prose :global(h3) { margin-top: 1.35em; margin-bottom: .5em; font-size: 1.2em; break-after: avoid; }
+  .reader-prose :global(a) { color: var(--color-accent); }
+  .reader-prose :global(img) { max-width: 100%; max-height: 68vh; object-fit: contain; }
+  .reader-prose :global(pre), .reader-prose :global(blockquote), .reader-prose :global(figure), .reader-prose :global(table) { break-inside: avoid; }
+  .reader-colophon { break-before: column; padding: 3rem 0; }
+  .reader-colophon dl { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 1.5rem 0 0; color: var(--reader-muted); font: .65rem 'JetBrains Mono', monospace; }
+  .reader-colophon dl div { display: flex; gap: .55rem; }
+  .reader-colophon dt { text-transform: uppercase; }
+  .reader-turn { position: fixed; z-index: 3; top: 50%; display: grid; place-items: center; width: 3.2rem; height: 7rem; translate: 0 -50%; border: 0; color: color-mix(in srgb, var(--reader-fg) 32%, transparent); background: transparent; font: 300 2.5rem Georgia, serif; cursor: pointer; transition: color .15s, background .15s; }
+  .reader-turn:hover { color: var(--reader-fg); background: color-mix(in srgb, var(--reader-bg) 75%, transparent); }
+  .reader-turn:disabled { opacity: .12; cursor: default; }
+  .reader-turn:disabled:hover { color: color-mix(in srgb, var(--reader-fg) 32%, transparent); background: transparent; }
+  .reader-turn-previous { left: 0; }
+  .reader-turn-next { right: 0; }
+  .reader-footer { z-index: 4; display: grid; grid-template-columns: minmax(7rem, 1fr) minmax(10rem, 34rem) minmax(7rem, 1fr); align-items: center; gap: 1rem; padding: 0 clamp(1rem, 3vw, 2.5rem); border-top: 1px solid var(--reader-line); background: var(--reader-bg); color: var(--reader-muted); font: .61rem 'JetBrains Mono', monospace; }
+  .reader-footer > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .reader-footer output { text-align: right; }
+  .reader-scrubber { display: flex; align-items: center; }
+  .reader-scrubber input { width: 100%; height: 2px; accent-color: var(--color-accent); cursor: pointer; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .reader-settings { position: fixed; z-index: 102; top: 64px; right: 1rem; display: grid; width: min(21rem, calc(100vw - 2rem)); gap: 1rem; padding: 1.1rem; border: 1px solid var(--reader-line); border-radius: 10px; color: var(--reader-fg); background: var(--reader-bg); box-shadow: 0 20px 60px rgb(0 0 0 / .2); font: .7rem 'JetBrains Mono', monospace; }
+  .reader-settings[hidden] { display: none; }
+  .reader-settings header { display: flex; align-items: center; justify-content: space-between; padding-bottom: .8rem; border-bottom: 1px solid var(--reader-line); }
+  .reader-settings header div { display: flex; align-items: baseline; gap: .55rem; }
+  .reader-settings header small { font: 1.2rem Georgia, serif; }
+  .reader-settings header button { border: 0; color: var(--reader-muted); background: transparent; font-size: 1.3rem; cursor: pointer; }
+  .reader-settings fieldset { margin: 0; padding: 0; border: 0; }
+  .reader-settings legend { margin-bottom: .5rem; color: var(--reader-muted); }
+  .reader-mode { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid var(--reader-line); border-radius: 7px; }
+  .reader-mode button { padding: .55rem; border: 0; color: var(--reader-muted); background: transparent; cursor: pointer; font: inherit; }
+  .reader-mode button[aria-pressed='true'] { color: var(--reader-fg); background: color-mix(in srgb, var(--reader-fg) 8%, transparent); }
+  .reader-settings > label { display: grid; grid-template-columns: 7rem 1fr; align-items: center; gap: .6rem; }
+  .reader-settings select, .reader-settings input { min-width: 0; color: inherit; background: var(--reader-bg); accent-color: var(--color-accent); }
+  .reader-settings .reader-check { grid-template-columns: auto 1fr; }
+  .reader-settings .reader-check input { width: auto; }
+  .reader-reset { padding-top: .9rem; border: 0; border-top: 1px solid var(--reader-line); color: var(--color-accent); background: transparent; text-align: left; cursor: pointer; font: inherit; }
+  .reader-shell:not(.immersive) { --reader-bg: #fff; --reader-canvas: #fff; --reader-fg: #1e1d1a; --reader-muted: #77736b; --reader-line: rgb(30 29 26 / .13); margin: 0; }
+  .reader-shell:not(.immersive) .reader-toolbar, .reader-shell:not(.immersive) .reader-footer, .reader-shell:not(.immersive) .reader-settings, .reader-shell:not(.immersive) .reader-turn { display: none; }
+  .reader-shell:not(.immersive) .reader-viewport { overflow: visible; }
+  .reader-shell:not(.immersive) .reader-pages { height: auto; columns: auto; }
+  .reader-shell:not(.immersive) .reader-cover { grid-template-columns: minmax(150px, 34%) minmax(0, 1fr); width: auto; height: auto; min-height: 0; padding: 2rem 0 3.5rem; break-after: auto; border-bottom: 1px solid var(--reader-line); }
+  .reader-shell:not(.immersive) .reader-cover img, .reader-shell:not(.immersive) .reader-cover-placeholder { width: min(100%, 260px); }
+  .reader-shell:not(.immersive) .reader-cover h1 { font-size: clamp(2rem, 5vw, 3.15rem); }
+  .reader-shell:not(.immersive) .reader-prose { display: block; max-width: 42rem; margin: 0 auto; padding: 2.5rem 0 0; }
+  .reader-shell:not(.immersive) .reader-prose :global(*) { max-width: 100%; }
+  .reader-shell:not(.immersive) .reader-prose :global(:first-child) { margin-top: 0; }
+  .reader-shell:not(.immersive) .reader-colophon { max-width: 42rem; margin: 0 auto; padding: 3rem 0; break-before: auto; }
+  .reader-shell:not(.immersive) .reader-reopen { position: fixed; right: 1rem; bottom: 1rem; z-index: 60; display: block; padding: .75rem 1rem; border: 0; border-radius: 999px; color: #fff; background: #1e1d1a; box-shadow: 0 8px 25px rgb(0 0 0 / .18); font: .67rem 'JetBrains Mono', monospace; cursor: pointer; }
+  .reader-shell[data-mode='continuous'].immersive .reader-viewport { overflow-y: auto; }
+  .reader-shell[data-mode='continuous'].immersive .reader-pages { height: auto; columns: auto; }
+  .reader-shell[data-mode='continuous'].immersive .reader-cover { width: auto; min-height: calc(100vh - 102px); height: auto; break-after: auto; }
+  .reader-shell[data-mode='continuous'].immersive .reader-prose { display: block; max-width: var(--reader-content-width, 42rem); margin: 0 auto; padding: 3rem; }
+  .reader-shell[data-mode='continuous'].immersive .reader-prose :global(*) { max-width: 100%; }
+  .reader-shell[data-mode='continuous'].immersive .reader-prose :global(:first-child) { margin-top: 0; }
+  .reader-shell[data-mode='continuous'].immersive .reader-colophon { max-width: var(--reader-content-width, 42rem); break-before: auto; }
+  @media (max-width: 700px) {
+    .reader-shell.immersive { grid-template-rows: 50px minmax(0, 1fr) 42px; }
+    .reader-toolbar { padding: 0 .7rem; }
+    .reader-book-title, .reader-title-separator, .reader-index-label, .reader-settings-button span { display: none; }
+    .reader-exit { padding: .4rem .55rem !important; }
+    .reader-cover, .reader-shell:not(.immersive) .reader-cover { grid-template-columns: 1fr; align-content: center; gap: 1.2rem; padding: 2rem 1.4rem; text-align: center; }
+    .reader-cover img, .reader-cover-placeholder, .reader-shell:not(.immersive) .reader-cover img, .reader-shell:not(.immersive) .reader-cover-placeholder { width: min(52vw, 230px); margin: 0 auto; }
+    .reader-cover h1 { font-size: 1.65rem; }
+    .reader-cover-description { display: none; }
+    .reader-turn { width: 2.3rem; height: 5rem; font-size: 2rem; }
+    .reader-footer { grid-template-columns: minmax(0, 1fr) auto; gap: .7rem; padding: 0 .8rem; }
+    .reader-footer > span { display: none; }
+    .reader-settings { top: 57px; }
+    .reader-shell:not(.immersive) .reader-prose, .reader-shell:not(.immersive) .reader-colophon { padding-left: .25rem; padding-right: .25rem; }
+    .reader-shell[data-mode='continuous'].immersive .reader-prose { padding: 2rem 1.4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .reader-shell * { scroll-behavior: auto !important; transition: none !important; } }
+</style>

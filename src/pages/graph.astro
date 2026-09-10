@@ -1,588 +1,279 @@
 ---
-import { getCollection } from 'astro:content';
 import '../styles/global.css';
+import { getCollection } from 'astro:content';
+import { excerptFor, loadWritingGraph, localizedWriting, questionStatus, writingUrl } from '../lib/writings';
 
-const posts   = await getCollection('posts', p => !p.data.draft && p.id.startsWith('es/'));
-const docs    = await getCollection('projects',  d => d.id.startsWith('es/'));
-const tags    = await getCollection('tags');
-
-// Build graph data passed to the client
-const gNodes: { id: string; label: string; type: string; url?: string; description?: string }[] = [];
-const gLinks: { source: string; target: string }[] = [];
-
-for (const tag of tags) {
-  gNodes.push({ id: `tag:${tag.id}`, label: tag.data.name, type: 'tag', description: tag.data.description });
-}
-
-const projects = [...new Set(docs.map(d => d.id.split('/')[1]))];
-for (const project of projects) {
-  const intro = docs.find(d => d.id.startsWith(`es/${project}/intro`));
-  gNodes.push({ id: `project:${project}`, label: project.toUpperCase(), type: 'project', url: `/projects/${project}/intro`, description: intro?.data.description ?? '' });
-}
-
-for (const post of posts) {
-  const slug = post.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '');
-  gNodes.push({ id: `post:${post.id}`, label: post.data.title, type: 'post', url: `/blog/${slug}`, description: post.data.description });
-  for (const tagRef of post.data.tags) {
-    gLinks.push({ source: `post:${post.id}`, target: `tag:${tagRef.id}` });
+const { lang = 'es' } = Astro.props as { lang?: 'es' | 'en' };
+const isEnglish = lang === 'en';
+const copy = isEnglish ? {
+  pageTitle: 'Knowledge tree',
+  description: 'A living tree of questions, ideas, and texts connected over time.',
+  heading: 'Ideas grow, branch out, and meet again',
+  reflections: 'Reflections ↗',
+  searchLabel: 'Find an idea', searchPlaceholder: 'Title or question…',
+  currentView: 'Current view', fullTree: 'View the full tree', leaves: 'Tree leaves',
+  articles: 'Articles', microessays: 'Reflections', questions: 'Questions', treeAt: 'The tree in',
+  play: 'Watch it grow', reading: 'How to read it', branch: 'Conceptual branch', thread: 'Cross-connection',
+  readingHelp: 'Roots are questions or starting ideas. Each branch leads to the texts that grew from them.',
+  stageLabel: 'Interactive knowledge tree', zoomLabel: 'Scale controls', zoomIn: 'Zoom in', zoomOut: 'Zoom out', fit: 'Center',
+  desktopHint: 'Drag to explore · wheel to zoom', mobileHint: 'Drag · pinch · tap a branch', empty: 'No ideas match these filters.',
+  close: 'Close details', published: 'Published', connections: 'Connections', open: 'Read publication →', root: 'KNOWLEDGE', month: 'Month shown',
+} : {
+  pageTitle: 'Árbol del conocimiento',
+  description: 'Un árbol vivo de preguntas, ideas y textos conectados a lo largo del tiempo.',
+  heading: 'Las ideas crecen, se bifurcan y vuelven a encontrarse',
+  reflections: 'Reflexiones ↗',
+  searchLabel: 'Buscar una idea', searchPlaceholder: 'Título o pregunta…',
+  currentView: 'Vista actual', fullTree: 'Ver el árbol completo', leaves: 'Hojas del árbol',
+  articles: 'Artículos', microessays: 'Reflexiones', questions: 'Preguntas', treeAt: 'El árbol en',
+  play: 'Ver cómo creció', reading: 'Cómo leerlo', branch: 'Rama conceptual', thread: 'Conexión transversal',
+  readingHelp: 'Las raíces son preguntas o ideas de partida. Cada rama conduce hacia los textos que nacen de ellas.',
+  stageLabel: 'Árbol interactivo del conocimiento', zoomLabel: 'Controles de escala', zoomIn: 'Acercar', zoomOut: 'Alejar', fit: 'Centrar',
+  desktopHint: 'Arrastra para recorrer · rueda para acercar', mobileHint: 'Arrastra · pellizca · toca una rama', empty: 'No hay ideas para estos filtros.',
+  close: 'Cerrar detalle', published: 'Publicado', connections: 'Conexiones', open: 'Leer publicación →', root: 'CONOCIMIENTO', month: 'Mes mostrado',
+};
+const showDrafts = import.meta.env.ALEPH_PREVIEW_DRAFTS === '1';
+const graph = await loadWritingGraph(showDrafts);
+const branchEntries = await getCollection('branches');
+const branchIds = new Set(branchEntries.map(branch => branch.id));
+for (const branch of branchEntries) {
+  const parent = branch.data.parentBranch;
+  if (parent && !branchIds.has(parent)) throw new Error(`Branch "${branch.id}" references missing parentBranch "${parent}".`);
+  if (parent === branch.id) throw new Error(`Branch "${branch.id}" cannot be its own parentBranch.`);
+  const lineage = new Set([branch.id]);
+  let cursor = parent;
+  while (cursor) {
+    if (lineage.has(cursor)) throw new Error(`Branch cycle detected at "${cursor}".`);
+    lineage.add(cursor);
+    cursor = branchEntries.find(candidate => candidate.id === cursor)?.data.parentBranch;
   }
 }
-
-for (const doc of docs) {
-  const project = doc.id.split('/')[1];
-  const slug    = doc.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '');
-  gNodes.push({ id: `doc:${doc.id}`, label: doc.data.sidebar_label || doc.data.title, type: 'doc', url: `/projects/${slug}` });
-  gLinks.push({ source: `doc:${doc.id}`, target: `project:${project}` });
-}
-
-const graphData = JSON.stringify({ nodes: gNodes, links: gLinks });
+const branches = branchEntries.map(branch => {
+  const translation = isEnglish ? branch.data.translations?.en : undefined;
+  return {
+    id: branch.id,
+    title: translation?.title || branch.data.title,
+    description: translation?.description || branch.data.description,
+    parentBranch: branch.data.parentBranch,
+  };
+});
+const nodes = [...graph.concepts.values()].map(concept => {
+  const { writing, fallbackLocale } = localizedWriting(concept, lang);
+  return {
+    id: concept.key,
+    title: writing.data.title,
+    type: writing.data.type,
+    url: writingUrl(writing),
+    date: writing.data.pubDate.toISOString(),
+    updated: writing.data.updatedDate?.toISOString(),
+    description: excerptFor(writing),
+    branch: writing.data.branch?.id,
+    fallbackLocale,
+    status: writing.data.type === 'question' ? questionStatus(concept.key, graph) : undefined,
+  };
+});
+const links = graph.edges.map(edge => ({ source: edge.source, target: edge.target, type: edge.type, date: edge.date.toISOString() }));
+const graphData = JSON.stringify({ nodes, links, branches }).replace(/</g, '\\u003c');
+const monthIndex = (date: Date) => date.getUTCFullYear() * 12 + date.getUTCMonth();
+const months = nodes.map(node => monthIndex(new Date(node.date)));
+const currentMonth = monthIndex(new Date());
+const minMonth = Math.min(...months, currentMonth);
+const maxMonth = Math.max(...months, currentMonth);
+const initialMonthLabel = new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric', timeZone: 'UTC' })
+  .format(new Date(Date.UTC(Math.floor(maxMonth / 12), maxMonth % 12, 1)));
 ---
 
 <!doctype html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Knowledge Graph - AGP</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #050505; color: #fff; }
-    body { font-family: 'JetBrains Mono', monospace; }
-    #graph-canvas { display: block; width: 100vw; height: 100vh; }
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{copy.pageTitle} - AGP</title>
+    <meta name="description" content={copy.description} />
+    <link rel="canonical" href={new URL(isEnglish ? '/en/graph/' : '/graph/', Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL('/graph/', Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL('/en/graph/', Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/graph/', Astro.site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <main class="knowledge-map">
+      <header class="map-header">
+        <a href={isEnglish ? '/en/' : '/'} class="map-logo" aria-label={isEnglish ? 'Home' : 'Inicio'}><img src="/img/logo.svg" alt="AGP" /></a>
+        <div class="map-heading"><p>{copy.pageTitle}</p><h1>{copy.heading}</h1></div>
+        <div class="map-actions">
+          <a href={isEnglish ? '/en/microessays' : '/microensayos'} class="map-back">{copy.reflections}</a>
+          <span class="map-locale">
+            {isEnglish ? <span aria-current="true">EN</span> : <a href="/en/graph" lang="en" hreflang="en">EN</a>}
+            <i aria-hidden="true">/</i>
+            {!isEnglish ? <span aria-current="true">ES</span> : <a href="/graph" lang="es" hreflang="es">ES</a>}
+          </span>
+        </div>
+      </header>
 
-    /* ── Shared HUD chrome ────────────────────────────────────────────── */
-    .hud { position: fixed; pointer-events: none; z-index: 10; }
-    .hud-top-left  { top: 28px; left: 32px; }
-    .hud-top-right {
-      top: 28px; right: 32px;
-      pointer-events: all;
-      display: flex; align-items: center; gap: 20px;
-    }
-    .hud-bottom-left  { bottom: 28px; left: 32px; }
-    .hud-bottom-right {
-      bottom: 28px; right: 32px;
-      pointer-events: all;
-    }
+      <aside class="map-controls" aria-label="Explorar el árbol">
+        <div class="control-section search-section">
+          <label class="control-label" for="map-search">{copy.searchLabel}</label>
+          <input id="map-search" type="search" placeholder={copy.searchPlaceholder} autocomplete="off" />
+        </div>
+        <div class="control-section map-overview">
+          <p class="control-label">{copy.currentView}</p><strong id="map-count">0</strong>
+          <button id="map-reset-focus" type="button" hidden>{copy.fullTree}</button>
+        </div>
+        <fieldset class="control-section">
+          <legend class="control-label">{copy.leaves}</legend>
+          <label><input type="checkbox" data-type="article" checked /><i class="article"></i> {copy.articles}</label>
+          <label><input type="checkbox" data-type="microessay" checked /><i class="microessay"></i> {copy.microessays}</label>
+          <label><input type="checkbox" data-type="question" checked /><i class="question"></i> {copy.questions}</label>
+        </fieldset>
+        <div class="control-section timeline-control">
+          <div><label class="control-label" for="map-month">{copy.treeAt}</label><output id="map-month-output">{initialMonthLabel}</output></div>
+          <input id="map-month" type="range" min={minMonth} max={maxMonth} value={maxMonth} step="1" aria-label={copy.month} />
+          <button id="map-play" type="button">{copy.play}</button>
+        </div>
+        <div class="control-section branch-legend" aria-label="Cómo leer las conexiones">
+          <p class="control-label">{copy.reading}</p>
+          <span><i class="branch"></i> {copy.branch}</span><span><i class="thread"></i> {copy.thread}</span>
+          <p>{copy.readingHelp}</p>
+        </div>
+      </aside>
 
-    .hud-title { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); line-height: 1.6; }
-    .hud-title strong { display: block; font-size: 16px; color: rgba(255,255,255,0.9); letter-spacing: 0.1em; margin-bottom: 2px; }
+      <section id="map-stage" class="map-stage" aria-label={copy.stageLabel}>
+        <div id="map-world">
+          <svg id="map-links" aria-hidden="true"><g id="map-root-branches"></g><g id="map-primary-branches"></g><g id="map-secondary-links"></g></svg>
+          <div id="map-root" aria-hidden="true"><i></i><span>{copy.root}</span></div><div id="map-nodes"></div>
+        </div>
+        <div class="map-zoom" aria-label={copy.zoomLabel}>
+          <button id="map-zoom-in" type="button" aria-label={copy.zoomIn}>+</button><button id="map-zoom-out" type="button" aria-label={copy.zoomOut}>−</button><button id="map-fit" type="button">{copy.fit}</button>
+        </div>
+        <p class="gesture-hint"><span class="desktop-hint">{copy.desktopHint}</span><span class="mobile-hint">{copy.mobileHint}</span></p><p id="map-empty" hidden>{copy.empty}</p>
+      </section>
 
-    .hud-link {
-      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.15s;
-    }
-    .hud-link:hover { color: rgba(255,255,255,0.8); }
-
-    /* ── Legend (explore mode) ────────────────────────────────────────── */
-    #graph-legend { display: flex; flex-direction: column; gap: 7px; }
-    .legend-item { display: flex; align-items: center; gap: 9px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
-    .legend-dot  { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-
-    /* ── Tooltip ──────────────────────────────────────────────────────── */
-    #tooltip {
-      position: fixed; pointer-events: none; z-index: 20;
-      background: rgba(5,5,5,0.92); border: 1px solid rgba(255,255,255,0.08);
-      padding: 10px 14px; max-width: 260px; display: none;
-    }
-    #tooltip .tt-type  { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
-    #tooltip .tt-label { font-size: 15px; color: rgba(255,255,255,0.95); font-weight: 500; margin-bottom: 4px; line-height: 1.4; }
-    #tooltip .tt-desc  { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; letter-spacing: 0.03em; }
-    #tooltip .tt-hint  { font-size: 11px; letter-spacing: 0.12em; color: rgba(102,126,234,0.9); margin-top: 7px; }
-
-    /* ── SAVE THE KNOWLEDGE button ────────────────────────────────────── */
-    #btn-save-knowledge {
-      display: block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      background: transparent;
-      border: 1px solid rgba(102,126,234,0.4);
-      padding: 9px 16px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-shadow: 0 0 8px rgba(102,126,234,0.6);
-      box-shadow: 0 0 12px rgba(102,126,234,0.15);
-    }
-    #btn-save-knowledge:hover {
-      background: rgba(102,126,234,0.12);
-      border-color: rgba(102,126,234,0.7);
-      box-shadow: 0 0 20px rgba(102,126,234,0.35);
-      color: #fff;
-    }
-
-    /* ── Node-loss log (top-right, small) ────────────────────────────── */
-    #node-loss-log {
-      position: fixed; top: 58px; right: 32px; z-index: 25;
-      display: flex; flex-direction: column; align-items: flex-end; gap: 5px;
-      pointer-events: none;
-    }
-    .node-loss-entry {
-      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255, 80, 50, 0.85);
-      animation: node-loss-fade 2.8s ease-out forwards;
-    }
-    @keyframes node-loss-fade {
-      0%   { opacity: 1;   transform: translateY(0); }
-      70%  { opacity: 0.6; transform: translateY(-5px); }
-      100% { opacity: 0;   transform: translateY(-10px); }
-    }
-
-    /* ── In-game HUD bar ──────────────────────────────────────────────── */
-    #game-hud {
-      display: none;
-      position: fixed; top: 0; left: 0; right: 0; z-index: 20;
-      padding: 14px 28px;
-      align-items: center; justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(5,5,5,0.85), transparent);
-      pointer-events: none;
-    }
-    #game-hud > * { pointer-events: all; }
-
-    .hud-section { display: flex; align-items: center; gap: 16px; }
-
-    #hud-lives  { display: flex; gap: 6px; align-items: center; }
-    #hud-lives svg { display: block; }
-
-    .hud-label {
-      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(255,255,255,0.25); margin-right: 4px;
-    }
-    #hud-score-val, #hud-wave-val, #hud-coins-val {
-      font-size: 13px; letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.7);
-    }
-    #hud-coins-val { color: #ffcc00; }
-
-    #hud-controls-hint {
-      font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(255,255,255,0.18);
-    }
-
-    #hud-weapon-badge {
-      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 2px 7px;
-      border: 1px solid currentColor;
-      opacity: 0.8;
-    }
-
-    #hud-modifiers {
-      display: flex; gap: 5px; align-items: center;
-      margin-left: 10px;
-    }
-    .mod-badge {
-      font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 2px 6px;
-      border: 1px solid currentColor;
-      opacity: 0.85;
-    }
-
-    #btn-abort {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(255,68,34,0.6); background: transparent;
-      border: 1px solid rgba(255,68,34,0.3);
-      padding: 6px 12px; cursor: pointer; transition: all 0.15s;
-    }
-    #btn-abort:hover { color: #ff4422; border-color: rgba(255,68,34,0.7); }
-
-    /* ── Wave banner ──────────────────────────────────────────────────── */
-    #game-banner {
-      display: none;
-      position: fixed; inset: 0; z-index: 30;
-      pointer-events: none;
-      font-size: clamp(28px, 5vw, 48px);
-      letter-spacing: 0.25em; text-transform: uppercase;
-      color: rgba(255,255,255,0.9);
-      text-shadow: 0 0 30px rgba(102,126,234,0.8), 0 0 60px rgba(102,126,234,0.4);
-      display: none; align-items: center; justify-content: center;
-      transition: opacity 0.4s;
-    }
-
-    /* ── Game overlay (game-over / victory) ───────────────────────────── */
-    #game-overlay {
-      display: none;
-      position: fixed; inset: 0; z-index: 40;
-      flex-direction: column; align-items: center; justify-content: center;
-      gap: 16px;
-      background: rgba(5,5,5,0.75);
-      backdrop-filter: blur(2px);
-    }
-    #overlay-title {
-      font-size: clamp(22px, 4vw, 38px);
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: #fff;
-      text-shadow: 0 0 40px rgba(102,126,234,0.7);
-    }
-    #overlay-score {
-      font-size: 13px; letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.45);
-    }
-    #overlay-nodes {
-      font-size: 12px; letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.3);
-      display: none;
-    }
-    .overlay-actions { display: flex; gap: 14px; margin-top: 8px; }
-    .overlay-btn {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-      background: transparent; cursor: pointer; padding: 9px 20px; transition: all 0.2s;
-    }
-    #btn-play-again {
-      color: #00ffcc; border: 1px solid rgba(0,255,204,0.45);
-      text-shadow: 0 0 8px rgba(0,255,204,0.5);
-    }
-    #btn-play-again:hover { background: rgba(0,255,204,0.1); border-color: rgba(0,255,204,0.8); }
-    #btn-victory-continue {
-      color: var(--color-accent); border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
-      text-shadow: 0 0 8px rgba(102,126,234,0.5);
-    }
-    #btn-victory-continue:hover { background: rgba(102,126,234,0.1); border-color: rgba(102,126,234,0.8); }
-    #btn-back-explore {
-      color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.15);
-    }
-    #btn-back-explore:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.4); }
-
-    #overlay-highscore {
-      font-size: 11px; letter-spacing: 0.14em;
-      color: rgba(255,255,255,0.28);
-    }
-    #overlay-newrecord {
-      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-      color: #ffcc00;
-      text-shadow: 0 0 16px rgba(255,204,0,0.8);
-      animation: new-record-pulse 1.2s ease-in-out infinite alternate;
-    }
-    @keyframes new-record-pulse {
-      0%   { opacity: 0.7; text-shadow: 0 0 10px rgba(255,204,0,0.6); }
-      100% { opacity: 1;   text-shadow: 0 0 24px rgba(255,204,0,1); }
-    }
-
-    /* ── Combo display (top-right corner, below nav) ─────────────────── */
-    #hud-combo {
-      position: fixed; top: 18px; right: 20px;
-      display: none;
-      flex-direction: row; align-items: baseline; gap: 6px;
-      pointer-events: none; z-index: 25;
-    }
-    #hud-combo-val {
-      font-size: clamp(20px, 2.8vw, 30px);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: #ffcc00;
-      text-shadow: 0 0 18px rgba(255,204,0,0.9), 0 0 36px rgba(255,204,0,0.4);
-      line-height: 1;
-    }
-    #hud-combo-label {
-      font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
-      color: rgba(255,204,0,0.5);
-    }
-    #hud-combo.combo-pop { animation: combo-pop 0.2s ease-out; }
-    @keyframes combo-pop {
-      0%   { transform: scale(1); }
-      45%  { transform: scale(1.25); }
-      100% { transform: scale(1); }
-    }
-
-    /* ── Shop overlay ─────────────────────────────────────────────────── */
-    #shop-overlay {
-      display: none;
-      position: fixed; inset: 0; z-index: 40;
-      flex-direction: column; align-items: center; justify-content: center;
-      gap: 36px;
-      background: rgba(2,2,10,0.96);
-      backdrop-filter: blur(8px);
-    }
-
-    .shop-header {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-    }
-    #shop-title {
-      font-size: clamp(11px, 1.8vw, 14px);
-      letter-spacing: 0.55em; text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-    }
-    .shop-header-row {
-      display: flex; align-items: center; gap: 32px;
-    }
-    #shop-wave-display {
-      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
-    }
-    #shop-coins-display {
-      font-size: 22px; letter-spacing: 0.08em;
-      color: #ffcc00;
-      text-shadow: 0 0 20px rgba(255,204,0,0.7), 0 0 40px rgba(255,204,0,0.3);
-    }
-    #shop-coins-display.coin-pop { animation: coin-pop 0.35s ease-out; }
-    @keyframes coin-pop {
-      0%   { transform: scale(1); }
-      35%  { transform: scale(1.4); }
-      100% { transform: scale(1); }
-    }
-
-    /* ── 3 cards side by side ────────────────────────────────────────── */
-    #shop-items {
-      display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
-      padding: 0 24px;
-    }
-
-    .shop-card {
-      position: relative;
-      display: flex; flex-direction: column; align-items: center;
-      gap: 12px;
-      width: 180px; padding: 0 0 20px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.12);
-      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
-      cursor: default;
-      overflow: hidden;
-    }
-    /* Colored top bar - the card's visual identity */
-    .shop-card::before {
-      content: '';
-      display: block;
-      width: 100%; height: 3px;
-      background: var(--card-color, #ffcc00);
-      box-shadow: 0 0 14px var(--card-color, #ffcc00),
-                  0 0 30px var(--card-color, #ffcc00);
-      flex-shrink: 0;
-    }
-    .shop-card:not(.shop-card--disabled):not(.shop-card--bought):hover {
-      border-color: var(--card-color, rgba(255,204,0,0.6));
-      transform: translateY(-5px);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.6), 0 0 28px rgba(0,0,0,0.3);
-    }
-    .shop-card--disabled {
-      opacity: 0.3;
-      filter: grayscale(0.5);
-    }
-    .shop-card--bought {
-      border-color: #00ff8c !important;
-    }
-    .shop-card--bought::before {
-      background: #00ff8c;
-      box-shadow: 0 0 14px #00ff8c, 0 0 30px #00ff8c;
-    }
-
-    .shop-card-body {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 10px; padding: 16px 16px 0; width: 100%; box-sizing: border-box;
-    }
-
-    .shop-card-icon {
-      font-size: 30px; line-height: 1;
-      text-shadow: 0 0 12px var(--card-color, rgba(255,204,0,0.8));
-    }
-    .shop-card-label {
-      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--card-color, #fff); text-align: center;
-      text-shadow: 0 0 10px var(--card-color, transparent);
-    }
-    .shop-card--bought .shop-card-label { color: #00ff8c; }
-
-    /* Level progress dots */
-    .shop-card-level {
-      font-size: 13px; letter-spacing: 0.12em;
-      text-align: center; line-height: 1;
-      opacity: 0.85;
-    }
-
-    .shop-card-desc {
-      font-size: 9px; letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.38); text-align: center; line-height: 1.65;
-      min-height: 30px;
-    }
-
-    .shop-card-divider {
-      width: 100%; height: 1px;
-      background: rgba(255,255,255,0.06);
-    }
-
-    .shop-card-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      width: 100%; padding: 0 16px; box-sizing: border-box; gap: 8px;
-    }
-    .shop-card-cost {
-      font-size: 15px; letter-spacing: 0.06em;
-      color: #ffcc00;
-      text-shadow: 0 0 8px rgba(255,204,0,0.5);
-    }
-    .shop-card--bought .shop-card-cost { color: rgba(0,255,140,0.7); }
-    .shop-card--disabled .shop-card-cost { color: rgba(255,204,0,0.4); }
-
-    .shop-buy-btn {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-      background: transparent; cursor: pointer; padding: 7px 14px;
-      border: 1px solid var(--card-color, rgba(255,204,0,0.6));
-      color: var(--card-color, #ffcc00);
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-    .shop-buy-btn:hover:not(:disabled) {
-      background: rgba(255,255,255,0.08);
-      box-shadow: 0 0 14px var(--card-color, #ffcc00);
-    }
-    .shop-buy-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-    .shop-buy-btn.btn-acquired {
-      color: #00ff8c;
-      border-color: rgba(0,255,140,0.5);
-      cursor: default;
-    }
-
-    /* Floating feedback text */
-    .shop-float-text {
-      position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
-      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: #00ff8c; pointer-events: none;
-      animation: float-up 1.1s ease-out forwards;
-      white-space: nowrap;
-    }
-    @keyframes float-up {
-      0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
-      100% { opacity: 0; transform: translateX(-50%) translateY(-28px); }
-    }
-
-    #btn-shop-skip {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-      background: transparent; cursor: pointer; padding: 10px 26px;
-      border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.32);
-      transition: all 0.2s;
-    }
-    #btn-shop-skip:hover {
-      color: rgba(255,255,255,0.7);
-      border-color: rgba(255,255,255,0.35);
-      background: rgba(255,255,255,0.04);
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ── Explore mode HUD ─────────────────────────────────────────────────── -->
-  <div id="graph-title" class="hud hud-top-left">
-    <div class="hud-title">
-      <strong>AGP / Knowledge Graph</strong>
-      Constellation of ideas
-    </div>
-  </div>
-
-  <div class="hud hud-top-right">
-    <a href="/en/" class="hud-link">EN</a>
-    <a href="/"    class="hud-link">← Back</a>
-  </div>
-
-  <div id="graph-legend" class="hud hud-bottom-left">
-    <div class="legend-item">
-      <div class="legend-dot" style="background:var(--color-accent); box-shadow: 0 0 6px color-mix(in srgb, var(--color-accent) 53%, transparent);"></div>Post
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#a5b4fc; box-shadow: 0 0 6px #a5b4fc55;"></div>Project page
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#ffffff; box-shadow: 0 0 8px #fff6; width:10px; height:10px;"></div>Project
-    </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#3d3d3d; border: 1px solid #666;"></div>Tag
-    </div>
-  </div>
-
-  <!-- SAVE THE KNOWLEDGE button -->
-  <div class="hud-bottom-right" style="position:fixed; bottom:28px; right:32px; z-index:10;">
-    <button id="btn-save-knowledge">⬡ SAVE THE KNOWLEDGE</button>
-  </div>
-
-  <!-- ── Tooltip ──────────────────────────────────────────────────────────── -->
-  <div id="tooltip">
-    <div class="tt-type"  id="tt-type"></div>
-    <div class="tt-label" id="tt-label"></div>
-    <div class="tt-desc"  id="tt-desc"></div>
-    <div class="tt-hint"  id="tt-hint"></div>
-  </div>
-
-  <!-- ── In-game HUD bar ──────────────────────────────────────────────────── -->
-  <div id="game-hud">
-    <div class="hud-section">
-      <span class="hud-label">Lives</span>
-      <div id="hud-lives"></div>
-      <span class="hud-label" style="margin-left:12px;">Score</span>
-      <span id="hud-score-val">000000</span>
-      <span id="hud-weapon-badge" style="margin-left:14px;"></span>
-      <div id="hud-modifiers"></div>
-    </div>
-    <div class="hud-section" style="flex-direction:column; align-items:center; gap:2px;">
-      <div style="display:flex; align-items:center; gap:10px;">
-        <span class="hud-label">Wave</span>
-        <span id="hud-wave-val">-</span>
-        <span class="hud-label" style="margin-left:8px;">¢</span>
-        <span id="hud-coins-val">0</span>
-      </div>
-      <div id="hud-controls-hint">WASD move · IJKL / mouse aim · Space fire · Q weapon · F auto-fire</div>
-    </div>
-    <div class="hud-section">
-      <button id="btn-abort">✕ Abort</button>
-    </div>
-  </div>
-
-  <!-- ── Wave banner ──────────────────────────────────────────────────────── -->
-  <div id="game-banner" style="display:none;"></div>
-
-  <!-- ── Combo display (shown during game when combo ≥ 2) ─────────────────── -->
-  <div id="hud-combo" style="display:none;">
-    <span id="hud-combo-val">×2</span>
-    <span id="hud-combo-label">COMBO</span>
-  </div>
-
-  <!-- ── Game overlay ─────────────────────────────────────────────────────── -->
-  <div id="game-overlay" style="display:none;">
-    <div id="overlay-title">KNOWLEDGE LOST</div>
-    <div id="overlay-score">Score: 000000</div>
-    <div id="overlay-nodes"></div>
-    <div id="overlay-highscore" style="display:none;"></div>
-    <span id="overlay-newrecord" style="display:none;">★ NEW RECORD</span>
-    <div class="overlay-actions">
-      <button class="overlay-btn" id="btn-play-again">↺ Play again</button>
-      <button class="overlay-btn" id="btn-victory-continue" style="display:none;">→ Continue arcade</button>
-      <button class="overlay-btn" id="btn-back-explore">← Explore</button>
-    </div>
-  </div>
-
-  <!-- ── Shop overlay ─────────────────────────────────────────────────────── -->
-  <div id="shop-overlay" style="display:none;">
-    <div class="shop-header">
-      <div id="shop-title">Upgrade Station</div>
-      <div class="shop-header-row">
-        <div id="shop-wave-display">Wave -</div>
-        <div id="shop-coins-display">¢ 0</div>
-      </div>
-    </div>
-    <!-- Item sections rendered dynamically by main.js -->
-    <div id="shop-items"></div>
-    <button id="btn-shop-skip">Continue →</button>
-  </div>
-
-  <!-- ── Node-loss log ───────────────────────────────────────────────────── -->
-  <div id="node-loss-log"></div>
-
-  <!-- ── Canvas ───────────────────────────────────────────────────────────── -->
-  <canvas id="graph-canvas"></canvas>
-
-  <!-- 1. Inject build-time data as a global (is:inline so it runs before the module) -->
-  <script is:inline define:vars={{ graphData }}>
-    window.__GRAPH_DATA = JSON.parse(graphData);
-  </script>
-
-  <!-- 2. Module entry point - Vite bundles this and all imports from src/invaders/ -->
-  <script>
-    import { init } from '../invaders/main.js';
-    init();
-  </script>
-
-</body>
+      <aside id="map-detail" class="map-detail" hidden>
+        <button id="map-close-detail" type="button" aria-label={copy.close}>×</button>
+        <p id="map-detail-kind"></p><h2 id="map-detail-title"></h2><p id="map-detail-description"></p>
+        <dl><div><dt>{copy.published}</dt><dd id="map-detail-date"></dd></div><div><dt>{copy.connections}</dt><dd id="map-detail-links"></dd></div></dl>
+        <div id="map-detail-relations"></div><a id="map-detail-open" href="#">{copy.open}</a>
+      </aside>
+    </main>
+    <script id="graph-data" type="application/json" set:html={graphData}></script>
+    <script src="../scripts/knowledge-tree.ts"></script>
+  </body>
 </html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html), :global(body) { width: 100%; height: 100%; margin: 0; overflow: hidden; color: #171717; background: #fff; }
+  :global(body) { font-family: Inter, system-ui, sans-serif; }
+  :root { --tree-green: #667eea; --tree-green-light: #a9b2ea; --tree-bark: #a3a3a3; --tree-question: #171717; --tree-accent: #667eea; --tree-line: rgb(0 0 0 / .1); }
+  .knowledge-map { position: relative; width: 100%; height: 100%; }
+  .map-header { position: absolute; z-index: 8; top: 0; left: 0; right: 0; height: 84px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.25rem; padding: 0 2rem; background: rgb(255 255 255 / .95); box-shadow: 0 20px 30px 8px rgb(255 255 255 / .88); backdrop-filter: blur(12px); }
+  .map-logo img { display: block; width: 44px; }
+  .map-heading p, .map-heading h1 { margin: 0; }
+  .map-heading p { color: var(--tree-green); font: .61rem 'JetBrains Mono', monospace; letter-spacing: .17em; text-transform: uppercase; }
+  .map-heading h1 { margin-top: .25rem; font-size: .96rem; font-weight: 520; }
+  .map-actions { display: flex; align-items: center; gap: 1.15rem; }
+  .map-back { color: #737373; font: .67rem 'JetBrains Mono', monospace; letter-spacing: .04em; text-decoration: none; text-transform: uppercase; }
+  .map-back:hover { color: var(--tree-accent); }
+  .map-locale { display: inline-flex; align-items: center; gap: .25rem; color: #a3a3a3; font: .6rem 'JetBrains Mono', monospace; letter-spacing: .08em; }
+  .map-locale a { color: #737373; text-decoration: none; }
+  .map-locale a:hover { color: var(--tree-accent); }
+  .map-locale span[aria-current='true'] { color: #171717; }
+  .map-locale i { color: #d4d4d4; font-style: normal; }
+  .map-controls { position: absolute; z-index: 6; top: 84px; bottom: 0; left: 0; width: 264px; padding: 1.4rem 1.5rem 2rem; overflow: auto; background: rgb(255 255 255 / .95); box-shadow: 20px 0 30px 8px rgb(255 255 255 / .88); backdrop-filter: blur(12px); }
+  .control-section { margin: 0; padding: 0 0 1.35rem; border: 0; }
+  .control-section + .control-section { padding-top: 1.2rem; border-top: 1px solid var(--tree-line); }
+  .control-label { margin: 0; color: #737373; font: .59rem 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; }
+  #map-search { width: 100%; margin-top: .55rem; padding: .72rem .75rem; border: 1px solid #d4d4d4; border-radius: 2px; outline: none; color: #171717; background: #fff; font: .72rem 'JetBrains Mono', monospace; }
+  #map-search:focus { border-color: var(--tree-accent); box-shadow: 0 0 0 3px rgb(102 126 234 / .08); }
+  .map-overview strong { display: block; margin-top: .4rem; color: var(--tree-green); font-size: .9rem; font-weight: 550; }
+  #map-reset-focus { margin-top: .65rem; padding: 0; border: 0; color: var(--tree-accent); background: transparent; font: .65rem 'JetBrains Mono', monospace; cursor: pointer; }
+  fieldset { display: grid; gap: .7rem; }
+  fieldset legend { margin-bottom: .8rem !important; }
+  fieldset label { display: flex; align-items: center; gap: .55rem; color: #525252; font-size: .76rem; }
+  fieldset input { accent-color: var(--tree-green); }
+  fieldset i { width: 8px; height: 8px; border-radius: 50%; background: #737373; }
+  fieldset i.microessay { background: var(--tree-accent); }
+  fieldset i.question { border: 2px solid var(--tree-question); background: transparent; }
+  .timeline-control > div { display: flex; align-items: center; justify-content: space-between; }
+  #map-month-output { color: var(--tree-green); font: .68rem 'JetBrains Mono', monospace; text-transform: capitalize; }
+  #map-month { width: 100%; margin: .9rem 0; accent-color: var(--tree-green); }
+  #map-play { width: 100%; padding: .6rem; border: 1px solid #d4d4d4; border-radius: 2px; color: var(--tree-accent); background: transparent; font: .6rem 'JetBrains Mono', monospace; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; }
+  #map-play:disabled { opacity: .4; cursor: default; }
+  .branch-legend { display: grid; gap: .6rem; color: #525252; font: .62rem 'JetBrains Mono', monospace; }
+  .branch-legend span { display: flex; align-items: center; gap: .6rem; }
+  .branch-legend i.branch { width: 24px; border-top: 3px solid var(--tree-green-light); }
+  .branch-legend i.thread { width: 24px; border-top: 1px dashed var(--tree-accent); }
+  .branch-legend > p:last-child { margin: .35rem 0 0; color: #a3a3a3; font-family: Inter, sans-serif; font-size: .68rem; line-height: 1.55; }
+  .map-stage { position: absolute; inset: 84px 0 0 264px; overflow: hidden; cursor: grab; touch-action: none; background-color: #fff; background-image: linear-gradient(rgb(0 0 0 / .055) 1px, transparent 1px), linear-gradient(90deg, rgb(0 0 0 / .055) 1px, transparent 1px); background-size: 64px 64px; }
+  .map-stage.dragging { cursor: grabbing; }
+  #map-world { position: absolute; top: 0; left: 0; transform-origin: 0 0; will-change: transform; }
+  #map-links, #map-nodes { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  #map-root-branches :global(path) { fill: none; stroke: var(--tree-bark); stroke-linecap: round; opacity: .65; }
+  #map-primary-branches :global(path) { fill: none; stroke: var(--tree-green-light); stroke-linecap: round; opacity: .78; transition: opacity .2s, stroke-width .2s; }
+  #map-primary-branches :global(path.muted), #map-secondary-links :global(path.muted) { opacity: .1; }
+  #map-secondary-links :global(path) { fill: none; stroke: var(--tree-accent); stroke-width: 1.3; stroke-dasharray: 3 6; opacity: .44; }
+  #map-secondary-links :global(path.tension) { stroke: #bb6458; }
+  #map-root { position: absolute; display: grid; place-items: center; translate: -50% -11px; pointer-events: none; }
+  #map-root::before { content: ''; position: absolute; z-index: -1; top: -16px; width: 54px; height: 54px; border-radius: 50%; background: radial-gradient(circle, #fff 0 38%, rgb(255 255 255 / .84) 56%, transparent 72%); }
+  #map-root i { width: 22px; height: 22px; border: 5px solid rgb(102 126 234 / .2); border-radius: 50%; background: var(--tree-accent); box-shadow: 0 0 0 10px rgb(102 126 234 / .07); }
+  #map-root span { margin-top: .75rem; color: #737373; font: .58rem 'JetBrains Mono', monospace; letter-spacing: .16em; }
+  #map-nodes :global(button) { position: absolute; display: grid; grid-template-columns: 14px minmax(0, 1fr); align-items: start; gap: .55rem; width: 188px; translate: -50% -50%; padding: .58rem .65rem; border: 1px solid #e5e5e5; border-radius: 2px; color: #262626; background: rgb(255 255 255 / .94); box-shadow: 0 5px 18px rgb(0 0 0 / .05); font: .67rem/1.35 'JetBrains Mono', monospace; text-align: left; cursor: pointer; transition: opacity .2s, box-shadow .2s, transform .2s, background .2s; backdrop-filter: blur(7px); }
+  #map-nodes :global(button::before) { content: ''; width: 11px; height: 11px; margin-top: .15rem; border: 3px solid #fff; border-radius: 70% 35% 70% 35%; rotate: 45deg; background: #737373; box-shadow: 0 0 0 1px #737373; }
+  #map-nodes :global(button.microessay::before) { background: var(--tree-accent); box-shadow: 0 0 0 1px var(--tree-accent); }
+  #map-nodes :global(button.question::before) { border: 2px solid var(--tree-question); border-radius: 50%; rotate: 0deg; background: #fff; box-shadow: 0 0 0 2px rgb(0 0 0 / .08); }
+  #map-nodes :global(button:hover), #map-nodes :global(button.selected) { z-index: 2; border-color: var(--tree-accent); background: #fff; box-shadow: 0 9px 28px rgb(0 0 0 / .12); transform: translateY(-3px); }
+  #map-nodes :global(button.branch-node) { grid-template-columns: 1fr auto; align-items: center; width: 176px; border-color: rgb(102 126 234 / .35); color: #171717; background: rgb(255 255 255 / .97); }
+  #map-nodes :global(button.branch-node::before) { display: none; }
+  #map-nodes :global(button.branch-node span) { font-weight: 650; }
+  #map-nodes :global(button.branch-node small) { grid-column: 1 / -1; color: #737373; font-size: .53rem; letter-spacing: .04em; }
+  #map-nodes :global(button.branch-node.collapsed) { border-style: dashed; }
+  #map-nodes :global(button.muted) { opacity: .22; }
+  #map-nodes :global(button.match) { box-shadow: 0 0 0 2px var(--tree-accent), 0 9px 28px rgb(29 51 39 / .15); }
+  #map-empty { position: absolute; inset: 50% auto auto 50%; translate: -50% -50%; color: #7c8780; font: .72rem 'JetBrains Mono', monospace; }
+  .map-zoom { position: absolute; z-index: 4; right: 1rem; top: 1rem; display: flex; overflow: hidden; border: 1px solid var(--tree-line); border-radius: 2px; background: rgb(255 255 255 / .95); box-shadow: 0 5px 20px rgb(0 0 0 / .06); }
+  .map-zoom button { min-width: 36px; height: 34px; padding: 0 .65rem; border: 0; border-right: 1px solid var(--tree-line); color: #536159; background: transparent; font: .69rem 'JetBrains Mono', monospace; cursor: pointer; }
+  .map-zoom button:last-child { border-right: 0; }
+  .map-zoom button:hover { color: var(--tree-green); background: #fff; }
+  .gesture-hint { position: absolute; left: 50%; bottom: .8rem; translate: -50% 0; margin: 0; color: rgb(0 0 0 / .38); font: .57rem 'JetBrains Mono', monospace; letter-spacing: .06em; pointer-events: none; }
+  .mobile-hint { display: none; }
+  .map-detail { position: absolute; z-index: 9; right: 1.25rem; bottom: 1.25rem; width: min(350px, calc(100vw - 2.5rem)); max-height: calc(100vh - 110px); padding: 1.4rem; overflow: auto; border: 1px solid #e5e5e5; border-radius: 2px; color: #262626; background: rgb(255 255 255 / .97); box-shadow: 0 18px 55px rgb(0 0 0 / .12); }
+  #map-close-detail { position: absolute; top: .55rem; right: .7rem; border: 0; color: #737373; background: none; font-size: 1.3rem; cursor: pointer; }
+  #map-detail-kind { margin: 0; color: var(--tree-green); font: .59rem 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; }
+  #map-detail-title { margin: .65rem 1rem .75rem 0; font-size: 1.18rem; line-height: 1.32; }
+  #map-detail-description { color: #737373; font-size: .79rem; line-height: 1.6; }
+  .map-detail dl { display: flex; gap: 1.7rem; margin: 1rem 0; }
+  .map-detail dl div { display: grid; gap: .2rem; }
+  .map-detail dt { color: #a3a3a3; font: .55rem 'JetBrains Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+  .map-detail dd { margin: 0; font-size: .71rem; }
+  #map-detail-relations { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 1.15rem; }
+  #map-detail-relations :global(span) { padding: .28rem .42rem; border-radius: 2px; color: #737373; background: #f5f5f5; font: .56rem 'JetBrains Mono', monospace; }
+  #map-detail-open { color: var(--tree-accent); font: .68rem 'JetBrains Mono', monospace; text-decoration: none; }
+  @media (max-width: 760px) {
+    .map-header { height: 66px; padding: 0 .9rem; }
+    .map-heading { display: none; }
+    .map-logo img { width: 38px; }
+    .map-actions { justify-self: end; gap: .8rem; }
+    .map-back { font-size: .58rem; }
+    .map-controls { top: 66px; right: 0; bottom: auto; width: auto; height: 132px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .65rem .9rem; padding: .7rem .9rem; box-shadow: 0 20px 28px 7px rgb(255 255 255 / .88); }
+    .control-section { padding: 0; border: 0 !important; }
+    .search-section .control-label, .map-overview, .branch-legend, fieldset legend, .timeline-control .control-label { display: none; }
+    #map-search { margin: 0; }
+    fieldset { display: flex; gap: .55rem; }
+    fieldset label { font-size: 0; gap: 0; }
+    fieldset input { width: 18px; height: 18px; }
+    fieldset i { display: none; }
+    .timeline-control { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(70px, 1fr) auto; align-items: center; gap: .65rem; }
+    .timeline-control > div { display: block; min-width: 7.4rem; }
+    #map-month-output { font-size: .59rem; white-space: nowrap; }
+    #map-month { margin: 0; }
+    #map-play { width: auto; padding: .52rem .58rem; font-size: .52rem; white-space: nowrap; }
+    .map-stage { inset: 198px 0 0; }
+    #map-nodes :global(button) { width: 168px; font-size: .68rem; }
+    .map-zoom { top: .7rem; right: .7rem; }
+    .gesture-hint { display: block; bottom: .6rem; padding: .28rem .5rem; border-radius: 2px; background: rgb(255 255 255 / .82); white-space: nowrap; }
+    .desktop-hint { display: none; }
+    .mobile-hint { display: inline; }
+    .map-detail { right: .7rem; bottom: .7rem; width: calc(100vw - 1.4rem); max-height: 47vh; }
+  }
+</style>

@@ -1,0 +1,11 @@
+{
+  "title": "Agentes",
+  "description": "Protocolos, herramientas y entornos para agentes autónomos.",
+  "parentBranch": "inteligencia-artificial",
+  "translations": {
+    "en": {
+      "title": "Agents",
+      "description": "Protocols, tools, and environments for autonomous agents."
+    }
+  }
+}

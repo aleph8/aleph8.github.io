@@ -1,10 +1,13 @@
 ---
 title: "Banal Friendship and Survival Relationships"
+type: microessay
 description: "If you had to maintain contact with someone you see daily at work or university, without this bond, would you? And would the other person do it too?"
 pubDate: 2026-05-14
 author: aleph
 tags: ["psychology", "philosophy", "sociology"]
-image: "../../../assets/blog/amistad-banal.jpg"
+translationKey: banal-friendship
+branch: amistad
+image: "../../../assets/blog/amistad-banal-cover.png"
 ---
 
 When we are children and attend class, we spend many hours a day in a room with a couple of dozen people. We are all the same age, we go to that space daily where we share teachers, experiences, and concerns... the first days can be about recognition; you take a look around, you become familiar with the room, with the people there; they sit you next to someone you might not know, and the different personalities of the group begin to take shape: there is the one who draws attention, the smart one, the one who is more reserved, or the one who always forgets things. Gradually, the initially scattered group tends towards order, and different "islands" (subgroups) are formed following various criteria, from shared tastes to the purest of symbioses.
