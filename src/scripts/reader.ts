@@ -42,6 +42,8 @@ function initReader(shell: HTMLElement) {
   let preferences = parsePreferences(localStorage.getItem(preferenceKey));
   let currentPage = 0;
   let pageCount = 1;
+  let pendingPage: number | null = null;
+  let scrollEndTimer = 0;
   let saveTimer = 0;
   let resizeTimer = 0;
 
@@ -58,6 +60,15 @@ function initReader(shell: HTMLElement) {
     block.dataset.readerHeading = heading;
     block.dataset.readerBlock = String(blockWithinHeading++);
   }
+  const chapterBreaks = contentBlocks
+    .filter(block => /^H[23]$/.test(block.tagName))
+    .map(heading => {
+      const spacer = document.createElement('div');
+      spacer.className = 'reader-chapter-break';
+      spacer.setAttribute('aria-hidden', 'true');
+      heading.before(spacer);
+      return { heading, spacer };
+    });
 
   const applyPreferences = () => {
     shell.dataset.mode = preferences.mode;
@@ -138,9 +149,11 @@ function initReader(shell: HTMLElement) {
 
   const goToPage = (page: number, smooth = true) => {
     currentPage = Math.max(0, Math.min(pageCount - 1, page));
-    viewport.scrollTo({ left: currentPage * viewport.clientWidth, behavior: smooth && !preferences.reducedMotion ? 'smooth' : 'auto' });
+    const animate = smooth && !preferences.reducedMotion;
+    pendingPage = animate ? currentPage : null;
+    viewport.scrollTo({ left: currentPage * viewport.clientWidth, behavior: animate ? 'smooth' : 'auto' });
     updateStatus();
-    saveProgress();
+    if (!animate) saveProgress();
   };
 
   const navigate = (direction: -1 | 1) => {
@@ -152,8 +165,19 @@ function initReader(shell: HTMLElement) {
   };
 
   const repaginate = (anchor?: ReadingAnchor) => {
+    pendingPage = null;
+    window.clearTimeout(scrollEndTimer);
     shell.style.setProperty('--reader-page-width', `${viewport.clientWidth}px`);
     if (preferences.mode === 'paged') {
+      chapterBreaks.forEach(({ spacer }) => { spacer.style.height = '0px'; });
+      const viewportTop = viewport.getBoundingClientRect().top;
+      const pageHeight = viewport.clientHeight;
+      chapterBreaks.forEach(({ heading, spacer }) => {
+        const offset = heading.getBoundingClientRect().top - viewportTop;
+        if (offset > 1 && offset < pageHeight - 1) {
+          spacer.style.height = `${pageHeight - offset}px`;
+        }
+      });
       pageCount = Math.max(1, Math.ceil((pages.scrollWidth - 1) / Math.max(1, viewport.clientWidth)));
       if (anchor === 'cover') {
         currentPage = 0;
@@ -230,7 +254,35 @@ function initReader(shell: HTMLElement) {
     const ratio = Number(scrubber.value) / 1000;
     viewport.scrollTo({ top: ratio * Math.max(0, viewport.scrollHeight - viewport.clientHeight), behavior: 'auto' });
   });
-  viewport.addEventListener('scroll', () => { if (preferences.mode === 'paged') currentPage = Math.round(viewport.scrollLeft / Math.max(1, viewport.clientWidth)); updateStatus(); saveProgress(); }, { passive: true });
+  viewport.addEventListener('scroll', () => {
+    if (preferences.mode !== 'paged') {
+      updateStatus();
+      saveProgress();
+      return;
+    }
+
+    window.clearTimeout(scrollEndTimer);
+    const pageWidth = Math.max(1, viewport.clientWidth);
+    if (pendingPage !== null) {
+      const reachedTarget = Math.abs(viewport.scrollLeft - pendingPage * pageWidth) <= 2;
+      if (reachedTarget) pendingPage = null;
+    } else {
+      currentPage = Math.round(viewport.scrollLeft / pageWidth);
+    }
+
+    if (pendingPage === null) {
+      updateStatus();
+      saveProgress();
+      return;
+    }
+
+    scrollEndTimer = window.setTimeout(() => {
+      currentPage = Math.round(viewport.scrollLeft / pageWidth);
+      pendingPage = null;
+      updateStatus();
+      saveProgress();
+    }, 140);
+  }, { passive: true });
   window.addEventListener('keydown', event => {
     if (!shell.classList.contains('immersive') || event.target instanceof HTMLInputElement || event.target instanceof HTMLSelectElement) return;
     if (event.key === 'ArrowRight' || event.key === 'ArrowDown' || event.key === 'PageDown') { event.preventDefault(); navigate(1); }
