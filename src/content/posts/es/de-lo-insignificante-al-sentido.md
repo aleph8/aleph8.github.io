@@ -49,9 +49,7 @@ Y es que, la humanidad es grande. Hemos conseguido ser resilientes, superarnos a
 
 ¿Cómo podemos encontrar ese sentido tan personal del que dotar a nuestra vida?
 
-El sentido de la vida es único, cada individuo debe encontrarlo en un momento y situación determinada. Es algo que no se inventa, este sentido se descubre. Para descubrir tenemos que hacer una profunda introspección para conocernos a nosotros mismos, y entender dónde están nuestros puntos débiles; es entender nuestros sesgos, luchar contra ellos y ser flexibles; es dar oportunidad a opiniones contrarias, a hacer el arduo trabajo de ponernos en el otro lado, a permitirnos entender. Como decía Ortega y Gasset en *La rebelión de las masas*: 
-
->> "Sorprenderse, extrañarse, es comenzar a entender."
+El sentido de la vida es único, cada individuo debe encontrarlo en un momento y situación determinada. Es algo que no se inventa, este sentido se descubre. Para descubrir tenemos que hacer una profunda introspección para conocernos a nosotros mismos, y entender dónde están nuestros puntos débiles; es entender nuestros sesgos, luchar contra ellos y ser flexibles; es dar oportunidad a opiniones contrarias, a hacer el arduo trabajo de ponernos en el otro lado, a permitirnos entender. Como decía Ortega y Gasset en *La rebelión de las masas*:*"Sorprenderse, extrañarse, es comenzar a entender"*.
 
 Vivimos en una época de sobreexcitación, donde hay demasiada información; desde siempre ha existido influencia del entorno. No obstante, no hay que caer en la 'red de pensamiento' grupal; que una persona se haya criado en un entorno con ciertas creencias o ideología, no significa que esta sea la Verdad, ni que deba seguirla. El escepticismo con fundamento y sentido es saludable, podemos ser escépticos y poner en tela de juicio lo que nos rodea ¿por qué es esto verdad? ¿No es acaso la Verdad algo creado por el ser humano? ¿ No lo son el Bien, Mal o la Justicia? La Vida no entiende esto, al ser una invención nuestra para poder organizarnos socialmente y poder convivir con una serie de reglas establecidas sin matarnos los unos a los otros.
 

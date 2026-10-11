@@ -53,9 +53,7 @@ What drives us, then?
 
 How can we discover that deeply personal meaning with which to endow our lives?
 
-The meaning of life is unique; each individual must uncover it within their own specific circumstances and moments in time. It is not something invented; it is discovered. To discover it, we must engage in profound introspection to understand ourselves and pinpoint our vulnerabilities. It means recognizing our biases, challenging them, and remaining adaptable; it means welcoming opposing views, taking on the demanding task of stepping into another’s shoes, and allowing ourselves to understand. As Ortega y Gasset wrote: 
-
->> *"To be surprised, to wonder, is to begin to understand."*
+The meaning of life is unique; each individual must uncover it within their own specific circumstances and moments in time. It is not something invented; it is discovered. To discover it, we must engage in profound introspection to understand ourselves and pinpoint our vulnerabilities. It means recognizing our biases, challenging them, and remaining adaptable; it means welcoming opposing views, taking on the demanding task of stepping into another’s shoes, and allowing ourselves to understand. As Ortega y Gasset wrote:*"To be surprised, to wonder, is to begin to understand"*.
 
 We live in an age of overstimulation and information overload; external influences have always existed. However, we must resist falling into groupthink. Growing up in an environment steeped in certain beliefs or ideologies does not mean they represent the Truth, nor that one is bound to follow them. Grounded, thoughtful skepticism is healthy: we can question what surrounds us. Why is this considered true? Is not Truth itself a human construct? Are not Good, Evil, or Justice the same? Life itself recognizes none of these; they are human inventions designed so we can organize socially and coexist under established rules without destroying one another.
 
