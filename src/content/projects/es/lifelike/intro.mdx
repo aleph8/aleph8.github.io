@@ -1,0 +1,38 @@
+---
+order: 1
+title: "Lifelike"
+description: "Observando cómo reglas simples pueden desarrollar comportamientos complejos."
+showDescription: true
+tech: "Autómatas celulares"
+image: "../../../../assets/projects/lifelike.png"
+translationKey: lifelike-intro
+---
+
+import LifelikeVisor from "../../../../components/LifelikeVisor.astro";
+import LifelikeLaunch from "../../../../components/LifelikeLaunch.astro";
+
+Un **autómata celular** es un modelo matemático que evoluciona en pasos discretos a través de una cuadrícula de celdas.
+
+El caso más famoso es el **juego de la vida**, cuyas reglas son simples:
+
+- Una celda viva con **2 o 3 vecinos vivos** sigue viva.
+- Una celda muerta nace si tiene **exactamente 3 vecinos vivos**.
+- En cualquier otro caso, la celda muere o permanece muerta.
+
+Existen variantes como **HighLife** que solo añaden una condición más: una celda muerta también nace si tiene **exactamente 6 vecinos vivos**.
+
+A pesar de parecer algo muy simple, estas reglas generan comportamientos complejos y fascinantes, como la **replicación**, que puedes ver dándole al **play** en el siguiente visor.
+
+<LifelikeVisor lang="es" pattern="replicator" />
+
+<LifelikeLaunch lang="es" />
+
+La simulación que acabas de ver forma parte de **Lifelike**, una pequeña librería que he creado en **Rust** y que está embebida en esta web. Es mi pequeño laboratorio de autómatas celulares, con una implementación sencilla del juego de la vida de Conway.
+
+Más allá de estos patrones, los **autómatas celulares tienen aplicaciones prácticas**: permiten estudiar el comportamiento de los gases, modelar el tráfico o explorar cómo se propaga una enfermedad. A partir de reglas locales sencillas, pueden reproducir dinámicas colectivas complejas. Según el modelo y la escala, su bajo coste computacional permite simular miles de generaciones y comparar distintos escenarios sin recurrir a modelos más costosos.
+
+Resulta fascinante observar y poder simular cómo unas reglas tan simples, que a primera vista parecen insignificantes, pueden dar lugar a la formación de estructuras, la organización, la replicación o la oscilación.
+
+## Usar Lifelike
+
+[Cómo integrarlo en tu web](/projects/lifelike/web) · [Repositorio en GitHub](https://github.com/aleph8/lifelike)

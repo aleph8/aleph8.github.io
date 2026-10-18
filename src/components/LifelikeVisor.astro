@@ -1,0 +1,107 @@
+---
+import { patterns, rules, type Rule } from '../lib/lifelike';
+
+interface Props {
+  lang?: 'es' | 'en';
+  pattern?: string;
+  rule?: Rule;
+  width?: number;
+  height?: number;
+  interval?: number;
+  autoplay?: boolean;
+  fullViewport?: boolean;
+}
+
+const { lang = 'es', pattern = 'replicator', width = 64, height = 48, interval = 120, autoplay = false, fullViewport = false } = Astro.props;
+const preset = patterns.find((item) => item.id === pattern) ?? patterns[0];
+const rule = Astro.props.rule ?? preset.rule;
+const copy = lang === 'es'
+  ? { home: 'Inicio', pattern: 'Patrón', rule: 'Regla', play: 'Iniciar', pause: 'Pausar', step: 'Paso', reset: 'Reiniciar', clear: 'Limpiar', grid: 'Cuadrícula', info: 'Información', generation: 'Generación', population: 'Células', board: 'Autómata celular. Haz clic para editar las células.', error: 'No se ha podido cargar el visor.' }
+  : { home: 'Home', pattern: 'Pattern', rule: 'Rule', play: 'Start', pause: 'Pause', step: 'Step', reset: 'Reset', clear: 'Clear', grid: 'Grid', info: 'Information', generation: 'Generation', population: 'Cells', board: 'Cellular automaton. Click to edit cells.', error: 'The viewer could not be loaded.' };
+---
+
+<lifelike-visor class="not-prose" data-full-viewport={fullViewport} data-width={width} data-height={height} data-interval={interval} data-autoplay={autoplay} data-play={copy.play} data-pause={copy.pause} data-error-message={copy.error}>
+  <fieldset disabled>
+    <div class="toolbar">
+      {fullViewport && <a class="home" href={lang === 'es' ? '/' : '/en/'} title={copy.home} aria-label={copy.home}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 5-7 7 7 7M5 12h14"/></svg><span>{copy.home}</span></a>}
+      <div class="selectors">
+        <label><span class="sr-only">{copy.pattern}</span><select data-pattern title={copy.pattern}>{patterns.map((item) => <option value={item.id} selected={item.id === preset.id}>{item.name}</option>)}</select></label>
+        <label><span class="sr-only">{copy.rule}</span><select data-rule title={copy.rule}>{rules.map((item) => <option value={item} selected={item === rule}>{item}</option>)}</select></label>
+      </div>
+      <div class="controls">
+        <button type="button" data-info-button aria-label={copy.info} title={copy.info} aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></svg></button>
+        <button type="button" data-grid-button aria-label={copy.grid} title={copy.grid} aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></button>
+        <button type="button" data-play-button class="play" aria-label={copy.play} title={copy.play} aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path data-play-icon d="m8 5 11 7-11 7Z"/><g data-pause-icon hidden><path d="M9 5v14M15 5v14"/></g></svg>
+        </button>
+        <button type="button" data-step aria-label={copy.step} title={copy.step}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 11 7-11 7ZM19 5v14"/></svg></button>
+        <button type="button" data-reset aria-label={copy.reset} title={copy.reset}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10a9 9 0 1 1 2.6 8.4M3 4v6h6"/></svg></button>
+        <button type="button" data-clear aria-label={copy.clear} title={copy.clear}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M9 6V4h6v2M5 6l1 14h12l1-14M10 10v6M14 10v6"/></svg></button>
+      </div>
+    </div>
+    <div class="board">
+      <div class="canvas-wrap">
+        <canvas width={width * 10} height={height * 10} aria-label={copy.board}></canvas>
+        <div class="canvas-info" data-info hidden><span>{copy.generation} <b data-generation>0</b></span><span>{copy.population} <b data-population>0</b></span></div>
+      </div>
+    </div>
+  </fieldset>
+  <p data-error role="alert" hidden></p>
+</lifelike-visor>
+
+<script>
+  import '../scripts/lifelike-visor';
+</script>
+
+<style>
+  lifelike-visor { display: block; width: min(100%, var(--visor-width, 480px)); margin: 1.5rem auto; border: 1px solid #e5e5e5; background: white; color: black; font-family: var(--font-sans); }
+  fieldset { min-width: 0; padding: 0; margin: 0; border: 0; }
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .3rem .5rem; padding: .4rem .5rem; }
+  .selectors { display: flex; flex-wrap: wrap; flex: 0 1 auto; gap: .25rem; min-width: 0; max-width: 100%; }
+  label { min-width: 0; max-width: 100%; }
+  select, button { height: 28px; font: inherit; font-size: .65rem; color: inherit; background: white; border: 1px solid #d4d4d4; border-radius: 2px; cursor: pointer; }
+  select { width: auto; max-width: 7.5rem; min-width: 0; padding: 0 .2rem; }
+  [data-rule] { max-width: 6rem; }
+  select:hover, button:hover { border-color: var(--color-accent); }
+  button:disabled, fieldset:disabled select { cursor: wait; opacity: .5; }
+  .board { min-width: 0; border-top: 1px solid #f0f0f0; }
+  canvas { display: block; width: 100%; height: auto; cursor: crosshair; }
+  .controls { display: flex; flex-wrap: wrap; flex: 0 1 auto; gap: .2rem; max-width: 100%; }
+  button { display: grid; place-items: center; width: 28px; padding: 0; }
+  button svg, .home svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  button[aria-pressed="true"]:not(.play) { color: var(--color-accent); border-color: var(--color-accent); }
+  .play { background: black; border-color: black; color: white; }
+  .canvas-wrap { position: relative; width: 100%; min-width: 0; }
+  .canvas-info { position: absolute; top: .5rem; left: .5rem; display: flex; flex-wrap: wrap; gap: .25rem .75rem; max-width: calc(100% - 1rem); padding: .25rem .4rem; background: rgb(255 255 255 / .9); color: #737373; font: .6rem/1.4 var(--font-mono); pointer-events: none; }
+  .canvas-info b { color: black; font-weight: 400; }
+  .home { display: inline-flex; align-items: center; gap: .4rem; color: inherit; text-decoration: none; font-size: .75rem; white-space: nowrap; }
+  .home:hover { color: var(--color-accent); }
+  [data-full-viewport="true"] { position: fixed; inset: 0; z-index: 60; width: 100%; height: 100svh; margin: 0; border: 0; }
+  [data-full-viewport="true"] fieldset { display: flex; flex-direction: column; width: 100%; height: 100%; }
+  [data-full-viewport="true"] .toolbar { flex: 0 0 auto; gap: .5rem 1rem; padding: max(.5rem, env(safe-area-inset-top)) max(.75rem, env(safe-area-inset-right)) .5rem max(.75rem, env(safe-area-inset-left)); }
+  [data-full-viewport="true"] .selectors { margin-inline: auto; }
+  [data-full-viewport="true"] select, [data-full-viewport="true"] button { height: 34px; font-size: .7rem; }
+  [data-full-viewport="true"] button { width: 34px; }
+  [data-full-viewport="true"] button svg { width: 16px; height: 16px; }
+  [data-full-viewport="true"] [data-error] { position: absolute; bottom: 1rem; left: 1rem; margin: 0; padding: .5rem; background: white; }
+  [data-full-viewport="true"] .board { flex: 1; min-height: 0; }
+  [data-full-viewport="true"] .canvas-wrap, [data-full-viewport="true"] canvas { width: 100%; height: 100%; }
+  @media (max-width: 600px) {
+    .toolbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: .4rem; padding: .5rem; }
+    .selectors { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); width: 100%; max-width: none; gap: .4rem; }
+    label, select { width: 100%; max-width: none; }
+    select, [data-rule] { max-width: none; height: 40px; font-size: 16px; padding-inline: .3rem; }
+    .controls { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); width: 100%; gap: .35rem; max-width: none; }
+    button { width: 100%; height: 44px; }
+    button svg { width: 18px; height: 18px; }
+    [data-full-viewport="true"] .toolbar { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .4rem .5rem; padding: max(.5rem, env(safe-area-inset-top)) max(.6rem, env(safe-area-inset-right)) .5rem max(.6rem, env(safe-area-inset-left)); }
+    [data-full-viewport="true"] .home { min-height: 40px; margin: 0; }
+    [data-full-viewport="true"] .selectors { margin: 0; }
+    [data-full-viewport="true"] select { width: 100%; height: 40px; font-size: 16px; }
+    [data-full-viewport="true"] .controls { grid-column: 1 / -1; }
+    [data-full-viewport="true"] button { width: 100%; height: 44px; }
+    [data-full-viewport="true"] button svg { width: 18px; height: 18px; }
+  }
+  [hidden] { display: none; }
+  [data-error] { padding: 0 1rem; font-size: .8rem; color: #b91c1c; }
+</style>

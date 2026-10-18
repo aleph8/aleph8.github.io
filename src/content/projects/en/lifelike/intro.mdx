@@ -1,0 +1,38 @@
+---
+order: 1
+title: "Lifelike"
+description: "Observing how simple rules can develop complex behaviors."
+showDescription: true
+tech: "Cellular automata"
+image: "../../../../assets/projects/lifelike.png"
+translationKey: lifelike-intro
+---
+
+import LifelikeVisor from "../../../../components/LifelikeVisor.astro";
+import LifelikeLaunch from "../../../../components/LifelikeLaunch.astro";
+
+A **cellular automaton** is a mathematical model that evolves in discrete steps across a grid of cells.
+
+The best-known example is the **Game of Life**, whose rules are simple:
+
+- A live cell with **2 or 3 live neighbors** survives.
+- A dead cell is born if it has **exactly 3 live neighbors**.
+- In all other cases, the cell dies or remains dead.
+
+Variants such as **HighLife** add just one more condition: a dead cell is also born if it has **exactly 6 live neighbors**.
+
+Despite seeming very simple, these rules produce complex and fascinating behaviors, such as **replication**, which you can see by pressing **play** in the viewer below.
+
+<LifelikeVisor lang="en" pattern="replicator" />
+
+<LifelikeLaunch lang="en" />
+
+The simulation you just saw is part of **Lifelike**, a small library I built in **Rust** and embedded in this website. It is my little cellular automata laboratory, with a simple implementation of Conway’s Game of Life.
+
+Beyond these patterns, **cellular automata have practical applications**: they can help study the behavior of gases, model traffic, or explore how a disease spreads. Simple local rules can reproduce complex collective dynamics. Depending on the model and scale, their low computational cost makes it possible to simulate thousands of generations and compare different scenarios without resorting to more expensive models.
+
+It is fascinating to observe and simulate how rules so simple that they seem insignificant at first can give rise to the formation of structures, organization, replication, or oscillation.
+
+## Use Lifelike
+
+[How to embed it on your website](/en/projects/lifelike/web) · [GitHub repository](https://github.com/aleph8/lifelike)

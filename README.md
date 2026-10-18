@@ -41,6 +41,43 @@ docker compose run --rm astro npm run build
 docker compose logs -f astro
 ```
 
+## Embedded Lifelike viewer
+
+Import `src/components/LifelikeVisor.astro` into any Astro page or MDX document:
+
+```astro
+---
+import LifelikeVisor from '../components/LifelikeVisor.astro';
+---
+
+<LifelikeVisor lang="en" pattern="replicator" autoplay />
+```
+
+Adjust the import path to match the document location. Each instance has its own
+board, controls, and timer. Optional props are `lang`, `pattern`, `rule`, `width`,
+`height`, `interval` (milliseconds), `autoplay`, and `fullViewport`. Defaults are Spanish,
+Replicator/HighLife, a 64 × 48 board, 120 ms per generation, and paused playback.
+Autoplay respects the browser's reduced-motion preference.
+
+`<LifelikeVisor fullViewport />` fills the viewport with a compact toolbar and a
+board covering all remaining space. The standalone routes `/lifelike` and
+`/en/lifelike` include a home link. This mode adapts the universe dimensions to
+the available area, keeping cells approximately 10 CSS pixels across. Resizing
+recenters existing cells and preserves the generation and playback state; cells
+outside a smaller board are cropped. It starts paused.
+
+Changing a pattern selects its suggested rule; the rule selector can then override
+it. The compact toolbar includes independent grid and information toggles, both
+off by default. Information appears over the board. The viewer fits the available
+viewport height while preserving square cells. Embedded sizing depends on the
+container and viewport, not the content above the viewer. The viewer uses the current matrix universe API through `src/lib/lifelike.ts`.
+This module isolates WASM loading from rendering so other universe implementations
+can be integrated later.
+
+The official `v0.1.0` release files are checked into `public/lifelike/v0.1.0/`,
+including the MIT license and upstream checksums. They are served locally in both
+development and production; no GitHub requests are needed at runtime.
+
 ## Content
 
 | Directory | Purpose |

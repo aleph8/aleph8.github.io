@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 0
 title: "Panoruma"
 description: "Rescuing and democratizing historical photographic archives for the web."
 tech: "History"

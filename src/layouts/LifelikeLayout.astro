@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+import { getEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+import LifelikeVisor from '../components/LifelikeVisor.astro';
+
+interface Props { lang?: 'es' | 'en' }
+const { lang = 'es' } = Astro.props;
+const project = await getEntry('projects', `${lang}/lifelike/intro`);
+if (!project) throw new Error(`Missing Lifelike project for ${lang}`);
+const description = project.data.description;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const image = await getImage({ src: project.data.image!, width: 1200, height: 630, format: 'jpg', quality: 90 });
+const imageURL = new URL(image.src, Astro.site);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <title>Lifelike - AGP</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AGP" />
+    <meta property="og:title" content="Lifelike - AGP" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lifelike - AGP" />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <LifelikeVisor lang={lang} pattern="replicator" fullViewport />
+  </body>
+</html>
+
+<style>
+  :global(html), :global(body) { width: 100%; height: 100%; overflow: hidden; }
+  body { margin: 0; background: white; }
+  :global(astro-dev-toolbar) { display: none; }
+</style>

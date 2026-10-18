@@ -1,0 +1,15 @@
+{
+  "name": "lifelike_wasm",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "lifelike_wasm_bg.wasm",
+    "lifelike_wasm.js",
+    "lifelike_wasm.d.ts"
+  ],
+  "main": "lifelike_wasm.js",
+  "types": "lifelike_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

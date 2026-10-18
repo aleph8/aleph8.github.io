@@ -146,7 +146,7 @@ const isIntroPage = cleanPath.split('/').pop() === 'intro';
           {frontmatter.title}
         </h1>
 
-        {frontmatter.description && (
+        {frontmatter.description && frontmatter.showDescription !== false && (
           <p class="text-neutral-500 text-base leading-relaxed mb-10 pb-10 border-b border-neutral-100">
             {frontmatter.description}
           </p>

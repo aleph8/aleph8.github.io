@@ -26,6 +26,10 @@ const docsPath = lang === 'es' ? '/projects' : `/${lang}/projects`;
 
 const isIntro = (doc: typeof localizedDocs[0]) =>
   doc.id.split('/').pop()?.replace(/\.mdx?$/, '') === 'intro';
+
+const projects = Object.entries(grouped).sort(([, a], [, b]) =>
+  (a.find(isIntro)?.data.order ?? 99) - (b.find(isIntro)?.data.order ?? 99)
+);
 ---
 
 <BaseLayout title={t('projects.title')} description={t('projects.description')} lang={lang} contentPage={true}>
@@ -35,7 +39,7 @@ const isIntro = (doc: typeof localizedDocs[0]) =>
     <p class="text-neutral-500 text-base mb-8 md:mb-12">{t('projects.description')}</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-      {Object.entries(grouped).map(([projectKey, docs], index) => {
+      {projects.map(([projectKey, docs], index) => {
         const intro = docs.find(isIntro);
         const rest = docs.filter(d => !isIntro(d));
         const introUrl = intro
